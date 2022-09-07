@@ -1,5 +1,5 @@
-# SmartCurtains
-Semester Project (Smart Curtains) for course 62413 - Advanced C# &amp; .NET
+# IoT Curtains
+Semester Project (IoT Curtains) for course 62413 - Advanced C# &amp; .NET
 
 This is the personal project in DTU course 62413 - Advanced Object Oriented Programming with C# and .NET.
 
