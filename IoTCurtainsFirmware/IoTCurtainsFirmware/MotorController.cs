@@ -13,11 +13,16 @@ namespace IoTCurtainsFirmware
         GpioPin clockwiseDirectionPin;
         QuadratureRotaryEncoder rotaryEncoder;
 
-        private int currentState;
-        private int clicksFromMin;
-        private int clicksFromMax;
+        private int setPoint = 0;
+        private int currentLocation  = 0;
+        private int minLocation = 0;
+        private int maxLocation = 200;
 
         private bool calibrated = false;
+
+
+        public int CurrentState { get { return (int)((float)(currentLocation / maxLocation) * 100) ; } }
+        public int SetPoint { get { return setPoint ; } set { setPoint = SetPoint; } }
         
         public MotorController(GpioPin pwmPin, GpioPin clockwiseDirectionPin, QuadratureRotaryEncoder rotaryEncoder)
         {
@@ -25,6 +30,9 @@ namespace IoTCurtainsFirmware
             this.clockwiseDirectionPin = clockwiseDirectionPin;
             this.rotaryEncoder = rotaryEncoder;
         }
+
+
+      
 
 
 
