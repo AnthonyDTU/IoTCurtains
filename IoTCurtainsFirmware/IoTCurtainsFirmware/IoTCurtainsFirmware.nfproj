@@ -56,9 +56,6 @@
     <Reference Include="System.Math">
       <HintPath>..\packages\nanoFramework.System.Math.1.4.4\lib\System.Math.dll</HintPath>
     </Reference>
-    <Reference Include="Windows.Devices.Pwm">
-      <HintPath>..\packages\nanoFramework.Windows.Devices.Pwm.1.6.2\lib\Windows.Devices.Pwm.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
