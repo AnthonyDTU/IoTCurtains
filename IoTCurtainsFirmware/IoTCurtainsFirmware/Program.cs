@@ -71,18 +71,16 @@ namespace IoTCurtainsFirmware
                 while (rollDownButton.IsPressed)
                 {
                     motorController.SetPoint++;
-                    motorController.resetEvent.Set();
+                    motorController.ResetEvent.Set();
                     Thread.Sleep(5);
                 }
-                downLED.Write(0);
-
+                
                 while (rollUpButton.IsPressed)
                 {
                     motorController.SetPoint--;
-                    motorController.resetEvent.Set();
+                    motorController.ResetEvent.Set();
                     Thread.Sleep(5);
                 }
-                upLED.Write(0);
 
 
 
@@ -158,7 +156,7 @@ namespace IoTCurtainsFirmware
             upLED = gpioController.OpenPin(rollUpLEDInticatiorPinNumber, PinMode.Output);
             downLED = gpioController.OpenPin(rollDownLEDIndicatorPinNumber, PinMode.Output);
 
-            motorThread = new Thread(new ThreadStart(motorController.runMotor));
+            motorThread = new Thread(new ThreadStart(motorController.RunMotor));
             motorThread.Start();
         }
 
@@ -181,14 +179,14 @@ namespace IoTCurtainsFirmware
                 while (rollDownButton.IsPressed)
                 {
                     motorController.SetPoint++;
-                    motorController.resetEvent.Set();
+                    motorController.ResetEvent.Set();
                     Thread.Sleep(5);
                 }
 
                 while (rollUpButton.IsPressed)
                 {
                     motorController.SetPoint--;
-                    motorController.resetEvent.Set();
+                    motorController.ResetEvent.Set();
                     Thread.Sleep(5);
                 }
 
@@ -219,13 +217,13 @@ namespace IoTCurtainsFirmware
         private static void RollToButtomButton_ButtonDown(object sender, EventArgs e)
         {
             motorController.SetPoint = motorController.MaxSetpoint;
-            motorController.resetEvent.Set();
+            motorController.ResetEvent.Set();
         }
 
         private static void RollToTopButton_ButtonDown(object sender, EventArgs e)
         {
             motorController.SetPoint = motorController.MinSetpoint;
-            motorController.resetEvent.Set();
+            motorController.ResetEvent.Set();
         }
     }
 }
