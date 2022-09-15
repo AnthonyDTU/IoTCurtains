@@ -54,3 +54,13 @@ C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented P
 C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\IoTCurtainsFirmware\IoTCurtainsFirmware\obj\Debug\System.Device.Gpio.xml
 C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\IoTCurtainsFirmware\IoTCurtainsFirmware\obj\Debug\System.Diagnostics.Stopwatch.xml
 C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\IoTCurtainsFirmware\IoTCurtainsFirmware\obj\Debug\System.Math.xml
+C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\IoTCurtainsFirmware\IoTCurtainsFirmware\bin\Debug\IoTCurtainsFirmware.pdbx
+C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\IoTCurtainsFirmware\IoTCurtainsFirmware\bin\Debug\IoTCurtainsFirmware.bin
+C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\IoTCurtainsFirmware\IoTCurtainsFirmware\obj\Debug\IoTCurtainsFirmware.pe
+C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\IoTCurtainsFirmware\IoTCurtainsFirmware\obj\Debug\IoTCurtainsFirmware.pdbx
+C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\IoTCurtainsFirmware\IoTCurtainsFirmware\bin\Debug\System.Threading.pe
+C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\IoTCurtainsFirmware\IoTCurtainsFirmware\bin\Debug\System.Threading.pdbx
+C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\IoTCurtainsFirmware\IoTCurtainsFirmware\bin\Debug\System.Threading.dll
+C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\IoTCurtainsFirmware\IoTCurtainsFirmware\bin\Debug\System.Threading.xml
+C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\IoTCurtainsFirmware\IoTCurtainsFirmware\obj\Debug\System.Threading.dll
+C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\IoTCurtainsFirmware\IoTCurtainsFirmware\obj\Debug\System.Threading.xml

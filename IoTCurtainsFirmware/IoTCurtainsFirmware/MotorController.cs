@@ -7,17 +7,50 @@ namespace IoTCurtainsFirmware
 {
     internal class MotorController
     {
-        GpioPin in1;
-        GpioPin in2;
-        GpioPin in3;
-        GpioPin in4;
+        //static int[] stepSequence0 = { 1, 1, 0, 0 };
+        //static int[] stepSequence1 = { 0, 1, 1, 0 };
+        //static int[] stepSequence2 = { 0, 0, 1, 1 };
+        //static int[] stepSequence3 = { 1, 0, 0, 1 };
 
-        private int setPoint = 0;
-        private int currentLocation  = 0;
+        //static int[] stepSequence0 = { 0, 0, 0, 0, 0, 1, 1, 1 };
+        //static int[] stepSequence1 = { 0, 0, 0, 1, 1, 1, 0, 0 };
+        //static int[] stepSequence2 = { 0, 1, 1, 1, 0, 0, 0, 0 };
+        //static int[] stepSequence3 = { 1, 1, 0, 0, 0, 0, 0, 1 };
+
+
+        int[] stepSequence0 = { 0, 0, 1, 1 };
+        int[] stepSequence1 = { 1, 0, 0, 1 };
+        int[] stepSequence2 = { 1, 1, 0, 0 };
+        int[] stepSequence3 = { 0, 1, 1, 0 };
+
+        //static int[,] stepSequence =
+        //{
+        //    { 1, 0, 1, 0 },
+        //    { 0, 1, 1, 0 },
+        //    { 0, 1, 0, 1 },
+        //    { 1, 0, 0, 1 }
+        //};
+
+        public AutoResetEvent resetEvent = new AutoResetEvent(false);
+
+        private GpioPin in1;
+        private GpioPin in2;
+        private GpioPin in3;
+        private GpioPin in4;
+
+        private int currentStep = 0;
+        private int numberOfSteps = 4;
+
+        private int setPoint = 1700;
+        private int currentLocation  = 1750;
+        
         private int minLocation = 0;
-        private int maxLocation = 0;
+        private int maxLocation = 2000;
 
         private bool calibrated = false;
+
+
+
 
         public bool Calibrated { get { return calibrated; } set { calibrated = value; } }
         public int CurrentState { get { return (int)((float)(currentLocation / maxLocation) * 100) ; } }
@@ -29,38 +62,52 @@ namespace IoTCurtainsFirmware
                                int in1PinNumber, 
                                int in2PinNumber, 
                                int in3PinNumber, 
-                               int in4PinNumber, 
-                               int motorStepsPerRotation)
+                               int in4PinNumber)
         {
-            in1 = gpioController.OpenPin(in1PinNumber);
-            in2 = gpioController.OpenPin(in2PinNumber);
-            in3 = gpioController.OpenPin(in3PinNumber);
-            in4 = gpioController.OpenPin(in4PinNumber);
+            in1 = gpioController.OpenPin(in1PinNumber, PinMode.Output);
+            in2 = gpioController.OpenPin(in2PinNumber, PinMode.Output);
+            in3 = gpioController.OpenPin(in3PinNumber, PinMode.Output);
+            in4 = gpioController.OpenPin(in4PinNumber, PinMode.Output);
         }
 
 
-     
+
 
         /// <summary>
         /// 
         /// </summary>
+        [MTAThread]
         public void runMotor()
         {
             while (true)
             {
-                if (currentLocation != setPoint)
+                // Check for setpoint limits, and adjust:
+                setPoint = CheckSetpointLimits();
+
+                while (currentLocation != setPoint)
                 {
-                    while (currentLocation != setPoint)
+                    if (currentLocation < setPoint)
                     {
-                        // Check for setpoint limits, and adjust:
-                        setPoint = CheckSetpointLimits();
-
-
-                        Thread.Sleep(1);
+                        currentLocation++;
+                        currentStep = (currentStep == numberOfSteps - 1) ? 0 : currentStep + 1;
                     }
+                    else if (currentLocation > setPoint)
+                    {
+                        currentLocation--;
+                        currentStep = (currentStep == 0) ? numberOfSteps - 1 : currentStep - 1;
+                    }
+
+                    in1.Write(stepSequence0[currentStep]);
+                    in2.Write(stepSequence1[currentStep]);
+                    in3.Write(stepSequence2[currentStep]);
+                    in4.Write(stepSequence3[currentStep]);
+                    Thread.Sleep(5);
                 }
 
-                Thread.Sleep(Timeout.Infinite);
+                resetEvent.WaitOne();
+                resetEvent.Reset();
+
+                //Thread.Sleep(Timeout.Infinite);
             }
         }
 

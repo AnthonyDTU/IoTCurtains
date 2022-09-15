@@ -11,17 +11,17 @@ namespace IoTCurtainsFirmware
     {
         static int motorStepsPerRotation = 2038;
 
-        static int rollDownButtonPin = 1;
-        static int rollUpButtonPin = 22;
-        static int rollToButtomButtonPin = 3;
-        static int rollToTopButtonPin = 26;
+        static int rollDownButtonPin = 32;
+        static int rollUpButtonPin = 33;
+        static int rollToButtomButtonPin = 22;
+        static int rollToTopButtonPin = 23;
 
         static int StopAllActionButtonPin = 21;
 
         static int CalibrateButtonPin = 36;
 
-        static int rollDownLEDIndicatorPinNumber = 2;
-        static int rollUpLEDInticatiorPinNumber = 15;
+        static int rollDownLEDIndicatorPinNumber = 18;
+        static int rollUpLEDInticatiorPinNumber = 19;
 
         static int motorControllerIn1PinNumber = 13;
         static int motorControllerIn2PinNumber = 12;
@@ -42,37 +42,25 @@ namespace IoTCurtainsFirmware
         static GpioButton calibrateButton;
         static GpioButton stopMotorButton;
 
-        //static Thread motorThread;
+        static Thread motorThread;
 
-
-        
-
-        static int[,] stepSequence =  
-        { 
-            { 1, 0, 1, 0 }, 
-            { 0, 1, 1, 0 }, 
-            { 0, 1, 0, 1 }, 
-            { 1, 0, 0, 1 } 
-        };
 
         public static void Main()
         {
 
+
             InitializeSystem();
             //CalibrateMotorController();
 
+            //GpioPin in1 = gpioController.OpenPin(motorControllerIn1PinNumber, PinMode.Output);
+            //GpioPin in2 = gpioController.OpenPin(motorControllerIn2PinNumber, PinMode.Output);
+            //GpioPin in3 = gpioController.OpenPin(motorControllerIn3PinNumber, PinMode.Output);
+            //GpioPin in4 = gpioController.OpenPin(motorControllerIn4PinNumber, PinMode.Output);
 
-
-
-            GpioPin in1 = gpioController.OpenPin(motorControllerIn1PinNumber, PinMode.Output);
-            GpioPin in2 = gpioController.OpenPin(motorControllerIn2PinNumber, PinMode.Output);
-            GpioPin in3 = gpioController.OpenPin(motorControllerIn3PinNumber, PinMode.Output);
-            GpioPin in4 = gpioController.OpenPin(motorControllerIn4PinNumber, PinMode.Output);
-
-            in1.Write(PinValue.High);
-            in2.Write(PinValue.High);
-            in3.Write(PinValue.High);
-            in4.Write(PinValue.High);
+            //in1.Write(PinValue.Low);
+            //in2.Write(PinValue.Low);
+            //in3.Write(PinValue.Low);
+            //in4.Write(PinValue.Low);
 
             int count = 0;
             int step = 0;
@@ -82,19 +70,17 @@ namespace IoTCurtainsFirmware
             {
                 while (rollDownButton.IsPressed)
                 {
-                    downLED.Write(1);
-                    //motorController.RollDown();
-                    //motorThread.Resume();
-                    //Thread.Sleep(5);
+                    motorController.SetPoint++;
+                    motorController.resetEvent.Set();
+                    Thread.Sleep(5);
                 }
                 downLED.Write(0);
 
                 while (rollUpButton.IsPressed)
                 {
-                    upLED.Write(1);
-                    //motorController.RollUp();
-                    //motorThread.Resume();
-                    //Thread.Sleep(5);
+                    motorController.SetPoint--;
+                    motorController.resetEvent.Set();
+                    Thread.Sleep(5);
                 }
                 upLED.Write(0);
 
@@ -103,10 +89,10 @@ namespace IoTCurtainsFirmware
 
                 //while (count < 5000)
                 //{
-                //    in1.Write(stepSequence[step, 0]);
-                //    in2.Write(stepSequence[step, 1]);
-                //    in3.Write(stepSequence[step, 2]);
-                //    in4.Write(stepSequence[step, 3]);
+                //    in1.Write(stepSequence0[step]);
+                //    in2.Write(stepSequence1[step]);
+                //    in3.Write(stepSequence2[step]);
+                //    in4.Write(stepSequence3[step]);
 
                 //    count++;
                 //    step++;
@@ -119,16 +105,16 @@ namespace IoTCurtainsFirmware
 
                 //while (count > 0)
                 //{
-                //    in1.Write(stepSequence[step, 0]);
-                //    in2.Write(stepSequence[step, 1]);
-                //    in3.Write(stepSequence[step, 2]);
-                //    in4.Write(stepSequence[step, 3]);
+                //    in1.Write(stepSequence0[step]);
+                //    in2.Write(stepSequence1[step]);
+                //    in3.Write(stepSequence2[step]);
+                //    in4.Write(stepSequence3[step]);
 
                 //    count--;
                 //    step--;
                 //    if (step < 0)
                 //    {
-                //        step = 0;
+                //        step = 3;
                 //    }
                 //    Thread.Sleep(5);
                 //}
@@ -156,15 +142,14 @@ namespace IoTCurtainsFirmware
                                                   motorControllerIn1PinNumber,
                                                   motorControllerIn2PinNumber,
                                                   motorControllerIn3PinNumber,
-                                                  motorControllerIn4PinNumber,
-                                                  motorStepsPerRotation);
+                                                  motorControllerIn4PinNumber);
 
-            rollDownButton = new GpioButton(rollDownButtonPin, gpioController);
-            rollUpButton = new GpioButton(rollUpButtonPin, gpioController);
-            rollToButtomButton = new GpioButton(rollToButtomButtonPin, gpioController);
-            rollToTopButton = new GpioButton(rollToTopButtonPin, gpioController);
-            calibrateButton = new GpioButton(CalibrateButtonPin, gpioController);
-            stopMotorButton = new GpioButton(StopAllActionButtonPin, gpioController);
+            rollDownButton = new GpioButton(rollDownButtonPin, gpioController, false);
+            rollUpButton = new GpioButton(rollUpButtonPin, gpioController, false);
+            rollToButtomButton = new GpioButton(rollToButtomButtonPin, gpioController, false);
+            rollToTopButton = new GpioButton(rollToTopButtonPin, gpioController, false);
+            calibrateButton = new GpioButton(CalibrateButtonPin, gpioController, false);
+            stopMotorButton = new GpioButton(StopAllActionButtonPin, gpioController, false);
 
             rollToTopButton.ButtonDown += RollToTopButton_ButtonDown;
             rollToButtomButton.ButtonDown += RollToButtomButton_ButtonDown;
@@ -173,7 +158,8 @@ namespace IoTCurtainsFirmware
             upLED = gpioController.OpenPin(rollUpLEDInticatiorPinNumber, PinMode.Output);
             downLED = gpioController.OpenPin(rollDownLEDIndicatorPinNumber, PinMode.Output);
 
-            //motorThread = new Thread(new ThreadStart(motorController.runMotor));
+            motorThread = new Thread(new ThreadStart(motorController.runMotor));
+            motorThread.Start();
         }
 
 
@@ -195,14 +181,14 @@ namespace IoTCurtainsFirmware
                 while (rollDownButton.IsPressed)
                 {
                     motorController.SetPoint++;
-                    motorController.RollDown();
+                    motorController.resetEvent.Set();
                     Thread.Sleep(5);
                 }
 
                 while (rollUpButton.IsPressed)
                 {
                     motorController.SetPoint--;
-                    motorController.RollUp();
+                    motorController.resetEvent.Set();
                     Thread.Sleep(5);
                 }
 
@@ -227,17 +213,26 @@ namespace IoTCurtainsFirmware
 
         private static void StopMotorButton_ButtonDown(object sender, EventArgs e)
         {
-            motorController.Stop();
+            motorController.SetPoint = motorController.CurrentState;
         }
 
         private static void RollToButtomButton_ButtonDown(object sender, EventArgs e)
         {
             motorController.SetPoint = motorController.MaxSetpoint;
+            motorController.resetEvent.Set();
         }
 
         private static void RollToTopButton_ButtonDown(object sender, EventArgs e)
         {
             motorController.SetPoint = motorController.MinSetpoint;
+            motorController.resetEvent.Set();
         }
     }
 }
+
+
+
+
+
+
+

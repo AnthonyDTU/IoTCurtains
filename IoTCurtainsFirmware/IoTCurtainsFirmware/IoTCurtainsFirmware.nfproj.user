@@ -3,4 +3,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DebuggerFlavor>NanoDebugger</DebuggerFlavor>
   </PropertyGroup>
+  <PropertyGroup Label="nanoFramework">
+    <NFMDP_XML_FILES>True</NFMDP_XML_FILES>
+  </PropertyGroup>
 </Project>
