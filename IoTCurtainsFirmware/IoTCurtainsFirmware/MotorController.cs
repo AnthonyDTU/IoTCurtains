@@ -18,10 +18,15 @@ namespace IoTCurtainsFirmware
         //static int[] stepSequence3 = { 1, 1, 0, 0, 0, 0, 0, 1 };
 
 
-        private readonly int[] stepSequence0 = { 0, 0, 1, 1 };
-        private readonly int[] stepSequence1 = { 1, 0, 0, 1 };
-        private readonly int[] stepSequence2 = { 1, 1, 0, 0 };
-        private readonly int[] stepSequence3 = { 0, 1, 1, 0 };
+        //private readonly int[] stepSequence0 = { 0, 0, 1, 1 };
+        //private readonly int[] stepSequence1 = { 1, 0, 0, 1 };
+        //private readonly int[] stepSequence2 = { 1, 1, 0, 0 };
+        //private readonly int[] stepSequence3 = { 0, 1, 1, 0 };
+
+        private readonly int[] stepSequence0 = { 1, 0, 0, 0 };
+        private readonly int[] stepSequence1 = { 0, 1, 0, 0 };
+        private readonly int[] stepSequence2 = { 0, 0, 1, 0 };
+        private readonly int[] stepSequence3 = { 0, 0, 0, 1 };
 
         private AutoResetEvent resetEvent = new AutoResetEvent(false);
 
@@ -41,6 +46,7 @@ namespace IoTCurtainsFirmware
 
         private bool calibrated = false;
 
+        private Thread engineThread;
 
         public bool Calibrated 
         { 
@@ -82,6 +88,10 @@ namespace IoTCurtainsFirmware
             in2 = gpioController.OpenPin(in2PinNumber, PinMode.Output);
             in3 = gpioController.OpenPin(in3PinNumber, PinMode.Output);
             in4 = gpioController.OpenPin(in4PinNumber, PinMode.Output);
+
+            engineThread = new Thread(new ThreadStart(this.RunMotor));
+            engineThread.Priority = ThreadPriority.AboveNormal;
+            engineThread.Start();
         }
 
 

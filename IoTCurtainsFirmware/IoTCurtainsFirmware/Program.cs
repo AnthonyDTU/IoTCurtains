@@ -42,7 +42,7 @@ namespace IoTCurtainsFirmware
         static GpioButton calibrateButton;
         static GpioButton stopMotorButton;
 
-        static Thread motorThread;
+        //static Thread motorThread;
 
 
         public static void Main()
@@ -72,14 +72,14 @@ namespace IoTCurtainsFirmware
                 {
                     motorController.SetPoint++;
                     motorController.ResetEvent.Set();
-                    Thread.Sleep(5);
+                    Thread.Sleep(2);
                 }
                 
                 while (rollUpButton.IsPressed)
                 {
                     motorController.SetPoint--;
                     motorController.ResetEvent.Set();
-                    Thread.Sleep(5);
+                    Thread.Sleep(2);
                 }
 
 
@@ -133,7 +133,6 @@ namespace IoTCurtainsFirmware
         /// </summary>
         private static void InitializeSystem()
         {
-            // Initialize
             gpioController = new GpioController(PinNumberingScheme.Board);
 
             motorController = new MotorController(gpioController,
@@ -155,9 +154,6 @@ namespace IoTCurtainsFirmware
 
             upLED = gpioController.OpenPin(rollUpLEDInticatiorPinNumber, PinMode.Output);
             downLED = gpioController.OpenPin(rollDownLEDIndicatorPinNumber, PinMode.Output);
-
-            motorThread = new Thread(new ThreadStart(motorController.RunMotor));
-            motorThread.Start();
         }
 
 
@@ -180,14 +176,14 @@ namespace IoTCurtainsFirmware
                 {
                     motorController.SetPoint++;
                     motorController.ResetEvent.Set();
-                    Thread.Sleep(5);
+                    Thread.Sleep(2);
                 }
 
                 while (rollUpButton.IsPressed)
                 {
                     motorController.SetPoint--;
                     motorController.ResetEvent.Set();
-                    Thread.Sleep(5);
+                    Thread.Sleep(2);
                 }
 
                 if (calibrateButton.IsPressed)
