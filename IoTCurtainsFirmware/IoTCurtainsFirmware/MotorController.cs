@@ -7,10 +7,10 @@ namespace IoTCurtainsFirmware
 {
     internal class MotorController
     {
-        //static int[] stepSequence0 = { 1, 1, 0, 0 };
-        //static int[] stepSequence1 = { 0, 1, 1, 0 };
-        //static int[] stepSequence2 = { 0, 0, 1, 1 };
-        //static int[] stepSequence3 = { 1, 0, 0, 1 };
+        static int[] stepSequence0 = { 1, 1, 0, 0 };
+        static int[] stepSequence1 = { 0, 1, 1, 0 };
+        static int[] stepSequence2 = { 0, 0, 1, 1 };
+        static int[] stepSequence3 = { 1, 0, 0, 1 };
 
         //static int[] stepSequence0 = { 0, 0, 0, 0, 0, 1, 1, 1 };
         //static int[] stepSequence1 = { 0, 0, 0, 1, 1, 1, 0, 0 };
@@ -23,12 +23,12 @@ namespace IoTCurtainsFirmware
         //private readonly int[] stepSequence2 = { 1, 1, 0, 0 };
         //private readonly int[] stepSequence3 = { 0, 1, 1, 0 };
 
-        private readonly int[] stepSequence0 = { 1, 0, 0, 0 };
-        private readonly int[] stepSequence1 = { 0, 1, 0, 0 };
-        private readonly int[] stepSequence2 = { 0, 0, 1, 0 };
-        private readonly int[] stepSequence3 = { 0, 0, 0, 1 };
+        //private readonly int[] stepSequence0 = { 1, 0, 0, 0 };
+        //private readonly int[] stepSequence1 = { 0, 1, 0, 0 };
+        //private readonly int[] stepSequence2 = { 0, 0, 1, 0 };
+        //private readonly int[] stepSequence3 = { 0, 0, 0, 1 };
 
-        private AutoResetEvent resetEvent = new AutoResetEvent(false);
+        private AutoResetEvent newSetpontSignal = new AutoResetEvent(false);
 
         private GpioPin in1;
         private GpioPin in2;
@@ -42,7 +42,7 @@ namespace IoTCurtainsFirmware
         private int currentLocation  = 1750;
         
         private int minLocation = 0;
-        private int maxLocation = 2000;
+        private int maxLocation = 2048;
 
         private bool calibrated = false;
 
@@ -73,10 +73,6 @@ namespace IoTCurtainsFirmware
             set { maxLocation = value; } 
         }
 
-        public AutoResetEvent ResetEvent 
-        { 
-            get { return resetEvent; } 
-        } 
 
         public MotorController(GpioController gpioController, 
                                int in1PinNumber, 
@@ -107,6 +103,11 @@ namespace IoTCurtainsFirmware
         }
 
         /// <summary>
+        /// This method is run exclusively by the engineThread. 
+        /// 
+        /// This thread runs throughout the life of an instance of this class.
+        /// Its responsibility is to move the motor, until its current location is equal to the setpoint.
+        /// It does this, whenever the class is signalled there is a new setpoint. 
         /// 
         /// </summary>
         public void RunMotor()
@@ -134,9 +135,16 @@ namespace IoTCurtainsFirmware
                     Thread.Sleep(2);
                 }
 
-                resetEvent.WaitOne();
-                resetEvent.Reset(); // ???
+                newSetpontSignal.WaitOne();
             }
+        }
+
+        /// <summary>
+        /// Signals the engineThread that there is a new setpoint
+        /// </summary>
+        public void SignalNewSetpoint()
+        {
+            newSetpontSignal.Set();
         }
     }
 }
