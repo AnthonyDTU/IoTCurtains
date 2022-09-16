@@ -71,14 +71,12 @@ namespace IoTCurtainsFirmware
                 while (rollDownButton.IsPressed)
                 {
                     motorController.SetPoint++;
-                    motorController.SignalNewSetpoint();
                     Thread.Sleep(2);
                 }
                 
                 while (rollUpButton.IsPressed)
                 {
                     motorController.SetPoint--;
-                    motorController.SignalNewSetpoint();
                     Thread.Sleep(2);
                 }
 
@@ -175,14 +173,12 @@ namespace IoTCurtainsFirmware
                 while (rollDownButton.IsPressed)
                 {
                     motorController.SetPoint++;
-                    motorController.SignalNewSetpoint();
                     Thread.Sleep(2);
                 }
 
                 while (rollUpButton.IsPressed)
                 {
                     motorController.SetPoint--;
-                    motorController.SignalNewSetpoint();
                     Thread.Sleep(2);
                 }
 
@@ -213,13 +209,11 @@ namespace IoTCurtainsFirmware
         private static void RollToButtomButton_ButtonDown(object sender, EventArgs e)
         {
             motorController.SetPoint = motorController.MaxSetpoint;
-            motorController.SignalNewSetpoint();
         }
 
         private static void RollToTopButton_ButtonDown(object sender, EventArgs e)
         {
             motorController.SetPoint = motorController.MinSetpoint;
-            motorController.SignalNewSetpoint();
         }
     }
 }
