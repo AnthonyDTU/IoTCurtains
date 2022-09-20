@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <_PostProcessingItem Include="IoTCurtains.app/Contents/MacOS/IoTCurtains">
+      <BCSymbolMapName>IoTCurtains.bcsymbolmap</BCSymbolMapName>
+      <NoDSymUtil>true</NoDSymUtil>
+      <dSYMSourcePathExists>false</dSYMSourcePathExists>
+      <NoSymbolStrip>true</NoSymbolStrip>
+      <dSYMInfoPlistRelativePath>IoTCurtains.app.dSYM\Contents\Info.plist</dSYMInfoPlistRelativePath>
+      <SymbolFile>obj/Debug/net6.0-maccatalyst/maccatalyst-x64/mtouch-symbols.list</SymbolFile>
+      <DSymName>IoTCurtains.app.dSYM</DSymName>
+      <SourceProjectPath>/Users/antonlage_mac/Documents/GitHub/IoTCurtains/IoTCurtains/IoTCurtains</SourceProjectPath>
+    </_PostProcessingItem>
+  </ItemGroup>
+</Project>
