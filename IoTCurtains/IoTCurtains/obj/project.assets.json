@@ -24667,7 +24667,11 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+=======
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+>>>>>>> parent of 9510261 (Downloaded to Mac)
 =======
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
 >>>>>>> parent of 9510261 (Downloaded to Mac)
@@ -24720,7 +24724,11 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+=======
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+>>>>>>> parent of 9510261 (Downloaded to Mac)
 =======
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
 >>>>>>> parent of 9510261 (Downloaded to Mac)
@@ -24774,7 +24782,11 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+=======
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+>>>>>>> parent of 9510261 (Downloaded to Mac)
 =======
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
 >>>>>>> parent of 9510261 (Downloaded to Mac)
@@ -24814,6 +24826,7 @@
           {
             "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
 <<<<<<< HEAD
+<<<<<<< HEAD
             "version": "[6.0.9, 6.0.9]"
           },
           {
@@ -24828,6 +24841,8 @@
             "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
             "version": "[6.0.9, 6.0.9]"
 =======
+=======
+>>>>>>> parent of 9510261 (Downloaded to Mac)
             "version": "[6.0.8, 6.0.8]"
           },
           {
@@ -24841,6 +24856,9 @@
           {
             "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
             "version": "[6.0.8, 6.0.8]"
+<<<<<<< HEAD
+>>>>>>> parent of 9510261 (Downloaded to Mac)
+=======
 >>>>>>> parent of 9510261 (Downloaded to Mac)
           }
         ],
@@ -24862,7 +24880,11 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+=======
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+>>>>>>> parent of 9510261 (Downloaded to Mac)
 =======
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
 >>>>>>> parent of 9510261 (Downloaded to Mac)

@@ -1,7 +1,11 @@
 {
   "version": 2,
 <<<<<<< HEAD
+<<<<<<< HEAD
   "dgSpecHash": "qVw+Y/jHgDeJepJ6/+sL1tl/Jcg6jBxN5dkbUVvhBwK7OaJdTBBzKqhTBgey3XzXMPBbU9T15BSb4Nd0B4lQeg==",
+=======
+  "dgSpecHash": "Y0VGJusMCkqmeP4uYXlLT187ISPwYMGZoi2kpD4Cwu+sLF6LMHTgqRQuSwKWzV8b5eirQRtBeHsjhnp39WecRA==",
+>>>>>>> parent of 9510261 (Downloaded to Mac)
 =======
   "dgSpecHash": "Y0VGJusMCkqmeP4uYXlLT187ISPwYMGZoi2kpD4Cwu+sLF6LMHTgqRQuSwKWzV8b5eirQRtBeHsjhnp39WecRA==",
 >>>>>>> parent of 9510261 (Downloaded to Mac)
@@ -109,11 +113,14 @@
     "C:\\Users\\anton\\.nuget\\packages\\xamarin.kotlinx.coroutines.android\\1.6.0.1\\xamarin.kotlinx.coroutines.android.1.6.0.1.nupkg.sha512",
     "C:\\Users\\anton\\.nuget\\packages\\xamarin.kotlinx.coroutines.core.jvm\\1.6.0.1\\xamarin.kotlinx.coroutines.core.jvm.1.6.0.1.nupkg.sha512",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "C:\\Users\\anton\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\6.0.9\\microsoft.netcore.app.runtime.win-x64.6.0.9.nupkg.sha512",
     "C:\\Users\\anton\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\6.0.9\\microsoft.aspnetcore.app.runtime.win-x64.6.0.9.nupkg.sha512",
     "C:\\Users\\anton\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\6.0.9\\microsoft.windowsdesktop.app.runtime.win-x64.6.0.9.nupkg.sha512",
     "C:\\Users\\anton\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.19041.27\\microsoft.windows.sdk.net.ref.10.0.19041.27.nupkg.sha512"
 =======
+=======
+>>>>>>> parent of 9510261 (Downloaded to Mac)
     "C:\\Users\\anton\\.nuget\\packages\\microsoft.netcore.app.host.linux-x64\\6.0.8\\microsoft.netcore.app.host.linux-x64.6.0.8.nupkg.sha512",
     "C:\\Users\\anton\\.nuget\\packages\\microsoft.netcore.app.host.linux-arm64\\6.0.8\\microsoft.netcore.app.host.linux-arm64.6.0.8.nupkg.sha512",
     "C:\\Users\\anton\\.nuget\\packages\\microsoft.netcore.app.host.linux-arm\\6.0.8\\microsoft.netcore.app.host.linux-arm.6.0.8.nupkg.sha512",
@@ -121,6 +128,9 @@
     "C:\\Users\\anton\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\6.0.8\\microsoft.aspnetcore.app.runtime.win-x64.6.0.8.nupkg.sha512",
     "C:\\Users\\anton\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\6.0.8\\microsoft.windowsdesktop.app.runtime.win-x64.6.0.8.nupkg.sha512",
     "C:\\Users\\anton\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.19041.26\\microsoft.windows.sdk.net.ref.10.0.19041.26.nupkg.sha512"
+<<<<<<< HEAD
+>>>>>>> parent of 9510261 (Downloaded to Mac)
+=======
 >>>>>>> parent of 9510261 (Downloaded to Mac)
   ],
   "logs": []
