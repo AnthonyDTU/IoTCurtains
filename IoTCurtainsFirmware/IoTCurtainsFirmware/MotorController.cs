@@ -60,7 +60,11 @@ namespace IoTCurtainsFirmware
         public int SetPoint 
         {
             get { return setPoint; } 
-            set { setPoint = CheckSetpointLimits(value); } 
+            set 
+            { 
+                setPoint = CheckSetpointLimits(value); 
+                newSetpontSignal.Set();
+            } 
         }
         public int MinSetpoint 
         { 
@@ -137,14 +141,6 @@ namespace IoTCurtainsFirmware
 
                 newSetpontSignal.WaitOne();
             }
-        }
-
-        /// <summary>
-        /// Signals the engineThread that there is a new setpoint
-        /// </summary>
-        public void SignalNewSetpoint()
-        {
-            newSetpontSignal.Set();
         }
     }
 }
