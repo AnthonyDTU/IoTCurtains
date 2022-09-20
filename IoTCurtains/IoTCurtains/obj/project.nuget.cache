@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Y0VGJusMCkqmeP4uYXlLT187ISPwYMGZoi2kpD4Cwu+sLF6LMHTgqRQuSwKWzV8b5eirQRtBeHsjhnp39WecRA==",
+  "dgSpecHash": "qVw+Y/jHgDeJepJ6/+sL1tl/Jcg6jBxN5dkbUVvhBwK7OaJdTBBzKqhTBgey3XzXMPBbU9T15BSb4Nd0B4lQeg==",
   "success": true,
   "projectFilePath": "C:\\Users\\anton\\My Files\\DTU\\IT Elektronik\\5. Semester\\Advanced Object Oriented Programming With C#\\SmartCurtains\\IoTCurtains\\IoTCurtains\\IoTCurtains.csproj",
   "expectedPackageFiles": [
@@ -104,13 +104,10 @@
     "C:\\Users\\anton\\.nuget\\packages\\xamarin.kotlin.stdlib.jdk8\\1.6.20.1\\xamarin.kotlin.stdlib.jdk8.1.6.20.1.nupkg.sha512",
     "C:\\Users\\anton\\.nuget\\packages\\xamarin.kotlinx.coroutines.android\\1.6.0.1\\xamarin.kotlinx.coroutines.android.1.6.0.1.nupkg.sha512",
     "C:\\Users\\anton\\.nuget\\packages\\xamarin.kotlinx.coroutines.core.jvm\\1.6.0.1\\xamarin.kotlinx.coroutines.core.jvm.1.6.0.1.nupkg.sha512",
-    "C:\\Users\\anton\\.nuget\\packages\\microsoft.netcore.app.host.linux-x64\\6.0.8\\microsoft.netcore.app.host.linux-x64.6.0.8.nupkg.sha512",
-    "C:\\Users\\anton\\.nuget\\packages\\microsoft.netcore.app.host.linux-arm64\\6.0.8\\microsoft.netcore.app.host.linux-arm64.6.0.8.nupkg.sha512",
-    "C:\\Users\\anton\\.nuget\\packages\\microsoft.netcore.app.host.linux-arm\\6.0.8\\microsoft.netcore.app.host.linux-arm.6.0.8.nupkg.sha512",
-    "C:\\Users\\anton\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\6.0.8\\microsoft.netcore.app.runtime.win-x64.6.0.8.nupkg.sha512",
-    "C:\\Users\\anton\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\6.0.8\\microsoft.aspnetcore.app.runtime.win-x64.6.0.8.nupkg.sha512",
-    "C:\\Users\\anton\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\6.0.8\\microsoft.windowsdesktop.app.runtime.win-x64.6.0.8.nupkg.sha512",
-    "C:\\Users\\anton\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.19041.26\\microsoft.windows.sdk.net.ref.10.0.19041.26.nupkg.sha512"
+    "C:\\Users\\anton\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\6.0.9\\microsoft.netcore.app.runtime.win-x64.6.0.9.nupkg.sha512",
+    "C:\\Users\\anton\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\6.0.9\\microsoft.aspnetcore.app.runtime.win-x64.6.0.9.nupkg.sha512",
+    "C:\\Users\\anton\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\6.0.9\\microsoft.windowsdesktop.app.runtime.win-x64.6.0.9.nupkg.sha512",
+    "C:\\Users\\anton\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.19041.27\\microsoft.windows.sdk.net.ref.10.0.19041.27.nupkg.sha512"
   ],
   "logs": []
 }
