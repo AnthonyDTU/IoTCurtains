@@ -24666,15 +24666,7 @@
             "privateAssets": "all"
           }
         },
-<<<<<<< HEAD
-<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
-=======
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
->>>>>>> parent of 9510261 (Downloaded to Mac)
-=======
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
->>>>>>> parent of 9510261 (Downloaded to Mac)
       },
       "net6.0-ios15.4": {
         "targetAlias": "net6.0-ios",
@@ -24723,15 +24715,7 @@
             "privateAssets": "all"
           }
         },
-<<<<<<< HEAD
-<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
-=======
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
->>>>>>> parent of 9510261 (Downloaded to Mac)
-=======
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
->>>>>>> parent of 9510261 (Downloaded to Mac)
       },
       "net6.0-maccatalyst15.4": {
         "targetAlias": "net6.0-maccatalyst",
@@ -24781,15 +24765,7 @@
             "privateAssets": "all"
           }
         },
-<<<<<<< HEAD
-<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
-=======
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
->>>>>>> parent of 9510261 (Downloaded to Mac)
-=======
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
->>>>>>> parent of 9510261 (Downloaded to Mac)
       },
       "net6.0-windows10.0.19041": {
         "targetAlias": "net6.0-windows10.0.19041.0",
@@ -24825,8 +24801,6 @@
         "downloadDependencies": [
           {
             "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
-<<<<<<< HEAD
-<<<<<<< HEAD
             "version": "[6.0.9, 6.0.9]"
           },
           {
@@ -24840,26 +24814,6 @@
           {
             "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
             "version": "[6.0.9, 6.0.9]"
-=======
-=======
->>>>>>> parent of 9510261 (Downloaded to Mac)
-            "version": "[6.0.8, 6.0.8]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Runtime.win-x64",
-            "version": "[6.0.8, 6.0.8]"
-          },
-          {
-            "name": "Microsoft.Windows.SDK.NET.Ref",
-            "version": "[10.0.19041.26, 10.0.19041.26]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
-            "version": "[6.0.8, 6.0.8]"
-<<<<<<< HEAD
->>>>>>> parent of 9510261 (Downloaded to Mac)
-=======
->>>>>>> parent of 9510261 (Downloaded to Mac)
           }
         ],
         "frameworkReferences": {
@@ -24879,15 +24833,7 @@
             "privateAssets": "all"
           }
         },
-<<<<<<< HEAD
-<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
-=======
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
->>>>>>> parent of 9510261 (Downloaded to Mac)
-=======
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
->>>>>>> parent of 9510261 (Downloaded to Mac)
       }
     },
     "runtimes": {
@@ -24913,5 +24859,13 @@
         "#import": []
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\anton\\My Files\\DTU\\IT Elektronik\\5. Semester\\Advanced Object Oriented Programming With C#\\SmartCurtains\\IoTCurtains\\IoTCurtains\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

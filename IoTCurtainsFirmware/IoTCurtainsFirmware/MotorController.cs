@@ -17,7 +17,6 @@ namespace IoTCurtainsFirmware
         //static int[] stepSequence2 = { 0, 1, 1, 1, 0, 0, 0, 0 };
         //static int[] stepSequence3 = { 1, 1, 0, 0, 0, 0, 0, 1 };
 
-
         //private readonly int[] stepSequence0 = { 0, 0, 1, 1 };
         //private readonly int[] stepSequence1 = { 1, 0, 0, 1 };
         //private readonly int[] stepSequence2 = { 1, 1, 0, 0 };
@@ -53,7 +52,11 @@ namespace IoTCurtainsFirmware
             get { return calibrated; } 
             set { calibrated = value; } 
         }
-        public int CurrentState 
+        public int CurrentLocation
+        {
+            get { return currentLocation; }
+        }
+        public int CurrentLocationPercentage 
         { 
             get { return (int)((float)(currentLocation / maxLocation) * 100) ; } 
         }

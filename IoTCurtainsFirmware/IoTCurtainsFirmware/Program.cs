@@ -1,10 +1,7 @@
 using System;
 using System.Device.Gpio;
-using System.Diagnostics;
 using System.Threading;
 using Iot.Device.Button;
-using System.Collections;
-
 namespace IoTCurtainsFirmware
 {
     public class Program
@@ -20,9 +17,6 @@ namespace IoTCurtainsFirmware
 
         static int CalibrateButtonPin = 36;
 
-        static int rollDownLEDIndicatorPinNumber = 18;
-        static int rollUpLEDInticatiorPinNumber = 19;
-
         static int motorControllerIn1PinNumber = 13;
         static int motorControllerIn2PinNumber = 12;
         static int motorControllerIn3PinNumber = 14;
@@ -31,10 +25,6 @@ namespace IoTCurtainsFirmware
         static GpioController gpioController;
         static MotorController motorController;
 
-        static GpioPin upLED;
-        static GpioPin downLED;
-
-
         static GpioButton rollDownButton;
         static GpioButton rollUpButton;
         static GpioButton rollToButtomButton;
@@ -42,28 +32,54 @@ namespace IoTCurtainsFirmware
         static GpioButton calibrateButton;
         static GpioButton stopMotorButton;
 
-        //static Thread motorThread;
-
+        //static nanoFramework.Azure.Devices.Client.DeviceClient deviceClient;
 
         public static void Main()
         {
-
-
             InitializeSystem();
             //CalibrateMotorController();
 
-            //GpioPin in1 = gpioController.OpenPin(motorControllerIn1PinNumber, PinMode.Output);
-            //GpioPin in2 = gpioController.OpenPin(motorControllerIn2PinNumber, PinMode.Output);
-            //GpioPin in3 = gpioController.OpenPin(motorControllerIn3PinNumber, PinMode.Output);
-            //GpioPin in4 = gpioController.OpenPin(motorControllerIn4PinNumber, PinMode.Output);
 
-            //in1.Write(PinValue.Low);
-            //in2.Write(PinValue.Low);
-            //in3.Write(PinValue.Low);
-            //in4.Write(PinValue.Low);
 
-            int count = 0;
-            int step = 0;
+            Console.WriteLine("Connecting to WiFi");
+
+
+            //WifiAdapter wifi = WifiAdapter.FindAllAdapters()[0];
+            //WifiConnectionResult wifiConnection = wifi.Connect("TP-LINK_0AC4EC", WifiReconnectionKind.Automatic, "eqh76rxg");
+
+
+            //if (wifiConnection.ConnectionStatus == WifiConnectionStatus.Success)
+            //{
+            //    Console.WriteLine("Connected To Wifi!");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Could Not Connect To Wifi!");
+            //}
+
+
+
+            // var twin = nanoFramework.Azure.Devices.Client.g
+
+
+
+
+            //deviceClient = new nanoFramework.Azure.Devices.Client.DeviceClient("iotHubName", "", "SAS key");
+            //deviceClient.Open();
+
+            //deviceClient.CloudToDeviceMessage += DeviceClient_CloudToDeviceMessage;
+
+
+
+
+
+
+
+
+
+
+
+
 
             // Program life 
             while (true)
@@ -79,45 +95,15 @@ namespace IoTCurtainsFirmware
                     motorController.SetPoint--;
                     Thread.Sleep(2);
                 }
-
-
-
-
-                //while (count < 5000)
-                //{
-                //    in1.Write(stepSequence0[step]);
-                //    in2.Write(stepSequence1[step]);
-                //    in3.Write(stepSequence2[step]);
-                //    in4.Write(stepSequence3[step]);
-
-                //    count++;
-                //    step++;
-                //    if (step > 3)
-                //    {
-                //        step = 0;
-                //    }
-                //    Thread.Sleep(5);
-                //}
-
-                //while (count > 0)
-                //{
-                //    in1.Write(stepSequence0[step]);
-                //    in2.Write(stepSequence1[step]);
-                //    in3.Write(stepSequence2[step]);
-                //    in4.Write(stepSequence3[step]);
-
-                //    count--;
-                //    step--;
-                //    if (step < 0)
-                //    {
-                //        step = 3;
-                //    }
-                //    Thread.Sleep(5);
-                //}
             }
 
             Thread.Sleep(Timeout.Infinite);
         }
+
+        //private static void DeviceClient_CloudToDeviceMessage(object sender, nanoFramework.Azure.Devices.Client.CloudToDeviceMessageEventArgs e)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         /// <summary>
         /// Initilizes the following System Components:
@@ -149,9 +135,6 @@ namespace IoTCurtainsFirmware
             rollToTopButton.ButtonDown += RollToTopButton_ButtonDown;
             rollToButtomButton.ButtonDown += RollToButtomButton_ButtonDown;
             stopMotorButton.ButtonDown += StopMotorButton_ButtonDown;
-
-            upLED = gpioController.OpenPin(rollUpLEDInticatiorPinNumber, PinMode.Output);
-            downLED = gpioController.OpenPin(rollDownLEDIndicatorPinNumber, PinMode.Output);
         }
 
 
@@ -200,17 +183,31 @@ namespace IoTCurtainsFirmware
             }
         }
 
-
+        /// <summary>
+        /// Sets the motors setpoint to the current location, to stop its operation.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private static void StopMotorButton_ButtonDown(object sender, EventArgs e)
         {
-            motorController.SetPoint = motorController.CurrentState;
+            motorController.SetPoint = motorController.CurrentLocation;
         }
 
+        /// <summary>
+        /// Sets the motor setpoint to the maximum calibrated value
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private static void RollToButtomButton_ButtonDown(object sender, EventArgs e)
         {
             motorController.SetPoint = motorController.MaxSetpoint;
         }
 
+        /// <summary>
+        /// Sets the motor setpoint to the minimum calibrated value
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private static void RollToTopButton_ButtonDown(object sender, EventArgs e)
         {
             motorController.SetPoint = motorController.MinSetpoint;
