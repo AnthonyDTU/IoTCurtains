@@ -2,6 +2,8 @@ using System;
 using System.Device.Gpio;
 using System.Threading;
 using Iot.Device.Button;
+using System.Device.Wifi;
+
 namespace IoTCurtainsFirmware
 {
     public class Program
@@ -44,18 +46,18 @@ namespace IoTCurtainsFirmware
             Console.WriteLine("Connecting to WiFi");
 
 
-            //WifiAdapter wifi = WifiAdapter.FindAllAdapters()[0];
-            //WifiConnectionResult wifiConnection = wifi.Connect("TP-LINK_0AC4EC", WifiReconnectionKind.Automatic, "eqh76rxg");
+            WifiAdapter wifi = WifiAdapter.FindAllAdapters()[0];
+            WifiConnectionResult wifiConnection = wifi.Connect("TP-LINK_0AC4EC", WifiReconnectionKind.Automatic, "eqh76rxg");
 
 
-            //if (wifiConnection.ConnectionStatus == WifiConnectionStatus.Success)
-            //{
-            //    Console.WriteLine("Connected To Wifi!");
-            //}
-            //else
-            //{
-            //    Console.WriteLine("Could Not Connect To Wifi!");
-            //}
+            if (wifiConnection.ConnectionStatus == WifiConnectionStatus.Success)
+            {
+                Console.WriteLine("Connected To Wifi!");
+            }
+            else
+            {
+                Console.WriteLine("Could Not Connect To Wifi!");
+            }
 
 
 
