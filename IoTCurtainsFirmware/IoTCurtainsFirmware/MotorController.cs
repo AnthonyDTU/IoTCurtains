@@ -81,6 +81,14 @@ namespace IoTCurtainsFirmware
         }
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="gpioController"></param>
+        /// <param name="in1PinNumber"></param>
+        /// <param name="in2PinNumber"></param>
+        /// <param name="in3PinNumber"></param>
+        /// <param name="in4PinNumber"></param>
         public MotorController(GpioController gpioController, 
                                int in1PinNumber, 
                                int in2PinNumber, 
@@ -115,7 +123,6 @@ namespace IoTCurtainsFirmware
         /// This thread runs throughout the life of an instance of this class.
         /// Its responsibility is to move the motor, until its current location is equal to the setpoint.
         /// It does this, whenever the class is signalled there is a new setpoint. 
-        /// 
         /// </summary>
         public void RunMotor()
         {

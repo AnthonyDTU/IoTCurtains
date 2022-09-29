@@ -3,6 +3,12 @@ using System.Device.Gpio;
 using System.Threading;
 using Iot.Device.Button;
 using System.Device.Wifi;
+using System.Net.NetworkInformation;
+using nanoFramework.Networking;
+
+using nanoFramework.Azure;
+using nanoFramework.Azure.Devices.Client;
+using System.Security.Cryptography.X509Certificates;
 
 namespace IoTCurtainsFirmware
 {
@@ -41,18 +47,13 @@ namespace IoTCurtainsFirmware
             InitializeSystem();
             //CalibrateMotorController();
 
+            bool connected = WifiNetworkHelper.ConnectDhcp("TP-LINK_0AC4EC", "eqh76rxg");
+            NetworkInterface network = NetworkInterface.GetAllNetworkInterfaces()[0];
 
-
-            Console.WriteLine("Connecting to WiFi");
-
-
-            WifiAdapter wifi = WifiAdapter.FindAllAdapters()[0];
-            WifiConnectionResult wifiConnection = wifi.Connect("TP-LINK_0AC4EC", WifiReconnectionKind.Automatic, "eqh76rxg");
-
-
-            if (wifiConnection.ConnectionStatus == WifiConnectionStatus.Success)
+            if (connected == true)
             {
                 Console.WriteLine("Connected To Wifi!");
+                Console.WriteLine($"Network IP: {network.IPv4Address}");
             }
             else
             {
@@ -61,8 +62,16 @@ namespace IoTCurtainsFirmware
 
 
 
-            // var twin = nanoFramework.Azure.Devices.Client.g
+            //const string DeviceID = "CurtainController";
+            //const string IotBrokerAddress = "IoTCurtains.azure-devices.net";
+            //const string SasKey = "HvCMwRqzTDAjCkQZvDvEu/ziH6nX1RP41QTpmYv2h3o=";
+            //DeviceClient azureIoT = new DeviceClient(IotBrokerAddress, DeviceID, SasKey);
+            //bool connectedToAzure = azureIoT.Open();
 
+            //if (connectedToAzure == true)
+            //{
+            //    Console.WriteLine("Successfully connected to Azure!");
+            //}
 
 
 
@@ -76,16 +85,11 @@ namespace IoTCurtainsFirmware
 
 
 
-
-
-
-
-
-
-
             // Program life 
             while (true)
             {
+
+
                 while (rollDownButton.IsPressed)
                 {
                     motorController.SetPoint++;
