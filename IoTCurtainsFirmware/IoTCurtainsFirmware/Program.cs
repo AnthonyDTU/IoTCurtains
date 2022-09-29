@@ -9,11 +9,17 @@ using nanoFramework.Networking;
 using nanoFramework.Azure;
 using nanoFramework.Azure.Devices.Client;
 using System.Security.Cryptography.X509Certificates;
+using System.IO.Ports;
 
 namespace IoTCurtainsFirmware
 {
     public class Program
     {
+        // Move to secrets, and possible make configurable from controller app.
+        private static string WiFiSSID = "TP-LINK_0AC4EC";
+        private static string WiFiPassword = "eqh76rxg";
+        private static int networkInterfaceIndex = 0;
+
         static int motorStepsPerRotation = 2038;
 
         static int rollDownButtonPin = 32;
@@ -29,6 +35,7 @@ namespace IoTCurtainsFirmware
         static int motorControllerIn2PinNumber = 12;
         static int motorControllerIn3PinNumber = 14;
         static int motorControllerIn4PinNumber = 27;
+        static int wifiConnectedLedPinNumber = 19;
 
         static GpioController gpioController;
         static MotorController motorController;
@@ -40,25 +47,15 @@ namespace IoTCurtainsFirmware
         static GpioButton calibrateButton;
         static GpioButton stopMotorButton;
 
-        //static nanoFramework.Azure.Devices.Client.DeviceClient deviceClient;
+        static GpioPin wifiConnectedLedIndicator;
+        static bool connectedToWiFi = false;
 
         public static void Main()
         {
             InitializeSystem();
             //CalibrateMotorController();
 
-            bool connected = WifiNetworkHelper.ConnectDhcp("TP-LINK_0AC4EC", "eqh76rxg");
-            NetworkInterface network = NetworkInterface.GetAllNetworkInterfaces()[0];
-
-            if (connected == true)
-            {
-                Console.WriteLine("Connected To Wifi!");
-                Console.WriteLine($"Network IP: {network.IPv4Address}");
-            }
-            else
-            {
-                Console.WriteLine("Could Not Connect To Wifi!");
-            }
+            
 
 
 
@@ -75,20 +72,13 @@ namespace IoTCurtainsFirmware
 
 
 
-            //deviceClient = new nanoFramework.Azure.Devices.Client.DeviceClient("iotHubName", "", "SAS key");
-            //deviceClient.Open();
-
-            //deviceClient.CloudToDeviceMessage += DeviceClient_CloudToDeviceMessage;
-
-
-
-
-
-
             // Program life 
             while (true)
             {
-
+                if (!connectedToWiFi)
+                {
+                    ConnectToWiFi();
+                }
 
                 while (rollDownButton.IsPressed)
                 {
@@ -106,10 +96,6 @@ namespace IoTCurtainsFirmware
             Thread.Sleep(Timeout.Infinite);
         }
 
-        //private static void DeviceClient_CloudToDeviceMessage(object sender, nanoFramework.Azure.Devices.Client.CloudToDeviceMessageEventArgs e)
-        //{
-        //    throw new NotImplementedException();
-        //}
 
         /// <summary>
         /// Initilizes the following System Components:
@@ -118,29 +104,60 @@ namespace IoTCurtainsFirmware
         /// - MotorController
         /// - Input Buttons
         /// - LED's
-        /// -
+        /// - WiFi
         /// 
         /// </summary>
         private static void InitializeSystem()
         {
+            // GPIO Contoller:
             gpioController = new GpioController(PinNumberingScheme.Board);
 
+            // Motor Controller:
             motorController = new MotorController(gpioController,
                                                   motorControllerIn1PinNumber,
                                                   motorControllerIn2PinNumber,
                                                   motorControllerIn3PinNumber,
                                                   motorControllerIn4PinNumber);
 
+            // Buttons
             rollDownButton = new GpioButton(rollDownButtonPin, gpioController, false);
             rollUpButton = new GpioButton(rollUpButtonPin, gpioController, false);
             rollToButtomButton = new GpioButton(rollToButtomButtonPin, gpioController, false);
             rollToTopButton = new GpioButton(rollToTopButtonPin, gpioController, false);
             calibrateButton = new GpioButton(CalibrateButtonPin, gpioController, false);
             stopMotorButton = new GpioButton(StopAllActionButtonPin, gpioController, false);
-
+                        
             rollToTopButton.ButtonDown += RollToTopButton_ButtonDown;
             rollToButtomButton.ButtonDown += RollToButtomButton_ButtonDown;
             stopMotorButton.ButtonDown += StopMotorButton_ButtonDown;
+
+            // WiFi
+            ConnectToWiFi();
+        }
+
+        /// <summary>
+        /// Handles connection to WiFi
+        /// </summary>
+        private static void ConnectToWiFi()
+        {
+            if (WifiNetworkHelper.ConnectDhcp(WiFiSSID,
+                                              WiFiPassword,
+                                              WifiReconnectionKind.Automatic,
+                                              requiresDateTime: true,
+                                              wifiAdapterId: networkInterfaceIndex,
+                                              token: new CancellationTokenSource(10000).Token))
+            {
+                NetworkInterface network = NetworkInterface.GetAllNetworkInterfaces()[networkInterfaceIndex];
+                Console.WriteLine("Connected To Wifi!");
+                Console.WriteLine($"Network IP: {network.IPv4Address}");
+
+                wifiConnectedLedIndicator = gpioController.OpenPin(wifiConnectedLedPinNumber, PinMode.Output);
+                wifiConnectedLedIndicator.Write(PinValue.High);
+            }
+            else
+            {
+                Console.WriteLine("Could Not Connect To Wifi!");
+            }
         }
 
 
