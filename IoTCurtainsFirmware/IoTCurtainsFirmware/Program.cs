@@ -19,9 +19,8 @@ namespace IoTCurtainsFirmware
     public class Program
     {
         // Move to secrets, and possible make configurable from controller app.
-        private static string WiFiSSID = "TP-LINK_0AC4EC";
-        private static string WiFiPassword = "eqh76rxg";
-        private static int networkInterfaceIndex = 0;
+
+        static DeviceConfiguration deviceConfiguration = new DeviceConfiguration();
 
         static int motorStepsPerRotation = 2038;
 
@@ -54,6 +53,7 @@ namespace IoTCurtainsFirmware
         static GpioButton stopMotorButton;
 
         static GpioPin wifiConnectedLedIndicator;
+        private static int networkInterfaceIndex = 0;
         static bool connectedToWiFi = false;
 
         static SerialPort serialPort;
@@ -129,55 +129,30 @@ namespace IoTCurtainsFirmware
         /// <param name="e"></param>
         private static void SerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            string dataString = serialPort.ReadLine();
-            Console.WriteLine($"Recieved: \"{dataString}\" over UART");
+            string command = serialPort.ReadLine();
 
+            switch (command)
+            {
+                case "getConfig":
+                    serialPort.WriteLine(JsonConvert.SerializeObject(deviceConfiguration);
+                    break;
 
+                case "configure":
+                    serialPort.WriteLine("Send Config");
+                    while (serialPort.BytesToRead == 0) ;
+                    string newConfigJson = serialPort.ReadLine();
+                    deviceConfiguration = (DeviceConfiguration)JsonConvert.DeserializeObject(newConfigJson, typeof(DeviceConfiguration));
+                    break;
 
-            //if (data == '\r')
-            //{
-            //    serialPort.WriteLine(data.ToString());
-            //}
-            //else
-            //{
-            //    serialPort.WriteByte((byte)data);
-            //}
+                case "resetDevice":
+                    deviceConfiguration = new DeviceConfiguration();
+                    serialPort.WriteLine("Device Reset!");
+                    break;
 
-
-            //jsonCommand command = (jsonCommand)JsonConvert.DeserializeObject(data, typeof(jsonCommand));            
-
-            //switch (data)
-            //{
-            //    case "getConfig":
-            //        // Send configuration: (in JSON maybe?)
-            //        break;
-
-            //    case "configure":
-            //        break;
-
-            //    case "setWiFiSSID":
-            //        break;
-
-            //    case "setWiFiPassword":
-            //        break;
-
-            //    case "setIoTHubName":
-            //        break;
-
-            //    case "SetDeviceID":
-            //        break;
-
-            //    case "SetSaSKey":
-            //        break;
-
-
-
-            //    default:
-            //        // Report Error
-            //        break;
-            //}
-
-
+                default:
+                    serialPort.WriteLine("Error - Unkown Command!");
+                    break;
+            }
         }
 
 
@@ -189,6 +164,7 @@ namespace IoTCurtainsFirmware
         /// - Input Buttons
         /// - LED's
         /// - WiFi
+        /// - UART
         /// 
         /// </summary>
         private static void InitializeSystem()
@@ -224,8 +200,8 @@ namespace IoTCurtainsFirmware
         /// </summary>
         private static void ConnectToWiFi()
         {
-            if (WifiNetworkHelper.ConnectDhcp(WiFiSSID,
-                                              WiFiPassword,
+            if (WifiNetworkHelper.ConnectDhcp(deviceConfiguration.WiFiSSID,
+                                              deviceConfiguration.WiFiPassword,
                                               WifiReconnectionKind.Automatic,
                                               requiresDateTime: true,
                                               wifiAdapterId: networkInterfaceIndex,
