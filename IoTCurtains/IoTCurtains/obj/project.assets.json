@@ -156,7 +156,7 @@
           "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
-      "Microsoft.Maui.Dependencies/6.0.486": {
+      "Microsoft.Maui.Dependencies/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Maui.Graphics": "6.0.403",
@@ -173,7 +173,7 @@
           "Xamarin.Google.Crypto.Tink.Android": "1.6.1.6"
         }
       },
-      "Microsoft.Maui.Extensions/6.0.486": {
+      "Microsoft.Maui.Extensions/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Configuration": "6.0.1",
@@ -195,6 +195,61 @@
           }
         }
       },
+      "runtime.linux-arm.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "runtimeTargets": {
+          "runtimes/linux-arm/native/libSystem.IO.Ports.Native.so": {
+            "assetType": "native",
+            "rid": "linux-arm"
+          }
+        }
+      },
+      "runtime.linux-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "runtimeTargets": {
+          "runtimes/linux-arm64/native/libSystem.IO.Ports.Native.so": {
+            "assetType": "native",
+            "rid": "linux-arm64"
+          }
+        }
+      },
+      "runtime.linux-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "runtimeTargets": {
+          "runtimes/linux-x64/native/libSystem.IO.Ports.Native.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          }
+        }
+      },
+      "runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.linux-arm.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        }
+      },
+      "runtime.osx-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "runtimeTargets": {
+          "runtimes/osx-arm64/native/libSystem.IO.Ports.Native.dylib": {
+            "assetType": "native",
+            "rid": "osx-arm64"
+          }
+        }
+      },
+      "runtime.osx-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "runtimeTargets": {
+          "runtimes/osx-x64/native/libSystem.IO.Ports.Native.dylib": {
+            "assetType": "native",
+            "rid": "osx-x64"
+          }
+        }
+      },
       "System.Diagnostics.DiagnosticSource/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -212,6 +267,35 @@
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        },
+        "compile": {
+          "lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        },
+        "runtimeTargets": {
+          "runtimes/unix/lib/net6.0/System.IO.Ports.dll": {
+            "assetType": "runtime",
+            "rid": "unix"
+          },
+          "runtimes/win/lib/net6.0/System.IO.Ports.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
         }
       },
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {
@@ -2100,7 +2184,7 @@
           "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
-      "Microsoft.Maui.Dependencies/6.0.486": {
+      "Microsoft.Maui.Dependencies/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Maui.Graphics": "6.0.403",
@@ -2117,7 +2201,7 @@
           "Xamarin.Google.Crypto.Tink.Android": "1.6.1.6"
         }
       },
-      "Microsoft.Maui.Extensions/6.0.486": {
+      "Microsoft.Maui.Extensions/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Configuration": "6.0.1",
@@ -2139,6 +2223,34 @@
           }
         }
       },
+      "runtime.linux-arm.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "native": {
+          "runtimes/linux-arm/native/libSystem.IO.Ports.Native.so": {}
+        }
+      },
+      "runtime.linux-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.linux-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.linux-arm.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        }
+      },
+      "runtime.osx-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.osx-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
       "System.Diagnostics.DiagnosticSource/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -2156,6 +2268,25 @@
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        },
+        "compile": {
+          "lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "runtimes/unix/lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
         }
       },
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {
@@ -4044,7 +4175,7 @@
           "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
-      "Microsoft.Maui.Dependencies/6.0.486": {
+      "Microsoft.Maui.Dependencies/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Maui.Graphics": "6.0.403",
@@ -4061,7 +4192,7 @@
           "Xamarin.Google.Crypto.Tink.Android": "1.6.1.6"
         }
       },
-      "Microsoft.Maui.Extensions/6.0.486": {
+      "Microsoft.Maui.Extensions/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Configuration": "6.0.1",
@@ -4083,6 +4214,34 @@
           }
         }
       },
+      "runtime.linux-arm.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.linux-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "native": {
+          "runtimes/linux-arm64/native/libSystem.IO.Ports.Native.so": {}
+        }
+      },
+      "runtime.linux-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.linux-arm.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        }
+      },
+      "runtime.osx-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.osx-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
       "System.Diagnostics.DiagnosticSource/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -4100,6 +4259,25 @@
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        },
+        "compile": {
+          "lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "runtimes/unix/lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
         }
       },
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {
@@ -5988,7 +6166,7 @@
           "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
-      "Microsoft.Maui.Dependencies/6.0.486": {
+      "Microsoft.Maui.Dependencies/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Maui.Graphics": "6.0.403",
@@ -6005,7 +6183,7 @@
           "Xamarin.Google.Crypto.Tink.Android": "1.6.1.6"
         }
       },
-      "Microsoft.Maui.Extensions/6.0.486": {
+      "Microsoft.Maui.Extensions/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Configuration": "6.0.1",
@@ -6027,6 +6205,34 @@
           }
         }
       },
+      "runtime.linux-arm.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.linux-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.linux-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "native": {
+          "runtimes/linux-x64/native/libSystem.IO.Ports.Native.so": {}
+        }
+      },
+      "runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.linux-arm.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        }
+      },
+      "runtime.osx-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.osx-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
       "System.Diagnostics.DiagnosticSource/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -6044,6 +6250,25 @@
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        },
+        "compile": {
+          "lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "runtimes/unix/lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
         }
       },
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {
@@ -7932,7 +8157,7 @@
           "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
-      "Microsoft.Maui.Dependencies/6.0.486": {
+      "Microsoft.Maui.Dependencies/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Maui.Graphics": "6.0.403",
@@ -7949,7 +8174,7 @@
           "Xamarin.Google.Crypto.Tink.Android": "1.6.1.6"
         }
       },
-      "Microsoft.Maui.Extensions/6.0.486": {
+      "Microsoft.Maui.Extensions/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Configuration": "6.0.1",
@@ -7971,6 +8196,31 @@
           }
         }
       },
+      "runtime.linux-arm.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.linux-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.linux-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.linux-arm.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        }
+      },
+      "runtime.osx-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.osx-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
       "System.Diagnostics.DiagnosticSource/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -7988,6 +8238,25 @@
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        },
+        "compile": {
+          "lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "runtimes/unix/lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
         }
       },
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {
@@ -9876,7 +10145,7 @@
           "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
-      "Microsoft.Maui.Dependencies/6.0.486": {
+      "Microsoft.Maui.Dependencies/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Maui.Graphics": "6.0.403",
@@ -9893,7 +10162,7 @@
           "Xamarin.Google.Crypto.Tink.Android": "1.6.1.6"
         }
       },
-      "Microsoft.Maui.Extensions/6.0.486": {
+      "Microsoft.Maui.Extensions/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Configuration": "6.0.1",
@@ -9915,6 +10184,31 @@
           }
         }
       },
+      "runtime.linux-arm.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.linux-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.linux-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.linux-arm.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        }
+      },
+      "runtime.osx-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.osx-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
       "System.Diagnostics.DiagnosticSource/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -9932,6 +10226,25 @@
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        },
+        "compile": {
+          "lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "runtimes/unix/lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
         }
       },
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {
@@ -11820,7 +12133,7 @@
           "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
-      "Microsoft.Maui.Dependencies/6.0.486": {
+      "Microsoft.Maui.Dependencies/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Maui.Graphics": "6.0.403",
@@ -11837,7 +12150,7 @@
           "Xamarin.Google.Crypto.Tink.Android": "1.6.1.6"
         }
       },
-      "Microsoft.Maui.Extensions/6.0.486": {
+      "Microsoft.Maui.Extensions/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Configuration": "6.0.1",
@@ -11859,6 +12172,31 @@
           }
         }
       },
+      "runtime.linux-arm.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.linux-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.linux-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.linux-arm.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        }
+      },
+      "runtime.osx-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.osx-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
       "System.Diagnostics.DiagnosticSource/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -11876,6 +12214,25 @@
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        },
+        "compile": {
+          "lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "runtimes/unix/lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
         }
       },
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {
@@ -13764,7 +14121,7 @@
           "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
-      "Microsoft.Maui.Dependencies/6.0.486": {
+      "Microsoft.Maui.Dependencies/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Maui.Graphics": "6.0.403",
@@ -13781,7 +14138,7 @@
           "Xamarin.Google.Crypto.Tink.Android": "1.6.1.6"
         }
       },
-      "Microsoft.Maui.Extensions/6.0.486": {
+      "Microsoft.Maui.Extensions/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Configuration": "6.0.1",
@@ -13803,6 +14160,31 @@
           }
         }
       },
+      "runtime.linux-arm.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.linux-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.linux-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.linux-arm.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        }
+      },
+      "runtime.osx-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.osx-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
       "System.Diagnostics.DiagnosticSource/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -13820,6 +14202,25 @@
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        },
+        "compile": {
+          "lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "runtimes/win/lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
         }
       },
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {
@@ -15695,14 +16096,14 @@
           "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
-      "Microsoft.Maui.Dependencies/6.0.486": {
+      "Microsoft.Maui.Dependencies/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Maui.Graphics": "6.0.403",
           "System.Runtime.InteropServices.NFloat.Internal": "6.0.1"
         }
       },
-      "Microsoft.Maui.Extensions/6.0.486": {
+      "Microsoft.Maui.Extensions/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Configuration": "6.0.1",
@@ -15725,6 +16126,61 @@
           }
         }
       },
+      "runtime.linux-arm.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "runtimeTargets": {
+          "runtimes/linux-arm/native/libSystem.IO.Ports.Native.so": {
+            "assetType": "native",
+            "rid": "linux-arm"
+          }
+        }
+      },
+      "runtime.linux-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "runtimeTargets": {
+          "runtimes/linux-arm64/native/libSystem.IO.Ports.Native.so": {
+            "assetType": "native",
+            "rid": "linux-arm64"
+          }
+        }
+      },
+      "runtime.linux-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "runtimeTargets": {
+          "runtimes/linux-x64/native/libSystem.IO.Ports.Native.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          }
+        }
+      },
+      "runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.linux-arm.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        }
+      },
+      "runtime.osx-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "runtimeTargets": {
+          "runtimes/osx-arm64/native/libSystem.IO.Ports.Native.dylib": {
+            "assetType": "native",
+            "rid": "osx-arm64"
+          }
+        }
+      },
+      "runtime.osx-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "runtimeTargets": {
+          "runtimes/osx-x64/native/libSystem.IO.Ports.Native.dylib": {
+            "assetType": "native",
+            "rid": "osx-x64"
+          }
+        }
+      },
       "System.Diagnostics.DiagnosticSource/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -15742,6 +16198,35 @@
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        },
+        "compile": {
+          "lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        },
+        "runtimeTargets": {
+          "runtimes/unix/lib/net6.0/System.IO.Ports.dll": {
+            "assetType": "runtime",
+            "rid": "unix"
+          },
+          "runtimes/win/lib/net6.0/System.IO.Ports.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
         }
       },
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {
@@ -15911,14 +16396,14 @@
           "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
-      "Microsoft.Maui.Dependencies/6.0.486": {
+      "Microsoft.Maui.Dependencies/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Maui.Graphics": "6.0.403",
           "System.Runtime.InteropServices.NFloat.Internal": "6.0.1"
         }
       },
-      "Microsoft.Maui.Extensions/6.0.486": {
+      "Microsoft.Maui.Extensions/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Configuration": "6.0.1",
@@ -15941,6 +16426,34 @@
           }
         }
       },
+      "runtime.linux-arm.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "native": {
+          "runtimes/linux-arm/native/libSystem.IO.Ports.Native.so": {}
+        }
+      },
+      "runtime.linux-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.linux-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.linux-arm.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        }
+      },
+      "runtime.osx-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.osx-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
       "System.Diagnostics.DiagnosticSource/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -15958,6 +16471,25 @@
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        },
+        "compile": {
+          "lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "runtimes/unix/lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
         }
       },
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {
@@ -16127,14 +16659,14 @@
           "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
-      "Microsoft.Maui.Dependencies/6.0.486": {
+      "Microsoft.Maui.Dependencies/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Maui.Graphics": "6.0.403",
           "System.Runtime.InteropServices.NFloat.Internal": "6.0.1"
         }
       },
-      "Microsoft.Maui.Extensions/6.0.486": {
+      "Microsoft.Maui.Extensions/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Configuration": "6.0.1",
@@ -16157,6 +16689,34 @@
           }
         }
       },
+      "runtime.linux-arm.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.linux-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "native": {
+          "runtimes/linux-arm64/native/libSystem.IO.Ports.Native.so": {}
+        }
+      },
+      "runtime.linux-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.linux-arm.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        }
+      },
+      "runtime.osx-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.osx-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
       "System.Diagnostics.DiagnosticSource/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -16174,6 +16734,25 @@
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        },
+        "compile": {
+          "lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "runtimes/unix/lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
         }
       },
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {
@@ -16343,14 +16922,14 @@
           "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
-      "Microsoft.Maui.Dependencies/6.0.486": {
+      "Microsoft.Maui.Dependencies/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Maui.Graphics": "6.0.403",
           "System.Runtime.InteropServices.NFloat.Internal": "6.0.1"
         }
       },
-      "Microsoft.Maui.Extensions/6.0.486": {
+      "Microsoft.Maui.Extensions/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Configuration": "6.0.1",
@@ -16373,6 +16952,34 @@
           }
         }
       },
+      "runtime.linux-arm.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.linux-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.linux-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "native": {
+          "runtimes/linux-x64/native/libSystem.IO.Ports.Native.so": {}
+        }
+      },
+      "runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.linux-arm.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        }
+      },
+      "runtime.osx-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.osx-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
       "System.Diagnostics.DiagnosticSource/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -16390,6 +16997,25 @@
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        },
+        "compile": {
+          "lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "runtimes/unix/lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
         }
       },
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {
@@ -16559,14 +17185,14 @@
           "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
-      "Microsoft.Maui.Dependencies/6.0.486": {
+      "Microsoft.Maui.Dependencies/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Maui.Graphics": "6.0.403",
           "System.Runtime.InteropServices.NFloat.Internal": "6.0.1"
         }
       },
-      "Microsoft.Maui.Extensions/6.0.486": {
+      "Microsoft.Maui.Extensions/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Configuration": "6.0.1",
@@ -16589,6 +17215,31 @@
           }
         }
       },
+      "runtime.linux-arm.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.linux-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.linux-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.linux-arm.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        }
+      },
+      "runtime.osx-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.osx-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
       "System.Diagnostics.DiagnosticSource/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -16606,6 +17257,25 @@
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        },
+        "compile": {
+          "lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "runtimes/unix/lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
         }
       },
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {
@@ -16775,14 +17445,14 @@
           "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
-      "Microsoft.Maui.Dependencies/6.0.486": {
+      "Microsoft.Maui.Dependencies/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Maui.Graphics": "6.0.403",
           "System.Runtime.InteropServices.NFloat.Internal": "6.0.1"
         }
       },
-      "Microsoft.Maui.Extensions/6.0.486": {
+      "Microsoft.Maui.Extensions/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Configuration": "6.0.1",
@@ -16805,6 +17475,31 @@
           }
         }
       },
+      "runtime.linux-arm.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.linux-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.linux-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.linux-arm.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        }
+      },
+      "runtime.osx-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.osx-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
       "System.Diagnostics.DiagnosticSource/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -16822,6 +17517,25 @@
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        },
+        "compile": {
+          "lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "runtimes/unix/lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
         }
       },
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {
@@ -16991,14 +17705,14 @@
           "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
-      "Microsoft.Maui.Dependencies/6.0.486": {
+      "Microsoft.Maui.Dependencies/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Maui.Graphics": "6.0.403",
           "System.Runtime.InteropServices.NFloat.Internal": "6.0.1"
         }
       },
-      "Microsoft.Maui.Extensions/6.0.486": {
+      "Microsoft.Maui.Extensions/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Configuration": "6.0.1",
@@ -17021,6 +17735,31 @@
           }
         }
       },
+      "runtime.linux-arm.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.linux-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.linux-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.linux-arm.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        }
+      },
+      "runtime.osx-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.osx-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
       "System.Diagnostics.DiagnosticSource/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -17038,6 +17777,25 @@
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        },
+        "compile": {
+          "lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "runtimes/unix/lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
         }
       },
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {
@@ -17207,14 +17965,14 @@
           "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
-      "Microsoft.Maui.Dependencies/6.0.486": {
+      "Microsoft.Maui.Dependencies/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Maui.Graphics": "6.0.403",
           "System.Runtime.InteropServices.NFloat.Internal": "6.0.1"
         }
       },
-      "Microsoft.Maui.Extensions/6.0.486": {
+      "Microsoft.Maui.Extensions/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Configuration": "6.0.1",
@@ -17237,6 +17995,31 @@
           }
         }
       },
+      "runtime.linux-arm.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.linux-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.linux-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.linux-arm.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        }
+      },
+      "runtime.osx-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.osx-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
       "System.Diagnostics.DiagnosticSource/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -17254,6 +18037,25 @@
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        },
+        "compile": {
+          "lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "runtimes/win/lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
         }
       },
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {
@@ -17423,14 +18225,14 @@
           "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
-      "Microsoft.Maui.Dependencies/6.0.486": {
+      "Microsoft.Maui.Dependencies/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Maui.Graphics": "6.0.403",
           "System.Runtime.InteropServices.NFloat.Internal": "6.0.1"
         }
       },
-      "Microsoft.Maui.Extensions/6.0.486": {
+      "Microsoft.Maui.Extensions/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Configuration": "6.0.1",
@@ -17453,6 +18255,61 @@
           }
         }
       },
+      "runtime.linux-arm.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "runtimeTargets": {
+          "runtimes/linux-arm/native/libSystem.IO.Ports.Native.so": {
+            "assetType": "native",
+            "rid": "linux-arm"
+          }
+        }
+      },
+      "runtime.linux-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "runtimeTargets": {
+          "runtimes/linux-arm64/native/libSystem.IO.Ports.Native.so": {
+            "assetType": "native",
+            "rid": "linux-arm64"
+          }
+        }
+      },
+      "runtime.linux-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "runtimeTargets": {
+          "runtimes/linux-x64/native/libSystem.IO.Ports.Native.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          }
+        }
+      },
+      "runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.linux-arm.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        }
+      },
+      "runtime.osx-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "runtimeTargets": {
+          "runtimes/osx-arm64/native/libSystem.IO.Ports.Native.dylib": {
+            "assetType": "native",
+            "rid": "osx-arm64"
+          }
+        }
+      },
+      "runtime.osx-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "runtimeTargets": {
+          "runtimes/osx-x64/native/libSystem.IO.Ports.Native.dylib": {
+            "assetType": "native",
+            "rid": "osx-x64"
+          }
+        }
+      },
       "System.Diagnostics.DiagnosticSource/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -17470,6 +18327,35 @@
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        },
+        "compile": {
+          "lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        },
+        "runtimeTargets": {
+          "runtimes/unix/lib/net6.0/System.IO.Ports.dll": {
+            "assetType": "runtime",
+            "rid": "unix"
+          },
+          "runtimes/win/lib/net6.0/System.IO.Ports.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
         }
       },
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {
@@ -17639,14 +18525,14 @@
           "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
-      "Microsoft.Maui.Dependencies/6.0.486": {
+      "Microsoft.Maui.Dependencies/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Maui.Graphics": "6.0.403",
           "System.Runtime.InteropServices.NFloat.Internal": "6.0.1"
         }
       },
-      "Microsoft.Maui.Extensions/6.0.486": {
+      "Microsoft.Maui.Extensions/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Configuration": "6.0.1",
@@ -17669,6 +18555,34 @@
           }
         }
       },
+      "runtime.linux-arm.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "native": {
+          "runtimes/linux-arm/native/libSystem.IO.Ports.Native.so": {}
+        }
+      },
+      "runtime.linux-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.linux-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.linux-arm.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        }
+      },
+      "runtime.osx-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.osx-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
       "System.Diagnostics.DiagnosticSource/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -17686,6 +18600,25 @@
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        },
+        "compile": {
+          "lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "runtimes/unix/lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
         }
       },
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {
@@ -17855,14 +18788,14 @@
           "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
-      "Microsoft.Maui.Dependencies/6.0.486": {
+      "Microsoft.Maui.Dependencies/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Maui.Graphics": "6.0.403",
           "System.Runtime.InteropServices.NFloat.Internal": "6.0.1"
         }
       },
-      "Microsoft.Maui.Extensions/6.0.486": {
+      "Microsoft.Maui.Extensions/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Configuration": "6.0.1",
@@ -17885,6 +18818,34 @@
           }
         }
       },
+      "runtime.linux-arm.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.linux-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "native": {
+          "runtimes/linux-arm64/native/libSystem.IO.Ports.Native.so": {}
+        }
+      },
+      "runtime.linux-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.linux-arm.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        }
+      },
+      "runtime.osx-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.osx-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
       "System.Diagnostics.DiagnosticSource/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -17902,6 +18863,25 @@
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        },
+        "compile": {
+          "lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "runtimes/unix/lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
         }
       },
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {
@@ -18071,14 +19051,14 @@
           "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
-      "Microsoft.Maui.Dependencies/6.0.486": {
+      "Microsoft.Maui.Dependencies/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Maui.Graphics": "6.0.403",
           "System.Runtime.InteropServices.NFloat.Internal": "6.0.1"
         }
       },
-      "Microsoft.Maui.Extensions/6.0.486": {
+      "Microsoft.Maui.Extensions/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Configuration": "6.0.1",
@@ -18101,6 +19081,34 @@
           }
         }
       },
+      "runtime.linux-arm.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.linux-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.linux-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "native": {
+          "runtimes/linux-x64/native/libSystem.IO.Ports.Native.so": {}
+        }
+      },
+      "runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.linux-arm.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        }
+      },
+      "runtime.osx-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.osx-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
       "System.Diagnostics.DiagnosticSource/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -18118,6 +19126,25 @@
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        },
+        "compile": {
+          "lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "runtimes/unix/lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
         }
       },
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {
@@ -18287,14 +19314,14 @@
           "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
-      "Microsoft.Maui.Dependencies/6.0.486": {
+      "Microsoft.Maui.Dependencies/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Maui.Graphics": "6.0.403",
           "System.Runtime.InteropServices.NFloat.Internal": "6.0.1"
         }
       },
-      "Microsoft.Maui.Extensions/6.0.486": {
+      "Microsoft.Maui.Extensions/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Configuration": "6.0.1",
@@ -18317,6 +19344,31 @@
           }
         }
       },
+      "runtime.linux-arm.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.linux-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.linux-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.linux-arm.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        }
+      },
+      "runtime.osx-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.osx-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
       "System.Diagnostics.DiagnosticSource/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -18334,6 +19386,25 @@
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        },
+        "compile": {
+          "lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "runtimes/unix/lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
         }
       },
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {
@@ -18503,14 +19574,14 @@
           "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
-      "Microsoft.Maui.Dependencies/6.0.486": {
+      "Microsoft.Maui.Dependencies/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Maui.Graphics": "6.0.403",
           "System.Runtime.InteropServices.NFloat.Internal": "6.0.1"
         }
       },
-      "Microsoft.Maui.Extensions/6.0.486": {
+      "Microsoft.Maui.Extensions/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Configuration": "6.0.1",
@@ -18533,6 +19604,31 @@
           }
         }
       },
+      "runtime.linux-arm.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.linux-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.linux-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.linux-arm.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        }
+      },
+      "runtime.osx-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.osx-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
       "System.Diagnostics.DiagnosticSource/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -18550,6 +19646,25 @@
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        },
+        "compile": {
+          "lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "runtimes/unix/lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
         }
       },
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {
@@ -18719,14 +19834,14 @@
           "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
-      "Microsoft.Maui.Dependencies/6.0.486": {
+      "Microsoft.Maui.Dependencies/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Maui.Graphics": "6.0.403",
           "System.Runtime.InteropServices.NFloat.Internal": "6.0.1"
         }
       },
-      "Microsoft.Maui.Extensions/6.0.486": {
+      "Microsoft.Maui.Extensions/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Configuration": "6.0.1",
@@ -18749,6 +19864,31 @@
           }
         }
       },
+      "runtime.linux-arm.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.linux-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.linux-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.linux-arm.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        }
+      },
+      "runtime.osx-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.osx-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
       "System.Diagnostics.DiagnosticSource/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -18766,6 +19906,25 @@
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        },
+        "compile": {
+          "lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "runtimes/unix/lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
         }
       },
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {
@@ -18935,14 +20094,14 @@
           "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
-      "Microsoft.Maui.Dependencies/6.0.486": {
+      "Microsoft.Maui.Dependencies/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Maui.Graphics": "6.0.403",
           "System.Runtime.InteropServices.NFloat.Internal": "6.0.1"
         }
       },
-      "Microsoft.Maui.Extensions/6.0.486": {
+      "Microsoft.Maui.Extensions/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Configuration": "6.0.1",
@@ -18965,6 +20124,31 @@
           }
         }
       },
+      "runtime.linux-arm.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.linux-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.linux-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.linux-arm.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        }
+      },
+      "runtime.osx-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.osx-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
       "System.Diagnostics.DiagnosticSource/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -18982,6 +20166,25 @@
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        },
+        "compile": {
+          "lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "runtimes/win/lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
         }
       },
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {
@@ -19180,7 +20383,7 @@
           }
         }
       },
-      "Microsoft.Maui.Dependencies/6.0.486": {
+      "Microsoft.Maui.Dependencies/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Graphics.Win2D": "1.0.3.1",
@@ -19189,7 +20392,7 @@
           "Microsoft.WindowsAppSDK": "1.1.3"
         }
       },
-      "Microsoft.Maui.Extensions/6.0.486": {
+      "Microsoft.Maui.Extensions/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Configuration": "6.0.1",
@@ -19314,6 +20517,61 @@
           }
         }
       },
+      "runtime.linux-arm.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "runtimeTargets": {
+          "runtimes/linux-arm/native/libSystem.IO.Ports.Native.so": {
+            "assetType": "native",
+            "rid": "linux-arm"
+          }
+        }
+      },
+      "runtime.linux-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "runtimeTargets": {
+          "runtimes/linux-arm64/native/libSystem.IO.Ports.Native.so": {
+            "assetType": "native",
+            "rid": "linux-arm64"
+          }
+        }
+      },
+      "runtime.linux-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "runtimeTargets": {
+          "runtimes/linux-x64/native/libSystem.IO.Ports.Native.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          }
+        }
+      },
+      "runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.linux-arm.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        }
+      },
+      "runtime.osx-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "runtimeTargets": {
+          "runtimes/osx-arm64/native/libSystem.IO.Ports.Native.dylib": {
+            "assetType": "native",
+            "rid": "osx-arm64"
+          }
+        }
+      },
+      "runtime.osx-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "runtimeTargets": {
+          "runtimes/osx-x64/native/libSystem.IO.Ports.Native.dylib": {
+            "assetType": "native",
+            "rid": "osx-x64"
+          }
+        }
+      },
       "System.Diagnostics.DiagnosticSource/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -19331,6 +20589,35 @@
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        },
+        "compile": {
+          "lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        },
+        "runtimeTargets": {
+          "runtimes/unix/lib/net6.0/System.IO.Ports.dll": {
+            "assetType": "runtime",
+            "rid": "unix"
+          },
+          "runtimes/win/lib/net6.0/System.IO.Ports.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
         }
       },
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {
@@ -19507,7 +20794,7 @@
           "build/net5.0-windows10.0.18362.0/_._": {}
         }
       },
-      "Microsoft.Maui.Dependencies/6.0.486": {
+      "Microsoft.Maui.Dependencies/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Graphics.Win2D": "1.0.3.1",
@@ -19516,7 +20803,7 @@
           "Microsoft.WindowsAppSDK": "1.1.3"
         }
       },
-      "Microsoft.Maui.Extensions/6.0.486": {
+      "Microsoft.Maui.Extensions/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Configuration": "6.0.1",
@@ -19627,6 +20914,34 @@
           "buildTransitive/Microsoft.WindowsAppSDK.targets": {}
         }
       },
+      "runtime.linux-arm.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "native": {
+          "runtimes/linux-arm/native/libSystem.IO.Ports.Native.so": {}
+        }
+      },
+      "runtime.linux-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.linux-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.linux-arm.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        }
+      },
+      "runtime.osx-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.osx-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
       "System.Diagnostics.DiagnosticSource/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -19644,6 +20959,25 @@
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        },
+        "compile": {
+          "lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "runtimes/unix/lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
         }
       },
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {
@@ -19820,7 +21154,7 @@
           "build/net5.0-windows10.0.18362.0/_._": {}
         }
       },
-      "Microsoft.Maui.Dependencies/6.0.486": {
+      "Microsoft.Maui.Dependencies/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Graphics.Win2D": "1.0.3.1",
@@ -19829,7 +21163,7 @@
           "Microsoft.WindowsAppSDK": "1.1.3"
         }
       },
-      "Microsoft.Maui.Extensions/6.0.486": {
+      "Microsoft.Maui.Extensions/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Configuration": "6.0.1",
@@ -19940,6 +21274,34 @@
           "buildTransitive/Microsoft.WindowsAppSDK.targets": {}
         }
       },
+      "runtime.linux-arm.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.linux-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "native": {
+          "runtimes/linux-arm64/native/libSystem.IO.Ports.Native.so": {}
+        }
+      },
+      "runtime.linux-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.linux-arm.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        }
+      },
+      "runtime.osx-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.osx-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
       "System.Diagnostics.DiagnosticSource/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -19957,6 +21319,25 @@
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        },
+        "compile": {
+          "lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "runtimes/unix/lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
         }
       },
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {
@@ -20133,7 +21514,7 @@
           "build/net5.0-windows10.0.18362.0/_._": {}
         }
       },
-      "Microsoft.Maui.Dependencies/6.0.486": {
+      "Microsoft.Maui.Dependencies/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Graphics.Win2D": "1.0.3.1",
@@ -20142,7 +21523,7 @@
           "Microsoft.WindowsAppSDK": "1.1.3"
         }
       },
-      "Microsoft.Maui.Extensions/6.0.486": {
+      "Microsoft.Maui.Extensions/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Configuration": "6.0.1",
@@ -20253,6 +21634,34 @@
           "buildTransitive/Microsoft.WindowsAppSDK.targets": {}
         }
       },
+      "runtime.linux-arm.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.linux-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.linux-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "native": {
+          "runtimes/linux-x64/native/libSystem.IO.Ports.Native.so": {}
+        }
+      },
+      "runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.linux-arm.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        }
+      },
+      "runtime.osx-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.osx-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
       "System.Diagnostics.DiagnosticSource/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -20270,6 +21679,25 @@
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        },
+        "compile": {
+          "lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "runtimes/unix/lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
         }
       },
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {
@@ -20446,7 +21874,7 @@
           "build/net5.0-windows10.0.18362.0/_._": {}
         }
       },
-      "Microsoft.Maui.Dependencies/6.0.486": {
+      "Microsoft.Maui.Dependencies/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Graphics.Win2D": "1.0.3.1",
@@ -20455,7 +21883,7 @@
           "Microsoft.WindowsAppSDK": "1.1.3"
         }
       },
-      "Microsoft.Maui.Extensions/6.0.486": {
+      "Microsoft.Maui.Extensions/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Configuration": "6.0.1",
@@ -20566,6 +21994,31 @@
           "buildTransitive/Microsoft.WindowsAppSDK.targets": {}
         }
       },
+      "runtime.linux-arm.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.linux-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.linux-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.linux-arm.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        }
+      },
+      "runtime.osx-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.osx-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
       "System.Diagnostics.DiagnosticSource/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -20583,6 +22036,25 @@
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        },
+        "compile": {
+          "lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "runtimes/unix/lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
         }
       },
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {
@@ -20759,7 +22231,7 @@
           "build/net5.0-windows10.0.18362.0/_._": {}
         }
       },
-      "Microsoft.Maui.Dependencies/6.0.486": {
+      "Microsoft.Maui.Dependencies/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Graphics.Win2D": "1.0.3.1",
@@ -20768,7 +22240,7 @@
           "Microsoft.WindowsAppSDK": "1.1.3"
         }
       },
-      "Microsoft.Maui.Extensions/6.0.486": {
+      "Microsoft.Maui.Extensions/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Configuration": "6.0.1",
@@ -20879,6 +22351,31 @@
           "buildTransitive/Microsoft.WindowsAppSDK.targets": {}
         }
       },
+      "runtime.linux-arm.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.linux-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.linux-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.linux-arm.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        }
+      },
+      "runtime.osx-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.osx-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
       "System.Diagnostics.DiagnosticSource/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -20896,6 +22393,25 @@
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        },
+        "compile": {
+          "lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "runtimes/unix/lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
         }
       },
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {
@@ -21072,7 +22588,7 @@
           "build/net5.0-windows10.0.18362.0/_._": {}
         }
       },
-      "Microsoft.Maui.Dependencies/6.0.486": {
+      "Microsoft.Maui.Dependencies/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Graphics.Win2D": "1.0.3.1",
@@ -21081,7 +22597,7 @@
           "Microsoft.WindowsAppSDK": "1.1.3"
         }
       },
-      "Microsoft.Maui.Extensions/6.0.486": {
+      "Microsoft.Maui.Extensions/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Configuration": "6.0.1",
@@ -21192,6 +22708,31 @@
           "buildTransitive/Microsoft.WindowsAppSDK.targets": {}
         }
       },
+      "runtime.linux-arm.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.linux-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.linux-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.linux-arm.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        }
+      },
+      "runtime.osx-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.osx-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
       "System.Diagnostics.DiagnosticSource/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -21209,6 +22750,25 @@
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        },
+        "compile": {
+          "lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "runtimes/unix/lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
         }
       },
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {
@@ -21388,7 +22948,7 @@
           "build/net5.0-windows10.0.18362.0/_._": {}
         }
       },
-      "Microsoft.Maui.Dependencies/6.0.486": {
+      "Microsoft.Maui.Dependencies/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Graphics.Win2D": "1.0.3.1",
@@ -21397,7 +22957,7 @@
           "Microsoft.WindowsAppSDK": "1.1.3"
         }
       },
-      "Microsoft.Maui.Extensions/6.0.486": {
+      "Microsoft.Maui.Extensions/6.0.536": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Configuration": "6.0.1",
@@ -21511,6 +23071,31 @@
           "buildTransitive/Microsoft.WindowsAppSDK.targets": {}
         }
       },
+      "runtime.linux-arm.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.linux-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.linux-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.linux-arm.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.linux-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-arm64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "runtime.osx-x64.runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        }
+      },
+      "runtime.osx-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
+      "runtime.osx-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package"
+      },
       "System.Diagnostics.DiagnosticSource/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -21528,6 +23113,25 @@
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "System.IO.Ports/7.0.0-rc.1.22426.10": {
+        "type": "package",
+        "dependencies": {
+          "runtime.native.System.IO.Ports": "7.0.0-rc.1.22426.10"
+        },
+        "compile": {
+          "lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "runtimes/win/lib/net6.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
         }
       },
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {
@@ -21804,25 +23408,25 @@
         "runtimes/win10-x86/native/Microsoft.Graphics.Canvas.dll"
       ]
     },
-    "Microsoft.Maui.Dependencies/6.0.486": {
-      "sha512": "Q5EMWvTlSUDJ1i5r9WN33VtZySCARCHFiNECcfZAcdDBGYLEtFXUZvf0jkHoqQXD5zAk1A7Lqr3Oxu+cXq+ySw==",
+    "Microsoft.Maui.Dependencies/6.0.536": {
+      "sha512": "0HkL9ufl7L/tkGRowrBygi7CmQv7LC3lGYhxJsVkP7Q4OKV/NWKhg0AQKsskwNvG0aDfkJ5YgFd30aSRAHTyJg==",
       "type": "package",
-      "path": "microsoft.maui.dependencies/6.0.486",
+      "path": "microsoft.maui.dependencies/6.0.536",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "microsoft.maui.dependencies.6.0.486.nupkg.sha512",
+        "microsoft.maui.dependencies.6.0.536.nupkg.sha512",
         "microsoft.maui.dependencies.nuspec"
       ]
     },
-    "Microsoft.Maui.Extensions/6.0.486": {
-      "sha512": "8EQXAfavgMphismIN2LRWeHpZFN7RMZiWEZG1Z+ylfSpkp1XlYvd1CEagkcbe/IyXVtGgkkEfaPVwj8xJS1D6g==",
+    "Microsoft.Maui.Extensions/6.0.536": {
+      "sha512": "jhtELYRFKT5nJDwbrCMD6n9EwxhS6P0MbG8i3tU3W7nqqswmaF7DfCUtd4ZrYthJIVnUiftqN069WlXl/dT2Gw==",
       "type": "package",
-      "path": "microsoft.maui.extensions/6.0.486",
+      "path": "microsoft.maui.extensions/6.0.536",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "microsoft.maui.extensions.6.0.486.nupkg.sha512",
+        "microsoft.maui.extensions.6.0.536.nupkg.sha512",
         "microsoft.maui.extensions.nuspec"
       ]
     },
@@ -22623,6 +24227,101 @@
         "tools/x86/GenXbf.dll"
       ]
     },
+    "runtime.linux-arm.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+      "sha512": "JighYmPEO2tN5bPUbJOi56KrS7iatgreCqCXZZFex1fijhQohftUcx0qTNTk5rioOc+KqRHhJvKm8Yxn08JAog==",
+      "type": "package",
+      "path": "runtime.linux-arm.runtime.native.system.io.ports/7.0.0-rc.1.22426.10",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "runtime.linux-arm.runtime.native.system.io.ports.7.0.0-rc.1.22426.10.nupkg.sha512",
+        "runtime.linux-arm.runtime.native.system.io.ports.nuspec",
+        "runtimes/linux-arm/native/libSystem.IO.Ports.Native.so",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "runtime.linux-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+      "sha512": "3Yrr5T/uJzyGiLn2nK0Z7GuNEOJIwbtfUZeC5PbBgCnmMAX6mBd9hH+Yfcf/Vzb47Bj4Dw+vs9XPF92NNBs47w==",
+      "type": "package",
+      "path": "runtime.linux-arm64.runtime.native.system.io.ports/7.0.0-rc.1.22426.10",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "runtime.linux-arm64.runtime.native.system.io.ports.7.0.0-rc.1.22426.10.nupkg.sha512",
+        "runtime.linux-arm64.runtime.native.system.io.ports.nuspec",
+        "runtimes/linux-arm64/native/libSystem.IO.Ports.Native.so",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "runtime.linux-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+      "sha512": "9J4WrVXh3N0PlRVJmt4Kza6Ca0h2yNUIDqxWJLbW6V9k9Zlmv/qfUVTpNFEumzorEkAx6HxxNWrnfF3wWBTZAQ==",
+      "type": "package",
+      "path": "runtime.linux-x64.runtime.native.system.io.ports/7.0.0-rc.1.22426.10",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "runtime.linux-x64.runtime.native.system.io.ports.7.0.0-rc.1.22426.10.nupkg.sha512",
+        "runtime.linux-x64.runtime.native.system.io.ports.nuspec",
+        "runtimes/linux-x64/native/libSystem.IO.Ports.Native.so",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+      "sha512": "74FQaemGxiiyh74zNWRcogIBspgHP5NFus7+ZhklyGglAOUqKSOBOzN4d7MDhjFdr7GzAZnyB9ZMobg6GrMjEA==",
+      "type": "package",
+      "path": "runtime.native.system.io.ports/7.0.0-rc.1.22426.10",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "runtime.native.system.io.ports.7.0.0-rc.1.22426.10.nupkg.sha512",
+        "runtime.native.system.io.ports.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "runtime.osx-arm64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+      "sha512": "GDGRRx9rdurEKSjyr2ZFuLd+lFioZHVhkPL00rON/qrf2V6AS3CXryUuaI+WVJWncTTwicun7RW8HCzKuvl/yQ==",
+      "type": "package",
+      "path": "runtime.osx-arm64.runtime.native.system.io.ports/7.0.0-rc.1.22426.10",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "runtime.osx-arm64.runtime.native.system.io.ports.7.0.0-rc.1.22426.10.nupkg.sha512",
+        "runtime.osx-arm64.runtime.native.system.io.ports.nuspec",
+        "runtimes/osx-arm64/native/libSystem.IO.Ports.Native.dylib",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "runtime.osx-x64.runtime.native.System.IO.Ports/7.0.0-rc.1.22426.10": {
+      "sha512": "l3SB4qmnWBLLvn6Hul7XTImjzPMCmTvfyob7TTdL/bA8gYL/64UZMzYB4y5NxZFXF2gwTr/ihbyjzPypSq8Atg==",
+      "type": "package",
+      "path": "runtime.osx-x64.runtime.native.system.io.ports/7.0.0-rc.1.22426.10",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "runtime.osx-x64.runtime.native.system.io.ports.7.0.0-rc.1.22426.10.nupkg.sha512",
+        "runtime.osx-x64.runtime.native.system.io.ports.nuspec",
+        "runtimes/osx-x64/native/libSystem.IO.Ports.Native.dylib",
+        "useSharedDesignerContext.txt"
+      ]
+    },
     "System.Diagnostics.DiagnosticSource/6.0.0": {
       "sha512": "frQDfv0rl209cKm1lnwTgFPzNigy2EKk1BS3uAvHvlBVKe5cymGyHO+Sj+NLv5VF/AhHsqPIUUwya5oV4CHMUw==",
       "type": "package",
@@ -22645,6 +24344,41 @@
         "lib/netstandard2.0/System.Diagnostics.DiagnosticSource.xml",
         "system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",
         "system.diagnostics.diagnosticsource.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "System.IO.Ports/7.0.0-rc.1.22426.10": {
+      "sha512": "L8sus4cbrShU7pVAcOaTDgRcpzbz9D2TivZHHxJWPquxbQ91KLt1QWbcZUFiRv2s7pWVKV1m9Pm4YIMhbY+hjw==",
+      "type": "package",
+      "path": "system.io.ports/7.0.0-rc.1.22426.10",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/System.IO.Ports.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/System.IO.Ports.targets",
+        "lib/net462/System.IO.Ports.dll",
+        "lib/net462/System.IO.Ports.xml",
+        "lib/net6.0/System.IO.Ports.dll",
+        "lib/net6.0/System.IO.Ports.xml",
+        "lib/net7.0/System.IO.Ports.dll",
+        "lib/net7.0/System.IO.Ports.xml",
+        "lib/netstandard2.0/System.IO.Ports.dll",
+        "lib/netstandard2.0/System.IO.Ports.xml",
+        "runtimes/unix/lib/net6.0/System.IO.Ports.dll",
+        "runtimes/unix/lib/net6.0/System.IO.Ports.xml",
+        "runtimes/unix/lib/net7.0/System.IO.Ports.dll",
+        "runtimes/unix/lib/net7.0/System.IO.Ports.xml",
+        "runtimes/win/lib/net6.0/System.IO.Ports.dll",
+        "runtimes/win/lib/net6.0/System.IO.Ports.xml",
+        "runtimes/win/lib/net7.0/System.IO.Ports.dll",
+        "runtimes/win/lib/net7.0/System.IO.Ports.xml",
+        "system.io.ports.7.0.0-rc.1.22426.10.nupkg.sha512",
+        "system.io.ports.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
@@ -24547,23 +26281,27 @@
   },
   "projectFileDependencyGroups": {
     "net6.0-android31.0": [
-      "Microsoft.Maui.Dependencies >= 6.0.486",
-      "Microsoft.Maui.Extensions >= 6.0.486"
+      "Microsoft.Maui.Dependencies >= 6.0.536",
+      "Microsoft.Maui.Extensions >= 6.0.536",
+      "System.IO.Ports >= 7.0.0-rc.1.22426.10"
     ],
     "net6.0-ios15.4": [
-      "Microsoft.Maui.Dependencies >= 6.0.486",
-      "Microsoft.Maui.Extensions >= 6.0.486",
+      "Microsoft.Maui.Dependencies >= 6.0.536",
+      "Microsoft.Maui.Extensions >= 6.0.536",
+      "System.IO.Ports >= 7.0.0-rc.1.22426.10",
       "System.Runtime.InteropServices.NFloat.Internal >= 6.0.1"
     ],
     "net6.0-maccatalyst15.4": [
-      "Microsoft.Maui.Dependencies >= 6.0.486",
-      "Microsoft.Maui.Extensions >= 6.0.486",
+      "Microsoft.Maui.Dependencies >= 6.0.536",
+      "Microsoft.Maui.Extensions >= 6.0.536",
+      "System.IO.Ports >= 7.0.0-rc.1.22426.10",
       "System.Runtime.InteropServices.NFloat.Internal >= 6.0.1"
     ],
     "net6.0-windows10.0.19041": [
-      "Microsoft.Maui.Dependencies >= 6.0.486",
-      "Microsoft.Maui.Extensions >= 6.0.486",
-      "Microsoft.Windows.SDK.BuildTools >= 10.0.22000.194"
+      "Microsoft.Maui.Dependencies >= 6.0.536",
+      "Microsoft.Maui.Extensions >= 6.0.536",
+      "Microsoft.Windows.SDK.BuildTools >= 10.0.22000.194",
+      "System.IO.Ports >= 7.0.0-rc.1.22426.10"
     ]
   },
   "packageFolders": {
@@ -24629,13 +26367,17 @@
         "dependencies": {
           "Microsoft.Maui.Dependencies": {
             "target": "Package",
-            "version": "[6.0.486, )",
+            "version": "[6.0.536, )",
             "autoReferenced": true
           },
           "Microsoft.Maui.Extensions": {
             "target": "Package",
-            "version": "[6.0.486, )",
+            "version": "[6.0.536, )",
             "autoReferenced": true
+          },
+          "System.IO.Ports": {
+            "target": "Package",
+            "version": "[7.0.0-rc.1.22426.10, )"
           }
         },
         "imports": [
@@ -24673,13 +26415,17 @@
         "dependencies": {
           "Microsoft.Maui.Dependencies": {
             "target": "Package",
-            "version": "[6.0.486, )",
+            "version": "[6.0.536, )",
             "autoReferenced": true
           },
           "Microsoft.Maui.Extensions": {
             "target": "Package",
-            "version": "[6.0.486, )",
+            "version": "[6.0.536, )",
             "autoReferenced": true
+          },
+          "System.IO.Ports": {
+            "target": "Package",
+            "version": "[7.0.0-rc.1.22426.10, )"
           },
           "System.Runtime.InteropServices.NFloat.Internal": {
             "target": "Package",
@@ -24722,13 +26468,17 @@
         "dependencies": {
           "Microsoft.Maui.Dependencies": {
             "target": "Package",
-            "version": "[6.0.486, )",
+            "version": "[6.0.536, )",
             "autoReferenced": true
           },
           "Microsoft.Maui.Extensions": {
             "target": "Package",
-            "version": "[6.0.486, )",
+            "version": "[6.0.536, )",
             "autoReferenced": true
+          },
+          "System.IO.Ports": {
+            "target": "Package",
+            "version": "[7.0.0-rc.1.22426.10, )"
           },
           "System.Runtime.InteropServices.NFloat.Internal": {
             "target": "Package",
@@ -24772,12 +26522,12 @@
         "dependencies": {
           "Microsoft.Maui.Dependencies": {
             "target": "Package",
-            "version": "[6.0.486, )",
+            "version": "[6.0.536, )",
             "autoReferenced": true
           },
           "Microsoft.Maui.Extensions": {
             "target": "Package",
-            "version": "[6.0.486, )",
+            "version": "[6.0.536, )",
             "autoReferenced": true
           },
           "Microsoft.Windows.SDK.BuildTools": {
@@ -24785,6 +26535,10 @@
             "target": "Package",
             "version": "[10.0.22000.194, )",
             "autoReferenced": true
+          },
+          "System.IO.Ports": {
+            "target": "Package",
+            "version": "[7.0.0-rc.1.22426.10, )"
           }
         },
         "imports": [
@@ -24859,13 +26613,5 @@
         "#import": []
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\anton\\My Files\\DTU\\IT Elektronik\\5. Semester\\Advanced Object Oriented Programming With C#\\SmartCurtains\\IoTCurtains\\IoTCurtains\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }

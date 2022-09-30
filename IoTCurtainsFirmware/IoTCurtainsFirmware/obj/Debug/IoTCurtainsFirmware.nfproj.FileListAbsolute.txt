@@ -124,3 +124,9 @@ C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented P
 C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\IoTCurtainsFirmware\IoTCurtainsFirmware\obj\Debug\nanoFramework.Azure.Devices.Client.xml
 C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\IoTCurtainsFirmware\IoTCurtainsFirmware\obj\Debug\nanoFramework.M2Mqtt.xml
 C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\IoTCurtainsFirmware\IoTCurtainsFirmware\obj\Debug\System.Net.Http.xml
+C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\IoTCurtainsFirmware\IoTCurtainsFirmware\bin\Debug\System.IO.Ports.pe
+C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\IoTCurtainsFirmware\IoTCurtainsFirmware\bin\Debug\System.IO.Ports.pdbx
+C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\IoTCurtainsFirmware\IoTCurtainsFirmware\bin\Debug\System.IO.Ports.dll
+C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\IoTCurtainsFirmware\IoTCurtainsFirmware\bin\Debug\System.IO.Ports.xml
+C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\IoTCurtainsFirmware\IoTCurtainsFirmware\obj\Debug\System.IO.Ports.dll
+C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\IoTCurtainsFirmware\IoTCurtainsFirmware\obj\Debug\System.IO.Ports.xml

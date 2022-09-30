@@ -10,6 +10,9 @@ using nanoFramework.Azure;
 using nanoFramework.Azure.Devices.Client;
 using System.Security.Cryptography.X509Certificates;
 using System.IO.Ports;
+using System.Collections;
+using nanoFramework.Json;
+using nanoFramework.Hardware.Esp32;
 
 namespace IoTCurtainsFirmware
 {
@@ -31,6 +34,9 @@ namespace IoTCurtainsFirmware
 
         static int CalibrateButtonPin = 36;
 
+        static int RxUART2PinNumber = 16;
+        static int TxUART2PinNumber = 17;
+
         static int motorControllerIn1PinNumber = 13;
         static int motorControllerIn2PinNumber = 12;
         static int motorControllerIn3PinNumber = 14;
@@ -50,12 +56,13 @@ namespace IoTCurtainsFirmware
         static GpioPin wifiConnectedLedIndicator;
         static bool connectedToWiFi = false;
 
+        static SerialPort serialPort;
+
         public static void Main()
         {
             InitializeSystem();
             //CalibrateMotorController();
 
-            
 
 
 
@@ -70,6 +77,23 @@ namespace IoTCurtainsFirmware
             //    Console.WriteLine("Successfully connected to Azure!");
             //}
 
+            Configuration.SetPinFunction(RxUART2PinNumber, DeviceFunction.COM2_RX);
+            Configuration.SetPinFunction(TxUART2PinNumber, DeviceFunction.COM2_TX);
+
+            var ports = SerialPort.GetPortNames();
+            foreach(var port in ports)
+            {
+                Console.WriteLine(port);
+            }
+
+            serialPort = new SerialPort(portName: "COM2",
+                                        baudRate: 115200,
+                                        Parity.None,
+                                        dataBits: 8,
+                                        StopBits.One);
+
+            serialPort.DataReceived += SerialPort_DataReceived;
+            serialPort.Open();
 
 
             // Program life 
@@ -94,6 +118,66 @@ namespace IoTCurtainsFirmware
             }
 
             Thread.Sleep(Timeout.Infinite);
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private static void SerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            string dataString = serialPort.ReadLine();
+            Console.WriteLine($"Recieved: \"{dataString}\" over UART");
+
+
+
+            //if (data == '\r')
+            //{
+            //    serialPort.WriteLine(data.ToString());
+            //}
+            //else
+            //{
+            //    serialPort.WriteByte((byte)data);
+            //}
+
+
+            //jsonCommand command = (jsonCommand)JsonConvert.DeserializeObject(data, typeof(jsonCommand));            
+
+            //switch (data)
+            //{
+            //    case "getConfig":
+            //        // Send configuration: (in JSON maybe?)
+            //        break;
+
+            //    case "configure":
+            //        break;
+
+            //    case "setWiFiSSID":
+            //        break;
+
+            //    case "setWiFiPassword":
+            //        break;
+
+            //    case "setIoTHubName":
+            //        break;
+
+            //    case "SetDeviceID":
+            //        break;
+
+            //    case "SetSaSKey":
+            //        break;
+
+
+
+            //    default:
+            //        // Report Error
+            //        break;
+            //}
+
+
         }
 
 
@@ -147,6 +231,8 @@ namespace IoTCurtainsFirmware
                                               wifiAdapterId: networkInterfaceIndex,
                                               token: new CancellationTokenSource(10000).Token))
             {
+                connectedToWiFi = true;
+                
                 NetworkInterface network = NetworkInterface.GetAllNetworkInterfaces()[networkInterfaceIndex];
                 Console.WriteLine("Connected To Wifi!");
                 Console.WriteLine($"Network IP: {network.IPv4Address}");
