@@ -13,6 +13,7 @@
           "Microsoft.Maui.Extensions": "6.0.536",
           "Microsoft.Windows.SDK.BuildTools": "10.0.22000.194",
           "System.IO.Ports": "7.0.0-rc.1.22426.10",
+          "DeviceConfiguration": "1.0.0.0",
           "runtimepack.Microsoft.NETCore.App.Runtime.win-x64": "6.0.9",
           "runtimepack.Microsoft.Maui.Core.Runtime.win": "6.0.536",
           "runtimepack.Microsoft.Maui.Controls.Runtime.win": "6.0.536",
@@ -1133,7 +1134,15 @@
           }
         }
       },
-      "System.Runtime.CompilerServices.Unsafe/6.0.0": {}
+      "System.Runtime.CompilerServices.Unsafe/6.0.0": {},
+      "DeviceConfiguration/1.0.0.0": {
+        "runtime": {
+          "DeviceConfiguration.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
     }
   },
   "libraries": {
@@ -1334,6 +1343,11 @@
       "sha512": "sha512-/iUeP3tq1S0XdNNoMz5C9twLSrM/TH+qElHkXWaPvuNOt+99G75NrV0OS2EqHx5wMN7popYjpc8oTjC1y16DLg==",
       "path": "system.runtime.compilerservices.unsafe/6.0.0",
       "hashPath": "system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+    },
+    "DeviceConfiguration/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
     }
   },
   "runtimes": {

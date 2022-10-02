@@ -4,6 +4,9 @@ using System.IO.Ports;
 using System.Text.Json;
 using System.Timers;
 
+using DeviceConfiguration;
+
+#pragma warning disable CA1416 // Validate platform compatibility
 public partial class ConfigurationManager : ContentPage
 {
 	SerialPort serialPort;
@@ -12,21 +15,22 @@ public partial class ConfigurationManager : ContentPage
     private int baudRate = 115200;
 	private int dataBits = 8;
 
-#pragma warning disable CA1416 // Validate platform compatibility
     private Parity parity = Parity.None;
     private StopBits stopBits = StopBits.One;
-#pragma warning restore CA1416 // Validate platform compatibility
 
     private const string getConfigCommand = "getConfig";
 	private const string configureDeviceCommand = "configureDevice";
 	private const string resetDeviceCommand = "resetDevice";
 
-	Timer recheckComportsTimer = new Timer(1000);
 	public ConfigurationManager()
 	{
 		InitializeComponent();
 
 		COMPortPicker.ItemsSource = SerialPort.GetPortNames();
+		if (COMPortPicker.Items.Count != 0)
+		{
+			COMPortPicker.SelectedIndex = 0;
+		}
 
 		ParityPicker.ItemsSource = new List<string>()
 		{
@@ -42,17 +46,8 @@ public partial class ConfigurationManager : ContentPage
 			"Two"
 		};
 		StopBitsPicker.SelectedIndex = 0;
-
-		recheckComportsTimer.Elapsed += RecheckComportsTimer_Elapsed;
-		recheckComportsTimer.Enabled = true;
-		recheckComportsTimer.Start();
-	
 	}
 
-	private void RecheckComportsTimer_Elapsed(object sender, ElapsedEventArgs e)
-	{
-        COMPortPicker.ItemsSource = SerialPort.GetPortNames();
-    }
 
 	private void OpenDeviceButton_Clicked(object sender, EventArgs e)
 	{
@@ -61,7 +56,6 @@ public partial class ConfigurationManager : ContentPage
 
 		try
 		{
-#pragma warning disable CA1416 // Validate platform compatibility
 
             serialPort = new SerialPort(COMPort,
                                         baudRate,
@@ -73,9 +67,8 @@ public partial class ConfigurationManager : ContentPage
 
 			string configurationJson = serialPort.ReadLine();
 
-#pragma warning restore CA1416 // Validate platform compatibility
 
-			DeviceConfiguration configuration = (DeviceConfiguration)JsonSerializer.Deserialize(configurationJson, typeof(DeviceConfiguration));
+			NodeConfiguration configuration = (NodeConfiguration)JsonSerializer.Deserialize(configurationJson, typeof(NodeConfiguration));
 
 			// Populate controls with parsed configuration
         }
@@ -94,3 +87,4 @@ public partial class ConfigurationManager : ContentPage
 
 	}
 }
+#pragma warning restore CA1416 // Validate platform compatibility

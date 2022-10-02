@@ -53,6 +53,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Reference Include="DeviceConfiguration">
+	    <HintPath>..\..\DeviceConfiguration\DeviceConfiguration\bin\Debug\net6.0\DeviceConfiguration.dll</HintPath>
+	  </Reference>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="ConfigurationManager\ConfigurationManager.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
