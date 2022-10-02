@@ -13,6 +13,7 @@ using System.IO.Ports;
 using System.Collections;
 using nanoFramework.Json;
 using nanoFramework.Hardware.Esp32;
+using DeviceConfiguration;
 
 namespace IoTCurtainsFirmware
 {
@@ -20,7 +21,7 @@ namespace IoTCurtainsFirmware
     {
         // Move to secrets, and possible make configurable from controller app.
 
-        static DeviceConfiguration deviceConfiguration = new DeviceConfiguration();
+        static NodeConfiguration deviceConfiguration = new NodeConfiguration();
 
         static int motorStepsPerRotation = 2038;
 
@@ -95,7 +96,6 @@ namespace IoTCurtainsFirmware
             serialPort.DataReceived += SerialPort_DataReceived;
             serialPort.Open();
 
-
             // Program life 
             while (true)
             {
@@ -141,11 +141,11 @@ namespace IoTCurtainsFirmware
                     serialPort.WriteLine("Send Config");
                     while (serialPort.BytesToRead == 0) ;
                     string newConfigJson = serialPort.ReadLine();
-                    deviceConfiguration = (DeviceConfiguration)JsonConvert.DeserializeObject(newConfigJson, typeof(DeviceConfiguration));
+                    deviceConfiguration = (NodeConfiguration)JsonConvert.DeserializeObject(newConfigJson, typeof(NodeConfiguration));
                     break;
 
                 case "resetDevice":
-                    deviceConfiguration = new DeviceConfiguration();
+                    deviceConfiguration = new NodeConfiguration();
                     serialPort.WriteLine("Device Reset!");
                     break;
 

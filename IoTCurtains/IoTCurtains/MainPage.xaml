@@ -4,7 +4,8 @@
              x:Class="IoTCurtains.MainPage">
 
     <ScrollView>
-        <VerticalStackLayout
+        <VerticalStackLayout x:Name="stackLayout"
+            
             Spacing="25"
             Padding="30,0"
             VerticalOptions="Center">
