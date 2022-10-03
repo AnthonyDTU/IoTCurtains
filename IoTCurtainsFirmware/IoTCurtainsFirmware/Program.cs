@@ -22,19 +22,19 @@ namespace IoTCurtainsFirmware
 
         static NodeConfiguration deviceConfiguration = new NodeConfiguration();
 
-        static int rollDownButtonPin = 36;
-        static int rollUpButtonPin = 39;
+        static int rollDownButtonPin = 32;
+        static int rollUpButtonPin = 33;
 
-        static int CalibrateButtonPin = 34;
-        static int StopAllActionButtonPin = 32;
+        static int CalibrateButtonPin = 25;
+        static int StopAllActionButtonPin = 26;
 
         static int RxUART2PinNumber = 16;
         static int TxUART2PinNumber = 17;
 
-        static int motorControllerIn1PinNumber = 12;
-        static int motorControllerIn2PinNumber = 14;
-        static int motorControllerIn3PinNumber = 27;
-        static int motorControllerIn4PinNumber = 26;
+        static int motorControllerIn1PinNumber = 13;
+        static int motorControllerIn2PinNumber = 12;
+        static int motorControllerIn3PinNumber = 14;
+        static int motorControllerIn4PinNumber = 27;
 
         static int wifiConnectedLedPinNumber = 23;
 
