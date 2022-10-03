@@ -1,0 +1,12 @@
+C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\DeviceConfiguration\DeviceConfiguration\bin\Release\net6.0\DeviceConfiguration.deps.json
+C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\DeviceConfiguration\DeviceConfiguration\bin\Release\net6.0\DeviceConfiguration.dll
+C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\DeviceConfiguration\DeviceConfiguration\bin\Release\net6.0\DeviceConfiguration.pdb
+C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\DeviceConfiguration\DeviceConfiguration\obj\Release\net6.0\DeviceConfiguration.csproj.AssemblyReference.cache
+C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\DeviceConfiguration\DeviceConfiguration\obj\Release\net6.0\DeviceConfiguration.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\DeviceConfiguration\DeviceConfiguration\obj\Release\net6.0\DeviceConfiguration.AssemblyInfoInputs.cache
+C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\DeviceConfiguration\DeviceConfiguration\obj\Release\net6.0\DeviceConfiguration.AssemblyInfo.cs
+C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\DeviceConfiguration\DeviceConfiguration\obj\Release\net6.0\DeviceConfiguration.csproj.CoreCompileInputs.cache
+C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\DeviceConfiguration\DeviceConfiguration\obj\Release\net6.0\DeviceConfiguration.dll
+C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\DeviceConfiguration\DeviceConfiguration\obj\Release\net6.0\refint\DeviceConfiguration.dll
+C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\DeviceConfiguration\DeviceConfiguration\obj\Release\net6.0\DeviceConfiguration.pdb
+C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\DeviceConfiguration\DeviceConfiguration\obj\Release\net6.0\ref\DeviceConfiguration.dll

@@ -2,7 +2,6 @@
 using System.Device.Gpio;
 using System.Diagnostics;
 using System.Threading;
-using Iot.Device.Uln2003;
 
 namespace IoTCurtainsFirmware
 {
@@ -48,7 +47,6 @@ namespace IoTCurtainsFirmware
 
         private Thread engineThread;
 
-        Uln2003 motor;
         
 
         public bool Calibrated 
@@ -99,18 +97,18 @@ namespace IoTCurtainsFirmware
                                int in3PinNumber, 
                                int in4PinNumber)
         {
-            motor = new Uln2003(in1PinNumber,
-                                in2PinNumber,
-                                in3PinNumber,
-                                in4PinNumber,
-                                gpioController);
-            
+            //motor = new Uln2003(in1PinNumber,
+            //                    in2PinNumber,
+            //                    in3PinNumber,
+            //                    in4PinNumber,
+            //                    gpioController);
 
 
-            //in1 = gpioController.OpenPin(in1PinNumber, PinMode.Output);
-            //in2 = gpioController.OpenPin(in2PinNumber, PinMode.Output);
-            //in3 = gpioController.OpenPin(in3PinNumber, PinMode.Output);
-            //in4 = gpioController.OpenPin(in4PinNumber, PinMode.Output);
+
+            in1 = gpioController.OpenPin(in1PinNumber, PinMode.Output);
+            in2 = gpioController.OpenPin(in2PinNumber, PinMode.Output);
+            in3 = gpioController.OpenPin(in3PinNumber, PinMode.Output);
+            in4 = gpioController.OpenPin(in4PinNumber, PinMode.Output);
 
             engineThread = new Thread(new ThreadStart(this.RunMotor));
             engineThread.Priority = ThreadPriority.AboveNormal;
@@ -142,26 +140,38 @@ namespace IoTCurtainsFirmware
             {
                 // Check for setpoint limits, and adjust:
                 while (currentLocation != setPoint)
-                {
-                    if (currentLocation < setPoint)
                     {
-                        currentLocation++;
-                        currentStep = (currentStep == numberOfSteps - 1) ? 0 : currentStep + 1;
-                    }
-                    else if (currentLocation > setPoint)
-                    {
-                        currentLocation--;
-                        currentStep = (currentStep == 0) ? numberOfSteps - 1 : currentStep - 1;
-                    }
+                        if (currentLocation < setPoint)
+                        {
+                            currentLocation++;
+                            currentStep = (currentStep == numberOfSteps - 1) ? 0 : currentStep + 1;
+                        }
+                        else if (currentLocation > setPoint)
+                        {
+                            currentLocation--;
+                            currentStep = (currentStep == 0) ? numberOfSteps - 1 : currentStep - 1;
+                        }
 
-                    in1.Write(stepSequence0[currentStep]);
-                    in2.Write(stepSequence1[currentStep]);
-                    in3.Write(stepSequence2[currentStep]);
-                    in4.Write(stepSequence3[currentStep]);
-                    Thread.Sleep(2);
-                }
+                        in1.Write(stepSequence0[currentStep]);
+                        in2.Write(stepSequence1[currentStep]);
+                        in3.Write(stepSequence2[currentStep]);
+                        in4.Write(stepSequence3[currentStep]);
+                        Thread.Sleep(2);
+                    }
 
                 newSetpontSignal.WaitOne();
+                //motor.Mode = StepperMode.HalfStep;
+
+                //motor.RPM = 15;
+                //motor.Step(4096);
+
+                //motor.Step(-2048);
+
+
+
+
+
+
             }
         }
     }

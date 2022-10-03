@@ -13,7 +13,6 @@ using System.IO.Ports;
 using System.Collections;
 using nanoFramework.Json;
 using nanoFramework.Hardware.Esp32;
-using DeviceConfiguration;
 
 namespace IoTCurtainsFirmware
 {
@@ -23,33 +22,27 @@ namespace IoTCurtainsFirmware
 
         static NodeConfiguration deviceConfiguration = new NodeConfiguration();
 
-        static int motorStepsPerRotation = 2038;
+        static int rollDownButtonPin = 36;
+        static int rollUpButtonPin = 39;
 
-        static int rollDownButtonPin = 32;
-        static int rollUpButtonPin = 33;
-        static int rollToButtomButtonPin = 22;
-        static int rollToTopButtonPin = 23;
-
-        static int StopAllActionButtonPin = 21;
-
-        static int CalibrateButtonPin = 36;
+        static int CalibrateButtonPin = 34;
+        static int StopAllActionButtonPin = 32;
 
         static int RxUART2PinNumber = 16;
         static int TxUART2PinNumber = 17;
 
-        static int motorControllerIn1PinNumber = 13;
-        static int motorControllerIn2PinNumber = 12;
-        static int motorControllerIn3PinNumber = 14;
-        static int motorControllerIn4PinNumber = 27;
-        static int wifiConnectedLedPinNumber = 19;
+        static int motorControllerIn1PinNumber = 12;
+        static int motorControllerIn2PinNumber = 14;
+        static int motorControllerIn3PinNumber = 27;
+        static int motorControllerIn4PinNumber = 26;
+
+        static int wifiConnectedLedPinNumber = 23;
 
         static GpioController gpioController;
         static MotorController motorController;
 
         static GpioButton rollDownButton;
         static GpioButton rollUpButton;
-        static GpioButton rollToButtomButton;
-        static GpioButton rollToTopButton;
         static GpioButton calibrateButton;
         static GpioButton stopMotorButton;
 
@@ -169,6 +162,9 @@ namespace IoTCurtainsFirmware
         /// </summary>
         private static void InitializeSystem()
         {
+            // Load the stored device configuration:
+            deviceConfiguration = LoadConfiguration();
+
             // GPIO Contoller:
             gpioController = new GpioController(PinNumberingScheme.Board);
 
@@ -182,17 +178,28 @@ namespace IoTCurtainsFirmware
             // Buttons
             rollDownButton = new GpioButton(rollDownButtonPin, gpioController, false);
             rollUpButton = new GpioButton(rollUpButtonPin, gpioController, false);
-            rollToButtomButton = new GpioButton(rollToButtomButtonPin, gpioController, false);
-            rollToTopButton = new GpioButton(rollToTopButtonPin, gpioController, false);
-            calibrateButton = new GpioButton(CalibrateButtonPin, gpioController, false);
+            //rollToButtomButton = new GpioButton(rollToButtomButtonPin, gpioController, false);
+            //rollToTopButton = new GpioButton(rollToTopButtonPin, gpioController, false);
             stopMotorButton = new GpioButton(StopAllActionButtonPin, gpioController, false);
+            calibrateButton = new GpioButton(CalibrateButtonPin, gpioController, false);
                         
-            rollToTopButton.ButtonDown += RollToTopButton_ButtonDown;
-            rollToButtomButton.ButtonDown += RollToButtomButton_ButtonDown;
+            //rollToTopButton.ButtonDown += RollToTopButton_ButtonDown;
+            //rollToButtomButton.ButtonDown += RollToButtomButton_ButtonDown;
             stopMotorButton.ButtonDown += StopMotorButton_ButtonDown;
 
             // WiFi
             ConnectToWiFi();
+        }
+
+        /// <summary>
+        /// Load the configuration from storage
+        /// </summary>
+        private static NodeConfiguration LoadConfiguration()
+        {
+            NodeConfiguration nodeConfiguration = new NodeConfiguration();
+            nodeConfiguration.WiFiSSID = "TP-LINK_0AC4EC";
+            nodeConfiguration.WiFiPassword = "eqh76rxg";
+            return nodeConfiguration;
         }
 
         /// <summary>
@@ -299,10 +306,3 @@ namespace IoTCurtainsFirmware
         }
     }
 }
-
-
-
-
-
-
-
