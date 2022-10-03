@@ -134,7 +134,7 @@ namespace IoTCurtainsFirmware
             switch (command)
             {
                 case "getConfig":
-                    serialPort.WriteLine(JsonConvert.SerializeObject(deviceConfiguration);
+                    serialPort.WriteLine(JsonConvert.SerializeObject(deviceConfiguration));
                     break;
 
                 case "configure":

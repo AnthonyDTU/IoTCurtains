@@ -2,6 +2,7 @@
 using System.Device.Gpio;
 using System.Diagnostics;
 using System.Threading;
+using Iot.Device.Uln2003;
 
 namespace IoTCurtainsFirmware
 {
@@ -46,6 +47,9 @@ namespace IoTCurtainsFirmware
         private bool calibrated = false;
 
         private Thread engineThread;
+
+        Uln2003 motor;
+        
 
         public bool Calibrated 
         { 
@@ -95,10 +99,18 @@ namespace IoTCurtainsFirmware
                                int in3PinNumber, 
                                int in4PinNumber)
         {
-            in1 = gpioController.OpenPin(in1PinNumber, PinMode.Output);
-            in2 = gpioController.OpenPin(in2PinNumber, PinMode.Output);
-            in3 = gpioController.OpenPin(in3PinNumber, PinMode.Output);
-            in4 = gpioController.OpenPin(in4PinNumber, PinMode.Output);
+            motor = new Uln2003(in1PinNumber,
+                                in2PinNumber,
+                                in3PinNumber,
+                                in4PinNumber,
+                                gpioController);
+            
+
+
+            //in1 = gpioController.OpenPin(in1PinNumber, PinMode.Output);
+            //in2 = gpioController.OpenPin(in2PinNumber, PinMode.Output);
+            //in3 = gpioController.OpenPin(in3PinNumber, PinMode.Output);
+            //in4 = gpioController.OpenPin(in4PinNumber, PinMode.Output);
 
             engineThread = new Thread(new ThreadStart(this.RunMotor));
             engineThread.Priority = ThreadPriority.AboveNormal;
