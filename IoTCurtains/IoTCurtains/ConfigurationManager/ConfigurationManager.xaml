@@ -1,78 +1,25 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:control="clr-namespace:IoTCurtains.ConfigurationManager"
              x:Class="IoTCurtains.ConfigurationManager.ConfigurationManager"
-             Title="ConfigurationManager">
-    <VerticalStackLayout>
+             Title="Configuration Manager">
+    <VerticalStackLayout 
+        WidthRequest="600">
 
+        <control:SerialConfigurator 
+            x:Name="serialConfigurator"/>
 
-
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-
-
-            <Picker 
-                x:Name="COMPortPicker"
-                WidthRequest="100"
-                Title="COM Port:"
-                Grid.Column="0"/>
-
-            <Entry 
-                x:Name="Baudrate"
-                Text="115200"
-                WidthRequest="100"
-                Grid.Column="1"/>
-
-            <Entry 
-                x:Name="Databits"
-                Text="8"
-                WidthRequest="100"
-                Grid.Column="2"/>
-
-            <Picker 
-                x:Name="StopBitsPicker" 
-                WidthRequest="100"
-                Title="Stopbits:"
-                Grid.Column="3"/>
-
-            <Picker 
-                x:Name="ParityPicker"
-                WidthRequest="100"
-                Title="Parity"
-                Grid.Column="4"/>
-
-
-        </Grid>
-
-        <Button
-            x:Name="OpenDeviceButton"
-            Text="Open Device"
-            Clicked="OpenDeviceButton_Clicked"
-            WidthRequest="300"/>
-        
-        
-        
+        <control:ConfigurationEditor 
+            x:Name="configurationEditor"
+            IsEnabled="False"/>
 
         <Button 
-            x:Name="SendConfigurationToDeviceButton"
-            Text="Send Configuration To Device"
-            Clicked="SendConfigurationToDeviceButton_Clicked"
-            WidthRequest="300"/>
-
-
-       
-        
-        
-        
-        
-
-
+            x:Name="ResetDeviceButton"
+            Text="Reset Device Configuration"
+            Clicked="ResetDeviceButton_Clicked"
+            Margin="20"
+            WidthRequest="550"/>
 
     </VerticalStackLayout>
 </ContentPage>

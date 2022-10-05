@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IoTCurtains.ConfigurationManager.ConfigurationEditor">
+    <VerticalStackLayout
+        HorizontalOptions="Center"
+        WidthRequest="550"
+        Spacing="20"
+        Margin="20">
+
+        <VerticalStackLayout
+            Spacing="5">
+            <Label
+                Text="WiFi SSID:"/>
+
+            <Entry 
+                x:Name="wifiSSIDEntry"
+                Placeholder="SSID"/>
+        </VerticalStackLayout>
+
+        <VerticalStackLayout
+            Spacing="5">
+            <Label
+                Text="WiFi Password:"/>
+
+            <Entry
+                x:Name="wifiPasswordEntry"
+                Placeholder="Password"/>
+        </VerticalStackLayout>
+
+        <VerticalStackLayout
+            Spacing="5">
+            <Label
+                Text="Device MAC Address:"/>
+
+            <Entry
+                x:Name="macAddressEntry"
+                Placeholder="MAC Address"
+                IsReadOnly="True"/>
+        </VerticalStackLayout>
+
+        <VerticalStackLayout
+            Spacing="5">
+            <Label
+                Text="Device ID:"/>
+
+            <Entry 
+                x:Name="deviceIDEntry"
+                Placeholder="Device ID"/>
+        </VerticalStackLayout>
+
+        <Button
+            x:Name="configureDeviceButton"
+            Clicked="configureDeviceButton_Clicked"
+            Text="Configure Device"
+            WidthRequest="275"
+            HorizontalOptions="End"/>
+
+
+    </VerticalStackLayout>
+</ContentView>

@@ -59,9 +59,25 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="ConfigurationManager\SerialConfigurator.xaml.cs">
+	    <DependentUpon>SerialConfigurator.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="ConfigurationManager\ConfigurationEditor.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="ConfigurationManager\ConfigurationManager.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="ConfigurationManager\SerialConfigurator.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Curtains\" />
 	</ItemGroup>
 
 </Project>

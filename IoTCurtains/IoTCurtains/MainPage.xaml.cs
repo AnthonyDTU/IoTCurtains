@@ -17,6 +17,9 @@ public partial class MainPage : ContentPage
 			Button configureDeviceBtn = new Button()
 			{
 				Text = "Open Device Configuration Manager",
+				WidthRequest = 300,
+				HorizontalOptions = LayoutOptions.Center,
+
 			};
 
             configureDeviceBtn.Clicked += ConfigureBtn_Clicked;	
@@ -24,14 +27,9 @@ public partial class MainPage : ContentPage
 		}
     }
 
-	private void ConfigureBtn_Clicked(object sender, EventArgs e)
+	private async void ConfigureBtn_Clicked(object sender, EventArgs e)
 	{
-		var secondWindow = new Window
-		{
-			Page = new ConfigurationManager.ConfigurationManager()
-        };
-
-        Application.Current.OpenWindow(secondWindow);
+		await Navigation.PushAsync(new ConfigurationManager.ConfigurationManager());
     }
 
 	private void OnCounterClicked(object sender, EventArgs e)

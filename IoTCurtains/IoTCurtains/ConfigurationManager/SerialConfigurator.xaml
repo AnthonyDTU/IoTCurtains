@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IoTCurtains.ConfigurationManager.SerialConfigurator">
+    
+    <VerticalStackLayout WidthRequest="550"
+                         Spacing="15"
+                         Margin="20">
+
+        <Label 
+            Text="Serial Configuration:"
+            FontSize="24"
+            FontAttributes="Bold"/>
+
+        <HorizontalStackLayout
+            HorizontalOptions="Center"
+            Spacing="10">
+
+            <VerticalStackLayout
+                Spacing="5">
+                <Label 
+                    Text="COM Port:"/>
+                
+                <Picker 
+                    x:Name="COMPortPicker"
+                    WidthRequest="100"
+                    HeightRequest="35"/>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout
+                Spacing="5">
+                <Label 
+                    Text="Baudrate:"/>
+
+                <Entry 
+                    x:Name="BaudrateEntry"
+                    Text="115200"
+                    WidthRequest="100"
+                    HeightRequest="30"/>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout
+                Spacing="5">
+                <Label 
+                    Text="Databits:"/>
+
+                <Entry 
+                    x:Name="DatabitsEntry"
+                    Text="8"
+                    WidthRequest="100"
+                    HeightRequest="30"/>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout
+                Spacing="5">
+                <Label 
+                    Text="Stopbits:"/>
+
+                <Picker 
+                    x:Name="StopBitsPicker"
+                    WidthRequest="100"
+                    HeightRequest="35"/>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout
+                Spacing="5">
+                <Label 
+                    Text="Parity:"/>
+
+                <Picker 
+                    x:Name="ParityPicker"
+                    WidthRequest="100"
+                    HeightRequest="35"/>
+            </VerticalStackLayout>            
+        </HorizontalStackLayout>
+
+        <Button
+            x:Name="OpenDeviceButton"
+            Text="Open Device"
+            Clicked="OpenDeviceButton_Clicked"
+            WidthRequest="275"
+            HorizontalOptions="End"/>
+
+    </VerticalStackLayout>   
+</ContentView>
