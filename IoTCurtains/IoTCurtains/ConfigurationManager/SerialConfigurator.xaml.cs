@@ -7,8 +7,6 @@ namespace IoTCurtains.ConfigurationManager;
 #pragma warning disable CA1416 // Validate platform compatibility
 public partial class SerialConfigurator : ContentView
 {
-    SerialPort serialPort;
-
     private string COMPort = "COM1";
     private int baudRate = 115200;
     private int dataBits = 8;
@@ -51,6 +49,12 @@ public partial class SerialConfigurator : ContentView
 	{
         try
         {
+            COMPort = COMPortPicker.SelectedItem as string;
+            baudRate = Convert.ToInt32(BaudrateEntry.Text);
+            parity = (Parity)ParityPicker.SelectedIndex;
+            dataBits = Convert.ToInt32(DatabitsEntry.Text);
+            stopBits = (StopBits)StopBitsPicker.SelectedIndex;
+
             SerialPort serialPort = new SerialPort(COMPort,
                                                    baudRate,
                                                    parity,

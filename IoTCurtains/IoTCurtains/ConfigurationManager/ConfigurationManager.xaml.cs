@@ -22,13 +22,19 @@ public partial class ConfigurationManager : ContentPage
         ResetDeviceButton.IsEnabled = false;
     }
 
-
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="serialPort"></param>
 	public void SetSerialPort(SerialPort serialPort)
 	{
         this.serialPort = serialPort;
         GetDeviceConfig();	
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     private void GetDeviceConfig()
     {
 		try
@@ -46,6 +52,10 @@ public partial class ConfigurationManager : ContentPage
 		}
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="jsonConfiguration"></param>
 	public void SendConfigurationToDevice(string jsonConfiguration)
 	{
 		try
@@ -68,7 +78,11 @@ public partial class ConfigurationManager : ContentPage
 		}	
 	}
 
-
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void ResetDeviceButton_Clicked(object sender, EventArgs e)
     {
         try
@@ -83,5 +97,14 @@ public partial class ConfigurationManager : ContentPage
             throw;
         }
     }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    ~ConfigurationManager()
+    {
+        serialPort.Close();
+    }
+
 }
 #pragma warning restore CA1416 // Validate platform compatibility

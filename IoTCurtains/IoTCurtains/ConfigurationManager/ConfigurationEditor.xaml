@@ -25,7 +25,8 @@
 
             <Entry
                 x:Name="wifiPasswordEntry"
-                Placeholder="Password"/>
+                Placeholder="Password"
+                IsPassword="True"/>
         </VerticalStackLayout>
 
         <VerticalStackLayout
