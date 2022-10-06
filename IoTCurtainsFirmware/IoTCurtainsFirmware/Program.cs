@@ -13,6 +13,11 @@ using System.IO.Ports;
 using System.Collections;
 using nanoFramework.Json;
 using nanoFramework.Hardware.Esp32;
+using System.Net.Http;
+using System.Net.Sockets;
+using System.Net;
+
+using nanoFramework.M2Mqtt;
 
 namespace IoTCurtainsFirmware
 {
@@ -52,42 +57,40 @@ namespace IoTCurtainsFirmware
 
         static SerialPort serialPort;
 
+        static NetworkInterface network;
+
         public static void Main()
         {
             InitializeSystem();
             //CalibrateMotorController();
 
 
+            const string DeviceID = "CurtainController";
+            const string IotBrokerAddress = "IoTCurtains.azure-devices.net";
+            const string SasKey = "HvCMwRqzTDAjCkQZvDvEu/ziH6nX1RP41QTpmYv2h3o=";
+            
+            DeviceClient azureIoT = new DeviceClient(IotBrokerAddress, DeviceID, SasKey);
+            bool connectedToAzure = azureIoT.Open();
 
 
-            //const string DeviceID = "CurtainController";
-            //const string IotBrokerAddress = "IoTCurtains.azure-devices.net";
-            //const string SasKey = "HvCMwRqzTDAjCkQZvDvEu/ziH6nX1RP41QTpmYv2h3o=";
-            //DeviceClient azureIoT = new DeviceClient(IotBrokerAddress, DeviceID, SasKey);
-            //bool connectedToAzure = azureIoT.Open();
 
-            //if (connectedToAzure == true)
-            //{
-            //    Console.WriteLine("Successfully connected to Azure!");
-            //}
+            //nanoFramework.Azure.Devices.Shared.Twin twin = new nanoFramework.Azure.Devices.Shared.Twin(DeviceID);
+            //twin = azureIoT.GetTwin();
+            //twin.Properties.Reported["Level"] = 15;
+            //azureIoT.
 
-            Configuration.SetPinFunction(RxUART2PinNumber, DeviceFunction.COM2_RX);
-            Configuration.SetPinFunction(TxUART2PinNumber, DeviceFunction.COM2_TX);
 
-            var ports = SerialPort.GetPortNames();
-            foreach(var port in ports)
+            
+            if (connectedToAzure == true)
             {
-                Console.WriteLine(port);
+                Console.WriteLine("Successfully connected to Azure!");
+            }
+            else
+            {
+                Console.WriteLine("Something Went Wrong...");
             }
 
-            serialPort = new SerialPort(portName: "COM2",
-                                        baudRate: 115200,
-                                        Parity.None,
-                                        dataBits: 8,
-                                        StopBits.One);
 
-            serialPort.DataReceived += SerialPort_DataReceived;
-            serialPort.Open();
 
             // Program life 
             while (true)
@@ -188,7 +191,29 @@ namespace IoTCurtainsFirmware
             stopMotorButton.ButtonDown += StopMotorButton_ButtonDown;
 
             // WiFi
-            ConnectToWiFi();
+            network = NetworkInterface.GetAllNetworkInterfaces()[networkInterfaceIndex];
+            if (network.IPv4Address != null &&
+                network.IPv4Address != string.Empty)
+            {
+                ConnectToWiFi();
+            }
+            else
+            {
+                connectedToWiFi = true;
+            }
+
+            // UART
+            Configuration.SetPinFunction(RxUART2PinNumber, DeviceFunction.COM2_RX);
+            Configuration.SetPinFunction(TxUART2PinNumber, DeviceFunction.COM2_TX);
+                        
+            serialPort = new SerialPort(portName: "COM2",
+                                        baudRate: 115200,
+                                        Parity.None,
+                                        dataBits: 8,
+                                        StopBits.One);
+
+            serialPort.DataReceived += SerialPort_DataReceived;
+            serialPort.Open();
         }
 
         /// <summary>
@@ -216,7 +241,6 @@ namespace IoTCurtainsFirmware
             {
                 connectedToWiFi = true;
                 
-                NetworkInterface network = NetworkInterface.GetAllNetworkInterfaces()[networkInterfaceIndex];
                 Console.WriteLine("Connected To Wifi!");
                 Console.WriteLine($"Network IP: {network.IPv4Address}");
 
