@@ -29,6 +29,6 @@
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/appicon.appiconset</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.AnthonyDTU.iotcurtains</string>
+	<string>com.AnthonyDTU.IoTCurtains</string>
 </dict>
 </plist>

@@ -62,6 +62,9 @@
     <Reference Include="nanoFramework.System.Text">
       <HintPath>..\packages\nanoFramework.System.Text.1.2.7\lib\nanoFramework.System.Text.dll</HintPath>
     </Reference>
+    <Reference Include="SmartCurtains">
+      <HintPath>..\..\SmartCurtains\SmartCurtains\bin\Debug\net6.0\SmartCurtains.dll</HintPath>
+    </Reference>
     <Reference Include="System.Device.Gpio">
       <HintPath>..\packages\nanoFramework.System.Device.Gpio.1.1.18\lib\System.Device.Gpio.dll</HintPath>
     </Reference>

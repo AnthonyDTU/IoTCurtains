@@ -8,6 +8,12 @@
         Spacing="20"
         Margin="20">
 
+        <Label 
+            Text="Device Configuration:"
+            FontSize="24"
+            FontAttributes="Bold"/>
+        
+        
         <VerticalStackLayout
             Spacing="5">
             <Label

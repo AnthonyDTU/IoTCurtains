@@ -4,6 +4,32 @@
     <ActiveDebugFramework>net6.0-windows10.0.19041.0</ActiveDebugFramework>
     <IsFirstTimeProjectOpen>False</IsFirstTimeProjectOpen>
     <ActiveDebugProfile>Windows Machine</ActiveDebugProfile>
+    <SelectedPlatformGroup>RemoteDevice</SelectedPlatformGroup>
+    <TargetiOSDevice>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;plist version="1.0"&gt;
+&lt;dict&gt;
+	&lt;key&gt;device&lt;/key&gt;
+	&lt;dict&gt;
+		&lt;key&gt;architecture&lt;/key&gt;
+		&lt;string&gt;ARMv6, ARMv7, ARMv7s, ARM64&lt;/string&gt;
+		&lt;key&gt;model&lt;/key&gt;
+		&lt;string&gt;iPhone13,2&lt;/string&gt;
+		&lt;key&gt;os-version&lt;/key&gt;
+		&lt;string&gt;16.0&lt;/string&gt;
+		&lt;key&gt;os&lt;/key&gt;
+		&lt;string&gt;iOS&lt;/string&gt;
+	&lt;/dict&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;
+</TargetiOSDevice>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetPlatformIdentifier)'=='iOS'">
+    <RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
+    <PlatformTarget>arm64</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-android|AnyCPU'">
+    <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
   </PropertyGroup>
   <ItemGroup>
     <MauiXaml Update="ConfigurationManager\ConfigurationEditor.xaml">

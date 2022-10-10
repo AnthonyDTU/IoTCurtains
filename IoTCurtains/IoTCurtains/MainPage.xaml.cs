@@ -1,6 +1,7 @@
 ﻿namespace IoTCurtains;
 
-
+using Microsoft.Azure.Devices.Client;
+using Microsoft.Azure.Devices.Shared;
 using System.IO.Ports;
 
 public partial class MainPage : ContentPage
@@ -11,6 +12,19 @@ public partial class MainPage : ContentPage
 	public MainPage()
 	{
 		InitializeComponent();
+
+		string hostname = "IoTCurtains.azure-devices.net";
+
+        string connectionString = "HostName=IoTCurtains.azure-devices.net;DeviceId=Controller;SharedAccessKey=+AJ9aB8DUVoWK35MwSrDKoJB9TxBgazOofgRQ7raeGE=";
+
+
+
+
+		//DeviceClient deviceClient = DeviceClient.Create(hostname, authenticationMethod);
+		//DeviceClient deviceClient = DeviceClient.CreateFromConnectionString(connectionString, TransportType.Mqtt);
+		//deviceClient.OpenAsync().Wait();
+		//Task<Twin> getTwin = deviceClient.GetTwinAsync();
+		//Twin twin = getTwin.Result;
 
 		if (DeviceInfo.Current.Platform == DevicePlatform.WinUI)
 		{
@@ -34,6 +48,9 @@ public partial class MainPage : ContentPage
 
 	private void OnCounterClicked(object sender, EventArgs e)
 	{
+
+
+
 		
 	}
 }

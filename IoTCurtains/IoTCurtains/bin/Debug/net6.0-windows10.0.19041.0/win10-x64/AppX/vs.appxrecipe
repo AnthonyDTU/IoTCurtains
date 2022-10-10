@@ -29,25 +29,25 @@
     <AppXManifest Include="C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\IoTCurtains\IoTCurtains\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-10-05T20:41:22.045</Modified>
+      <Modified>2022-10-10T20:25:08.031</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\IoTCurtains\IoTCurtains\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2022-10-05T20:32:40.524</Modified>
+      <Modified>2022-10-10T20:22:29.411</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\IoTCurtains\IoTCurtains\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\IoTCurtains.runtimeconfig.json">
       <PackagePath>IoTCurtains.runtimeconfig.json</PackagePath>
-      <Modified>2022-10-02T21:42:53.270</Modified>
+      <Modified>2022-10-08T17:42:09.092</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\IoTCurtains\IoTCurtains\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\IoTCurtains.dll">
       <PackagePath>IoTCurtains.dll</PackagePath>
-      <Modified>2022-10-05T20:41:20.760</Modified>
+      <Modified>2022-10-10T20:25:06.355</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\IoTCurtains\IoTCurtains\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\apphost.exe">
       <PackagePath>IoTCurtains.exe</PackagePath>
-      <Modified>2022-10-05T20:41:20.768</Modified>
+      <Modified>2022-10-10T20:25:06.422</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\microsoft.netcore.app.runtime.win-x64\6.0.9\runtimes\win-x64\lib\net6.0\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -965,6 +965,42 @@
       <PackagePath>WinRT.Runtime.dll</PackagePath>
       <Modified>2022-08-17T03:26:26.000</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\dotnetty.buffers\0.7.0\lib\netstandard2.0\DotNetty.Buffers.dll">
+      <PackagePath>DotNetty.Buffers.dll</PackagePath>
+      <Modified>2021-08-03T22:20:12.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\dotnetty.codecs\0.7.0\lib\netstandard2.0\DotNetty.Codecs.dll">
+      <PackagePath>DotNetty.Codecs.dll</PackagePath>
+      <Modified>2021-08-03T22:20:24.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\dotnetty.codecs.mqtt\0.7.0\lib\netstandard2.0\DotNetty.Codecs.Mqtt.dll">
+      <PackagePath>DotNetty.Codecs.Mqtt.dll</PackagePath>
+      <Modified>2021-08-03T22:20:22.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\dotnetty.common\0.7.1\lib\netstandard2.0\DotNetty.Common.dll">
+      <PackagePath>DotNetty.Common.dll</PackagePath>
+      <Modified>2021-12-16T00:10:00.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\dotnetty.handlers\0.7.0\lib\netstandard2.0\DotNetty.Handlers.dll">
+      <PackagePath>DotNetty.Handlers.dll</PackagePath>
+      <Modified>2021-08-03T22:20:52.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\dotnetty.transport\0.7.0\lib\netstandard2.0\DotNetty.Transport.dll">
+      <PackagePath>DotNetty.Transport.dll</PackagePath>
+      <Modified>2021-08-03T22:20:24.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\microsoft.azure.amqp\2.5.12\lib\netstandard2.0\Microsoft.Azure.Amqp.dll">
+      <PackagePath>Microsoft.Azure.Amqp.dll</PackagePath>
+      <Modified>2022-06-02T16:19:10.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\microsoft.azure.devices.client\1.41.2\lib\net5.0\Microsoft.Azure.Devices.Client.dll">
+      <PackagePath>Microsoft.Azure.Devices.Client.dll</PackagePath>
+      <Modified>2022-08-12T14:04:18.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\microsoft.azure.devices.shared\1.30.2\lib\net5.0\Microsoft.Azure.Devices.Shared.dll">
+      <PackagePath>Microsoft.Azure.Devices.Shared.dll</PackagePath>
+      <Modified>2022-07-28T13:17:04.000</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\microsoft.extensions.configuration\6.0.1\lib\netstandard2.0\Microsoft.Extensions.Configuration.dll">
       <PackagePath>Microsoft.Extensions.Configuration.dll</PackagePath>
       <Modified>2022-02-24T00:12:18.000</Modified>
@@ -1053,9 +1089,25 @@
       <PackagePath>Microsoft.WindowsAppRuntime.Bootstrap.Net.dll</PackagePath>
       <Modified>2022-07-19T16:53:02.000</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\newtonsoft.json\13.0.1\lib\netstandard2.0\Newtonsoft.Json.dll">
+      <PackagePath>Newtonsoft.Json.dll</PackagePath>
+      <Modified>2021-03-17T20:03:36.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\system.configuration.configurationmanager\4.4.1\lib\netstandard2.0\System.Configuration.ConfigurationManager.dll">
+      <PackagePath>System.Configuration.ConfigurationManager.dll</PackagePath>
+      <Modified>2017-11-20T18:09:04.000</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\system.io.ports\7.0.0-rc.1.22426.10\runtimes\win\lib\net6.0\System.IO.Ports.dll">
       <PackagePath>System.IO.Ports.dll</PackagePath>
       <Modified>2022-08-27T01:15:12.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\system.security.cryptography.protecteddata\4.4.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll">
+      <PackagePath>System.Security.Cryptography.ProtectedData.dll</PackagePath>
+      <Modified>2017-07-19T10:01:34.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\windowsazure.storage\9.3.2\lib\netstandard1.3\Microsoft.WindowsAzure.Storage.dll">
+      <PackagePath>Microsoft.WindowsAzure.Storage.dll</PackagePath>
+      <Modified>2018-09-15T01:06:20.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\microsoft.graphics.win2d\1.0.3.1\runtimes\win10-x64\native\Microsoft.Graphics.Canvas.dll">
       <PackagePath>Microsoft.Graphics.Canvas.dll</PackagePath>
@@ -1065,13 +1117,17 @@
       <PackagePath>Microsoft.WindowsAppRuntime.Bootstrap.dll</PackagePath>
       <Modified>2022-07-19T16:53:02.000</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\runtime.win7-x64.runtime.native.system.io.compression\4.3.0\runtimes\win7-x64\native\clrcompression.dll">
+      <PackagePath>clrcompression.dll</PackagePath>
+      <Modified>2016-11-05T04:34:54.000</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\DeviceConfiguration\DeviceConfiguration\bin\Debug\net6.0\DeviceConfiguration.dll">
       <PackagePath>DeviceConfiguration.dll</PackagePath>
       <Modified>2022-10-03T21:00:56.289</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\IoTCurtains\IoTCurtains\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\IoTCurtains.deps.json">
       <PackagePath>IoTCurtains.deps.json</PackagePath>
-      <Modified>2022-10-05T20:41:21.908</Modified>
+      <Modified>2022-10-10T20:25:07.884</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files\dotnet\packs\Microsoft.Maui.Controls.Ref.win\6.0.536\ref\net6.0-windows10.0.19041\Microsoft.Maui.Controls.Compatibility.pri">
       <PackagePath>Microsoft.Maui.Controls.Compatibility.pri</PackagePath>

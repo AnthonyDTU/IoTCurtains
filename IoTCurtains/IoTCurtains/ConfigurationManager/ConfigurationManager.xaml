@@ -4,22 +4,29 @@
              xmlns:control="clr-namespace:IoTCurtains.ConfigurationManager"
              x:Class="IoTCurtains.ConfigurationManager.ConfigurationManager"
              Title="Configuration Manager">
-    <VerticalStackLayout 
-        WidthRequest="600">
 
-        <control:SerialConfigurator 
-            x:Name="serialConfigurator"/>
+    <ScrollView>
+        
+        <VerticalStackLayout 
+            WidthRequest="600">
+        
+        
 
-        <control:ConfigurationEditor 
-            x:Name="configurationEditor"
-            IsEnabled="False"/>
+            <control:SerialConfigurator 
+                x:Name="serialConfigurator"/>
 
-        <Button 
-            x:Name="ResetDeviceButton"
-            Text="Reset Device Configuration"
-            Clicked="ResetDeviceButton_Clicked"
-            Margin="20"
-            WidthRequest="550"/>
+            <control:ConfigurationEditor 
+                x:Name="configurationEditor"
+                IsEnabled="False"/>
 
-    </VerticalStackLayout>
+            <Button 
+                x:Name="ResetDeviceButton"
+                Text="Reset Device Configuration"
+                Clicked="ResetDeviceButton_Clicked"
+                Margin="20"
+                WidthRequest="550"/>
+
+        </VerticalStackLayout>
+
+    </ScrollView>
 </ContentPage>

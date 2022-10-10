@@ -13,6 +13,5 @@ namespace DeviceConfiguration
         public string? AzureIoTHub { get; set; }
         public string? DeviceID { get; set; }
         public string? SaSKey { get; set; }
-
     }
 }

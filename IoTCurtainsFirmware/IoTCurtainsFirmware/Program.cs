@@ -16,6 +16,7 @@ using nanoFramework.Hardware.Esp32;
 using System.Net.Http;
 using System.Net.Sockets;
 using System.Net;
+using SmartCurtains.HardwareDevice;
 
 using nanoFramework.M2Mqtt;
 
@@ -64,6 +65,7 @@ namespace IoTCurtainsFirmware
             InitializeSystem();
             //CalibrateMotorController();
 
+            IHardwareClass hardwareClass;
 
             const string DeviceID = "CurtainController";
             const string IotBrokerAddress = "IoTCurtains.azure-devices.net";
