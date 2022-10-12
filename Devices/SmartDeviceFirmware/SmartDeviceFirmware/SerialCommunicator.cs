@@ -30,7 +30,7 @@ namespace SmartDeviceFirmware
         /// <param name="COMPort"></param>
         /// <param name="rxPinNumber"></param>
         /// <param name="txPinNumber"></param>
-        /// <param name="dataRecivedHandler">Passes through all data, which are not related to config commands</param>
+        /// <param name="dataRecivedHandler">Passes back all data, that is not related to config commands</param>
         public SerialCommunicator(NodeConfiguration nodeConfiguration, string COMPort, int rxPinNumber, int txPinNumber, DataRecivedHandler dataRecivedCallbackHandler = null)
         {
             this.nodeConfiguration = nodeConfiguration;
@@ -49,6 +49,12 @@ namespace SmartDeviceFirmware
             serialPort.Open();
         }
 
+        /// <summary>
+        /// Handler for when new data is received on the serialport
+        /// A passback function can be set up during construction of this class, to pass back data that is not config related
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             string recievedData = serialPort.ReadLine();
@@ -92,7 +98,7 @@ namespace SmartDeviceFirmware
         }
 
         /// <summary>
-        /// 
+        /// Sends a message over the serialport, to any device listening
         /// </summary>
         /// <param name="message"></param>
         /// <returns></returns>

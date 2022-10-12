@@ -8,8 +8,7 @@ namespace SmartCurtainsFirmware
 {
     class SmartCurtains : Device
     {
-
-        // Pin numbering :
+        // Pin numbering 
         //
         const int RxUART2PinNumber = 16;
         const int TxUART2PinNumber = 17;
@@ -28,7 +27,7 @@ namespace SmartCurtainsFirmware
         const int wifiInterfaceIndex = 0;
         const string COMPort = "COM2";
 
-        // Project specific objects
+        // Device specific objects
         // 
         MotorController motorController;
 

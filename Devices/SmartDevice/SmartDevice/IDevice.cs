@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace SmartDevice
 {
-    internal interface IDevice
+    public interface IDevice
     {
-        public string DeviceModel { get;  }
-        public string DeviceName { get; set; }
+        public NodeConfiguration NodeConfiguration { get; }
 
         public IDeviceConfigurator DeviceConfigurator { get; }
+
+
+
 
     }
 }

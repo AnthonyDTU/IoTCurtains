@@ -343,7 +343,6 @@ C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented P
 C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\IoTCurtains\IoTCurtains\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\MultipleQualifiersPerDimensionFound.txt
 C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\IoTCurtains\IoTCurtains\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\ProjectArchitectures.txt
 C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\IoTCurtains\IoTCurtains\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\System.IO.Ports.dll
-C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\IoTCurtains\IoTCurtains\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\mscordaccore_amd64_amd64_6.0.922.41905.dll
 C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\IoTCurtains\IoTCurtains\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\DeviceConfiguration.dll
 C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\IoTCurtains\IoTCurtains\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\DeviceConfiguration.pdb
 C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\IoTCurtains\IoTCurtains\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\DotNetty.Buffers.dll
@@ -360,3 +359,4 @@ C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented P
 C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\IoTCurtains\IoTCurtains\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\System.Security.Cryptography.ProtectedData.dll
 C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\IoTCurtains\IoTCurtains\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\Microsoft.WindowsAzure.Storage.dll
 C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\IoTCurtains\IoTCurtains\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\clrcompression.dll
+C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\IoTCurtains\IoTCurtains\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\mscordaccore_amd64_amd64_6.0.1022.47605.dll

@@ -6,14 +6,16 @@ using System.Threading.Tasks;
 
 namespace SmartDevice
 {
-    internal interface NodeConfiguration
+    public class NodeConfiguration
     {
-        public string DeviceModel { get; set; }
-
-        public string IoTHubName { get; set; }
+        public string DeviceType { get; }
         public string DeviceID { get; set; }
-
         public string WiFiSSID { get; set; }
         public string WiFiPassword { get; set; }
+        public string MACAddress { get; }
+        public string IoTHubName { get; set; }
+        public string SasKey { get; set; }
+
+
     }
 }

@@ -1,0 +1,52 @@
+is_global = true
+build_property.TargetFramework = net6.0-android
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = DevicePlatform
+build_property.ProjectDir = C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced C#\SmartCurtains\DevicePlatform\DevicePlatform\
+
+[C:/Users/anton/My Files/DTU/IT Elektronik/5. Semester/Advanced C\#/SmartCurtains/DevicePlatform/DevicePlatform/App.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = DevicePlatform.App.xaml
+build_metadata.AdditionalFiles.TargetPath = App.xaml
+build_metadata.AdditionalFiles.RelativePath = App.xaml
+
+[C:/Users/anton/My Files/DTU/IT Elektronik/5. Semester/Advanced C\#/SmartCurtains/DevicePlatform/DevicePlatform/AppShell.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = DevicePlatform.AppShell.xaml
+build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
+build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
+
+[C:/Users/anton/My Files/DTU/IT Elektronik/5. Semester/Advanced C\#/SmartCurtains/DevicePlatform/DevicePlatform/DeviceConfigurationManager/ConfigurationManager.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = DevicePlatform.DeviceConfigurationManager.ConfigurationManager.xaml
+build_metadata.AdditionalFiles.TargetPath = DeviceConfigurationManager\ConfigurationManager.xaml
+build_metadata.AdditionalFiles.RelativePath = DeviceConfigurationManager\ConfigurationManager.xaml
+
+[C:/Users/anton/My Files/DTU/IT Elektronik/5. Semester/Advanced C\#/SmartCurtains/DevicePlatform/DevicePlatform/DeviceConfigurationManager/SerialConfiguratorView.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = DevicePlatform.DeviceConfigurationManager.SerialConfiguratorView.xaml
+build_metadata.AdditionalFiles.TargetPath = DeviceConfigurationManager\SerialConfiguratorView.xaml
+build_metadata.AdditionalFiles.RelativePath = DeviceConfigurationManager\SerialConfiguratorView.xaml
+
+[C:/Users/anton/My Files/DTU/IT Elektronik/5. Semester/Advanced C\#/SmartCurtains/DevicePlatform/DevicePlatform/MainPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = DevicePlatform.MainPage.xaml
+build_metadata.AdditionalFiles.TargetPath = MainPage.xaml
+build_metadata.AdditionalFiles.RelativePath = MainPage.xaml
+
+[C:/Users/anton/My Files/DTU/IT Elektronik/5. Semester/Advanced C\#/SmartCurtains/DevicePlatform/DevicePlatform/Resources/Styles/Colors.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = DevicePlatform.Resources.Styles.Colors.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Colors.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Colors.xaml
+
+[C:/Users/anton/My Files/DTU/IT Elektronik/5. Semester/Advanced C\#/SmartCurtains/DevicePlatform/DevicePlatform/Resources/Styles/Styles.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = DevicePlatform.Resources.Styles.Styles.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml

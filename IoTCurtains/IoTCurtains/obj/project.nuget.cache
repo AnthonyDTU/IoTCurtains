@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "pg0GOorL8ncMtgceH9UXZK8aZOFcEIL4UnS7Dp0Dxl/sAHQ2vnCe6n2NQ5FM/y4RtNdYVkiIkSa33QlLa/T8rA==",
+  "dgSpecHash": "Beaj1Y/iEGQYiaFaiiGFn3kXar5XD4GgvBWzlwrxGiNLwSXOmxEUQJj0uR+qAzpzMwZ8iiEdJ2UP7Sf2nZuAZg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\anton\\My Files\\DTU\\IT Elektronik\\5. Semester\\Advanced Object Oriented Programming With C#\\SmartCurtains\\IoTCurtains\\IoTCurtains\\IoTCurtains.csproj",
+  "projectFilePath": "C:\\Users\\anton\\My Files\\DTU\\IT Elektronik\\5. Semester\\Advanced C#\\SmartCurtains\\IoTCurtains\\IoTCurtains\\IoTCurtains.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\anton\\.nuget\\packages\\dotnetty.buffers\\0.7.0\\dotnetty.buffers.0.7.0.nupkg.sha512",
     "C:\\Users\\anton\\.nuget\\packages\\dotnetty.codecs\\0.7.0\\dotnetty.codecs.0.7.0.nupkg.sha512",
@@ -24,10 +24,10 @@
     "C:\\Users\\anton\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
     "C:\\Users\\anton\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
     "C:\\Users\\anton\\.nuget\\packages\\microsoft.graphics.win2d\\1.0.3.1\\microsoft.graphics.win2d.1.0.3.1.nupkg.sha512",
-    "C:\\Users\\anton\\.nuget\\packages\\microsoft.maui.dependencies\\6.0.536\\microsoft.maui.dependencies.6.0.536.nupkg.sha512",
-    "C:\\Users\\anton\\.nuget\\packages\\microsoft.maui.extensions\\6.0.536\\microsoft.maui.extensions.6.0.536.nupkg.sha512",
-    "C:\\Users\\anton\\.nuget\\packages\\microsoft.maui.graphics\\6.0.403\\microsoft.maui.graphics.6.0.403.nupkg.sha512",
-    "C:\\Users\\anton\\.nuget\\packages\\microsoft.maui.graphics.win2d.winui.desktop\\6.0.403\\microsoft.maui.graphics.win2d.winui.desktop.6.0.403.nupkg.sha512",
+    "C:\\Users\\anton\\.nuget\\packages\\microsoft.maui.dependencies\\6.0.541\\microsoft.maui.dependencies.6.0.541.nupkg.sha512",
+    "C:\\Users\\anton\\.nuget\\packages\\microsoft.maui.extensions\\6.0.541\\microsoft.maui.extensions.6.0.541.nupkg.sha512",
+    "C:\\Users\\anton\\.nuget\\packages\\microsoft.maui.graphics\\6.0.501\\microsoft.maui.graphics.6.0.501.nupkg.sha512",
+    "C:\\Users\\anton\\.nuget\\packages\\microsoft.maui.graphics.win2d.winui.desktop\\6.0.501\\microsoft.maui.graphics.win2d.winui.desktop.6.0.501.nupkg.sha512",
     "C:\\Users\\anton\\.nuget\\packages\\microsoft.netcore.platforms\\2.0.0\\microsoft.netcore.platforms.2.0.0.nupkg.sha512",
     "C:\\Users\\anton\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\anton\\.nuget\\packages\\microsoft.win32.primitives\\4.3.0\\microsoft.win32.primitives.4.3.0.nupkg.sha512",
@@ -240,9 +240,9 @@
     "C:\\Users\\anton\\.nuget\\packages\\xamarin.kotlin.stdlib.jdk8\\1.6.20.1\\xamarin.kotlin.stdlib.jdk8.1.6.20.1.nupkg.sha512",
     "C:\\Users\\anton\\.nuget\\packages\\xamarin.kotlinx.coroutines.android\\1.6.0.1\\xamarin.kotlinx.coroutines.android.1.6.0.1.nupkg.sha512",
     "C:\\Users\\anton\\.nuget\\packages\\xamarin.kotlinx.coroutines.core.jvm\\1.6.0.1\\xamarin.kotlinx.coroutines.core.jvm.1.6.0.1.nupkg.sha512",
-    "C:\\Users\\anton\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\6.0.9\\microsoft.netcore.app.runtime.win-x64.6.0.9.nupkg.sha512",
-    "C:\\Users\\anton\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\6.0.9\\microsoft.aspnetcore.app.runtime.win-x64.6.0.9.nupkg.sha512",
-    "C:\\Users\\anton\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\6.0.9\\microsoft.windowsdesktop.app.runtime.win-x64.6.0.9.nupkg.sha512",
+    "C:\\Users\\anton\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\6.0.10\\microsoft.netcore.app.runtime.win-x64.6.0.10.nupkg.sha512",
+    "C:\\Users\\anton\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\6.0.10\\microsoft.aspnetcore.app.runtime.win-x64.6.0.10.nupkg.sha512",
+    "C:\\Users\\anton\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\6.0.10\\microsoft.windowsdesktop.app.runtime.win-x64.6.0.10.nupkg.sha512",
     "C:\\Users\\anton\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.19041.27\\microsoft.windows.sdk.net.ref.10.0.19041.27.nupkg.sha512"
   ],
   "logs": []

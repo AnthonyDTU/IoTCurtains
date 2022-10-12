@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DevicePlatform.DeviceConfigurationManager.SerialConfiguratorView">
+
+    <VerticalStackLayout WidthRequest="550"
+                         Spacing="15"
+                         Margin="20">
+
+        <Label 
+            Text="Serial Configuration:"
+            FontSize="24"
+            FontAttributes="Bold"/>
+
+        <VerticalStackLayout
+                Spacing="5">
+            
+            <Label 
+                Text="COM Port:"/>
+
+            <HorizontalStackLayout
+                HorizontalOptions="Center"
+                Spacing="10">
+
+                <Picker 
+                    x:Name="COMPortPicker"
+                    WidthRequest="100"
+                    HeightRequest="35"/>
+
+                <Button
+                    x:Name="UpdatePorts"
+                    HeightRequest="40"
+                    WidthRequest="150"
+                    Text="Update Ports"
+                    Clicked="UpdatePorts_Clicked"/>
+
+                <Button
+                    x:Name="OpenDeviceButton"
+                    Text="Open Device"
+                    Clicked="OpenDeviceButton_Clicked"
+                    WidthRequest="275"
+                    HeightRequest="40"
+                
+                    HorizontalOptions="End"/>
+
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+
+        
+
+    </VerticalStackLayout>
+</ContentView>

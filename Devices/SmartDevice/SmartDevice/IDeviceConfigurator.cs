@@ -7,13 +7,13 @@ using System.IO.Ports;
 
 namespace SmartDevice
 {
-    interface IDeviceConfigurator
+    public interface IDeviceConfigurator
     {
-        public bool SendConfigurationToDevice(SerialPort serialPort);
+        public bool SendConfigurationToDevice();
 
         public bool GetConfigurationFromDevice();
 
-        public ContentView GetConfigurationView(SerialPort serialPort);
+        public ContentView GetConfigurationView();
     
     }
 }
