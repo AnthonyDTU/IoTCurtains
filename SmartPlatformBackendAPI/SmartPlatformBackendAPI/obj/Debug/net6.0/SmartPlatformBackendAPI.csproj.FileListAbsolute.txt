@@ -25,3 +25,10 @@ C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced C#\SmartCurtains\
 C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced C#\SmartCurtains\SmartPlatformBackendAPI\SmartPlatformBackendAPI\obj\Debug\net6.0\SmartPlatformBackendAPI.pdb
 C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced C#\SmartCurtains\SmartPlatformBackendAPI\SmartPlatformBackendAPI\obj\Debug\net6.0\SmartPlatformBackendAPI.genruntimeconfig.cache
 C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced C#\SmartCurtains\SmartPlatformBackendAPI\SmartPlatformBackendAPI\obj\Debug\net6.0\ref\SmartPlatformBackendAPI.dll
+C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced C#\SmartCurtains\SmartPlatformBackendAPI\SmartPlatformBackendAPI\bin\Debug\net6.0\DocumentFormat.OpenXml.dll
+C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced C#\SmartCurtains\SmartPlatformBackendAPI\SmartPlatformBackendAPI\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced C#\SmartCurtains\SmartPlatformBackendAPI\SmartPlatformBackendAPI\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced C#\SmartCurtains\SmartPlatformBackendAPI\SmartPlatformBackendAPI\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.InMemory.dll
+C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced C#\SmartCurtains\SmartPlatformBackendAPI\SmartPlatformBackendAPI\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced C#\SmartCurtains\SmartPlatformBackendAPI\SmartPlatformBackendAPI\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced C#\SmartCurtains\SmartPlatformBackendAPI\SmartPlatformBackendAPI\bin\Debug\net6.0\System.IO.Packaging.dll
