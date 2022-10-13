@@ -26,7 +26,7 @@ namespace SmartPlatformBackendAPI.Controllers
         }
 
         // GET api/<UsersController>/5
-        [HttpGet("{id}")]
+        [HttpGet("{userID}")]
         public IActionResult Get(Guid userID)
         {
             User? user = dbContext.Users.Find(userID);
@@ -36,15 +36,15 @@ namespace SmartPlatformBackendAPI.Controllers
             return Ok(user);
         }
 
-        // GET api/<UsersController>/5
-        [HttpGet("{credentials}")]
-        public IActionResult GetFromUserNameAndPassword(UserCredentials credentials)
+        // GET api/<UsersController>/loginAttempt?username={first%20last}&pass={password}
+        [HttpGet("loginAttempt")]
+        public IActionResult GetFromUserNameAndPassword(string username, string pass)
         {
-            User? user = dbContext.Users.Find(credentials.UserName);
+            User? user = dbContext.Users.Find(username);
             if (user == null)
                 return NotFound();
 
-            else if (user.Password != credentials.Password)
+            else if (user.Password != pass)
                 return BadRequest();
 
             return Ok(user);
@@ -52,8 +52,13 @@ namespace SmartPlatformBackendAPI.Controllers
 
         // POST api/<UsersController>
         [HttpPost]
-        public IActionResult Post([FromBody] AddNewUserModel newUser)
+        public IActionResult CreateNewUser([FromBody] AddNewUserModel newUser)
         {
+            if (dbContext.Users.Find(newUser.UserName) != null)
+            {
+                return Conflict();
+            }
+
             User user = new User()
             {
                 UserID = Guid.NewGuid(),

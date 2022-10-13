@@ -1,4 +1,5 @@
 ﻿using SmartDevice;
+using System.Net;
 using System.Net.Http.Json;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -23,15 +24,35 @@ public partial class MainPage : ContentPage
 		backendAPI.BaseAddress = UriBase;
 	}
 
-	private async void CreateUser()
+	private async void CreateUser(string username, string password)
 	{
 		NewUser newUser = new NewUser()
 		{
-			UserName = "Anton Lage",
-			Password = "test"
+			UserName = username,
+			Password = password
 		};
 
-		await backendAPI.PostAsJsonAsync<NewUser>("api/Users", newUser);
+		try
+		{
+
+            var result = await backendAPI.PostAsJsonAsync<NewUser>("api/Users", newUser);
+            if (result.StatusCode == HttpStatusCode.Conflict)
+            {
+                UsernameInput.TextColor = Colors.Red;
+            }
+            else
+            {
+                UsernameInput.TextColor = Colors.White;
+            }
+        }
+		catch (Exception)
+		{
+
+			throw;
+		}
+
+
+
 
         //currentUser = await backendAPI.PostAsJsonAsync<NewUser>("api/Users", newUser).Result.Content.ReadFromJsonAsync<User>();
     }
@@ -42,8 +63,6 @@ public partial class MainPage : ContentPage
 		InitializeComponent();
         InitBackendConnection();
 
-		CreateUser();
-		GetUserData();
 
         if (!LoadLocalData())
 		{
@@ -52,22 +71,7 @@ public partial class MainPage : ContentPage
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 		deviceCollection = new DeviceCollection();
-
-
-
-
 
 
 
@@ -106,13 +110,40 @@ public partial class MainPage : ContentPage
 	}
 
 
-	private async void GetUserData()
+	private async Task<User> GetUserData(string username, string password)
 	{
 
-		UserCredentials credentials = new UserCredentials("Anton Lage", "test");
-		//currentUser = await backendAPI.GetFromJsonAsync<User>($"api/user/loginRequest?");
+        //UserCredentials credentials = new UserCredentials("Anton Lage", "test");
+        ////currentUser = await backendAPI.GetFromJsonAsync<User>($"api/user/loginRequest?");
 
-		currentUser = await backendAPI.GetFromJsonAsync<User>($"api/Users{JsonSerializer.Serialize(credentials)}");
+       //User user = await backendAPI.GetFromJsonAsync<User>(($"api/Users/loginAttempt?username={username}&pass={password}").Replace(" ", "%20"));
+
+		try
+		{
+            var result = await backendAPI.GetAsync(($"api/Users/loginAttempt?username={username}&pass={password}").Replace(" ", "%20"));
+            if (result.StatusCode == HttpStatusCode.NotFound)
+            {
+                // Non existing user
+            }
+            else if (result.StatusCode == HttpStatusCode.BadRequest)
+            {
+                // Wrong password
+            }
+			else
+			{
+                User user = (User)await result.Content.ReadFromJsonAsync(typeof(User));
+                return user;
+            }
+
+			return new User();
+
+		}
+        catch (Exception ex)
+		{
+			return new User();
+		}
+
+
 
     }
 
@@ -127,5 +158,19 @@ public partial class MainPage : ContentPage
     {
         await Navigation.PushAsync(new DeviceConfigurationManager.ConfigurationManager(deviceCollection, false));
     }
+
+
+	private async void GetUserButton_Clicked(object sender, EventArgs e)
+	{
+		User user = await GetUserData(UsernameInput.Text, PasswordInput.Text);
+		UsernameOutput.Text = user.UserName;
+		PasswordOutput.Text = user.Password;
+		GUIDOutput.Text = user.UserID.ToString();
+	}
+
+	private void NewUserButton_Clicked(object sender, EventArgs e)
+	{
+		CreateUser(UsernameInput.Text, PasswordInput.Text);
+	}
 }
 

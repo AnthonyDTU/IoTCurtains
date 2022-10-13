@@ -13,6 +13,25 @@
             HorizontalOptions="Center">
 
 
+            <Entry x:Name="UsernameInput"/>
+            <Entry x:Name="PasswordInput"/>
+            
+
+            <Button 
+                x:Name="NewUserButton"
+                Text="New User"
+                Clicked="NewUserButton_Clicked"/>
+
+            <Entry x:Name="GUIDOutput"/>
+            <Entry x:Name="UsernameOutput"/>
+            <Entry x:Name="PasswordOutput"/>
+
+            <Button 
+                x:Name="GetUserButton"
+                Text="Get User"
+                Clicked="GetUserButton_Clicked"/>
+
+
 
         </VerticalStackLayout>
     </ScrollView>

@@ -10,8 +10,6 @@
         <VerticalStackLayout 
             WidthRequest="600">
         
-        
-
             <control:SerialConfigurator 
                 x:Name="serialConfigurator"/>
 
