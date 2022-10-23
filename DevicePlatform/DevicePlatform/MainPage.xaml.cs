@@ -54,7 +54,7 @@ public partial class MainPage : ContentPage
 				switch (device.DeviceType)
 				{
 					case "Smart Curtains":
-						deviceCollection.Devices.Add(device.DeviceId.ToString(), new SmartCurtains.SmartCurtains(device.DeviceId, device.DeviceName, device.DeviceKey, backendAPI));
+						deviceCollection.Devices.Add(device.DeviceId.ToString(), new SmartCurtains.SmartCurtains(backendAPI, device.DeviceId, device.DeviceName, device.DeviceKey));
 						break;
 
 					default:

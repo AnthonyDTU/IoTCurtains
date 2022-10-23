@@ -11,17 +11,13 @@ public partial class SmartCurtainsUI : ContentView
 		DeviceNameLabel.Text = deviceName;
 	}
 
-	public void ConfigureUI(int currentLevel,
-							TimeOnly rollUpTime,
-							TimeOnly rollDownTime,
-							bool followSunrise,
-							bool followSunset)
+	public void ConfigureUI(DeviceData currentDeviceState)
 	{
-		CurrentLevelEntry.Text = $"{currentLevel}%";
-		RollUpTimeEntry.Time = rollUpTime.ToTimeSpan();
-		RollDownTimeEntry.Time = rollDownTime.ToTimeSpan();
-		FollowSunriseCheckbox.IsChecked = followSunrise;
-		FollowSunsetCheckbox.IsChecked = followSunset;
+		CurrentLevelEntry.Text = $"{currentDeviceState.CurrentLevel}%";
+		RollUpTimeEntry.Time = currentDeviceState.RollUpTime.ToTimeSpan();
+		RollDownTimeEntry.Time = currentDeviceState.RollDownTime.ToTimeSpan();
+		FollowSunriseCheckbox.IsChecked = currentDeviceState.FollowSunrise;
+		FollowSunsetCheckbox.IsChecked = currentDeviceState.FollowSunset;
 
 		// Bind buttonhandles to callback methods
 	}

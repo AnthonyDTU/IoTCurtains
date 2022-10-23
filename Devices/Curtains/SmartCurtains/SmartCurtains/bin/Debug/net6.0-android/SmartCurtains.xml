@@ -4,5 +4,19 @@
         <name>SmartCurtains</name>
     </assembly>
     <members>
+        <member name="M:SmartCurtains.APIHandler.GetCurrentDeviceState(SmartCurtains.DeviceParameters)">
+            <summary>
+            Tries to get a devices current state
+            </summary>
+            <param name="deviceParameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SmartCurtains.APIHandler.SetCurrentDeviceState(SmartCurtains.DeviceParameters,SmartCurtains.DeviceData)">
+            <summary>
+            Tries to set a devices current state
+            </summary>
+            <param name="deviceParameters"></param>
+            <param name="deviceData"></param>
+        </member>
     </members>
 </doc>

@@ -44,7 +44,7 @@ namespace SmartCurtains
         }
 
         /// <summary>
-        /// Tries to set the devices current state
+        /// Tries to set a devices current state
         /// </summary>
         /// <param name="deviceParameters"></param>
         /// <param name="deviceData"></param>

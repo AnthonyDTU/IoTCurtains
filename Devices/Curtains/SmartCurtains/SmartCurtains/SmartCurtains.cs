@@ -16,31 +16,36 @@ namespace SmartCurtains
         private SmartCurtainsConfigurator configurator;
         public IDeviceConfigurator DeviceConfigurator => configurator;
 
-        public Guid DeviceID { get; }
-        public string DeviceName { get; set; }
-        public string DeviceKey { get; set; }
+        APIHandler APIHandler;
+        DeviceParameters deviceParameters;
+        DeviceData currentDeviceState;
 
-        private HttpClient backendAPI;
 
         public SmartCurtains(HttpClient backendAPI)
         {
-            DeviceID = Guid.NewGuid();
+            deviceParameters = new DeviceParameters()
+            {
+                DeviceID = Guid.NewGuid(),
+                DeviceName = "",
+                DeviceKey = "newKey",
+            };
+
             configurator = new SmartCurtainsConfigurator();
-            this.backendAPI = backendAPI;
+            APIHandler = new APIHandler(backendAPI);
         }
 
-        public SmartCurtains(Guid deviceID, string deviceName, string deviceKey, HttpClient backendAPI)
+        public SmartCurtains(HttpClient backendAPI, Guid deviceID, string deviceName, string deviceKey)
         {
-            DeviceID = deviceID;
-            DeviceName = deviceName;
-            DeviceKey = deviceKey;
-            this.backendAPI = backendAPI;
+            deviceParameters = new DeviceParameters()
+            {
+                DeviceID = deviceID,
+                DeviceName = deviceName,
+                DeviceKey = deviceKey,
+            };
 
+            APIHandler = new APIHandler(backendAPI);
             GetCurrentState();
-            // Get current state from API
         }
-
-       
 
 
         public SmartCurtains(NodeConfiguration nodeConfiguration)
@@ -49,20 +54,19 @@ namespace SmartCurtains
         }
 
 
-
         public ContentView GetDeviceUI(string deviceName)
         {
             SmartCurtainsUI smartCurtainsUI = new SmartCurtainsUI(deviceName);
+            
+            if (currentDeviceState != null)
+                smartCurtainsUI.ConfigureUI(currentDeviceState);
 
             return smartCurtainsUI;
-            
         }
 
         private async void GetCurrentState()
         {
-            var response = await backendAPI.GetAsync("");
+            currentDeviceState = await APIHandler.GetCurrentDeviceState(deviceParameters);
         }
-
-
     }
 }
