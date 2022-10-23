@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using SmartPlatformBackendAPI.Data;
 using SmartPlatformBackendAPI.Models;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -9,37 +11,62 @@ namespace SmartPlatformBackendAPI.Controllers
     [ApiController]
     public class DevicesController : ControllerBase
     {
-        // GET: api/<DevicesController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        private readonly SmartPlatformAPIDbContext dbContext;
+
+        public DevicesController(SmartPlatformAPIDbContext dbContext)
         {
-            return new string[] { "value1", "value2" };
+            this.dbContext = dbContext;
         }
 
-        // GET api/<DevicesController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+
+        // GET api/{userID}/Devices/getRequestedState?guid={deviceID}&key={deviceKey}"
+        [HttpGet("getRequestedState")]
+        public IActionResult Get([FromRoute] Guid userID, Guid deviceID, string deviceKey)
         {
-            return "value";
+            User? user = dbContext.Users.Find(userID);
+            if (user == null || user.Devices == null)
+                return NotFound();
+
+            foreach (Device device in user.Devices)
+            {
+                if (device.DeviceId == deviceID && device.DeviceKey == deviceKey)
+                    return Ok(device);
+            }
+            return NotFound();
         }
 
         // POST api/<DevicesController>
         [HttpPost]
-        public void Post([FromBody] User user)
+        public void Post([FromRoute] Guid userID, [FromBody] Device device)
         {
+
+
         }
 
         // PUT api/<DevicesController>/5
-        [HttpPut("{id}")]
-        public IActionResult Put([FromRoute] Guid userID, int id, [FromBody] User user)
+        [HttpPut("{deviceID}")]
+        public IActionResult Put([FromRoute] Guid userID, Guid deviceID, [FromBody] User user)
         {
             return Ok();
         }
 
-        // DELETE api/<DevicesController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        // DELETE api/{userID}/Devices/{deviceID}"
+        [HttpDelete("{deviceID}")]
+        public IActionResult Delete([FromRoute] Guid userID, Guid deviceID)
         {
+            User? user = dbContext.Users.Find(userID);
+            if (user == null || user.Devices == null)
+                return NotFound();
+
+            foreach (Device device in user.Devices)
+            {
+                if (device.DeviceId == deviceID)
+                {
+                    user.Devices.Remove(device);
+                    return Ok();
+                }
+            }
+            return NotFound();
         }
     }
 }

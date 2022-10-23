@@ -14,27 +14,51 @@ public partial class ConfigurationManager : ContentPage
     private SerialPort serialPort;
 	private string deviceModel;
 	private DeviceCollection devices;
-	private string deviceID;
+	private Guid deviceID;
 	private bool newDevice;
+
+	HttpClient backendAPI;
 
 	IDevice workingDevice;
 
-
-	public ConfigurationManager(DeviceCollection devices, bool newDevice, string deviceID = null)
+	/// <summary>
+	/// Creates a new device and starts the configuration process
+	/// </summary>
+	/// <param name="backendAPI"></param>
+	/// <param name="devices"></param>
+	public ConfigurationManager(HttpClient backendAPI, DeviceCollection devices)
 	{
 		InitializeComponent();
 
+		this.backendAPI = backendAPI;
 		this.devices = devices;
-		this.newDevice = newDevice;
-		this.deviceID = deviceID;
+		newDevice = true;
 
 		SerialConfiguratorView serialConfiguratorView = new SerialConfiguratorView(SetupSerialConnection);
-		ConfigurationView.Children.Add(serialConfiguratorView);
-	
-	
+		ConfigurationView.Children.Add(serialConfiguratorView);	
 	}
 
-	private void SetupSerialConnection(string COMPort)
+
+	/// <summary>
+	/// Starts the configuration process of an existing device
+	/// </summary>
+	/// <param name="backendAPI"></param>
+	/// <param name="devices"></param>
+	/// <param name="deviceID"></param>
+    public ConfigurationManager(HttpClient backendAPI, DeviceCollection devices, Guid deviceID)
+    {
+        InitializeComponent();
+
+        this.backendAPI = backendAPI;
+        this.devices = devices;
+        this.deviceID = deviceID;
+		newDevice = false;
+
+        SerialConfiguratorView serialConfiguratorView = new SerialConfiguratorView(SetupSerialConnection);
+        ConfigurationView.Children.Add(serialConfiguratorView);
+    }
+
+    private void SetupSerialConnection(string COMPort)
 	{
         try
         {
@@ -60,7 +84,7 @@ public partial class ConfigurationManager : ContentPage
 	private void QueryDeviceModel()
 	{
 		serialPort.WriteLine("DeviceModel?");
-		while (serialPort.BytesToRead == 0) ;
+		while (serialPort.BytesToRead == 0) ; // TODO: Add timeout
         deviceModel = serialPort.ReadLine();
 
 		SetupConfigurationView();
@@ -72,7 +96,7 @@ public partial class ConfigurationManager : ContentPage
 		{
 			case "Smart Curtains":
 				if (newDevice)
-					workingDevice = new SmartCurtains.Device();						
+					workingDevice = new SmartCurtains.SmartCurtains(backendAPI);					
 				else
 					workingDevice = devices.GetDevice(deviceID);				
 				break;

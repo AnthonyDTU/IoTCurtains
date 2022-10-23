@@ -23,4 +23,10 @@
 	  </Reference>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <MauiXaml Update="SmartCurtainsUI.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
 </Project>

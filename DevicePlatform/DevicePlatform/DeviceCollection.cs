@@ -12,6 +12,8 @@ namespace DevicePlatform
         private Dictionary<string, IDevice> devices = new Dictionary<string, IDevice>();
         public Dictionary<string, IDevice> Devices { get { return devices; } }
 
+        List<IDevice> DevicesList { get; set; }
+
         public DeviceCollection()
         {
 
@@ -23,9 +25,9 @@ namespace DevicePlatform
             devices.Add(deviceID, newDevice);
         }
 
-        public IDevice GetDevice(string deviceID)
+        public IDevice GetDevice(Guid deviceID)
         {
-            return devices.GetValueOrDefault(deviceID);
+            return devices.GetValueOrDefault(deviceID.ToString());
         }
 
 

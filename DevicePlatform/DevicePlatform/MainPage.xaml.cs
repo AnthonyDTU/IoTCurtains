@@ -54,7 +54,7 @@ public partial class MainPage : ContentPage
 				switch (device.DeviceType)
 				{
 					case "Smart Curtains":
-						deviceCollection.Devices.Add(device.DeviceId.ToString(), new SmartCurtains.SmartCurtains());
+						deviceCollection.Devices.Add(device.DeviceId.ToString(), new SmartCurtains.SmartCurtains(device.DeviceId, device.DeviceName, device.DeviceKey, backendAPI));
 						break;
 
 					default:
@@ -126,7 +126,7 @@ public partial class MainPage : ContentPage
             if (result.StatusCode == HttpStatusCode.OK)
             {
                 UsernameInput.TextColor = Colors.White;
-				currentUser = (User)await result.Content.ReadFromJsonAsync(typeof(User));
+				currentUser = await result.Content.ReadFromJsonAsync<User>();
 
                 UsernameOutput.Text = currentUser.UserName;
                 PasswordOutput.Text = currentUser.Password;
@@ -152,12 +152,6 @@ public partial class MainPage : ContentPage
 
     private async Task<User> GetUserData(string username, string password)
 	{
-
-        //UserCredentials credentials = new UserCredentials("Anton Lage", "test");
-        ////currentUser = await backendAPI.GetFromJsonAsync<User>($"api/user/loginRequest?");
-
-       //User user = await backendAPI.GetFromJsonAsync<User>(($"api/Users/loginAttempt?username={username}&pass={password}").Replace(" ", "%20"));
-
 		try
 		{
             var result = await backendAPI.GetAsync(($"api/Users/loginAttempt?username={username}&pass={password}").Replace(" ", "%20"));
@@ -171,7 +165,7 @@ public partial class MainPage : ContentPage
             }
 			else
 			{
-                User user = (User)await result.Content.ReadFromJsonAsync(typeof(User));
+                User user = await result.Content.ReadFromJsonAsync<User>();
                 return user;
             }
 
@@ -196,8 +190,15 @@ public partial class MainPage : ContentPage
 
 	private async void AddNewDeviceButton_Clicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new DeviceConfigurationManager.ConfigurationManager(deviceCollection, false));
+        await Navigation.PushAsync(new DeviceConfigurationManager.ConfigurationManager(backendAPI, deviceCollection));
+		ReRenderView();
     }
+
+
+	private void ReRenderView()
+	{
+
+	}
 
 
 	private async void GetUserButton_Clicked(object sender, EventArgs e)

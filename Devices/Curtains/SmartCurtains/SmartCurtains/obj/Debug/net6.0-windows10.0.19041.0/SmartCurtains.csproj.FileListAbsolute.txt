@@ -28,3 +28,4 @@ C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced C#\SmartCurtains\
 C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced C#\SmartCurtains\Devices\Curtains\SmartCurtains\SmartCurtains\obj\Debug\net6.0-windows10.0.19041.0\refint\SmartCurtains.dll
 C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced C#\SmartCurtains\Devices\Curtains\SmartCurtains\SmartCurtains\obj\Debug\net6.0-windows10.0.19041.0\SmartCurtains.pdb
 C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced C#\SmartCurtains\Devices\Curtains\SmartCurtains\SmartCurtains\obj\Debug\net6.0-windows10.0.19041.0\ref\SmartCurtains.dll
+C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced C#\SmartCurtains\Devices\Curtains\SmartCurtains\SmartCurtains\obj\Debug\net6.0-windows10.0.19041.0\XamlC.stamp

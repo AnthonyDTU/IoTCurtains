@@ -42,3 +42,4 @@ C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced C#\SmartCurtains\
 C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced C#\SmartCurtains\Devices\Curtains\SmartCurtains\SmartCurtains\obj\Debug\net6.0-ios\refint\SmartCurtains.dll
 C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced C#\SmartCurtains\Devices\Curtains\SmartCurtains\SmartCurtains\obj\Debug\net6.0-ios\SmartCurtains.pdb
 C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced C#\SmartCurtains\Devices\Curtains\SmartCurtains\SmartCurtains\obj\Debug\net6.0-ios\ref\SmartCurtains.dll
+C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced C#\SmartCurtains\Devices\Curtains\SmartCurtains\SmartCurtains\obj\Debug\net6.0-ios\XamlC.stamp

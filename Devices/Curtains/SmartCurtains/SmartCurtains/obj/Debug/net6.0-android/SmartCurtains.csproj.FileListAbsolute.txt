@@ -130,3 +130,4 @@ C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced C#\SmartCurtains\
 C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced C#\SmartCurtains\Devices\Curtains\SmartCurtains\SmartCurtains\obj\Debug\net6.0-android\stamp\_CleanIntermediateIfNeeded.stamp
 C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced C#\SmartCurtains\Devices\Curtains\SmartCurtains\SmartCurtains\obj\Debug\net6.0-android\stamp\_ConvertResourcesCases.stamp
 C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced C#\SmartCurtains\Devices\Curtains\SmartCurtains\SmartCurtains\obj\Debug\net6.0-android\stamp\_ResolveLibraryProjectImports.stamp
+C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced C#\SmartCurtains\Devices\Curtains\SmartCurtains\SmartCurtains\obj\Debug\net6.0-android\XamlC.stamp
