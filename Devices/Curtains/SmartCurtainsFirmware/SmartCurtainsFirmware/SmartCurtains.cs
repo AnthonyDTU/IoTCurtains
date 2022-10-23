@@ -4,6 +4,8 @@ using System.Device.Gpio;
 using Iot.Device.Button;
 
 using SmartDeviceFirmware;
+using System.Threading;
+
 namespace SmartCurtainsFirmware
 {
     class SmartCurtains : Device
@@ -66,7 +68,6 @@ namespace SmartCurtainsFirmware
             rollUpButton = new GpioButton(rollUpButtonPin, gpioController, false);
             stopMotorButton = new GpioButton(StopAllActionButtonPin, gpioController, false);
             calibrateButton = new GpioButton(CalibrateButtonPin, gpioController, false);
-
         }
 
 

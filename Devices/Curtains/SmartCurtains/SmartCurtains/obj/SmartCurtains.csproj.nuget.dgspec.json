@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\anton\\My Files\\DTU\\IT Elektronik\\5. Semester\\Advanced Object Oriented Programming With C#\\SmartCurtains\\Devices\\Curtains\\SmartCurtains\\SmartCurtains\\SmartCurtains.csproj": {}
+    "C:\\Users\\anton\\My Files\\DTU\\IT Elektronik\\5. Semester\\Advanced C#\\SmartCurtains\\Devices\\Curtains\\SmartCurtains\\SmartCurtains\\SmartCurtains.csproj": {}
   },
   "projects": {
-    "C:\\Users\\anton\\My Files\\DTU\\IT Elektronik\\5. Semester\\Advanced Object Oriented Programming With C#\\SmartCurtains\\Devices\\Curtains\\SmartCurtains\\SmartCurtains\\SmartCurtains.csproj": {
+    "C:\\Users\\anton\\My Files\\DTU\\IT Elektronik\\5. Semester\\Advanced C#\\SmartCurtains\\Devices\\Curtains\\SmartCurtains\\SmartCurtains\\SmartCurtains.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\anton\\My Files\\DTU\\IT Elektronik\\5. Semester\\Advanced Object Oriented Programming With C#\\SmartCurtains\\Devices\\Curtains\\SmartCurtains\\SmartCurtains\\SmartCurtains.csproj",
+        "projectUniqueName": "C:\\Users\\anton\\My Files\\DTU\\IT Elektronik\\5. Semester\\Advanced C#\\SmartCurtains\\Devices\\Curtains\\SmartCurtains\\SmartCurtains\\SmartCurtains.csproj",
         "projectName": "SmartCurtains",
-        "projectPath": "C:\\Users\\anton\\My Files\\DTU\\IT Elektronik\\5. Semester\\Advanced Object Oriented Programming With C#\\SmartCurtains\\Devices\\Curtains\\SmartCurtains\\SmartCurtains\\SmartCurtains.csproj",
+        "projectPath": "C:\\Users\\anton\\My Files\\DTU\\IT Elektronik\\5. Semester\\Advanced C#\\SmartCurtains\\Devices\\Curtains\\SmartCurtains\\SmartCurtains\\SmartCurtains.csproj",
         "packagesPath": "C:\\Users\\anton\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\anton\\My Files\\DTU\\IT Elektronik\\5. Semester\\Advanced Object Oriented Programming With C#\\SmartCurtains\\Devices\\Curtains\\SmartCurtains\\SmartCurtains\\obj\\",
+        "outputPath": "C:\\Users\\anton\\My Files\\DTU\\IT Elektronik\\5. Semester\\Advanced C#\\SmartCurtains\\Devices\\Curtains\\SmartCurtains\\SmartCurtains\\obj\\",
         "projectStyle": "PackageReference",
         "crossTargeting": true,
         "fallbackFolders": [
@@ -43,7 +43,7 @@
             "targetAlias": "net6.0-android",
             "projectReferences": {}
           },
-          "net6.0-ios15.4": {
+          "net6.0-ios16.0": {
             "targetAlias": "net6.0-ios",
             "projectReferences": {}
           },
@@ -69,13 +69,13 @@
             "Microsoft.Maui.Dependencies": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.536, )",
+              "version": "[6.0.541, )",
               "autoReferenced": true
             },
             "Microsoft.Maui.Extensions": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.536, )",
+              "version": "[6.0.541, )",
               "autoReferenced": true
             }
           },
@@ -104,7 +104,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
         },
         "net6.0-android31.0": {
           "targetAlias": "net6.0-android",
@@ -112,13 +112,13 @@
             "Microsoft.Maui.Dependencies": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.536, )",
+              "version": "[6.0.541, )",
               "autoReferenced": true
             },
             "Microsoft.Maui.Extensions": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.536, )",
+              "version": "[6.0.541, )",
               "autoReferenced": true
             }
           },
@@ -150,21 +150,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
         },
-        "net6.0-ios15.4": {
+        "net6.0-ios16.0": {
           "targetAlias": "net6.0-ios",
           "dependencies": {
             "Microsoft.Maui.Dependencies": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.536, )",
+              "version": "[6.0.541, )",
               "autoReferenced": true
             },
             "Microsoft.Maui.Extensions": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.536, )",
+              "version": "[6.0.541, )",
               "autoReferenced": true
             },
             "System.Runtime.InteropServices.NFloat.Internal": {
@@ -201,7 +201,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
         },
         "net6.0-maccatalyst15.4": {
           "targetAlias": "net6.0-maccatalyst",
@@ -209,13 +209,13 @@
             "Microsoft.Maui.Dependencies": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.536, )",
+              "version": "[6.0.541, )",
               "autoReferenced": true
             },
             "Microsoft.Maui.Extensions": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.536, )",
+              "version": "[6.0.541, )",
               "autoReferenced": true
             },
             "System.Runtime.InteropServices.NFloat.Internal": {
@@ -253,7 +253,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
         },
         "net6.0-windows10.0.19041": {
           "targetAlias": "net6.0-windows10.0.19041.0",
@@ -261,13 +261,13 @@
             "Microsoft.Maui.Dependencies": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.536, )",
+              "version": "[6.0.541, )",
               "autoReferenced": true
             },
             "Microsoft.Maui.Extensions": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.536, )",
+              "version": "[6.0.541, )",
               "autoReferenced": true
             },
             "Microsoft.Windows.SDK.BuildTools": {
@@ -311,7 +311,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -22,9 +22,9 @@
                 Text="New User"
                 Clicked="NewUserButton_Clicked"/>
 
-            <Entry x:Name="GUIDOutput"/>
-            <Entry x:Name="UsernameOutput"/>
-            <Entry x:Name="PasswordOutput"/>
+            <Entry x:Name="GUIDOutput" IsReadOnly="True"/>
+            <Entry x:Name="UsernameOutput" IsReadOnly="True"/>
+            <Entry x:Name="PasswordOutput" IsReadOnly="True"/>
 
             <Button 
                 x:Name="GetUserButton"

@@ -12,7 +12,7 @@ namespace SmartDevice
 
         public IDeviceConfigurator DeviceConfigurator { get; }
 
-
+        public ContentView GetDeviceUI(string deviceName);
 
 
     }

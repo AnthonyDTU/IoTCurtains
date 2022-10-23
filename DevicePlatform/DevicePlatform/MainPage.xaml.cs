@@ -1,4 +1,5 @@
-﻿using SmartDevice;
+﻿using DevicePlatform.Models;
+using SmartDevice;
 using System.Net;
 using System.Net.Http.Json;
 using System.Text.Json;
@@ -24,39 +25,7 @@ public partial class MainPage : ContentPage
 		backendAPI.BaseAddress = UriBase;
 	}
 
-	private async void CreateUser(string username, string password)
-	{
-		NewUser newUser = new NewUser()
-		{
-			UserName = username,
-			Password = password
-		};
-
-		try
-		{
-
-            var result = await backendAPI.PostAsJsonAsync<NewUser>("api/Users", newUser);
-            if (result.StatusCode == HttpStatusCode.Conflict)
-            {
-                UsernameInput.TextColor = Colors.Red;
-            }
-            else
-            {
-                UsernameInput.TextColor = Colors.White;
-            }
-        }
-		catch (Exception)
-		{
-
-			throw;
-		}
-
-
-
-
-        //currentUser = await backendAPI.PostAsJsonAsync<NewUser>("api/Users", newUser).Result.Content.ReadFromJsonAsync<User>();
-    }
-
+	
 
 	public MainPage()
 	{
@@ -68,15 +37,43 @@ public partial class MainPage : ContentPage
 		{
 			// Present Login Screen
 		}
-
-
+		else
+		{
+			// Get devices for user, stored in backend
+		}
 
 		deviceCollection = new DeviceCollection();
 
 
 
+		if (currentUser.Devices != null &&
+			currentUser.Devices.Count != 0)
+		{
+			foreach (var device in currentUser.Devices)
+			{
+				switch (device.DeviceType)
+				{
+					case "Smart Curtains":
+						deviceCollection.Devices.Add(device.DeviceId.ToString(), new SmartCurtains.SmartCurtains());
+						break;
 
-		if (deviceCollection.Devices.Count == 0)
+					default:
+						break;
+				}
+			}
+		}
+
+
+
+		if (deviceCollection.Devices.Count != 0)
+		{
+			foreach (var device in deviceCollection.Devices)
+			{
+
+                MainContentView.Children.Add(device.Value.GetDeviceUI(""));                
+			}
+		}
+		else
 		{
 			MainContentView.Children.Add(new Label() { Text = "No Devices Configured...", HorizontalOptions = LayoutOptions.Center } );
 		}
@@ -110,7 +107,50 @@ public partial class MainPage : ContentPage
 	}
 
 
-	private async Task<User> GetUserData(string username, string password)
+	/// <summary>
+	/// Tries to create a new user in backend
+	/// </summary>
+	/// <param name="username"></param>
+	/// <param name="password"></param>
+    private async void CreateUser(string username, string password)
+    {
+        NewUser newUser = new NewUser()
+        {
+            UserName = username,
+            Password = password
+        };
+
+        try
+        {
+            var result = await backendAPI.PostAsJsonAsync<NewUser>("api/Users", newUser);
+            if (result.StatusCode == HttpStatusCode.OK)
+            {
+                UsernameInput.TextColor = Colors.White;
+				currentUser = (User)await result.Content.ReadFromJsonAsync(typeof(User));
+
+                UsernameOutput.Text = currentUser.UserName;
+                PasswordOutput.Text = currentUser.Password;
+                GUIDOutput.Text = currentUser.UserID.ToString();
+
+            }
+            else if (result.StatusCode == HttpStatusCode.Conflict)
+            {
+                UsernameInput.TextColor = Colors.Red;
+            }
+			else
+			{
+				// Other error
+			}
+        }
+        catch (Exception)
+        {
+
+            throw;
+        }
+    }
+
+
+    private async Task<User> GetUserData(string username, string password)
 	{
 
         //UserCredentials credentials = new UserCredentials("Anton Lage", "test");

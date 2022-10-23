@@ -54,6 +54,9 @@ namespace SmartPlatformBackendAPI.Controllers
         [HttpPost]
         public IActionResult CreateNewUser([FromBody] AddNewUserModel newUser)
         {
+            newUser.UserName = newUser.UserName.Trim();
+            newUser.UserName = newUser.UserName.ToLower();
+
             if (dbContext.Users.Find(newUser.UserName) != null)
             {
                 return Conflict();

@@ -10,3 +10,15 @@ C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented P
 C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\Devices\SmartDevice\SmartDevice\obj\Debug\net6.0-windows10.0.19041.0\refint\SmartDevice.dll
 C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\Devices\SmartDevice\SmartDevice\obj\Debug\net6.0-windows10.0.19041.0\SmartDevice.pdb
 C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced Object Oriented Programming With C#\SmartCurtains\Devices\SmartDevice\SmartDevice\obj\Debug\net6.0-windows10.0.19041.0\ref\SmartDevice.dll
+C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced C#\SmartCurtains\Devices\SmartDevice\SmartDevice\bin\Debug\net6.0-windows10.0.19041.0\SmartDevice.deps.json
+C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced C#\SmartCurtains\Devices\SmartDevice\SmartDevice\bin\Debug\net6.0-windows10.0.19041.0\SmartDevice.dll
+C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced C#\SmartCurtains\Devices\SmartDevice\SmartDevice\bin\Debug\net6.0-windows10.0.19041.0\SmartDevice.pdb
+C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced C#\SmartCurtains\Devices\SmartDevice\SmartDevice\obj\Debug\net6.0-windows10.0.19041.0\SmartDevice.csproj.AssemblyReference.cache
+C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced C#\SmartCurtains\Devices\SmartDevice\SmartDevice\obj\Debug\net6.0-windows10.0.19041.0\SmartDevice.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced C#\SmartCurtains\Devices\SmartDevice\SmartDevice\obj\Debug\net6.0-windows10.0.19041.0\SmartDevice.AssemblyInfoInputs.cache
+C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced C#\SmartCurtains\Devices\SmartDevice\SmartDevice\obj\Debug\net6.0-windows10.0.19041.0\SmartDevice.AssemblyInfo.cs
+C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced C#\SmartCurtains\Devices\SmartDevice\SmartDevice\obj\Debug\net6.0-windows10.0.19041.0\SmartDevice.csproj.CoreCompileInputs.cache
+C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced C#\SmartCurtains\Devices\SmartDevice\SmartDevice\obj\Debug\net6.0-windows10.0.19041.0\SmartDevice.dll
+C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced C#\SmartCurtains\Devices\SmartDevice\SmartDevice\obj\Debug\net6.0-windows10.0.19041.0\refint\SmartDevice.dll
+C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced C#\SmartCurtains\Devices\SmartDevice\SmartDevice\obj\Debug\net6.0-windows10.0.19041.0\SmartDevice.pdb
+C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced C#\SmartCurtains\Devices\SmartDevice\SmartDevice\obj\Debug\net6.0-windows10.0.19041.0\ref\SmartDevice.dll
