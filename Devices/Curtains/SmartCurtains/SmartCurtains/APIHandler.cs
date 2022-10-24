@@ -12,9 +12,10 @@ namespace SmartCurtains
     {
         HttpClient backendAPI;
 
-        public APIHandler(HttpClient backendAPI)
+        public APIHandler(Uri backendDeviceUri)
         {
-            this.backendAPI = backendAPI;
+            backendAPI = new HttpClient();
+            backendAPI.BaseAddress = backendDeviceUri;
         }
 
 
@@ -28,7 +29,7 @@ namespace SmartCurtains
         {
             try
             {
-                var result = await backendAPI.GetAsync($"api/Devices/getRequestedState?guid={deviceParameters.DeviceID}&key={deviceParameters.DeviceKey}");
+                var result = await backendAPI.GetAsync($"getRequestedState?guid={deviceParameters.DeviceID}&key={deviceParameters.DeviceKey}");
                 if (result.StatusCode == HttpStatusCode.OK)
                 {
                     DeviceData currentRequestedState = await result.Content.ReadFromJsonAsync<DeviceData>();
@@ -52,7 +53,7 @@ namespace SmartCurtains
         {
             try
             {
-                var result = await backendAPI.PutAsJsonAsync<DeviceData>($"api/Devices/setRequestedState?guid={deviceParameters.DeviceID}&key={deviceParameters.DeviceKey}", deviceData);
+                var result = await backendAPI.PutAsJsonAsync<DeviceData>($"setRequestedState?guid={deviceParameters.DeviceID}&key={deviceParameters.DeviceKey}", deviceData);
             }
             catch (Exception)
             {

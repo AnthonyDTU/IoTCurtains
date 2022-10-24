@@ -41,11 +41,8 @@ namespace SmartPlatformBackendAPI.Controllers
         public IActionResult GetFromUserNameAndPassword(string username, string pass)
         {
             User? user = dbContext.Users.Find(username);
-            if (user == null)
+            if (user == null || user.Password != pass)
                 return NotFound();
-
-            else if (user.Password != pass)
-                return BadRequest();
 
             return Ok(user);
         }

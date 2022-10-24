@@ -1,5 +1,6 @@
 namespace DevicePlatform.DeviceConfigurationManager;
 
+using DevicePlatform.Data;
 using SmartDevice;
 using System.IO.Ports;
 
@@ -17,7 +18,7 @@ public partial class ConfigurationManager : ContentPage
 	private Guid deviceID;
 	private bool newDevice;
 
-	HttpClient backendAPI;
+	Uri deviceUri;
 
 	IDevice workingDevice;
 
@@ -26,11 +27,11 @@ public partial class ConfigurationManager : ContentPage
 	/// </summary>
 	/// <param name="backendAPI"></param>
 	/// <param name="devices"></param>
-	public ConfigurationManager(HttpClient backendAPI, DeviceCollection devices)
+	public ConfigurationManager(Uri deviceUri, DeviceCollection devices)
 	{
 		InitializeComponent();
 
-		this.backendAPI = backendAPI;
+		this.deviceUri = deviceUri;
 		this.devices = devices;
 		newDevice = true;
 
@@ -45,11 +46,11 @@ public partial class ConfigurationManager : ContentPage
 	/// <param name="backendAPI"></param>
 	/// <param name="devices"></param>
 	/// <param name="deviceID"></param>
-    public ConfigurationManager(HttpClient backendAPI, DeviceCollection devices, Guid deviceID)
+    public ConfigurationManager(Uri deviceUri, DeviceCollection devices, Guid deviceID)
     {
         InitializeComponent();
 
-        this.backendAPI = backendAPI;
+        this.deviceUri = deviceUri;
         this.devices = devices;
         this.deviceID = deviceID;
 		newDevice = false;
@@ -96,7 +97,7 @@ public partial class ConfigurationManager : ContentPage
 		{
 			case "Smart Curtains":
 				if (newDevice)
-					workingDevice = new SmartCurtains.SmartCurtains(backendAPI);					
+					workingDevice = new SmartCurtains.SmartCurtains(deviceUri);					
 				else
 					workingDevice = devices.GetDevice(deviceID);				
 				break;

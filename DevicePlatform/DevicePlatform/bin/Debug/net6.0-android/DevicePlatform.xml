@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DevicePlatform</name>
+    </assembly>
+    <members>
+        <member name="M:DevicePlatform.DeviceConfigurationManager.ConfigurationManager.#ctor(System.Uri,DevicePlatform.Data.DeviceCollection)">
+            <summary>
+            Creates a new device and starts the configuration process
+            </summary>
+            <param name="backendAPI"></param>
+            <param name="devices"></param>
+        </member>
+        <member name="M:DevicePlatform.DeviceConfigurationManager.ConfigurationManager.#ctor(System.Uri,DevicePlatform.Data.DeviceCollection,System.Guid)">
+            <summary>
+            Starts the configuration process of an existing device
+            </summary>
+            <param name="backendAPI"></param>
+            <param name="devices"></param>
+            <param name="deviceID"></param>
+        </member>
+        <member name="M:DevicePlatform.MainPage.CreateUser(System.String,System.String)">
+            <summary>
+            Tries to create a new user in backend
+            </summary>
+            <param name="username"></param>
+            <param name="password"></param>
+        </member>
+    </members>
+</doc>

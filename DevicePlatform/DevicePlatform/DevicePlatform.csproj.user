@@ -6,10 +6,16 @@
     <ActiveDebugProfile>Windows Machine</ActiveDebugProfile>
   </PropertyGroup>
   <ItemGroup>
+    <MauiXaml Update="CreateNewUserPage.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
     <MauiXaml Update="DeviceConfigurationManager\ConfigurationManager.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
     <MauiXaml Update="DeviceConfigurationManager\SerialConfiguratorView.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+    <MauiXaml Update="LoginPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
   </ItemGroup>

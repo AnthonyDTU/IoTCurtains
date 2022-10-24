@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net;
 
 using SmartDevice;
 
@@ -21,7 +22,7 @@ namespace SmartCurtains
         DeviceData currentDeviceState;
 
 
-        public SmartCurtains(HttpClient backendAPI)
+        public SmartCurtains(Uri backendDeviceUri)
         {
             deviceParameters = new DeviceParameters()
             {
@@ -31,10 +32,10 @@ namespace SmartCurtains
             };
 
             configurator = new SmartCurtainsConfigurator();
-            APIHandler = new APIHandler(backendAPI);
+            APIHandler = new APIHandler(backendDeviceUri);
         }
 
-        public SmartCurtains(HttpClient backendAPI, Guid deviceID, string deviceName, string deviceKey)
+        public SmartCurtains(Uri backendDeviceUri, Guid deviceID, string deviceName, string deviceKey)
         {
             deviceParameters = new DeviceParameters()
             {
@@ -43,7 +44,7 @@ namespace SmartCurtains
                 DeviceKey = deviceKey,
             };
 
-            APIHandler = new APIHandler(backendAPI);
+            APIHandler = new APIHandler(backendDeviceUri);
             GetCurrentState();
         }
 
@@ -54,10 +55,11 @@ namespace SmartCurtains
         }
 
 
-        public ContentView GetDeviceUI(string deviceName)
+        public async Task<ContentView> GetDeviceUI(string deviceName)
         {
             SmartCurtainsUI smartCurtainsUI = new SmartCurtainsUI(deviceName);
-            
+            currentDeviceState = await APIHandler.GetCurrentDeviceState(deviceParameters);
+
             if (currentDeviceState != null)
                 smartCurtainsUI.ConfigureUI(currentDeviceState);
 
