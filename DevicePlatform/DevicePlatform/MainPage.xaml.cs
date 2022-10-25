@@ -127,8 +127,10 @@ public partial class MainPage : ContentPage
 
 	private async void AddNewDeviceButton_Clicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new DeviceConfigurationManager.ConfigurationManager(deviceUri, deviceCollection));
-		ReRenderView();
+        await apiHandler.AddNewDevice();
+
+        await Navigation.PushAsync(new DeviceConfigurationManager.ConfigurationManager(deviceUri, ActiveUser.Devices));
+        SetupUI();
     }
 
 

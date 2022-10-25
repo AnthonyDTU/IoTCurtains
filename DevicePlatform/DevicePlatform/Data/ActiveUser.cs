@@ -33,7 +33,7 @@ namespace DevicePlatform.Data
                     switch (device.DeviceType)
                     {
                         case "Smart Curtains":
-                            Devices.AddNewDevice(device.DeviceId.ToString(), new SmartCurtains.SmartCurtains(deviceUri, device.DeviceId, device.DeviceName, device.DeviceKey));
+                            Devices.AddNewDevice(device.DeviceID.ToString(), new SmartCurtains.SmartCurtains(deviceUri, device.DeviceID, device.DeviceName, device.DeviceKey));
                             break;
 
                         default:
@@ -42,6 +42,11 @@ namespace DevicePlatform.Data
                 }
             }
 
+        }
+
+        public static void UpdateActiveUser(User newActiveUser)
+        {
+            User = newActiveUser;
         }
     }
 }

@@ -22,7 +22,7 @@ namespace SmartPlatformBackendAPI.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(dbContext.Users);
+            return Ok(dbContext.Users.Include(d => d.Devices).ToList());
         }
 
         // GET api/<UsersController>/5
@@ -40,21 +40,65 @@ namespace SmartPlatformBackendAPI.Controllers
         [HttpGet("loginAttempt")]
         public IActionResult GetFromUserNameAndPassword(string username, string pass)
         {
-            User? user = dbContext.Users.Find(username);
-            if (user == null || user.Password != pass)
-                return NotFound();
+            //User? user = dbContext.Users.Find(username);
+            //if (user == null || user.Password != pass)
+            //    return NotFound();
 
-            return Ok(user);
+            User? user = dbContext.Users.Include(d => d.Devices).AsNoTracking().SingleOrDefault(u => u.UserName == username && u.Password == pass);
+            if (user != null)
+            {
+                return Ok(user);
+            }
+
+
+            //var users = dbContext.Users.Include(d => d.Devices).AsNoTracking().ToList();
+            //foreach (User user in users)
+            //{
+            //    if (user.UserName == username && user.Password == pass)
+            //    {
+            //        return Ok(user);
+            //    }
+            //}
+
+            return NotFound();
         }
 
         // POST api/<UsersController>
         [HttpPost]
+        public IActionResult AddDeviceToUser([FromBody] Device newDevice)
+        {
+            User? userToUpdate = dbContext.Users.Include(d => d.Devices).Single(u => u.UserID == newDevice.UserID);
+
+            if (userToUpdate != null)
+            {
+                dbContext.Devices.Add(newDevice);
+                dbContext.SaveChanges();
+                return Ok();
+            }
+            else
+                return NotFound();
+
+
+            //if (user != null)
+            //{
+            //    dbContext.Update(user.Devices);
+            //    user.Devices = updatedUser.Devices;
+            //    //dbContext.Entry(user).State = EntityState.Modified;
+            //    dbContext.SaveChanges(user);
+            //    return Ok(user);
+            //}
+            //else
+            //    return NotFound();
+        }
+
+        // PUT api/<UsersController>
+        [HttpPut]
         public IActionResult CreateNewUser([FromBody] AddNewUserModel newUser)
         {
             newUser.UserName = newUser.UserName.Trim();
             newUser.UserName = newUser.UserName.ToLower();
 
-            if (dbContext.Users.Find(newUser.UserName) != null)
+            if (dbContext.Users.Count() != 0 && dbContext.Users.Find(newUser.UserName) != null)
             {
                 return Conflict();
             }
@@ -64,19 +108,31 @@ namespace SmartPlatformBackendAPI.Controllers
                 UserID = Guid.NewGuid(),
                 UserName = newUser.UserName,
                 Password = newUser.Password,
-                Devices = new List<Device>(),
+                Devices = new List<Device>()
             };
+
+
+            dbContext.Devices.Add(new Device()
+            {
+                DeviceID = Guid.Empty,
+                UserID = user.UserID,
+                DeviceKey = "Test Key",
+                DeviceName = "Test Device",
+                DeviceType = "Test Type"
+            });
+
+            user.Devices.Add(new Device()
+            {
+                DeviceID = Guid.Empty,
+                UserID = user.UserID,
+                DeviceKey = "Test Key",
+                DeviceName = "Test Device",
+                DeviceType = "Test Type"
+            });
 
             dbContext.Users.Add(user);
             dbContext.SaveChanges();
             return Ok(user);
-        }
-
-        // PUT api/<UsersController>/5
-        [HttpPut("{userName}")]
-        public IActionResult Put(string userName, [FromBody] string value)
-        {
-            return Ok();
         }
 
         // DELETE api/<UsersController>/5

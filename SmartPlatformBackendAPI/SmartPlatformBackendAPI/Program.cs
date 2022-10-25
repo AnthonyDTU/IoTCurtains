@@ -10,7 +10,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<SmartPlatformAPIDbContext>(options => options.UseInMemoryDatabase("SmartPlatformDb"));
+//builder.Services.AddDbContext<SmartPlatformAPIDbContext>(options => options.UseInMemoryDatabase("SmartPlatformDb"));
+builder.Services.AddDbContext<SmartPlatformAPIDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 

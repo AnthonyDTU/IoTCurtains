@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace DevicePlatform.Models
 {
-    public class DeviceParameters
+    public class DeviceDescriptor
     {
-        public Guid DeviceId { get; set; }
+        public Guid DeviceID { get; set; }
+        public Guid UserID { get; set; }
         public string DeviceName { get; set; }
         public string DeviceType { get; set; }
         public string DeviceKey { get; set; }

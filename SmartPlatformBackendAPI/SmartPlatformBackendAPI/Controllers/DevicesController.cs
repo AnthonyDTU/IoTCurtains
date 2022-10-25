@@ -29,7 +29,7 @@ namespace SmartPlatformBackendAPI.Controllers
 
             foreach (Device device in user.Devices)
             {
-                if (device.DeviceId == deviceID && device.DeviceKey == deviceKey)
+                if (device.DeviceID == deviceID && device.DeviceKey == deviceKey)
                     return Ok(device);
             }
             return NotFound();
@@ -37,19 +37,7 @@ namespace SmartPlatformBackendAPI.Controllers
 
         // POST api/{userID}/Devices"
         [HttpPost]
-        public IActionResult Post([FromRoute] Guid userID, [FromBody] Device newDevice)
-        {
-            User? user = dbContext.Users.Find(userID);
-            if (user == null || user.Devices == null)
-                return NotFound();
-
-            user.Devices.Add(newDevice);
-            return Ok();
-        }
-
-        // PUT api/{userID}/Devices"
-        [HttpPut]
-        public IActionResult Put([FromRoute] Guid userID, [FromBody] Device updatedDevice)
+        public IActionResult Post([FromRoute] Guid userID, [FromBody] Device updatedDevice)
         {
             User? user = dbContext.Users.Find(userID);
             if (user == null || user.Devices == null)
@@ -58,20 +46,65 @@ namespace SmartPlatformBackendAPI.Controllers
             int deviceIndex = -1;
             foreach (Device device in user.Devices)
             {
-                if (device.DeviceId == updatedDevice.DeviceId && device.DeviceKey == updatedDevice.DeviceKey)
-                    deviceIndex = user.Devices.IndexOf(device);
+                if (device.DeviceID == updatedDevice.DeviceID && device.DeviceKey == updatedDevice.DeviceKey)
+                {
+                    //user.Devices.Remove(device);
+                    //user.Devices.
+                    deviceIndex = user.Devices.ToList().IndexOf(device);
+                }
             }
 
             if (deviceIndex != -1)
             {
-                user.Devices.RemoveAt(deviceIndex);
-                user.Devices.Insert(deviceIndex, updatedDevice);
+                //user.Devices.RemoveAt(deviceIndex);
+                //user.Devices.Insert(deviceIndex, updatedDevice);
                 return Ok();
             }
             else
             {
                 return NotFound();
             }
+
+
+            
+        }
+
+        // PUT api/{userID}/Devices"
+        [HttpPut]
+        public IActionResult Put([FromRoute] Guid userID, [FromBody] Device newDevice)
+        {
+            //var users = dbContext.Users.Include(d => d.Devices).AsNoTracking().ToList();
+            //User oldUser = dbContext.Users.Find(userID);
+
+            User? user = dbContext.Users.Include(d => d.Devices).SingleOrDefault(u => u.UserID == userID);
+
+            if (user != null)
+            {
+                user.Devices.Add(newDevice);
+                dbContext.SaveChanges();
+                return Ok();
+            }
+
+
+            //foreach (User user in users)
+            //{
+            //    if (user.UserID == userID)
+            //    {
+            //        user.Devices.Add(newDevice);
+            //        dbContext.Users.Remove(oldUser);
+            //        dbContext.Users.Add(user);
+            //        dbContext.SaveChanges();
+            //        return Ok(user);
+            //    }
+            //}
+
+            return NotFound();
+            //User? user = dbContext.Users.Find(userID);
+            //if (user == null || user.Devices == null)
+            //    return NotFound();
+
+            //user.Devices.Add(newDevice);
+            //return Ok();
         }
 
         // DELETE api/{userID}/Devices/{deviceID}"
@@ -84,7 +117,7 @@ namespace SmartPlatformBackendAPI.Controllers
 
             foreach (Device device in user.Devices)
             {
-                if (device.DeviceId == deviceID)
+                if (device.DeviceID == deviceID)
                 {
                     user.Devices.Remove(device);
                     return Ok();

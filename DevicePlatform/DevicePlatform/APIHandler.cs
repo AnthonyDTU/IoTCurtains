@@ -76,7 +76,7 @@ namespace DevicePlatform
 
             try
             {
-                var result = await backendAPI.PostAsJsonAsync<NewUser>("api/Users", newUser);
+                var result = await backendAPI.PutAsJsonAsync<NewUser>("api/Users", newUser);
                 if (result.StatusCode == HttpStatusCode.OK)
                 {
                     User user = await result.Content.ReadFromJsonAsync<User>();
@@ -98,8 +98,65 @@ namespace DevicePlatform
             }
         }
 
+        
+        public async Task<HttpStatusCode> UpdateUser()
+        {
+            if (ActiveUser.LoggedIn == false)
+            {
+                return HttpStatusCode.PreconditionFailed;
+            }
 
+            try
+            {
+                var result = await backendAPI.PostAsJsonAsync<User>("api/Users", ActiveUser.User);
+                if (result.StatusCode == HttpStatusCode.OK)
+                {
+                
+                }
+                else if (result.StatusCode == HttpStatusCode.NotFound)
+                {
+                
+                }
+                return result.StatusCode;
 
+            }
+            catch (Exception)
+            {
+                return HttpStatusCode.BadRequest;
+            }
+        }
 
+        public async Task<HttpStatusCode> AddNewDevice()
+        {
+            DeviceDescriptor deviceDescriptor = new DeviceDescriptor()
+            {
+                DeviceID = Guid.NewGuid(),
+                UserID = ActiveUser.User.UserID,
+                DeviceKey = "deviceKey",
+                DeviceName = "deviceName",
+                DeviceType = "Smart Curtains"
+            };
+
+            string deviceUri = $"api/{ActiveUser.User.UserID}/Devices";
+            string uri = $"api/Users";
+
+            ActiveUser.User.Devices.Add(deviceDescriptor);
+
+            try
+            {
+                var result = await backendAPI.PostAsJsonAsync<DeviceDescriptor>(uri, deviceDescriptor);
+                if (result.StatusCode == HttpStatusCode.OK)
+                {
+                    User user = await result.Content.ReadFromJsonAsync<User>();
+                    ActiveUser.UpdateActiveUser(user);
+                }
+
+                return result.StatusCode;
+            }
+            catch (Exception)
+            {
+                return HttpStatusCode.BadRequest;
+            }
+        }
     }
 }
