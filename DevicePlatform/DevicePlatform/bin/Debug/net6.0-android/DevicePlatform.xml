@@ -4,6 +4,22 @@
         <name>DevicePlatform</name>
     </assembly>
     <members>
+        <member name="M:DevicePlatform.APIHandler.Login(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="username"></param>
+            <param name="password"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DevicePlatform.APIHandler.CreateNewUser(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="username"></param>
+            <param name="password"></param>
+            <returns></returns>
+        </member>
         <member name="M:DevicePlatform.DeviceConfigurationManager.ConfigurationManager.#ctor(System.Uri,DevicePlatform.Data.DeviceCollection)">
             <summary>
             Creates a new device and starts the configuration process
@@ -18,13 +34,6 @@
             <param name="backendAPI"></param>
             <param name="devices"></param>
             <param name="deviceID"></param>
-        </member>
-        <member name="M:DevicePlatform.MainPage.CreateUser(System.String,System.String)">
-            <summary>
-            Tries to create a new user in backend
-            </summary>
-            <param name="username"></param>
-            <param name="password"></param>
         </member>
     </members>
 </doc>

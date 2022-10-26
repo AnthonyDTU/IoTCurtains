@@ -1,4 +1,5 @@
 ﻿using DevicePlatform.Models;
+using SmartCurtainsPlatformPlugin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +34,7 @@ namespace DevicePlatform.Data
                     switch (device.DeviceType)
                     {
                         case "Smart Curtains":
-                            Devices.AddNewDevice(device.DeviceID.ToString(), new SmartCurtains.SmartCurtains(deviceUri, device.DeviceID, device.DeviceName, device.DeviceKey));
+                            Devices.AddNewDevice(device.DeviceID.ToString(), new SmartCurtainsPlatformPlugin.SmartCurtainsPlatformPlugin(deviceUri, device.DeviceID, device.DeviceName, device.DeviceKey));
                             break;
 
                         default:

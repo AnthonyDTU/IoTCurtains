@@ -3,7 +3,7 @@ AreAnyAssembliesTrimmed=false
 				AOTCompiler=
 				AOTOutputDirectory=obj\Debug\net6.0-maccatalyst\maccatalyst-x64\nativelibraries/aot-output/
 				AppBundleManifestPath=bin\Debug\net6.0-maccatalyst\maccatalyst-x64\DevicePlatform.app\Contents/Info.plist
-				CacheDirectory=C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced C#\SmartCurtains\DevicePlatform\DevicePlatform\obj\Debug\net6.0-maccatalyst\maccatalyst-x64\linker-cache
+				CacheDirectory=C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-maccatalyst\maccatalyst-x64\linker-cache
 				
 				Debug=true
 				DeploymentTarget=
@@ -179,7 +179,7 @@ FrameworkAssembly=System.Private.CoreLib
 				Interpreter=all
 				IntermediateLinkDir=obj\Debug\net6.0-maccatalyst\maccatalyst-x64\linked\
 				InvariantGlobalization=false
-				ItemsDirectory=C:\Users\anton\My Files\DTU\IT Elektronik\5. Semester\Advanced C#\SmartCurtains\DevicePlatform\DevicePlatform\obj\Debug\net6.0-maccatalyst\maccatalyst-x64\linker-items
+				ItemsDirectory=C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-maccatalyst\maccatalyst-x64\linker-items
 				IsAppExtension=false
 				IsSimulatorBuild=
 				LibMonoLinkMode=dylib

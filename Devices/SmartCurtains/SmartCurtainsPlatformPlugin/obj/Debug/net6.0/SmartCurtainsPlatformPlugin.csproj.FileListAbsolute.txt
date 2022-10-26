@@ -1,0 +1,16 @@
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsPlatformPlugin\bin\Debug\net6.0\SmartCurtainsPlatformPlugin.deps.json
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsPlatformPlugin\bin\Debug\net6.0\SmartCurtainsPlatformPlugin.dll
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsPlatformPlugin\bin\Debug\net6.0\SmartCurtainsPlatformPlugin.pdb
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsPlatformPlugin\bin\Debug\net6.0\SmartDevicePlatformPlugin.dll
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsPlatformPlugin\bin\Debug\net6.0\SmartDevicePlatformPlugin.pdb
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsPlatformPlugin\obj\Debug\net6.0\SmartCurtainsPlatformPlugin.csproj.AssemblyReference.cache
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsPlatformPlugin\obj\Debug\net6.0\SmartCurtainsPlatformPlugin.GeneratedMSBuildEditorConfig.editorconfig
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsPlatformPlugin\obj\Debug\net6.0\SmartCurtainsPlatformPlugin.AssemblyInfoInputs.cache
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsPlatformPlugin\obj\Debug\net6.0\SmartCurtainsPlatformPlugin.AssemblyInfo.cs
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsPlatformPlugin\obj\Debug\net6.0\SmartCurtainsPlatformPlugin.csproj.CoreCompileInputs.cache
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsPlatformPlugin\obj\Debug\net6.0\XamlC.stamp
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsPlatformPlugin\obj\Debug\net6.0\SmartCurtainsPlatformPlugin.csproj.CopyComplete
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsPlatformPlugin\obj\Debug\net6.0\SmartCurtainsPlatformPlugin.dll
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsPlatformPlugin\obj\Debug\net6.0\refint\SmartCurtainsPlatformPlugin.dll
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsPlatformPlugin\obj\Debug\net6.0\SmartCurtainsPlatformPlugin.pdb
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsPlatformPlugin\obj\Debug\net6.0\ref\SmartCurtainsPlatformPlugin.dll
