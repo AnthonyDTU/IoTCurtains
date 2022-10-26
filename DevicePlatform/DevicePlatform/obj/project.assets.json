@@ -26311,11 +26311,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\anton\\My Files\\DTU\\IT Elektronik\\5. Semester\\Advanced C#\\SmartCurtains\\DevicePlatform\\DevicePlatform\\DevicePlatform.csproj",
+      "projectUniqueName": "C:\\DTU\\Projects\\SmartPlatform\\DevicePlatform\\DevicePlatform\\DevicePlatform.csproj",
       "projectName": "DevicePlatform",
-      "projectPath": "C:\\Users\\anton\\My Files\\DTU\\IT Elektronik\\5. Semester\\Advanced C#\\SmartCurtains\\DevicePlatform\\DevicePlatform\\DevicePlatform.csproj",
+      "projectPath": "C:\\DTU\\Projects\\SmartPlatform\\DevicePlatform\\DevicePlatform\\DevicePlatform.csproj",
       "packagesPath": "C:\\Users\\anton\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\anton\\My Files\\DTU\\IT Elektronik\\5. Semester\\Advanced C#\\SmartCurtains\\DevicePlatform\\DevicePlatform\\obj\\",
+      "outputPath": "C:\\DTU\\Projects\\SmartPlatform\\DevicePlatform\\DevicePlatform\\obj\\",
       "projectStyle": "PackageReference",
       "crossTargeting": true,
       "fallbackFolders": [

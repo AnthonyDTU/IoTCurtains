@@ -53,11 +53,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Reference Include="SmartCurtains">
-	    <HintPath>..\..\Devices\Curtains\SmartCurtains\SmartCurtains\bin\Debug\net6.0\SmartCurtains.dll</HintPath>
+	  <Reference Include="SmartCurtainsPlatformPlugin">
+	    <HintPath>..\..\Devices\SmartCurtains\SmartCurtainsPlatformPlugin\bin\Debug\net6.0\SmartCurtainsPlatformPlugin.dll</HintPath>
 	  </Reference>
-	  <Reference Include="SmartDevice">
-	    <HintPath>..\..\Devices\SmartDevice\SmartDevice\bin\Debug\net6.0\SmartDevice.dll</HintPath>
+	  <Reference Include="SmartDevicePlatformPlugin">
+	    <HintPath>..\..\Devices\SmartDevice\SmartDevicePlatformPlugin\bin\Debug\net6.0\SmartDevicePlatformPlugin.dll</HintPath>
 	  </Reference>
 	</ItemGroup>
 

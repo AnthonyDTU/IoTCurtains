@@ -1,6 +1,6 @@
 ﻿using DevicePlatform.Data;
 using DevicePlatform.Models;
-using SmartDevice;
+using SmartDevicePlatformPlugin;
 using System.Net;
 using System.Net.Http.Json;
 using System.Text.Json;
@@ -51,7 +51,7 @@ public partial class MainPage : ContentPage
     }
 
 
-	private void SetupUI()
+	private async void SetupUI()
 	{
         MainContentView.Children.Clear();
 
@@ -61,7 +61,7 @@ public partial class MainPage : ContentPage
             {
                 foreach (var device in deviceCollection.Devices)
                 {
-                    MainContentView.Children.Add(device.Value.GetDeviceUI(""));
+                    MainContentView.Children.Add(await device.Value.GetDeviceUI(""));
                 }
             }
             else

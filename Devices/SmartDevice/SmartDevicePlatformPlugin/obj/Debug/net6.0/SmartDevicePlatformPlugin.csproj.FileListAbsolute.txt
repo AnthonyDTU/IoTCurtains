@@ -1,0 +1,12 @@
+C:\DTU\Projects\SmartPlatform\Devices\SmartDevice\SmartDevicePlatformPlugin\bin\Debug\net6.0\SmartDevicePlatformPlugin.deps.json
+C:\DTU\Projects\SmartPlatform\Devices\SmartDevice\SmartDevicePlatformPlugin\bin\Debug\net6.0\SmartDevicePlatformPlugin.dll
+C:\DTU\Projects\SmartPlatform\Devices\SmartDevice\SmartDevicePlatformPlugin\bin\Debug\net6.0\SmartDevicePlatformPlugin.pdb
+C:\DTU\Projects\SmartPlatform\Devices\SmartDevice\SmartDevicePlatformPlugin\obj\Debug\net6.0\SmartDevicePlatformPlugin.csproj.AssemblyReference.cache
+C:\DTU\Projects\SmartPlatform\Devices\SmartDevice\SmartDevicePlatformPlugin\obj\Debug\net6.0\SmartDevicePlatformPlugin.GeneratedMSBuildEditorConfig.editorconfig
+C:\DTU\Projects\SmartPlatform\Devices\SmartDevice\SmartDevicePlatformPlugin\obj\Debug\net6.0\SmartDevicePlatformPlugin.AssemblyInfoInputs.cache
+C:\DTU\Projects\SmartPlatform\Devices\SmartDevice\SmartDevicePlatformPlugin\obj\Debug\net6.0\SmartDevicePlatformPlugin.AssemblyInfo.cs
+C:\DTU\Projects\SmartPlatform\Devices\SmartDevice\SmartDevicePlatformPlugin\obj\Debug\net6.0\SmartDevicePlatformPlugin.csproj.CoreCompileInputs.cache
+C:\DTU\Projects\SmartPlatform\Devices\SmartDevice\SmartDevicePlatformPlugin\obj\Debug\net6.0\SmartDevicePlatformPlugin.dll
+C:\DTU\Projects\SmartPlatform\Devices\SmartDevice\SmartDevicePlatformPlugin\obj\Debug\net6.0\refint\SmartDevicePlatformPlugin.dll
+C:\DTU\Projects\SmartPlatform\Devices\SmartDevice\SmartDevicePlatformPlugin\obj\Debug\net6.0\SmartDevicePlatformPlugin.pdb
+C:\DTU\Projects\SmartPlatform\Devices\SmartDevice\SmartDevicePlatformPlugin\obj\Debug\net6.0\ref\SmartDevicePlatformPlugin.dll

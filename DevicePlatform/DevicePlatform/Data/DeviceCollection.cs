@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SmartDevice;
+using SmartDevicePlatformPlugin;
 
 namespace DevicePlatform.Data
 {
     public class DeviceCollection
     {
-        private Dictionary<string, IDevice> devices = new Dictionary<string, IDevice>();
-        public Dictionary<string, IDevice> Devices { get { return devices; } }
+        private Dictionary<string, IPlatformPlugin> devices = new Dictionary<string, IPlatformPlugin>();
+        public Dictionary<string, IPlatformPlugin> Devices { get { return devices; } }
 
-        List<IDevice> DevicesList { get; set; }
+        List<IPlatformPlugin> DevicesList { get; set; }
 
         public int Count => devices.Count; 
 
@@ -22,12 +22,12 @@ namespace DevicePlatform.Data
         }
 
 
-        public void AddNewDevice(string deviceID, IDevice newDevice)
+        public void AddNewDevice(string deviceID, IPlatformPlugin newDevice)
         {
             devices.Add(deviceID, newDevice);
         }
 
-        public IDevice GetDevice(Guid deviceID)
+        public IPlatformPlugin GetDevice(Guid deviceID)
         {
             return devices.GetValueOrDefault(deviceID.ToString());
         }

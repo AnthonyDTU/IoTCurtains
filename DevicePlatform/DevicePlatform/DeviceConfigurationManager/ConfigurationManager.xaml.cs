@@ -1,7 +1,7 @@
 namespace DevicePlatform.DeviceConfigurationManager;
 
 using DevicePlatform.Data;
-using SmartDevice;
+using SmartDevicePlatformPlugin;
 using System.IO.Ports;
 
 #pragma warning disable CA1416 // Validate platform compatibility
@@ -20,7 +20,7 @@ public partial class ConfigurationManager : ContentPage
 
 	Uri deviceUri;
 
-	IDevice workingDevice;
+    IPlatformPlugin workingDevice;
 
 	/// <summary>
 	/// Creates a new device and starts the configuration process
@@ -97,7 +97,7 @@ public partial class ConfigurationManager : ContentPage
 		{
 			case "Smart Curtains":
 				if (newDevice)
-					workingDevice = new SmartCurtains.SmartCurtains(deviceUri);					
+					workingDevice = new SmartCurtainsPlatformPlugin.SmartCurtainsPlatformPlugin(deviceUri);					
 				else
 					workingDevice = devices.GetDevice(deviceID);				
 				break;
