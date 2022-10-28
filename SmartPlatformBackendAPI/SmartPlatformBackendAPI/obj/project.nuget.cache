@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "GSNO3oJiSIs6YMbtXfqbLziDR67bhHVM1ONTCDM/4mixhqiehq1to6CJwWwaLubpS/kHvlJVii29jWDoGpD3TA==",
+  "dgSpecHash": "snWuPnLHTMWIc0vbP0mB3yVr07StHB5UfTXVk8OiYJFPJJEX1+U7TcOjQAIbPANKkZqSbl/NGrdPTC/QjL5jUw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\anton\\My Files\\DTU\\IT Elektronik\\5. Semester\\Advanced C#\\SmartCurtains\\SmartPlatformBackendAPI\\SmartPlatformBackendAPI\\SmartPlatformBackendAPI.csproj",
+  "projectFilePath": "C:\\DTU\\Projects\\SmartPlatform\\SmartPlatformBackendAPI\\SmartPlatformBackendAPI\\SmartPlatformBackendAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\anton\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\anton\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

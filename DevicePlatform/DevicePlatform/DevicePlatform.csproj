@@ -62,7 +62,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="CreateNewUserPage.xaml">
+	  <MauiXaml Update="LoginManager\CreateNewUserPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="DeviceConfigurationManager\ConfigurationManager.xaml">
@@ -71,7 +71,7 @@
 	  <MauiXaml Update="DeviceConfigurationManager\SerialConfiguratorView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="LoginPage.xaml">
+	  <MauiXaml Update="LoginManager\LoginPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

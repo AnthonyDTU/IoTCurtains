@@ -9,5 +9,10 @@ namespace SmartDeviceFirmware
         protected GpioController gpioController;
         protected SerialCommunicator serialCommunicator;
         protected WiFiHandler wifiHandler;
+
+        public Device(string deviceModel)
+        {
+            nodeConfiguration = new NodeConfiguration(deviceModel);
+        }
     }
 }

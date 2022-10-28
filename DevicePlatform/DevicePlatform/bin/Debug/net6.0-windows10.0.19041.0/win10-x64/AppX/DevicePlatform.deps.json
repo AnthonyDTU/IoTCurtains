@@ -13,7 +13,7 @@
           "Microsoft.Maui.Extensions": "6.0.541",
           "Microsoft.Windows.SDK.BuildTools": "10.0.22000.194",
           "System.IO.Ports": "7.0.0-rc.2.22472.3",
-          "SmartCurtains": "1.0.0.0",
+          "SmartCurtainsPlatformPlugin": "1.0.0.0",
           "SmartDevicePlatformPlugin": "1.0.0.0",
           "runtimepack.Microsoft.NETCore.App.Runtime.win-x64": "6.0.10",
           "runtimepack.Microsoft.Maui.Core.Runtime.win": "6.0.541",
@@ -1136,9 +1136,9 @@
         }
       },
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {},
-      "SmartCurtains/1.0.0.0": {
+      "SmartCurtainsPlatformPlugin/1.0.0.0": {
         "runtime": {
-          "SmartCurtains.dll": {
+          "SmartCurtainsPlatformPlugin.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
@@ -1353,7 +1353,7 @@
       "path": "system.runtime.compilerservices.unsafe/6.0.0",
       "hashPath": "system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
     },
-    "SmartCurtains/1.0.0.0": {
+    "SmartCurtainsPlatformPlugin/1.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""

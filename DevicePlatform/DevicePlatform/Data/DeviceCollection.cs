@@ -7,22 +7,22 @@ using SmartDevicePlatformPlugin;
 
 namespace DevicePlatform.Data
 {
-    public class DeviceCollection
+    public class DevicePluginCollection
     {
         private Dictionary<string, IPlatformPlugin> devices = new Dictionary<string, IPlatformPlugin>();
-        public Dictionary<string, IPlatformPlugin> Devices { get { return devices; } }
+        public Dictionary<string, IPlatformPlugin> Plugins { get { return devices; } }
 
         List<IPlatformPlugin> DevicesList { get; set; }
 
         public int Count => devices.Count; 
 
-        public DeviceCollection()
+        public DevicePluginCollection()
         {
 
         }
 
 
-        public void AddNewDevice(string deviceID, IPlatformPlugin newDevice)
+        public void AddNewDevicePlugin(string deviceID, IPlatformPlugin newDevice)
         {
             devices.Add(deviceID, newDevice);
         }

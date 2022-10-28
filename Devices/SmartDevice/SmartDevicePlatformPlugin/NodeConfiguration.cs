@@ -8,14 +8,15 @@ namespace SmartDevicePlatformPlugin
 {
     public class NodeConfiguration
     {
-        public string DeviceType { get; }
-        public string DeviceID { get; set; }
+        public string DeviceModel { get; set; }
+        public string DeviceName { get; set; }
+        public Guid DeviceID { get; set; }
+        public Guid UserID { get; set; }
         public string WiFiSSID { get; set; }
         public string WiFiPassword { get; set; }
-        public string MACAddress { get; }
-        public string IoTHubName { get; set; }
-        public string SasKey { get; set; }
-
+        public string MACAddress { get; set; }
+        public Uri backendConnectionUri { get; set; }
+        public string DeviceKey { get; set; }
 
     }
 }

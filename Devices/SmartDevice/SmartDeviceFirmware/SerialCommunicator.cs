@@ -13,10 +13,11 @@ namespace SmartDeviceFirmware
         int databits = 8;
         StopBits stopBits = StopBits.One;
 
-        private const string getConfigCommand = "getConfig";
-        private const string setConfigCommand = "setConfig";
+        private const string getConfigCommand = "deviceConfig?";
+        private const string setConfigCommand = "config";
         private const string resetNodeCommand = "resetNode";
-        private const string readyForConfigCommand = "readyForConfig";
+        private const string getDeviceModelCommand = "deviceModel?";
+        private const string readyForConfigResponse = "readyForConfig";
 
 
         public delegate void DataRecivedHandler(string data);
@@ -62,7 +63,8 @@ namespace SmartDeviceFirmware
             // If data recived is not a config command, pass data to callback method (if any is set)
             if (recievedData != getConfigCommand &&
                 recievedData != setConfigCommand &&
-                recievedData != resetNodeCommand)
+                recievedData != resetNodeCommand &&
+                recievedData != getDeviceModelCommand)
             {
                 if (dataRecivedCallbackHandler != null)
                 {
@@ -81,11 +83,17 @@ namespace SmartDeviceFirmware
             // If new configuration is incoming, parse and store it
             if (recievedData == setConfigCommand)
             {
-                serialPort.WriteLine(readyForConfigCommand);
+                serialPort.WriteLine(readyForConfigResponse);
                 while (serialPort.BytesToRead == 0) ;
                 string newConfigJson = serialPort.ReadLine();
                 nodeConfiguration.SetNewConfiguration(newConfigJson);
                 return;
+            }
+
+            // If device model is requested
+            if (recievedData == getDeviceModelCommand)
+            {
+                serialPort.WriteLine(nodeConfiguration.DeviceModel);
             }
 
             // If device reset is commanded, reset device.
@@ -104,6 +112,7 @@ namespace SmartDeviceFirmware
         /// <returns></returns>
         public bool SendMessage(string message)
         {
+            // Safety checks
             if (!serialPort.IsOpen)
                 return false;
 
@@ -113,6 +122,7 @@ namespace SmartDeviceFirmware
             if (message == string.Empty)
                 return false;
 
+            // Transmit data
             try
             {
                 serialPort.WriteLine(message);

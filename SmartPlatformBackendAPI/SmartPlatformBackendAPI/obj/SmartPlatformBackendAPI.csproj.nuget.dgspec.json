@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\anton\\My Files\\DTU\\IT Elektronik\\5. Semester\\Advanced C#\\SmartCurtains\\SmartPlatformBackendAPI\\SmartPlatformBackendAPI\\SmartPlatformBackendAPI.csproj": {}
+    "C:\\DTU\\Projects\\SmartPlatform\\SmartPlatformBackendAPI\\SmartPlatformBackendAPI\\SmartPlatformBackendAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\anton\\My Files\\DTU\\IT Elektronik\\5. Semester\\Advanced C#\\SmartCurtains\\SmartPlatformBackendAPI\\SmartPlatformBackendAPI\\SmartPlatformBackendAPI.csproj": {
+    "C:\\DTU\\Projects\\SmartPlatform\\SmartPlatformBackendAPI\\SmartPlatformBackendAPI\\SmartPlatformBackendAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\anton\\My Files\\DTU\\IT Elektronik\\5. Semester\\Advanced C#\\SmartCurtains\\SmartPlatformBackendAPI\\SmartPlatformBackendAPI\\SmartPlatformBackendAPI.csproj",
+        "projectUniqueName": "C:\\DTU\\Projects\\SmartPlatform\\SmartPlatformBackendAPI\\SmartPlatformBackendAPI\\SmartPlatformBackendAPI.csproj",
         "projectName": "SmartPlatformBackendAPI",
-        "projectPath": "C:\\Users\\anton\\My Files\\DTU\\IT Elektronik\\5. Semester\\Advanced C#\\SmartCurtains\\SmartPlatformBackendAPI\\SmartPlatformBackendAPI\\SmartPlatformBackendAPI.csproj",
+        "projectPath": "C:\\DTU\\Projects\\SmartPlatform\\SmartPlatformBackendAPI\\SmartPlatformBackendAPI\\SmartPlatformBackendAPI.csproj",
         "packagesPath": "C:\\Users\\anton\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\anton\\My Files\\DTU\\IT Elektronik\\5. Semester\\Advanced C#\\SmartCurtains\\SmartPlatformBackendAPI\\SmartPlatformBackendAPI\\obj\\",
+        "outputPath": "C:\\DTU\\Projects\\SmartPlatform\\SmartPlatformBackendAPI\\SmartPlatformBackendAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

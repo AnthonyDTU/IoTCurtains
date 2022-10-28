@@ -22,16 +22,18 @@ namespace SmartCurtainsPlatformPlugin
         DeviceData currentDeviceState;
 
 
-        public SmartCurtainsPlatformPlugin(Uri backendDeviceUri)
+        public SmartCurtainsPlatformPlugin(Guid UserID, Uri backendDeviceUri)
         {
-            deviceParameters = new DeviceParameters()
+            nodeConfiguration = new NodeConfiguration()
             {
                 DeviceID = Guid.NewGuid(),
-                DeviceName = "",
+                UserID = UserID,
                 DeviceKey = "newKey",
+                backendConnectionUri = backendDeviceUri
             };
 
-            configurator = new SmartCurtainsConfigurator();
+
+            configurator = new SmartCurtainsConfigurator(nodeConfiguration);
             APIHandler = new APIHandler(backendDeviceUri);
         }
 

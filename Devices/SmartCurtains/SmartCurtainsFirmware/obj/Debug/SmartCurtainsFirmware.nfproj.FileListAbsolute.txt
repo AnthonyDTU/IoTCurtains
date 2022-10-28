@@ -94,3 +94,9 @@ C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\obj\De
 C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\obj\Debug\System.Threading.xml
 C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\obj\Debug\System.Device.Wifi.xml
 C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\obj\Debug\nanoFramework.System.Collections.xml
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\bin\Debug\System.Net.Http.pe
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\bin\Debug\System.Net.Http.pdbx
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\bin\Debug\System.Net.Http.dll
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\bin\Debug\System.Net.Http.xml
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\obj\Debug\System.Net.Http.dll
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\obj\Debug\System.Net.Http.xml

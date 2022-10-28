@@ -10,9 +10,6 @@ namespace DevicePlatform;
 
 public partial class MainPage : ContentPage
 {
-	DeviceCollection deviceCollection;
-
-
     Uri uriBase = new Uri("https://localhost:7173/");
 	Uri deviceUri;
     int timeoutMs = 5000;
@@ -21,7 +18,7 @@ public partial class MainPage : ContentPage
     APIHandler apiHandler;
 
 	string storedUser = null;
-	string storedPassword = null;
+	string storedPassword = "test";
 
 
 
@@ -37,10 +34,10 @@ public partial class MainPage : ContentPage
 		}
 		else
 		{
-            apiHandler.Login(storedUser, storedPassword);
+            apiHandler.Login(storedUser, storedPassword).Wait();
 		}		
 
-        SetupUI();
+        RenderUI();
 
 	}
 
@@ -51,17 +48,17 @@ public partial class MainPage : ContentPage
     }
 
 
-	private async void SetupUI()
+	private async void RenderUI()
 	{
         MainContentView.Children.Clear();
 
         if (ActiveUser.LoggedIn)
         {
-            if (ActiveUser.Devices.Count != 0)
+            if (ActiveUser.DevicesPlugins.Count != 0)
             {
-                foreach (var device in deviceCollection.Devices)
+                foreach (var plugin in ActiveUser.DevicesPlugins.Plugins)
                 {
-                    MainContentView.Children.Add(await device.Value.GetDeviceUI(""));
+                    MainContentView.Children.Add(await plugin.Value.GetDeviceUI(""));
                 }
             }
             else
@@ -127,17 +124,11 @@ public partial class MainPage : ContentPage
 
 	private async void AddNewDeviceButton_Clicked(object sender, EventArgs e)
     {
-        await apiHandler.AddNewDevice();
-
-        await Navigation.PushAsync(new DeviceConfigurationManager.ConfigurationManager(deviceUri, ActiveUser.Devices));
-        SetupUI();
+        deviceUri = new Uri(uriBase, "api/Devices");
+        await Navigation.PushAsync(new DeviceConfigurationManager.ConfigurationManager(deviceUri, ActiveUser.DevicesPlugins));
     }
 
 
-	private void ReRenderView()
-	{
-
-	}
 
 
 
@@ -148,7 +139,7 @@ public partial class MainPage : ContentPage
 
     private void ContentPage_Appearing(object sender, EventArgs e)
     {
-        SetupUI();
+        RenderUI();
     }
 }
 

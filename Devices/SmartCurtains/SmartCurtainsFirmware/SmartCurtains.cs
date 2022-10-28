@@ -41,7 +41,7 @@ namespace SmartCurtainsFirmware
         /// <summary>
         /// 
         /// </summary>
-        public SmartCurtains()
+        public SmartCurtains() : base("Smart Curtains")
         {
             gpioController = new GpioController(PinNumberingScheme.Board);
 
@@ -68,8 +68,53 @@ namespace SmartCurtainsFirmware
             rollUpButton = new GpioButton(rollUpButtonPin, gpioController, false);
             stopMotorButton = new GpioButton(StopAllActionButtonPin, gpioController, false);
             calibrateButton = new GpioButton(CalibrateButtonPin, gpioController, false);
+
+            rollDownButton.Press += RollDownButton_Press;
+            rollUpButton.Press += RollUpButton_Press;
+            stopMotorButton.Press += StopMotorButton_Press;
+            calibrateButton.Press += CalibrateButton_Press;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <exception cref="NotImplementedException"></exception>
+        private void CalibrateButton_Press(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void StopMotorButton_Press(object sender, EventArgs e)
+        {
+            motorController.SetPoint = motorController.CurrentLocation;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RollUpButton_Press(object sender, EventArgs e)
+        {
+            motorController.SetPoint = motorController.MinSetpoint;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RollDownButton_Press(object sender, EventArgs e)
+        {
+            motorController.SetPoint = motorController.MaxSetpoint;
+        }
 
         /// <summary>
         /// 
@@ -79,37 +124,6 @@ namespace SmartCurtainsFirmware
         private void SerialDataRecived(string recivedData)
         {
             throw new NotImplementedException();
-        }
-
-
-        /// <summary>
-        /// Sets the motors setpoint to the current location, to stop its operation.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void StopMotorButton_ButtonDown(object sender, EventArgs e)
-        {
-            motorController.SetPoint = motorController.CurrentLocation;
-        }
-
-        /// <summary>
-        /// Sets the motor setpoint to the maximum calibrated value
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void RollToButtomButton_ButtonDown(object sender, EventArgs e)
-        {
-            motorController.SetPoint = motorController.MaxSetpoint;
-        }
-
-        /// <summary>
-        /// Sets the motor setpoint to the minimum calibrated value
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void RollToTopButton_ButtonDown(object sender, EventArgs e)
-        {
-            motorController.SetPoint = motorController.MinSetpoint;
         }
     }
 }

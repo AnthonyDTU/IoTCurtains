@@ -6,8 +6,6 @@ using System.IO.Ports;
 public partial class SerialConfiguratorView : ContentView
 {
     private string COMPort = "COM1";
-    
-
 
     ConfigurationManager parent;
 

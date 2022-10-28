@@ -15,13 +15,13 @@ namespace DevicePlatform.Data
     {
         public static bool LoggedIn { get; set; } = false;
         public static User User { get; set; }
-        public static DeviceCollection Devices { get; set; }
+        public static DevicePluginCollection DevicesPlugins { get; set; }
 
         
         public static void ConfigureActiveUser(User activeUser, Uri uriBase)
         {
             User = activeUser;
-            Devices = new DeviceCollection();
+            DevicesPlugins = new DevicePluginCollection();
             LoggedIn = true;
 
             Uri deviceUri = new Uri(uriBase, $"api/{User.UserID}/Device/");
@@ -34,7 +34,7 @@ namespace DevicePlatform.Data
                     switch (device.DeviceType)
                     {
                         case "Smart Curtains":
-                            Devices.AddNewDevice(device.DeviceID.ToString(), new SmartCurtainsPlatformPlugin.SmartCurtainsPlatformPlugin(deviceUri, device.DeviceID, device.DeviceName, device.DeviceKey));
+                            DevicesPlugins.AddNewDevicePlugin(device.DeviceID.ToString(), new SmartCurtainsPlatformPlugin.SmartCurtainsPlatformPlugin(deviceUri, device.DeviceID, device.DeviceName, device.DeviceKey));
                             break;
 
                         default:

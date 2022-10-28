@@ -76,6 +76,7 @@ namespace DevicePlatform
 
             try
             {
+
                 var result = await backendAPI.PutAsJsonAsync<NewUser>("api/Users", newUser);
                 if (result.StatusCode == HttpStatusCode.OK)
                 {

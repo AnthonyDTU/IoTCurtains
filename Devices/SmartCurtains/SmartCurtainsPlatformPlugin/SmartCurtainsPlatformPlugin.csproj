@@ -24,6 +24,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="ConfigurationView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="SmartCurtainsUI.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

@@ -40,25 +40,11 @@ namespace SmartPlatformBackendAPI.Controllers
         [HttpGet("loginAttempt")]
         public IActionResult GetFromUserNameAndPassword(string username, string pass)
         {
-            //User? user = dbContext.Users.Find(username);
-            //if (user == null || user.Password != pass)
-            //    return NotFound();
-
             User? user = dbContext.Users.Include(d => d.Devices).AsNoTracking().SingleOrDefault(u => u.UserName == username && u.Password == pass);
             if (user != null)
             {
                 return Ok(user);
             }
-
-
-            //var users = dbContext.Users.Include(d => d.Devices).AsNoTracking().ToList();
-            //foreach (User user in users)
-            //{
-            //    if (user.UserName == username && user.Password == pass)
-            //    {
-            //        return Ok(user);
-            //    }
-            //}
 
             return NotFound();
         }
@@ -77,18 +63,6 @@ namespace SmartPlatformBackendAPI.Controllers
             }
             else
                 return NotFound();
-
-
-            //if (user != null)
-            //{
-            //    dbContext.Update(user.Devices);
-            //    user.Devices = updatedUser.Devices;
-            //    //dbContext.Entry(user).State = EntityState.Modified;
-            //    dbContext.SaveChanges(user);
-            //    return Ok(user);
-            //}
-            //else
-            //    return NotFound();
         }
 
         // PUT api/<UsersController>
@@ -110,25 +84,6 @@ namespace SmartPlatformBackendAPI.Controllers
                 Password = newUser.Password,
                 Devices = new List<Device>()
             };
-
-
-            dbContext.Devices.Add(new Device()
-            {
-                DeviceID = Guid.Empty,
-                UserID = user.UserID,
-                DeviceKey = "Test Key",
-                DeviceName = "Test Device",
-                DeviceType = "Test Type"
-            });
-
-            user.Devices.Add(new Device()
-            {
-                DeviceID = Guid.Empty,
-                UserID = user.UserID,
-                DeviceKey = "Test Key",
-                DeviceName = "Test Device",
-                DeviceType = "Test Type"
-            });
 
             dbContext.Users.Add(user);
             dbContext.SaveChanges();

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SmartCurtainsPlatformPlugin.ConfigurationView">
+    <VerticalStackLayout 
+        WidthRequest="550"
+        Spacing="15"
+        Margin="20">
+
+        <Label 
+            x:Name="modelLabel"
+            Text="Smart Curtains"
+            FontSize="24"
+            FontAttributes="Bold"
+            HorizontalTextAlignment="Start"/>
+
+        <VerticalStackLayout
+            Spacing="5"
+            HorizontalOptions="Center"
+            WidthRequest="400">
+
+            <HorizontalStackLayout
+                Spacing="10"
+                HorizontalOptions="Start">
+                    <Label Text="UserID:" FontAttributes="Bold"/>
+                    <Label x:Name="UserIDLabel"/>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout
+                Spacing="10">
+                    <Label Text="DeviceID:" FontAttributes="Bold"/>
+                    <Label x:Name="DeviceIDLabel"/>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout
+                Spacing="10">
+                    <Label Text="Device Key:" FontAttributes="Bold"/>
+                    <Label x:Name="DeviceKeyLabel"/>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout
+                Spacing="10">
+                    <Label Text="Backend URI:" FontAttributes="Bold"/>
+                    <Label x:Name="BackedURILabel"/>
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+
+       
+        <Entry 
+            x:Name="DeviceNameEntry"
+            Placeholder="Device Name"
+            HorizontalOptions="Center"
+            WidthRequest="400"/>
+
+        <Entry 
+            x:Name="WiFiSSIDEntry"
+            Placeholder="WiFi SSID"
+            HorizontalOptions="Center"
+            WidthRequest="400"/>
+
+        <Entry 
+            x:Name="WiFiPasswordEntry"
+            Placeholder="WiFi Password"
+            HorizontalOptions="Center"
+            WidthRequest="400"/>
+
+
+    </VerticalStackLayout>
+</ContentView>

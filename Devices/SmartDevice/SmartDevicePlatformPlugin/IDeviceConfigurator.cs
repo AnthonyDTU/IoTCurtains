@@ -8,9 +8,9 @@ namespace SmartDevicePlatformPlugin
 {
     public interface IDeviceConfigurator
     {
-        public bool SendConfigurationToDevice();
+        public void SetConfiguraion(NodeConfiguration nodeConfiguration);
 
-        public bool GetConfigurationFromDevice();
+        public NodeConfiguration BuildNewConfiguration();
 
         public ContentView GetConfigurationView();
     
