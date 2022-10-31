@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "j3A4vu3NuUjob2xW/oUOpZD5DJBH36+kE25KG4pXiPG2WZnXBTA4gjsRoD7yBT5eGm9agkmVDW9wfYo4QpAwNQ==",
+  "success": true,
+  "projectFilePath": "C:\\DTU\\Projects\\SmartPlatform\\MQTTSubscriberTest\\MQTTSubscriberTest\\MQTTSubscriberTest.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\anton\\.nuget\\packages\\mqttnet\\4.1.2.350\\mqttnet.4.1.2.350.nupkg.sha512"
+  ],
+  "logs": []
+}

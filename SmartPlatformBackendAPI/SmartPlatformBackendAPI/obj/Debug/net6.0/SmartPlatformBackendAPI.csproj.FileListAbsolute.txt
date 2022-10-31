@@ -168,3 +168,5 @@ C:\DTU\Projects\SmartPlatform\SmartPlatformBackendAPI\SmartPlatformBackendAPI\ob
 C:\DTU\Projects\SmartPlatform\SmartPlatformBackendAPI\SmartPlatformBackendAPI\obj\Debug\net6.0\SmartPlatformBackendAPI.pdb
 C:\DTU\Projects\SmartPlatform\SmartPlatformBackendAPI\SmartPlatformBackendAPI\obj\Debug\net6.0\SmartPlatformBackendAPI.genruntimeconfig.cache
 C:\DTU\Projects\SmartPlatform\SmartPlatformBackendAPI\SmartPlatformBackendAPI\obj\Debug\net6.0\ref\SmartPlatformBackendAPI.dll
+C:\DTU\Projects\SmartPlatform\SmartPlatformBackendAPI\SmartPlatformBackendAPI\bin\Debug\net6.0\MQTTnet.dll
+C:\DTU\Projects\SmartPlatform\SmartPlatformBackendAPI\SmartPlatformBackendAPI\bin\Debug\net6.0\MQTTnet.AspNetCore.dll

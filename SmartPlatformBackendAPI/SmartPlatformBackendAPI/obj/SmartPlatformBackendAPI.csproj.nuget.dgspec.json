@@ -49,6 +49,14 @@
               "target": "Package",
               "version": "[2.18.0, )"
             },
+            "MQTTnet": {
+              "target": "Package",
+              "version": "[4.1.2.350, )"
+            },
+            "MQTTnet.AspNetCore": {
+              "target": "Package",
+              "version": "[4.1.2.350, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",

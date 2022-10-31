@@ -1,0 +1,17 @@
+C:\DTU\Projects\SmartPlatform\MQTTSubscriberTest\MQTTSubscriberTest\bin\Debug\net6.0\MQTTSubscriberTest.exe
+C:\DTU\Projects\SmartPlatform\MQTTSubscriberTest\MQTTSubscriberTest\bin\Debug\net6.0\MQTTSubscriberTest.deps.json
+C:\DTU\Projects\SmartPlatform\MQTTSubscriberTest\MQTTSubscriberTest\bin\Debug\net6.0\MQTTSubscriberTest.runtimeconfig.json
+C:\DTU\Projects\SmartPlatform\MQTTSubscriberTest\MQTTSubscriberTest\bin\Debug\net6.0\MQTTSubscriberTest.dll
+C:\DTU\Projects\SmartPlatform\MQTTSubscriberTest\MQTTSubscriberTest\bin\Debug\net6.0\MQTTSubscriberTest.pdb
+C:\DTU\Projects\SmartPlatform\MQTTSubscriberTest\MQTTSubscriberTest\bin\Debug\net6.0\MQTTnet.dll
+C:\DTU\Projects\SmartPlatform\MQTTSubscriberTest\MQTTSubscriberTest\obj\Debug\net6.0\MQTTSubscriberTest.csproj.AssemblyReference.cache
+C:\DTU\Projects\SmartPlatform\MQTTSubscriberTest\MQTTSubscriberTest\obj\Debug\net6.0\MQTTSubscriberTest.GeneratedMSBuildEditorConfig.editorconfig
+C:\DTU\Projects\SmartPlatform\MQTTSubscriberTest\MQTTSubscriberTest\obj\Debug\net6.0\MQTTSubscriberTest.AssemblyInfoInputs.cache
+C:\DTU\Projects\SmartPlatform\MQTTSubscriberTest\MQTTSubscriberTest\obj\Debug\net6.0\MQTTSubscriberTest.AssemblyInfo.cs
+C:\DTU\Projects\SmartPlatform\MQTTSubscriberTest\MQTTSubscriberTest\obj\Debug\net6.0\MQTTSubscriberTest.csproj.CoreCompileInputs.cache
+C:\DTU\Projects\SmartPlatform\MQTTSubscriberTest\MQTTSubscriberTest\obj\Debug\net6.0\MQTTSubscriberTest.csproj.CopyComplete
+C:\DTU\Projects\SmartPlatform\MQTTSubscriberTest\MQTTSubscriberTest\obj\Debug\net6.0\MQTTSubscriberTest.dll
+C:\DTU\Projects\SmartPlatform\MQTTSubscriberTest\MQTTSubscriberTest\obj\Debug\net6.0\refint\MQTTSubscriberTest.dll
+C:\DTU\Projects\SmartPlatform\MQTTSubscriberTest\MQTTSubscriberTest\obj\Debug\net6.0\MQTTSubscriberTest.pdb
+C:\DTU\Projects\SmartPlatform\MQTTSubscriberTest\MQTTSubscriberTest\obj\Debug\net6.0\MQTTSubscriberTest.genruntimeconfig.cache
+C:\DTU\Projects\SmartPlatform\MQTTSubscriberTest\MQTTSubscriberTest\obj\Debug\net6.0\ref\MQTTSubscriberTest.dll

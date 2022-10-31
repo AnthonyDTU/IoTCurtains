@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "snWuPnLHTMWIc0vbP0mB3yVr07StHB5UfTXVk8OiYJFPJJEX1+U7TcOjQAIbPANKkZqSbl/NGrdPTC/QjL5jUw==",
+  "dgSpecHash": "EYjQajpQXuQ3S551lZoYbgaA9KYWW6J0hu/VY6cbiqgHI3kVQuM7+A66mLyPPDLzetwbl92jL+T9jQZjMI8yeA==",
   "success": true,
   "projectFilePath": "C:\\DTU\\Projects\\SmartPlatform\\SmartPlatformBackendAPI\\SmartPlatformBackendAPI\\SmartPlatformBackendAPI.csproj",
   "expectedPackageFiles": [
@@ -46,6 +46,8 @@
     "C:\\Users\\anton\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
     "C:\\Users\\anton\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
     "C:\\Users\\anton\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
+    "C:\\Users\\anton\\.nuget\\packages\\mqttnet\\4.1.2.350\\mqttnet.4.1.2.350.nupkg.sha512",
+    "C:\\Users\\anton\\.nuget\\packages\\mqttnet.aspnetcore\\4.1.2.350\\mqttnet.aspnetcore.4.1.2.350.nupkg.sha512",
     "C:\\Users\\anton\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
     "C:\\Users\\anton\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
     "C:\\Users\\anton\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",

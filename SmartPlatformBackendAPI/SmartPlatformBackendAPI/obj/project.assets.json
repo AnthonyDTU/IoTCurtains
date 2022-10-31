@@ -722,6 +722,38 @@
           "lib/netstandard2.0/Mono.TextTemplating.dll": {}
         }
       },
+      "MQTTnet/4.1.2.350": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/MQTTnet.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/MQTTnet.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "MQTTnet.AspNetCore/4.1.2.350": {
+        "type": "package",
+        "dependencies": {
+          "MQTTnet": "4.1.2.350"
+        },
+        "compile": {
+          "lib/net6.0/MQTTnet.AspNetCore.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/MQTTnet.AspNetCore.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "Swashbuckle.AspNetCore/6.2.3": {
         "type": "package",
         "dependencies": {
@@ -2341,6 +2373,59 @@
         "mono.texttemplating.nuspec"
       ]
     },
+    "MQTTnet/4.1.2.350": {
+      "sha512": "etoNFb3b3wm/Ti1RROXbSDtpx4kuYoWkOjACdZqsmPNb2pWk8QjzwTNW5yqWL91DxCKo6T8pjfrxvADicd8+9w==",
+      "type": "package",
+      "path": "mqttnet/4.1.2.350",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net452/MQTTnet.dll",
+        "lib/net452/MQTTnet.xml",
+        "lib/net461/MQTTnet.dll",
+        "lib/net461/MQTTnet.xml",
+        "lib/net5.0/MQTTnet.dll",
+        "lib/net5.0/MQTTnet.xml",
+        "lib/net6.0/MQTTnet.dll",
+        "lib/net6.0/MQTTnet.xml",
+        "lib/netcoreapp3.1/MQTTnet.dll",
+        "lib/netcoreapp3.1/MQTTnet.xml",
+        "lib/netstandard1.3/MQTTnet.dll",
+        "lib/netstandard1.3/MQTTnet.xml",
+        "lib/netstandard2.0/MQTTnet.dll",
+        "lib/netstandard2.0/MQTTnet.xml",
+        "lib/netstandard2.1/MQTTnet.dll",
+        "lib/netstandard2.1/MQTTnet.xml",
+        "lib/uap10.0.10240/MQTTnet.dll",
+        "lib/uap10.0.10240/MQTTnet.pri",
+        "lib/uap10.0.10240/MQTTnet.xml",
+        "mqttnet.4.1.2.350.nupkg.sha512",
+        "mqttnet.nuspec",
+        "nuget.png"
+      ]
+    },
+    "MQTTnet.AspNetCore/4.1.2.350": {
+      "sha512": "BmU5523+cLeUi1nrlXFsICHvLCvd34R4uORF2slL3UfEwPKVgO7w3aQql50ukQZHIzr/4vc6cPwQihP34KUmTw==",
+      "type": "package",
+      "path": "mqttnet.aspnetcore/4.1.2.350",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net5.0/MQTTnet.AspNetCore.dll",
+        "lib/net5.0/MQTTnet.AspNetCore.xml",
+        "lib/net6.0/MQTTnet.AspNetCore.dll",
+        "lib/net6.0/MQTTnet.AspNetCore.xml",
+        "lib/netcoreapp2.1/MQTTnet.AspNetCore.dll",
+        "lib/netcoreapp2.1/MQTTnet.AspNetCore.xml",
+        "lib/netcoreapp3.1/MQTTnet.AspNetCore.dll",
+        "lib/netcoreapp3.1/MQTTnet.AspNetCore.xml",
+        "lib/netstandard2.0/MQTTnet.AspNetCore.dll",
+        "lib/netstandard2.0/MQTTnet.AspNetCore.xml",
+        "mqttnet.aspnetcore.4.1.2.350.nupkg.sha512",
+        "mqttnet.aspnetcore.nuspec",
+        "nuget.png"
+      ]
+    },
     "Swashbuckle.AspNetCore/6.2.3": {
       "sha512": "cnzQDn0Le+hInsw2SYwlOhOCPXpYi/szcvnyqZJ12v+QyrLBwAmWXBg6RIyHB18s/mLeywC+Rg2O9ndz0IUNYQ==",
       "type": "package",
@@ -3825,6 +3910,8 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "DocumentFormat.OpenXml >= 2.18.0",
+      "MQTTnet >= 4.1.2.350",
+      "MQTTnet.AspNetCore >= 4.1.2.350",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.0-rc.2.22472.11",
       "Microsoft.EntityFrameworkCore.InMemory >= 6.0.10",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.0-rc.2.22472.11",
@@ -3880,6 +3967,14 @@
           "DocumentFormat.OpenXml": {
             "target": "Package",
             "version": "[2.18.0, )"
+          },
+          "MQTTnet": {
+            "target": "Package",
+            "version": "[4.1.2.350, )"
+          },
+          "MQTTnet.AspNetCore": {
+            "target": "Package",
+            "version": "[4.1.2.350, )"
           },
           "Microsoft.EntityFrameworkCore.Design": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
