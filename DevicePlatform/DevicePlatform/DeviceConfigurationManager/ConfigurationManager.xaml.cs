@@ -1,6 +1,7 @@
 namespace DevicePlatform.DeviceConfigurationManager;
 
 using DevicePlatform.Data;
+using Microsoft.Maui.Controls.PlatformConfiguration;
 using SmartDevicePlatformPlugin;
 using System.Diagnostics;
 using System.IO.Ports;
@@ -32,6 +33,8 @@ public partial class ConfigurationManager : ContentPage
 
 	Uri deviceUri;
 
+    SerialConfiguratorView serialConfiguratorView;
+
     IPlatformPlugin workingDevicePlugin;
 
 	/// <summary>
@@ -47,9 +50,38 @@ public partial class ConfigurationManager : ContentPage
 		this.devices = devices;
 		newDevice = true;
 
-		SerialConfiguratorView serialConfiguratorView = new SerialConfiguratorView(SetupSerialConnection);
-		ConfigurationView.Children.Add(serialConfiguratorView);	
+		serialConfiguratorView = new SerialConfiguratorView(SetupSerialConnection);
+		//Button setupSerialConnectionButton = new Button() { Text = "Setup Serial Connection", WidthRequest = 300 };
+		//setupSerialConnectionButton.Clicked += SetupSerialConnectionButton_Clicked;
+		ConfigurationView.Children.Add(serialConfiguratorView);
+		//ConfigurationView.Children.Add(setupSerialConnectionButton);
 	}
+
+	private void SetupSerialConnectionButton_Clicked(object sender, EventArgs e)
+	{
+		serialConfiguratorView.GetSelectedComport();
+        try
+        {
+            serialPort = new SerialPort(serialConfiguratorView.GetSelectedComport(),
+                                        baudRate,
+                                        parity,
+                                        dataBits,
+                                        stopBits);
+
+            serialPort.DataReceived += SerialPort_DataReceived;
+            serialPort.Open();
+
+            if (serialPort.IsOpen)
+            {
+                QueryDeviceModel();
+            }
+        }
+        catch (Exception)
+        {
+
+            throw;
+        }
+    }
 
 
 	/// <summary>
@@ -58,7 +90,7 @@ public partial class ConfigurationManager : ContentPage
 	/// <param name="backendAPI"></param>
 	/// <param name="devices"></param>
 	/// <param name="deviceID"></param>
-    public ConfigurationManager(Uri deviceUri, DevicePluginCollection devices, Guid deviceID)
+	public ConfigurationManager(Uri deviceUri, DevicePluginCollection devices, Guid deviceID)
     {
         InitializeComponent();
 
@@ -72,13 +104,16 @@ public partial class ConfigurationManager : ContentPage
     }
 
 	/// <summary>
-	/// 
+	/// Opens the serial port an queries the device for its model
 	/// </summary>
 	/// <param name="COMPort"></param>
     private void SetupSerialConnection(string COMPort)
 	{
         try
         {
+			if (serialPort != null && serialPort.IsOpen)
+				return; 
+
             serialPort = new SerialPort(COMPort,
                                         baudRate,
                                         parity,
@@ -121,7 +156,7 @@ public partial class ConfigurationManager : ContentPage
 
         if (receivedData.Equals(setDeviceReadyForConfigCommand))
         {
-            string jsonData = "newConfig:" + JsonSerializer.Serialize(workingDevicePlugin.DeviceConfigurator.BuildNewConfiguration());
+			string jsonData = "newConfig:" + JsonSerializer.Serialize<NodeConfiguration>(workingDevicePlugin.DeviceConfigurator.BuildNewConfiguration());
             serialPort.WriteLine(jsonData);
             return;
         }
@@ -131,7 +166,8 @@ public partial class ConfigurationManager : ContentPage
 			if (newDevice)
 			{
 				ActiveUser.DevicesPlugins.AddNewDevicePlugin(workingDevicePlugin);
-			}
+                Navigation.PopAsync();
+            }
 			else
 			{
 				// UpdateDevice
@@ -171,17 +207,19 @@ public partial class ConfigurationManager : ContentPage
 	/// </summary>
 	private void SetupConfigurationView()
 	{
-		Button sendConfigurationToDeviceButton = new Button()
+		Dispatcher.Dispatch(() =>
 		{
-			Text = "Send Configuration To Device",
-			WidthRequest = 400,
+            Button sendConfigurationToDeviceButton = new Button()
+            {
+                Text = "Send Configuration To Device",
+                WidthRequest = 400,
 
-		};
-		sendConfigurationToDeviceButton.Clicked += SendConfigurationToDeviceButton_Clicked;
+            };
+            sendConfigurationToDeviceButton.Clicked += SendConfigurationToDeviceButton_Clicked;
 
-
-        ConfigurationView.Children.Add(workingDevicePlugin.DeviceConfigurator.GetConfigurationView());
-		ConfigurationView.Children.Add(sendConfigurationToDeviceButton);
+            ConfigurationView.Children.Add(workingDevicePlugin.DeviceConfigurator.GetConfigurationView());
+            ConfigurationView.Children.Add(sendConfigurationToDeviceButton);
+        });        
 	}
 
 	/// <summary>

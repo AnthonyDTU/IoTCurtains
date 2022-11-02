@@ -29,18 +29,18 @@ namespace SmartDeviceFirmware
 
         public bool SetNewConfiguration(string config)
         {
-            var newConfig = (NodeConfiguration)JsonConvert.DeserializeObject(config, typeof(NodeConfiguration));
-            DeviceName = newConfig.DeviceName;
-            DeviceID = newConfig.DeviceID;
-            UserID = newConfig.UserID;
-            WiFiSSID = newConfig.WiFiSSID;
-            WiFiPassword = newConfig.WiFiPassword;
-            backendConnectionUri = newConfig.backendConnectionUri;
-            DeviceKey = newConfig.DeviceKey;
+            //var newConfig = (NodeConfiguration)JsonConvert.DeserializeObject(config, typeof(NodeConfiguration));
+            //DeviceName = newConfig.DeviceName;
+            //DeviceID = newConfig.DeviceID;
+            //UserID = newConfig.UserID;
+            //WiFiSSID = newConfig.WiFiSSID;
+            //WiFiPassword = newConfig.WiFiPassword;
+            //backendConnectionUri = newConfig.backendConnectionUri;
+            //DeviceKey = newConfig.DeviceKey;
            
             // Try reconnect to WIFI
 
-            return false;
+            return true;
         }
 
         public bool ResetNodeToFactory()

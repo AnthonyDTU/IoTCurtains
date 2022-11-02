@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Net;
 
 using SmartDevicePlatformPlugin;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace SmartCurtainsPlatformPlugin
 {
@@ -14,8 +15,8 @@ namespace SmartCurtainsPlatformPlugin
         private SmartCurtainsConfigurator configurator;
         public IDeviceConfigurator DeviceConfigurator => configurator;
 
-        private DeviceParameters deviceParameters;
-        public DeviceParameters DeviceParameters => deviceParameters;
+        private DeviceDescriptor deviceDescriptor;
+        public DeviceDescriptor DeviceDescriptor => deviceDescriptor;
 
         APIHandler APIHandler;        
         DeviceData currentDeviceState;
@@ -23,24 +24,24 @@ namespace SmartCurtainsPlatformPlugin
 
         public SmartCurtainsPlatformPlugin(Guid userID, Uri backendDeviceUri)
         {
-            deviceParameters = new DeviceParameters()
+            deviceDescriptor = new DeviceDescriptor()
             {
                 DeviceID = Guid.NewGuid(),
                 UserID = userID,
                 DeviceName = "",
                 DeviceModel = "",
-                DeviceKey = "newKey",
+                DeviceKey = "",
                 backendUri = backendDeviceUri
             };
 
 
-            configurator = new SmartCurtainsConfigurator(deviceParameters);
+            configurator = new SmartCurtainsConfigurator(deviceDescriptor);
             APIHandler = new APIHandler(backendDeviceUri);
         }
 
         public SmartCurtainsPlatformPlugin(Uri backendDeviceUri, Guid userID, Guid deviceID, string deviceName, string deviceKey)
         {
-            deviceParameters = new DeviceParameters()
+            deviceDescriptor = new DeviceDescriptor()
             {
                 DeviceID = deviceID,
                 UserID = userID,
@@ -55,16 +56,16 @@ namespace SmartCurtainsPlatformPlugin
         }
 
 
-        public SmartCurtainsPlatformPlugin(DeviceParameters deviceParameters)
+        public SmartCurtainsPlatformPlugin(DeviceDescriptor deviceDescriptor)
         {
-            this.deviceParameters = deviceParameters;
+            this.deviceDescriptor = deviceDescriptor;
         }
 
 
-        public async Task<ContentView> GetDeviceUI(string deviceName)
+        public async Task<ContentView> GetPluginUI()
         {
-            SmartCurtainsUI smartCurtainsUI = new SmartCurtainsUI(deviceName);
-            currentDeviceState = await APIHandler.GetCurrentDeviceState(deviceParameters);
+            SmartCurtainsUI smartCurtainsUI = new SmartCurtainsUI(deviceDescriptor.DeviceName);
+            currentDeviceState = await APIHandler.GetCurrentDeviceState(deviceDescriptor);
 
             if (currentDeviceState != null)
                 smartCurtainsUI.ConfigureUI(currentDeviceState);
@@ -74,7 +75,7 @@ namespace SmartCurtainsPlatformPlugin
 
         private async void GetCurrentState()
         {
-            currentDeviceState = await APIHandler.GetCurrentDeviceState(deviceParameters);
+            currentDeviceState = await APIHandler.GetCurrentDeviceState(deviceDescriptor);
         }
     }
 }

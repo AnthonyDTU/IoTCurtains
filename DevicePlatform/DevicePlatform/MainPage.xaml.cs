@@ -56,7 +56,7 @@ public partial class MainPage : ContentPage
             {
                 foreach (var plugin in ActiveUser.DevicesPlugins.Plugins)
                 {
-                    MainContentView.Children.Add(await plugin.Value.GetDeviceUI(""));
+                    MainContentView.Children.Add(await plugin.Value.GetPluginUI());
                 }
             }
             else

@@ -22,7 +22,7 @@ namespace SmartPlatformBackendAPI.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("SmartPlatformBackendAPI.Models.Device", b =>
+            modelBuilder.Entity("SmartPlatformBackendAPI.Models.DeviceDecriptor", b =>
                 {
                     b.Property<Guid>("DeviceID")
                         .ValueGeneratedOnAdd()
@@ -32,22 +32,26 @@ namespace SmartPlatformBackendAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("DeviceName")
+                    b.Property<string>("DeviceModel")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("DeviceType")
+                    b.Property<string>("DeviceName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("UserID")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("backendUri")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("DeviceID");
 
                     b.HasIndex("UserID");
 
-                    b.ToTable("Devices");
+                    b.ToTable("DeviceDecriptors");
                 });
 
             modelBuilder.Entity("SmartPlatformBackendAPI.Models.User", b =>
@@ -69,10 +73,10 @@ namespace SmartPlatformBackendAPI.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("SmartPlatformBackendAPI.Models.Device", b =>
+            modelBuilder.Entity("SmartPlatformBackendAPI.Models.DeviceDecriptor", b =>
                 {
                     b.HasOne("SmartPlatformBackendAPI.Models.User", null)
-                        .WithMany("Devices")
+                        .WithMany("DeviceDescriptors")
                         .HasForeignKey("UserID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -80,7 +84,7 @@ namespace SmartPlatformBackendAPI.Migrations
 
             modelBuilder.Entity("SmartPlatformBackendAPI.Models.User", b =>
                 {
-                    b.Navigation("Devices");
+                    b.Navigation("DeviceDescriptors");
                 });
 #pragma warning restore 612, 618
         }

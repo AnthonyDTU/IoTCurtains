@@ -6,6 +6,7 @@
     <VerticalStackLayout
         x:Name="ConfigurationView">
 
+        
 
 
     </VerticalStackLayout>

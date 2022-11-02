@@ -6,29 +6,29 @@ namespace SmartCurtainsPlatformPlugin;
 
 public partial class ConfigurationView : ContentView
 {
-	private DeviceParameters deviceParameters;
+	private DeviceDescriptor deviceDescriptor;
 
-	public ConfigurationView(DeviceParameters deviceParameters)
+	public ConfigurationView(DeviceDescriptor deviceDescriptor)
 	{
 		InitializeComponent();
-		this.deviceParameters = deviceParameters;
+		this.deviceDescriptor = deviceDescriptor;
 	}
 
     public void PopulateControls()
     {
-        DeviceIDLabel.Text = deviceParameters.DeviceID.ToString();
-        UserIDLabel.Text = deviceParameters.UserID.ToString();
-		DeviceKeyLabel.Text = deviceParameters.DeviceKey.ToString();
-        BackedURILabel.Text = deviceParameters.backendUri.ToString();
+        DeviceIDLabel.Text = deviceDescriptor.DeviceID.ToString();
+        UserIDLabel.Text = deviceDescriptor.UserID.ToString();
+		DeviceKeyLabel.Text = deviceDescriptor.DeviceKey.ToString();
+        BackedURILabel.Text = deviceDescriptor.backendUri.ToString();
     }
 
 
     public void PopulateControls(NodeConfiguration nodeConfiguration)
 	{
-        DeviceIDLabel.Text = deviceParameters.DeviceID.ToString();
-        UserIDLabel.Text = deviceParameters.UserID.ToString();
-        DeviceKeyLabel.Text = deviceParameters.DeviceKey.ToString();
-        BackedURILabel.Text = deviceParameters.backendUri.ToString();
+        DeviceIDLabel.Text = deviceDescriptor.DeviceID.ToString();
+        UserIDLabel.Text = deviceDescriptor.UserID.ToString();
+        DeviceKeyLabel.Text = deviceDescriptor.DeviceKey.ToString();
+        BackedURILabel.Text = deviceDescriptor.backendUri.ToString();
 
         DeviceNameEntry.Text = nodeConfiguration.DeviceName;
 		WiFiSSIDEntry.Text = nodeConfiguration.WiFiSSID;

@@ -538,4 +538,3 @@ C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-ios
 C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-ios\iossimulator-x64\DevicePlatform.csproj.CopyComplete
 C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-ios\iossimulator-x64\DevicePlatform.genruntimeconfig.cache
 C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-ios\iossimulator-x64\ref\DevicePlatform.dll
-C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-ios\iossimulator-x64\build-signature\signature

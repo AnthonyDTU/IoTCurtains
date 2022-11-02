@@ -28,6 +28,14 @@ public partial class LoginPage : ContentPage
 			{
 				infoMessageLabel.Text = "User not found";
 			}
+			else if (status == HttpStatusCode.Ambiguous)
+			{
+				infoMessageLabel.Text = "Exeption Thrown While Dealing With Login";
+			}
+			else
+			{
+				infoMessageLabel.Text = "An error has occured while fetching user";
+			}
         }
 		catch (Exception)
 		{

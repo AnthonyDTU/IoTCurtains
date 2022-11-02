@@ -23,7 +23,7 @@ namespace SmartPlatformBackendAPI.Controllers
         public IActionResult Get()
         {
             //return Ok("Hello Anton!");
-            return Ok(dbContext.Users.Include(d => d.Devices).ToList());
+            return Ok(dbContext.Users.Include(d => d.DeviceDescriptors).ToList());
         }
 
         // GET api/<UsersController>/5
@@ -41,7 +41,7 @@ namespace SmartPlatformBackendAPI.Controllers
         [HttpGet("loginAttempt")]
         public IActionResult GetFromUserNameAndPassword(string username, string pass)
         {
-            User? user = dbContext.Users.Include(d => d.Devices).AsNoTracking().SingleOrDefault(u => u.UserName == username && u.Password == pass);
+            User? user = dbContext.Users.Include(d => d.DeviceDescriptors).AsNoTracking().SingleOrDefault(u => u.UserName == username && u.Password == pass);
             if (user != null)
             {
                 return Ok(user);
@@ -52,13 +52,13 @@ namespace SmartPlatformBackendAPI.Controllers
 
         // POST api/<UsersController>
         [HttpPost]
-        public IActionResult AddDeviceToUser([FromBody] Device newDevice)
+        public IActionResult AddDeviceToUser([FromBody] DeviceDecriptor newDevice)
         {
-            User? userToUpdate = dbContext.Users.Include(d => d.Devices).Single(u => u.UserID == newDevice.UserID);
+            User? userToUpdate = dbContext.Users.Include(d => d.DeviceDescriptors).Single(u => u.UserID == newDevice.UserID);
 
             if (userToUpdate != null)
             {
-                dbContext.Devices.Add(newDevice);
+                dbContext.DeviceDecriptors.Add(newDevice);
                 dbContext.SaveChanges();
                 return Ok();
             }
@@ -73,7 +73,9 @@ namespace SmartPlatformBackendAPI.Controllers
             newUser.UserName = newUser.UserName.Trim();
             newUser.UserName = newUser.UserName.ToLower();
 
-            if (dbContext.Users.Count() != 0 && dbContext.Users.Find(newUser.UserName) != null)
+            
+
+            if (dbContext.Users.Count() != 0 && dbContext.Users.Single(u => u.UserName == newUser.UserName) != null)
             {
                 return Conflict();
             }
@@ -83,7 +85,7 @@ namespace SmartPlatformBackendAPI.Controllers
                 UserID = Guid.NewGuid(),
                 UserName = newUser.UserName,
                 Password = newUser.Password,
-                Devices = new List<Device>()
+                DeviceDescriptors = new List<DeviceDecriptor>()
             };
 
             dbContext.Users.Add(user);
@@ -92,9 +94,12 @@ namespace SmartPlatformBackendAPI.Controllers
         }
 
         // DELETE api/<UsersController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("{userID}")]
+        public void Delete(Guid userID)
         {
+            User user = dbContext.Users.Find(userID);
+            dbContext.Users.Remove(user);
+            dbContext.SaveChanges();
         }
     }
 }

@@ -25,7 +25,7 @@ namespace DevicePlatform.Data
         /// <param name="newPlugin"></param>
         public void AddNewDevicePlugin(IPlatformPlugin newPlugin)
         {
-            plugins.Add(newPlugin.DeviceParameters.DeviceID, newPlugin);
+            plugins.Add(newPlugin.DeviceDescriptor.DeviceID, newPlugin);
         }
 
         /// <summary>
@@ -34,8 +34,8 @@ namespace DevicePlatform.Data
         /// <param name="updatedPlugin"></param>
         public void UpdateDevicePlugin(IPlatformPlugin updatedPlugin)
         {
-            plugins.Remove(updatedPlugin.DeviceParameters.DeviceID);
-            plugins.Add(updatedPlugin.DeviceParameters.DeviceID, updatedPlugin);
+            plugins.Remove(updatedPlugin.DeviceDescriptor.DeviceID);
+            plugins.Add(updatedPlugin.DeviceDescriptor.DeviceID, updatedPlugin);
         }
 
         /// <summary>

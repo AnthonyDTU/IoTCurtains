@@ -18,23 +18,25 @@ namespace DevicePlatform.Data
         public static DevicePluginCollection DevicesPlugins { get; set; }
 
         
-        public static void ConfigureActiveUser(User activeUser, Uri uriBase)
+        public static void ConfigureActiveUser(User activeUser)
         {
             User = activeUser;
             DevicesPlugins = new DevicePluginCollection();
             LoggedIn = true;
 
-            Uri deviceUri = new Uri(uriBase, $"api/{User.UserID}/Device/");
-
-            if (User.Devices != null &&
-                User.Devices.Count != 0)
+            if (User.DeviceDescriptors != null &&
+                User.DeviceDescriptors.Count != 0)
             {
-                foreach (var device in User.Devices)
+                foreach (var device in User.DeviceDescriptors)
                 {
-                    switch (device.DeviceType)
+                    switch (device.DeviceModel)
                     {
                         case "Smart Curtains":
-                            DevicesPlugins.AddNewDevicePlugin(new SmartCurtainsPlatformPlugin.SmartCurtainsPlatformPlugin(deviceUri, activeUser.UserID, device.DeviceID, device.DeviceName, device.DeviceKey));
+                            DevicesPlugins.AddNewDevicePlugin(new SmartCurtainsPlatformPlugin.SmartCurtainsPlatformPlugin(device.backendUri, 
+                                                                                                                          device.UserID, 
+                                                                                                                          device.DeviceID, 
+                                                                                                                          device.DeviceName, 
+                                                                                                                          device.DeviceKey));
                             break;
 
                         default:

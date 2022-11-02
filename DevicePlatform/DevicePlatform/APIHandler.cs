@@ -1,5 +1,6 @@
 ﻿using DevicePlatform.Data;
 using DevicePlatform.Models;
+using SmartDevicePlatformPlugin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,7 +41,7 @@ namespace DevicePlatform
                 if (result.StatusCode == HttpStatusCode.OK)
                 {
                     User user = await result.Content.ReadFromJsonAsync<User>();
-                    ActiveUser.ConfigureActiveUser(user, uriBase);
+                    ActiveUser.ConfigureActiveUser(user);
                 }
                 else if (result.StatusCode == HttpStatusCode.NotFound)
                 {
@@ -56,7 +57,7 @@ namespace DevicePlatform
             }
             catch (Exception ex)
             {
-                return HttpStatusCode.InternalServerError;
+                return HttpStatusCode.Ambiguous;
             }
         }
 
@@ -81,7 +82,7 @@ namespace DevicePlatform
                 if (result.StatusCode == HttpStatusCode.OK)
                 {
                     User user = await result.Content.ReadFromJsonAsync<User>();
-                    ActiveUser.ConfigureActiveUser(user, uriBase);
+                    ActiveUser.ConfigureActiveUser(user);
                 }
                 else if (result.StatusCode == HttpStatusCode.Conflict)
                 {
@@ -135,13 +136,13 @@ namespace DevicePlatform
                 UserID = ActiveUser.User.UserID,
                 DeviceKey = "deviceKey",
                 DeviceName = "deviceName",
-                DeviceType = "Smart Curtains"
+                DeviceModel = "Smart Curtains"
             };
 
             string deviceUri = $"api/{ActiveUser.User.UserID}/Devices";
             string uri = $"api/Users";
 
-            ActiveUser.User.Devices.Add(deviceDescriptor);
+            ActiveUser.User.DeviceDescriptors.Add(deviceDescriptor);
 
             try
             {

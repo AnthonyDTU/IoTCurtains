@@ -24,10 +24,10 @@ namespace SmartPlatformBackendAPI.Controllers
         public IActionResult Get([FromRoute] Guid userID, Guid deviceID, string deviceKey)
         {
             User? user = dbContext.Users.Find(userID);
-            if (user == null || user.Devices == null)
+            if (user == null || user.DeviceDescriptors == null)
                 return NotFound();
 
-            foreach (Device device in user.Devices)
+            foreach (DeviceDecriptor device in user.DeviceDescriptors)
             {
                 if (device.DeviceID == deviceID && device.DeviceKey == deviceKey)
                     return Ok(device);
@@ -37,20 +37,20 @@ namespace SmartPlatformBackendAPI.Controllers
 
         // POST api/{userID}/Devices"
         [HttpPost]
-        public IActionResult Post([FromRoute] Guid userID, [FromBody] Device updatedDevice)
+        public IActionResult Post([FromRoute] Guid userID, [FromBody] DeviceDecriptor updatedDevice)
         {
             User? user = dbContext.Users.Find(userID);
-            if (user == null || user.Devices == null)
+            if (user == null || user.DeviceDescriptors == null)
                 return NotFound();
 
             int deviceIndex = -1;
-            foreach (Device device in user.Devices)
+            foreach (DeviceDecriptor device in user.DeviceDescriptors)
             {
                 if (device.DeviceID == updatedDevice.DeviceID && device.DeviceKey == updatedDevice.DeviceKey)
                 {
                     //user.Devices.Remove(device);
                     //user.Devices.
-                    deviceIndex = user.Devices.ToList().IndexOf(device);
+                    deviceIndex = user.DeviceDescriptors.ToList().IndexOf(device);
                 }
             }
 
@@ -71,16 +71,16 @@ namespace SmartPlatformBackendAPI.Controllers
 
         // PUT api/{userID}/Devices"
         [HttpPut]
-        public IActionResult Put([FromRoute] Guid userID, [FromBody] Device newDevice)
+        public IActionResult Put([FromRoute] Guid userID, [FromBody] DeviceDecriptor newDevice)
         {
             //var users = dbContext.Users.Include(d => d.Devices).AsNoTracking().ToList();
             //User oldUser = dbContext.Users.Find(userID);
 
-            User? user = dbContext.Users.Include(d => d.Devices).SingleOrDefault(u => u.UserID == userID);
+            User? user = dbContext.Users.Include(d => d.DeviceDescriptors).SingleOrDefault(u => u.UserID == userID);
 
             if (user != null)
             {
-                user.Devices.Add(newDevice);
+                user.DeviceDescriptors.Add(newDevice);
                 dbContext.SaveChanges();
                 return Ok();
             }
@@ -112,14 +112,14 @@ namespace SmartPlatformBackendAPI.Controllers
         public IActionResult Delete([FromRoute] Guid userID, Guid deviceID)
         {
             User? user = dbContext.Users.Find(userID);
-            if (user == null || user.Devices == null)
+            if (user == null || user.DeviceDescriptors == null)
                 return NotFound();
 
-            foreach (Device device in user.Devices)
+            foreach (DeviceDecriptor device in user.DeviceDescriptors)
             {
                 if (device.DeviceID == deviceID)
                 {
-                    user.Devices.Remove(device);
+                    user.DeviceDescriptors.Remove(device);
                     return Ok();
                 }
             }

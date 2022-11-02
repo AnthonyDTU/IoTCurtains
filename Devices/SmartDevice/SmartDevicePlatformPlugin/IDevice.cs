@@ -8,11 +8,11 @@ namespace SmartDevicePlatformPlugin
 {
     public interface IPlatformPlugin
     {
-        public DeviceParameters DeviceParameters { get; }
+        public DeviceDescriptor DeviceDescriptor { get; }
 
         public IDeviceConfigurator DeviceConfigurator { get; }
 
-        public Task<ContentView> GetDeviceUI(string deviceName);
+        public Task<ContentView> GetPluginUI();
 
 
     }

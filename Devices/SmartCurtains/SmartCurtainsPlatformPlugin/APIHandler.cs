@@ -26,11 +26,11 @@ namespace SmartCurtainsPlatformPlugin
         /// </summary>
         /// <param name="deviceParameters"></param>
         /// <returns></returns>
-        public async Task<DeviceData> GetCurrentDeviceState(DeviceParameters deviceParameters)
+        public async Task<DeviceData> GetCurrentDeviceState(DeviceDescriptor deviceDescriptor)
         {
             try
             {
-                var result = await backendAPI.GetAsync($"getRequestedState?guid={deviceParameters.DeviceID}&key={deviceParameters.DeviceKey}");
+                var result = await backendAPI.GetAsync($"getRequestedState?guid={deviceDescriptor.DeviceID}&key={deviceDescriptor.DeviceKey}");
                 if (result.StatusCode == HttpStatusCode.OK)
                 {
                     DeviceData currentRequestedState = await result.Content.ReadFromJsonAsync<DeviceData>();
@@ -50,11 +50,11 @@ namespace SmartCurtainsPlatformPlugin
         /// </summary>
         /// <param name="deviceParameters"></param>
         /// <param name="deviceData"></param>
-        public async void SetCurrentDeviceState(DeviceParameters deviceParameters, DeviceData deviceData)
+        public async void SetCurrentDeviceState(DeviceDescriptor deviceDescriptor, DeviceData deviceData)
         {
             try
             {
-                var result = await backendAPI.PutAsJsonAsync<DeviceData>($"setRequestedState?guid={deviceParameters.DeviceID}&key={deviceParameters.DeviceKey}", deviceData);
+                var result = await backendAPI.PutAsJsonAsync<DeviceData>($"setRequestedState?guid={deviceDescriptor.DeviceID}&key={deviceDescriptor.DeviceKey}", deviceData);
             }
             catch (Exception)
             {

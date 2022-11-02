@@ -36,5 +36,10 @@ public partial class SerialConfiguratorView : ContentView
         COMPortPicker.ItemsSource = SerialPort.GetPortNames();
         COMPortPicker.SelectedItem = selectedPort;
     }
+
+    public string GetSelectedComport()
+    {
+        return COMPortPicker.SelectedItem as string;
+    }
 }
 #pragma warning restore CA1416 // Validate platform compatibility

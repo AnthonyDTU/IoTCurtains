@@ -16,10 +16,13 @@ namespace SmartDeviceFirmware
 
         private const string getConfigCommand = "deviceConfig?";
         private const string setConfigCommand = "config";
-        private const string newConfigCommand = "newConfig:";
+        private const string newConfigHeader = "newConfig:";
+
+        private const string getDeviceModelQuery = "deviceModel?";
+        private const string readyForConfigQuery = "readyForConfig?";
+        private const string readyForConfigResponse = "readyForConfig!";
+        private const string deviceConfiguredCommand = "deviceConfigured!";
         private const string resetNodeCommand = "resetNode";
-        private const string getDeviceModelCommand = "deviceModel?";
-        private const string readyForConfigResponse = "readyForConfig";
 
 
         public delegate void DataRecivedHandler(string data);
@@ -67,30 +70,35 @@ namespace SmartDeviceFirmware
             // If config is requested, transmit it to the requester
             if (recievedData == getConfigCommand)
             {
-                serialPort.WriteLine(JsonConvert.SerializeObject(nodeConfiguration));
-                return;
+
+                throw new NotImplementedException();
+                //serialPort.WriteLine(JsonConvert.SerializeObject(nodeConfiguration));
+                //return;
             }
 
-            // If new configuration is incoming, parse and store it
-            if (recievedData == setConfigCommand)
+            // If the platform asks if the device is ready for config
+            if (recievedData == readyForConfigQuery)
             {
                 serialPort.WriteLine(readyForConfigResponse);
-
                 return;
             }
 
-            if (recievedData.StartsWith(newConfigCommand))
+            // If a new configuration is detected
+            if (recievedData.StartsWith(newConfigHeader))
             {
-                recievedData = recievedData.Substring(newConfigCommand.Length);
+                recievedData = recievedData.Substring(newConfigHeader.Length);
                 Console.WriteLine($"Trimmed Config: {recievedData}");
-                nodeConfiguration.SetNewConfiguration(recievedData);
+                if (nodeConfiguration.SetNewConfiguration(recievedData))
+                {
+                    serialPort.WriteLine(deviceConfiguredCommand);
+                }
                 return;
             }
 
             // If device model is requested
-            if (recievedData == getDeviceModelCommand)
+            if (recievedData == getDeviceModelQuery)
             {
-                serialPort.WriteLine(nodeConfiguration.DeviceModel);
+                serialPort.WriteLine($"deviceModel:{nodeConfiguration.DeviceModel}");
                 return;
             }
 

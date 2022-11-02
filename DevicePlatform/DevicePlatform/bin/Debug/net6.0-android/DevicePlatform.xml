@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DevicePlatform</name>
+    </assembly>
+    <members>
+        <member name="M:DevicePlatform.APIHandler.Login(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="username"></param>
+            <param name="password"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DevicePlatform.APIHandler.CreateNewUser(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="username"></param>
+            <param name="password"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DevicePlatform.Data.DevicePluginCollection.AddNewDevicePlugin(SmartDevicePlatformPlugin.IPlatformPlugin)">
+            <summary>
+            Adds a new platform plugin
+            </summary>
+            <param name="newPlugin"></param>
+        </member>
+        <member name="M:DevicePlatform.Data.DevicePluginCollection.UpdateDevicePlugin(SmartDevicePlatformPlugin.IPlatformPlugin)">
+            <summary>
+            Updates a platform plugin
+            </summary>
+            <param name="updatedPlugin"></param>
+        </member>
+        <member name="M:DevicePlatform.Data.DevicePluginCollection.GetDevicePlugin(System.Guid)">
+            <summary>
+            Gets a platform plugin
+            </summary>
+            <param name="deviceID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DevicePlatform.DeviceConfigurationManager.ConfigurationManager.#ctor(System.Uri,DevicePlatform.Data.DevicePluginCollection)">
+            <summary>
+            Creates a new device and starts the configuration process
+            </summary>
+            <param name="backendAPI"></param>
+            <param name="devices"></param>
+        </member>
+        <member name="M:DevicePlatform.DeviceConfigurationManager.ConfigurationManager.#ctor(System.Uri,DevicePlatform.Data.DevicePluginCollection,System.Guid)">
+            <summary>
+            Starts the configuration process of an existing device
+            </summary>
+            <param name="backendAPI"></param>
+            <param name="devices"></param>
+            <param name="deviceID"></param>
+        </member>
+        <member name="M:DevicePlatform.DeviceConfigurationManager.ConfigurationManager.SetupSerialConnection(System.String)">
+            <summary>
+            Opens the serial port an queries the device for its model
+            </summary>
+            <param name="COMPort"></param>
+        </member>
+        <member name="M:DevicePlatform.DeviceConfigurationManager.ConfigurationManager.SerialPort_DataReceived(System.Object,System.IO.Ports.SerialDataReceivedEventArgs)">
+            <summary>
+            When data is recived on the serial port
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:DevicePlatform.DeviceConfigurationManager.ConfigurationManager.QueryDeviceModel">
+            <summary>
+            Queries the device model
+            </summary>
+        </member>
+        <member name="M:DevicePlatform.DeviceConfigurationManager.ConfigurationManager.CreateNewPlatformPlugin">
+            <summary>
+            Creates a new platform pluging based on what model the device has reported
+            </summary>
+        </member>
+        <member name="M:DevicePlatform.DeviceConfigurationManager.ConfigurationManager.SetupConfigurationView">
+            <summary>
+            Gets the configuration view from the platform plugin
+            </summary>
+        </member>
+        <member name="M:DevicePlatform.DeviceConfigurationManager.ConfigurationManager.SendConfigurationToDeviceButton_Clicked(System.Object,System.EventArgs)">
+            <summary>
+            Prepares the device for configuration
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+    </members>
+</doc>
