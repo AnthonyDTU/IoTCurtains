@@ -100,3 +100,15 @@ C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\bin\De
 C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\bin\Debug\System.Net.Http.xml
 C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\obj\Debug\System.Net.Http.dll
 C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\obj\Debug\System.Net.Http.xml
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\bin\Debug\System.Diagnostics.Stopwatch.pe
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\bin\Debug\nanoFramework.Runtime.Native.pe
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\bin\Debug\System.Diagnostics.Stopwatch.pdbx
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\bin\Debug\nanoFramework.Runtime.Native.pdbx
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\bin\Debug\System.Diagnostics.Stopwatch.dll
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\bin\Debug\nanoFramework.Runtime.Native.dll
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\bin\Debug\System.Diagnostics.Stopwatch.xml
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\bin\Debug\nanoFramework.Runtime.Native.xml
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\obj\Debug\System.Diagnostics.Stopwatch.dll
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\obj\Debug\nanoFramework.Runtime.Native.dll
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\obj\Debug\System.Diagnostics.Stopwatch.xml
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\obj\Debug\nanoFramework.Runtime.Native.xml

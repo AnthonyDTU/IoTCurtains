@@ -6,25 +6,36 @@ namespace SmartCurtainsPlatformPlugin;
 
 public partial class ConfigurationView : ContentView
 {
-	private NodeConfiguration nodeConfiguration;
+	private DeviceParameters deviceParameters;
 
-	public ConfigurationView(NodeConfiguration nodeConfiguration)
+	public ConfigurationView(DeviceParameters deviceParameters)
 	{
 		InitializeComponent();
-		this.nodeConfiguration = nodeConfiguration;
+		this.deviceParameters = deviceParameters;
 	}
 
-	public void PopulateControls()
+    public void PopulateControls()
+    {
+        DeviceIDLabel.Text = deviceParameters.DeviceID.ToString();
+        UserIDLabel.Text = deviceParameters.UserID.ToString();
+		DeviceKeyLabel.Text = deviceParameters.DeviceKey.ToString();
+        BackedURILabel.Text = deviceParameters.backendUri.ToString();
+    }
+
+
+    public void PopulateControls(NodeConfiguration nodeConfiguration)
 	{
-		DeviceIDLabel.Text = nodeConfiguration.DeviceID.ToString();
-		UserIDLabel.Text = nodeConfiguration.UserID.ToString();
-		BackedURILabel.Text = nodeConfiguration.backendConnectionUri.ToString();
-		DeviceNameEntry.Text = nodeConfiguration.DeviceName;
+        DeviceIDLabel.Text = deviceParameters.DeviceID.ToString();
+        UserIDLabel.Text = deviceParameters.UserID.ToString();
+        DeviceKeyLabel.Text = deviceParameters.DeviceKey.ToString();
+        BackedURILabel.Text = deviceParameters.backendUri.ToString();
+
+        DeviceNameEntry.Text = nodeConfiguration.DeviceName;
 		WiFiSSIDEntry.Text = nodeConfiguration.WiFiSSID;
 		WiFiPasswordEntry.Text = nodeConfiguration.WiFiPassword;
 	}
 
-	public NodeConfiguration GetNodeConfiguration()
+	public NodeConfiguration GetNodeConfigurationFromControls()
 	{
         return new NodeConfiguration()
 		{

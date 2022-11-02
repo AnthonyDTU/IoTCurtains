@@ -4,14 +4,14 @@
         <name>SmartCurtainsPlatformPlugin</name>
     </assembly>
     <members>
-        <member name="M:SmartCurtainsPlatformPlugin.APIHandler.GetCurrentDeviceState(SmartCurtainsPlatformPlugin.DeviceParameters)">
+        <member name="M:SmartCurtainsPlatformPlugin.APIHandler.GetCurrentDeviceState(SmartDevicePlatformPlugin.DeviceParameters)">
             <summary>
             Tries to get a devices current state
             </summary>
             <param name="deviceParameters"></param>
             <returns></returns>
         </member>
-        <member name="M:SmartCurtainsPlatformPlugin.APIHandler.SetCurrentDeviceState(SmartCurtainsPlatformPlugin.DeviceParameters,SmartCurtainsPlatformPlugin.DeviceData)">
+        <member name="M:SmartCurtainsPlatformPlugin.APIHandler.SetCurrentDeviceState(SmartDevicePlatformPlugin.DeviceParameters,SmartCurtainsPlatformPlugin.DeviceData)">
             <summary>
             Tries to set a devices current state
             </summary>

@@ -9,30 +9,43 @@ namespace DevicePlatform.Data
 {
     public class DevicePluginCollection
     {
-        private Dictionary<string, IPlatformPlugin> devices = new Dictionary<string, IPlatformPlugin>();
-        public Dictionary<string, IPlatformPlugin> Plugins { get { return devices; } }
+        private Dictionary<Guid, IPlatformPlugin> plugins = new Dictionary<Guid, IPlatformPlugin>();
+        public Dictionary<Guid, IPlatformPlugin> Plugins { get { return plugins; } }
 
-        List<IPlatformPlugin> DevicesList { get; set; }
-
-        public int Count => devices.Count; 
+        public int Count => plugins.Count; 
 
         public DevicePluginCollection()
         {
 
         }
 
-
-        public void AddNewDevicePlugin(string deviceID, IPlatformPlugin newDevice)
+        /// <summary>
+        /// Adds a new platform plugin
+        /// </summary>
+        /// <param name="newPlugin"></param>
+        public void AddNewDevicePlugin(IPlatformPlugin newPlugin)
         {
-            devices.Add(deviceID, newDevice);
+            plugins.Add(newPlugin.DeviceParameters.DeviceID, newPlugin);
         }
 
-        public IPlatformPlugin GetDevice(Guid deviceID)
+        /// <summary>
+        /// Updates a platform plugin
+        /// </summary>
+        /// <param name="updatedPlugin"></param>
+        public void UpdateDevicePlugin(IPlatformPlugin updatedPlugin)
         {
-            return devices.GetValueOrDefault(deviceID.ToString());
+            plugins.Remove(updatedPlugin.DeviceParameters.DeviceID);
+            plugins.Add(updatedPlugin.DeviceParameters.DeviceID, updatedPlugin);
         }
 
-
-
+        /// <summary>
+        /// Gets a platform plugin
+        /// </summary>
+        /// <param name="deviceID"></param>
+        /// <returns></returns>
+        public IPlatformPlugin GetDevicePlugin(Guid deviceID)
+        {
+            return plugins.GetValueOrDefault(deviceID);
+        }
     }
 }

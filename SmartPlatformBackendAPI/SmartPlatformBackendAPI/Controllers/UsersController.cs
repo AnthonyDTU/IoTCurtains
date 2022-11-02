@@ -22,6 +22,7 @@ namespace SmartPlatformBackendAPI.Controllers
         [HttpGet]
         public IActionResult Get()
         {
+            //return Ok("Hello Anton!");
             return Ok(dbContext.Users.Include(d => d.Devices).ToList());
         }
 

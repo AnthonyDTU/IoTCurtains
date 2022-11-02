@@ -10,30 +10,33 @@ namespace SmartCurtainsPlatformPlugin
 {
     internal class SmartCurtainsConfigurator : IDeviceConfigurator
     {
-        private NodeConfiguration nodeConfiguration;
+        private DeviceParameters deviceParameters;
         private ConfigurationView configurationView;
 
-        public SmartCurtainsConfigurator(NodeConfiguration nodeConfiguration)
+        public SmartCurtainsConfigurator(DeviceParameters deviceParameters)
         {
-            this.nodeConfiguration = nodeConfiguration;
+            this.deviceParameters = deviceParameters;
         }
 
-        public void SetConfiguraion(NodeConfiguration nodeConfiguration)
-        {
-            throw new NotImplementedException();
-        }
+
 
         public ContentView GetConfigurationView()
         {
-            configurationView = new ConfigurationView(nodeConfiguration);
+            configurationView = new ConfigurationView(deviceParameters);
             configurationView.PopulateControls();
+            return configurationView;
+        }
+
+        public ContentView GetConfigurationView(NodeConfiguration nodeConfiguration)
+        {
+            configurationView = new ConfigurationView(deviceParameters);
+            configurationView.PopulateControls(nodeConfiguration);
             return configurationView;
         }
 
         public NodeConfiguration BuildNewConfiguration()
         {
-            nodeConfiguration = configurationView.GetNodeConfiguration();
-            return nodeConfiguration;
+            return configurationView.GetNodeConfigurationFromControls();
         }
     }
 }

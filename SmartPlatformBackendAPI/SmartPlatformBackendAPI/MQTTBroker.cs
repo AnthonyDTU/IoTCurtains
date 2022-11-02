@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Hosting.Server;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 using MQTTnet.AspNetCore;
 using MQTTnet.Server;
@@ -25,22 +26,25 @@ namespace SmartPlatformBackendAPI
                 .ConfigureWebHostDefaults(
                     webBuilder =>
                     {
-                        webBuilder.UseKestrel(
-                            o =>
-                            {
-                                // This will allow MQTT connections based on TCP port 1883.
-                                o.ListenAnyIP(1883, l => l.UseMqtt());
+                        //webBuilder.UseUrls("smartplatformbackendapi.azurewebsites.net:1883");
 
-                                // This will allow MQTT connections based on HTTP WebSockets with URI "localhost:5000/mqtt"
-                                // See code below for URI configuration.
-                                o.ListenAnyIP(5000); // Default HTTP pipeline
-                            });
+
+                        //webBuilder.UseKestrel(
+                        //    o =>
+                        //    {
+                        //        // This will allow MQTT connections based on TCP port 1883.
+                        //        o.ListenLocalhost(1883, l => l.UseMqtt());
+
+                        //        // This will allow MQTT connections based on HTTP WebSockets with URI "localhost:5000/mqtt"
+                        //        // See code below for URI configuration.
+                        //        o.ListenLocalhost(5000); // Default HTTP pipeline
+                        //    });
 
                         webBuilder.UseStartup<Startup>();
                     });
 
             Console.WriteLine("MQTT Broker Started");
-            return host.RunConsoleAsync();
+            return host.StartAsync();
         }
 
         sealed class MqttController
@@ -110,7 +114,7 @@ namespace SmartPlatformBackendAPI
                 services.AddHostedMqttServer(
                     optionsBuilder =>
                     {
-                        optionsBuilder.WithDefaultEndpoint();
+                        optionsBuilder.WithoutDefaultEndpoint();
                     });
 
                 services.AddMqttConnectionHandler();

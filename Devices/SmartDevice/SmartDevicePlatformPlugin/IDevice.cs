@@ -8,7 +8,7 @@ namespace SmartDevicePlatformPlugin
 {
     public interface IPlatformPlugin
     {
-        public NodeConfiguration NodeConfiguration { get; }
+        public DeviceParameters DeviceParameters { get; }
 
         public IDeviceConfigurator DeviceConfigurator { get; }
 

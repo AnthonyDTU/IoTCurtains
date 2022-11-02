@@ -87,3 +87,15 @@ C:\DTU\Projects\SmartPlatform\Devices\SmartDevice\SmartDeviceFirmware\obj\Debug\
 C:\DTU\Projects\SmartPlatform\Devices\SmartDevice\SmartDeviceFirmware\obj\Debug\System.Net.xml
 C:\DTU\Projects\SmartPlatform\Devices\SmartDevice\SmartDeviceFirmware\obj\Debug\System.Net.Http.xml
 C:\DTU\Projects\SmartPlatform\Devices\SmartDevice\SmartDeviceFirmware\obj\Debug\System.Threading.xml
+C:\DTU\Projects\SmartPlatform\Devices\SmartDevice\SmartDeviceFirmware\bin\Debug\nanoFramework.Runtime.Native.pe
+C:\DTU\Projects\SmartPlatform\Devices\SmartDevice\SmartDeviceFirmware\bin\Debug\System.Diagnostics.Stopwatch.pe
+C:\DTU\Projects\SmartPlatform\Devices\SmartDevice\SmartDeviceFirmware\bin\Debug\nanoFramework.Runtime.Native.pdbx
+C:\DTU\Projects\SmartPlatform\Devices\SmartDevice\SmartDeviceFirmware\bin\Debug\System.Diagnostics.Stopwatch.pdbx
+C:\DTU\Projects\SmartPlatform\Devices\SmartDevice\SmartDeviceFirmware\bin\Debug\nanoFramework.Runtime.Native.dll
+C:\DTU\Projects\SmartPlatform\Devices\SmartDevice\SmartDeviceFirmware\bin\Debug\System.Diagnostics.Stopwatch.dll
+C:\DTU\Projects\SmartPlatform\Devices\SmartDevice\SmartDeviceFirmware\bin\Debug\nanoFramework.Runtime.Native.xml
+C:\DTU\Projects\SmartPlatform\Devices\SmartDevice\SmartDeviceFirmware\bin\Debug\System.Diagnostics.Stopwatch.xml
+C:\DTU\Projects\SmartPlatform\Devices\SmartDevice\SmartDeviceFirmware\obj\Debug\nanoFramework.Runtime.Native.dll
+C:\DTU\Projects\SmartPlatform\Devices\SmartDevice\SmartDeviceFirmware\obj\Debug\System.Diagnostics.Stopwatch.dll
+C:\DTU\Projects\SmartPlatform\Devices\SmartDevice\SmartDeviceFirmware\obj\Debug\nanoFramework.Runtime.Native.xml
+C:\DTU\Projects\SmartPlatform\Devices\SmartDevice\SmartDeviceFirmware\obj\Debug\System.Diagnostics.Stopwatch.xml

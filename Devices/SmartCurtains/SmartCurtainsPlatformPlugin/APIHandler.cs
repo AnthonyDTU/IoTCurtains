@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 using System.Net.Http.Json;
+using SmartDevicePlatformPlugin;
 
 namespace SmartCurtainsPlatformPlugin
 {

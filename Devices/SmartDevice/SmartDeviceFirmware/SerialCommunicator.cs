@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO.Ports;
+using System.Diagnostics;
 using nanoFramework.Hardware.Esp32;
 using nanoFramework.Json;
 
@@ -15,6 +16,7 @@ namespace SmartDeviceFirmware
 
         private const string getConfigCommand = "deviceConfig?";
         private const string setConfigCommand = "config";
+        private const string newConfigCommand = "newConfig:";
         private const string resetNodeCommand = "resetNode";
         private const string getDeviceModelCommand = "deviceModel?";
         private const string readyForConfigResponse = "readyForConfig";
@@ -26,7 +28,7 @@ namespace SmartDeviceFirmware
         private NodeConfiguration nodeConfiguration;
 
         /// <summary>
-        /// 
+        /// Constructer which initilizes the pins and the serial port
         /// </summary>
         /// <param name="COMPort"></param>
         /// <param name="rxPinNumber"></param>
@@ -46,6 +48,7 @@ namespace SmartDeviceFirmware
                                         databits, 
                                         stopBits);
 
+            serialPort.ReadBufferSize = 2048;
             serialPort.DataReceived += SerialPort_DataReceived;
             serialPort.Open();
         }
@@ -59,19 +62,7 @@ namespace SmartDeviceFirmware
         private void SerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             string recievedData = serialPort.ReadLine();
-
-            // If data recived is not a config command, pass data to callback method (if any is set)
-            if (recievedData != getConfigCommand &&
-                recievedData != setConfigCommand &&
-                recievedData != resetNodeCommand &&
-                recievedData != getDeviceModelCommand)
-            {
-                if (dataRecivedCallbackHandler != null)
-                {
-                    dataRecivedCallbackHandler(recievedData);
-                }
-                return;
-            }
+            Console.WriteLine($"Recived String: {recievedData}");
 
             // If config is requested, transmit it to the requester
             if (recievedData == getConfigCommand)
@@ -84,9 +75,15 @@ namespace SmartDeviceFirmware
             if (recievedData == setConfigCommand)
             {
                 serialPort.WriteLine(readyForConfigResponse);
-                while (serialPort.BytesToRead == 0) ;
-                string newConfigJson = serialPort.ReadLine();
-                nodeConfiguration.SetNewConfiguration(newConfigJson);
+
+                return;
+            }
+
+            if (recievedData.StartsWith(newConfigCommand))
+            {
+                recievedData = recievedData.Substring(newConfigCommand.Length);
+                Console.WriteLine($"Trimmed Config: {recievedData}");
+                nodeConfiguration.SetNewConfiguration(recievedData);
                 return;
             }
 
@@ -94,6 +91,7 @@ namespace SmartDeviceFirmware
             if (recievedData == getDeviceModelCommand)
             {
                 serialPort.WriteLine(nodeConfiguration.DeviceModel);
+                return;
             }
 
             // If device reset is commanded, reset device.
@@ -103,6 +101,14 @@ namespace SmartDeviceFirmware
                 return;
             }
 
+
+            // No match for configuration commands, so
+            // pass data back to delegate (if one is set)
+            if (dataRecivedCallbackHandler != null)
+            {
+                dataRecivedCallbackHandler(recievedData);
+                return;
+            }
         }
 
         /// <summary>

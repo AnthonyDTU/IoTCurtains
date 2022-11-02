@@ -2,12 +2,23 @@ namespace DevicePlatform.DeviceConfigurationManager;
 
 using DevicePlatform.Data;
 using SmartDevicePlatformPlugin;
+using System.Diagnostics;
 using System.IO.Ports;
 using System.Text.Json;
+using System.Timers;
 
 #pragma warning disable CA1416 // Validate platform compatibility
 public partial class ConfigurationManager : ContentPage
 {
+	private string getDeviceModelCommand = "deviceModel?";
+	private string setDeviceModelCommand = "deviceModel:";
+
+	private string getDeviceReadyForConfigCommand = "readyForConfig?";
+    private string setDeviceReadyForConfigCommand = "readyForConfig!";
+
+	private string deviceConfiguredCommand = "deviceConfigured!";
+
+
     private int baudRate = 115200;
 	private int dataBits = 8;
     private Parity parity = Parity.None;
@@ -73,6 +84,8 @@ public partial class ConfigurationManager : ContentPage
                                         parity,
                                         dataBits,
                                         stopBits);
+
+			serialPort.DataReceived += SerialPort_DataReceived;
             serialPort.Open();
 
 			if (serialPort.IsOpen)
@@ -88,35 +101,76 @@ public partial class ConfigurationManager : ContentPage
     }
 
 	/// <summary>
-	/// 
+	/// When data is recived on the serial port
 	/// </summary>
-	private void QueryDeviceModel()
+	/// <param name="sender"></param>
+	/// <param name="e"></param>
+	private void SerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
 	{
-		serialPort.WriteLine("deviceModel?");
-		while (serialPort.BytesToRead == 0) ; // TODO: Add timeout
-        deviceModel = serialPort.ReadLine();
+		string receivedData = serialPort.ReadLine();
 
-		SetupConfigurationView();
+		if (receivedData.StartsWith(setDeviceModelCommand))
+		{
+			receivedData = receivedData.Replace(setDeviceModelCommand, string.Empty);
+			deviceModel = receivedData;
+
+			CreateNewPlatformPlugin();
+			SetupConfigurationView();
+			return;
+		}
+
+        if (receivedData.Equals(setDeviceReadyForConfigCommand))
+        {
+            string jsonData = "newConfig:" + JsonSerializer.Serialize(workingDevicePlugin.DeviceConfigurator.BuildNewConfiguration());
+            serialPort.WriteLine(jsonData);
+            return;
+        }
+
+		if (receivedData.Equals(deviceConfiguredCommand))
+		{
+			if (newDevice)
+			{
+				ActiveUser.DevicesPlugins.AddNewDevicePlugin(workingDevicePlugin);
+			}
+			else
+			{
+				// UpdateDevice
+			}
+		}
     }
 
 	/// <summary>
-	/// 
+	/// Queries the device model
+	/// </summary>
+	private void QueryDeviceModel()
+	{
+		serialPort.WriteLine(getDeviceModelCommand);
+	}
+
+	/// <summary>
+	/// Creates a new platform pluging based on what model the device has reported
+	/// </summary>
+	private void CreateNewPlatformPlugin()
+	{
+        switch (deviceModel)
+        {
+            case "Smart Curtains":
+                if (newDevice)
+                    workingDevicePlugin = new SmartCurtainsPlatformPlugin.SmartCurtainsPlatformPlugin(ActiveUser.User.UserID, deviceUri);
+                else
+                    workingDevicePlugin = ActiveUser.DevicesPlugins.GetDevicePlugin(deviceID);
+                break;
+
+            default:
+                break;
+        }
+    }
+
+	/// <summary>
+	/// Gets the configuration view from the platform plugin
 	/// </summary>
 	private void SetupConfigurationView()
 	{
-		switch (deviceModel)
-		{
-			case "Smart Curtains":
-				if (newDevice)
-					workingDevicePlugin = new SmartCurtainsPlatformPlugin.SmartCurtainsPlatformPlugin(ActiveUser.User.UserID, deviceUri);					
-				else
-					workingDevicePlugin = devices.GetDevice(deviceID);				
-				break;
-
-			default:
-				break;
-		}
-
 		Button sendConfigurationToDeviceButton = new Button()
 		{
 			Text = "Send Configuration To Device",
@@ -131,22 +185,14 @@ public partial class ConfigurationManager : ContentPage
 	}
 
 	/// <summary>
-	/// 
+	/// Prepares the device for configuration
 	/// </summary>
 	/// <param name="sender"></param>
 	/// <param name="e"></param>
 	/// <exception cref="NotImplementedException"></exception>
 	private void SendConfigurationToDeviceButton_Clicked(object sender, EventArgs e)
 	{
-		ActiveUser.DevicesPlugins.AddNewDevicePlugin("", workingDevicePlugin);
-		serialPort.WriteLine("config");
-		while(serialPort.BytesToRead == 0) ;
-		string response = serialPort.ReadLine();
-		if (response == "readyForConfig")
-		{
-			string jsonData = JsonSerializer.Serialize(workingDevicePlugin.DeviceConfigurator.BuildNewConfiguration());
-            serialPort.WriteLine(jsonData);
-		}
+		serialPort.WriteLine(getDeviceReadyForConfigCommand);
 	}
 
 }

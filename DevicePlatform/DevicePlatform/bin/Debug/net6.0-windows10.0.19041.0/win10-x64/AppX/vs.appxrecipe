@@ -29,25 +29,25 @@
     <AppXManifest Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-10-28T15:38:50.900</Modified>
+      <Modified>2022-11-02T17:54:32.428</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2022-10-28T15:38:50.450</Modified>
+      <Modified>2022-11-02T17:54:31.998</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\DevicePlatform.runtimeconfig.json">
       <PackagePath>DevicePlatform.runtimeconfig.json</PackagePath>
-      <Modified>2022-10-26T19:45:39.666</Modified>
+      <Modified>2022-11-02T17:54:31.844</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\DevicePlatform.dll">
       <PackagePath>DevicePlatform.dll</PackagePath>
-      <Modified>2022-10-28T15:38:49.494</Modified>
+      <Modified>2022-11-02T17:54:30.459</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\apphost.exe">
       <PackagePath>DevicePlatform.exe</PackagePath>
-      <Modified>2022-10-28T15:38:49.506</Modified>
+      <Modified>2022-11-02T17:54:30.482</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\microsoft.netcore.app.runtime.win-x64\6.0.10\runtimes\win-x64\lib\net6.0\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -1067,15 +1067,15 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsPlatformPlugin\bin\Debug\net6.0\SmartCurtainsPlatformPlugin.dll">
       <PackagePath>SmartCurtainsPlatformPlugin.dll</PackagePath>
-      <Modified>2022-10-28T15:33:26.321</Modified>
+      <Modified>2022-11-02T17:53:33.158</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\Devices\SmartDevice\SmartDevicePlatformPlugin\bin\Debug\net6.0\SmartDevicePlatformPlugin.dll">
       <PackagePath>SmartDevicePlatformPlugin.dll</PackagePath>
-      <Modified>2022-10-28T14:16:27.272</Modified>
+      <Modified>2022-11-02T17:48:40.013</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\DevicePlatform.deps.json">
       <PackagePath>DevicePlatform.deps.json</PackagePath>
-      <Modified>2022-10-28T15:38:50.758</Modified>
+      <Modified>2022-11-02T17:54:32.257</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files\dotnet\packs\Microsoft.Maui.Controls.Ref.win\6.0.541\ref\net6.0-windows10.0.19041\Microsoft.Maui.Controls.Compatibility.pri">
       <PackagePath>Microsoft.Maui.Controls.Compatibility.pri</PackagePath>
@@ -1095,175 +1095,175 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-100.png">
       <PackagePath>splashSplashScreen.scale-100.png</PackagePath>
-      <Modified>2022-10-26T19:10:52.919</Modified>
+      <Modified>2022-11-02T17:54:29.753</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-125.png">
       <PackagePath>splashSplashScreen.scale-125.png</PackagePath>
-      <Modified>2022-10-26T19:10:52.919</Modified>
+      <Modified>2022-11-02T17:54:29.768</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-150.png">
       <PackagePath>splashSplashScreen.scale-150.png</PackagePath>
-      <Modified>2022-10-26T19:10:52.919</Modified>
+      <Modified>2022-11-02T17:54:29.789</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-200.png">
       <PackagePath>splashSplashScreen.scale-200.png</PackagePath>
-      <Modified>2022-10-26T19:10:52.920</Modified>
+      <Modified>2022-11-02T17:54:29.820</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-400.png">
       <PackagePath>splashSplashScreen.scale-400.png</PackagePath>
-      <Modified>2022-10-26T19:10:52.921</Modified>
+      <Modified>2022-11-02T17:54:29.953</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\f\OpenSans-Regular.ttf">
       <PackagePath>OpenSans-Regular.ttf</PackagePath>
-      <Modified>2022-10-26T19:10:52.900</Modified>
+      <Modified>2022-10-26T19:10:46.493</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\f\OpenSans-Semibold.ttf">
       <PackagePath>OpenSans-Semibold.ttf</PackagePath>
-      <Modified>2022-10-26T19:10:52.901</Modified>
+      <Modified>2022-10-26T19:10:46.494</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appicon.ico">
       <PackagePath>appicon.ico</PackagePath>
-      <Modified>2022-10-26T19:10:52.902</Modified>
+      <Modified>2022-11-02T17:54:29.989</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-100.png">
       <PackagePath>appiconLargeTile.scale-100.png</PackagePath>
-      <Modified>2022-10-26T19:10:52.903</Modified>
+      <Modified>2022-11-02T17:54:30.191</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-125.png">
       <PackagePath>appiconLargeTile.scale-125.png</PackagePath>
-      <Modified>2022-10-26T19:10:52.904</Modified>
+      <Modified>2022-11-02T17:54:30.203</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-150.png">
       <PackagePath>appiconLargeTile.scale-150.png</PackagePath>
-      <Modified>2022-10-26T19:10:52.904</Modified>
+      <Modified>2022-11-02T17:54:30.213</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-200.png">
       <PackagePath>appiconLargeTile.scale-200.png</PackagePath>
-      <Modified>2022-10-26T19:10:52.905</Modified>
+      <Modified>2022-11-02T17:54:30.230</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-400.png">
       <PackagePath>appiconLargeTile.scale-400.png</PackagePath>
-      <Modified>2022-10-26T19:10:52.905</Modified>
+      <Modified>2022-11-02T17:54:30.296</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-100.png">
       <PackagePath>appiconLogo.scale-100.png</PackagePath>
-      <Modified>2022-10-26T19:10:52.906</Modified>
+      <Modified>2022-11-02T17:54:30.009</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-125.png">
       <PackagePath>appiconLogo.scale-125.png</PackagePath>
-      <Modified>2022-10-26T19:10:52.906</Modified>
+      <Modified>2022-11-02T17:54:30.013</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-150.png">
       <PackagePath>appiconLogo.scale-150.png</PackagePath>
-      <Modified>2022-10-26T19:10:52.906</Modified>
+      <Modified>2022-11-02T17:54:30.016</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-200.png">
       <PackagePath>appiconLogo.scale-200.png</PackagePath>
-      <Modified>2022-10-26T19:10:52.907</Modified>
+      <Modified>2022-11-02T17:54:30.020</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-400.png">
       <PackagePath>appiconLogo.scale-400.png</PackagePath>
-      <Modified>2022-10-26T19:10:52.907</Modified>
+      <Modified>2022-11-02T17:54:30.026</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-100.png">
       <PackagePath>appiconMediumTile.scale-100.png</PackagePath>
-      <Modified>2022-10-26T19:10:52.907</Modified>
+      <Modified>2022-11-02T17:54:30.076</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-125.png">
       <PackagePath>appiconMediumTile.scale-125.png</PackagePath>
-      <Modified>2022-10-26T19:10:52.908</Modified>
+      <Modified>2022-11-02T17:54:30.082</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-150.png">
       <PackagePath>appiconMediumTile.scale-150.png</PackagePath>
-      <Modified>2022-10-26T19:10:52.908</Modified>
+      <Modified>2022-11-02T17:54:30.088</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-200.png">
       <PackagePath>appiconMediumTile.scale-200.png</PackagePath>
-      <Modified>2022-10-26T19:10:52.909</Modified>
+      <Modified>2022-11-02T17:54:30.097</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-400.png">
       <PackagePath>appiconMediumTile.scale-400.png</PackagePath>
-      <Modified>2022-10-26T19:10:52.909</Modified>
+      <Modified>2022-11-02T17:54:30.113</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-100.png">
       <PackagePath>appiconSmallTile.scale-100.png</PackagePath>
-      <Modified>2022-10-26T19:10:52.910</Modified>
+      <Modified>2022-11-02T17:54:30.051</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-125.png">
       <PackagePath>appiconSmallTile.scale-125.png</PackagePath>
-      <Modified>2022-10-26T19:10:52.910</Modified>
+      <Modified>2022-11-02T17:54:30.055</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-150.png">
       <PackagePath>appiconSmallTile.scale-150.png</PackagePath>
-      <Modified>2022-10-26T19:10:52.911</Modified>
+      <Modified>2022-11-02T17:54:30.059</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-200.png">
       <PackagePath>appiconSmallTile.scale-200.png</PackagePath>
-      <Modified>2022-10-26T19:10:52.911</Modified>
+      <Modified>2022-11-02T17:54:30.063</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-400.png">
       <PackagePath>appiconSmallTile.scale-400.png</PackagePath>
-      <Modified>2022-10-26T19:10:52.911</Modified>
+      <Modified>2022-11-02T17:54:30.071</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-100.png">
       <PackagePath>appiconStoreLogo.scale-100.png</PackagePath>
-      <Modified>2022-10-26T19:10:52.912</Modified>
+      <Modified>2022-11-02T17:54:30.029</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-125.png">
       <PackagePath>appiconStoreLogo.scale-125.png</PackagePath>
-      <Modified>2022-10-26T19:10:52.912</Modified>
+      <Modified>2022-11-02T17:54:30.032</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-150.png">
       <PackagePath>appiconStoreLogo.scale-150.png</PackagePath>
-      <Modified>2022-10-26T19:10:52.912</Modified>
+      <Modified>2022-11-02T17:54:30.037</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-200.png">
       <PackagePath>appiconStoreLogo.scale-200.png</PackagePath>
-      <Modified>2022-10-26T19:10:52.913</Modified>
+      <Modified>2022-11-02T17:54:30.041</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-400.png">
       <PackagePath>appiconStoreLogo.scale-400.png</PackagePath>
-      <Modified>2022-10-26T19:10:52.913</Modified>
+      <Modified>2022-11-02T17:54:30.047</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-100.png">
       <PackagePath>appiconWideTile.scale-100.png</PackagePath>
-      <Modified>2022-10-26T19:10:52.914</Modified>
+      <Modified>2022-11-02T17:54:30.119</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-125.png">
       <PackagePath>appiconWideTile.scale-125.png</PackagePath>
-      <Modified>2022-10-26T19:10:52.914</Modified>
+      <Modified>2022-11-02T17:54:30.126</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-150.png">
       <PackagePath>appiconWideTile.scale-150.png</PackagePath>
-      <Modified>2022-10-26T19:10:52.914</Modified>
+      <Modified>2022-11-02T17:54:30.136</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-200.png">
       <PackagePath>appiconWideTile.scale-200.png</PackagePath>
-      <Modified>2022-10-26T19:10:52.915</Modified>
+      <Modified>2022-11-02T17:54:30.149</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-400.png">
       <PackagePath>appiconWideTile.scale-400.png</PackagePath>
-      <Modified>2022-10-26T19:10:52.915</Modified>
+      <Modified>2022-11-02T17:54:30.181</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-100.png">
       <PackagePath>dotnet_bot.scale-100.png</PackagePath>
-      <Modified>2022-10-26T19:10:52.916</Modified>
+      <Modified>2022-11-02T17:54:29.974</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-125.png">
       <PackagePath>dotnet_bot.scale-125.png</PackagePath>
-      <Modified>2022-10-26T19:10:52.916</Modified>
+      <Modified>2022-11-02T17:54:29.984</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-150.png">
       <PackagePath>dotnet_bot.scale-150.png</PackagePath>
-      <Modified>2022-10-26T19:10:52.917</Modified>
+      <Modified>2022-11-02T17:54:30.002</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-200.png">
       <PackagePath>dotnet_bot.scale-200.png</PackagePath>
-      <Modified>2022-10-26T19:10:52.917</Modified>
+      <Modified>2022-11-02T17:54:30.023</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-400.png">
       <PackagePath>dotnet_bot.scale-400.png</PackagePath>
-      <Modified>2022-10-26T19:10:52.918</Modified>
+      <Modified>2022-11-02T17:54:30.069</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

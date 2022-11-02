@@ -14,7 +14,6 @@ namespace SmartDevicePlatformPlugin
         public Guid UserID { get; set; }
         public string WiFiSSID { get; set; }
         public string WiFiPassword { get; set; }
-        public string MACAddress { get; set; }
         public Uri backendConnectionUri { get; set; }
         public string DeviceKey { get; set; }
 

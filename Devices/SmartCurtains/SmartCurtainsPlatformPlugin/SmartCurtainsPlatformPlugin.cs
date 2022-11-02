@@ -11,39 +11,43 @@ namespace SmartCurtainsPlatformPlugin
 {
     public class SmartCurtainsPlatformPlugin : IPlatformPlugin
     {
-        private NodeConfiguration nodeConfiguration;
-        public NodeConfiguration NodeConfiguration => nodeConfiguration;
-
         private SmartCurtainsConfigurator configurator;
         public IDeviceConfigurator DeviceConfigurator => configurator;
 
-        APIHandler APIHandler;
-        DeviceParameters deviceParameters;
+        private DeviceParameters deviceParameters;
+        public DeviceParameters DeviceParameters => deviceParameters;
+
+        APIHandler APIHandler;        
         DeviceData currentDeviceState;
 
 
-        public SmartCurtainsPlatformPlugin(Guid UserID, Uri backendDeviceUri)
+        public SmartCurtainsPlatformPlugin(Guid userID, Uri backendDeviceUri)
         {
-            nodeConfiguration = new NodeConfiguration()
+            deviceParameters = new DeviceParameters()
             {
                 DeviceID = Guid.NewGuid(),
-                UserID = UserID,
+                UserID = userID,
+                DeviceName = "",
+                DeviceModel = "",
                 DeviceKey = "newKey",
-                backendConnectionUri = backendDeviceUri
+                backendUri = backendDeviceUri
             };
 
 
-            configurator = new SmartCurtainsConfigurator(nodeConfiguration);
+            configurator = new SmartCurtainsConfigurator(deviceParameters);
             APIHandler = new APIHandler(backendDeviceUri);
         }
 
-        public SmartCurtainsPlatformPlugin(Uri backendDeviceUri, Guid deviceID, string deviceName, string deviceKey)
+        public SmartCurtainsPlatformPlugin(Uri backendDeviceUri, Guid userID, Guid deviceID, string deviceName, string deviceKey)
         {
             deviceParameters = new DeviceParameters()
             {
                 DeviceID = deviceID,
+                UserID = userID,
                 DeviceName = deviceName,
+                DeviceModel = "",
                 DeviceKey = deviceKey,
+                backendUri = backendDeviceUri
             };
 
             APIHandler = new APIHandler(backendDeviceUri);
@@ -51,9 +55,9 @@ namespace SmartCurtainsPlatformPlugin
         }
 
 
-        public SmartCurtainsPlatformPlugin(NodeConfiguration nodeConfiguration)
+        public SmartCurtainsPlatformPlugin(DeviceParameters deviceParameters)
         {
-            this.nodeConfiguration = nodeConfiguration;
+            this.deviceParameters = deviceParameters;
         }
 
 

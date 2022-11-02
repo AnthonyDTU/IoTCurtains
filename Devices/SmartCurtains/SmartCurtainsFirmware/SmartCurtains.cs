@@ -51,8 +51,7 @@ namespace SmartCurtainsFirmware
                                                         TxUART2PinNumber, 
                                                         SerialDataRecived);
 
-            wifiHandler = new WiFiHandler(nodeConfiguration.WiFiSSID, 
-                                          nodeConfiguration.WiFiPassword, 
+            wifiHandler = new WiFiHandler(nodeConfiguration, 
                                           wifiInterfaceIndex, 
                                           wifiConnectedLedPinNumber, 
                                           gpioController);

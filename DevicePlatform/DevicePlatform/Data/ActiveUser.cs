@@ -34,7 +34,7 @@ namespace DevicePlatform.Data
                     switch (device.DeviceType)
                     {
                         case "Smart Curtains":
-                            DevicesPlugins.AddNewDevicePlugin(device.DeviceID.ToString(), new SmartCurtainsPlatformPlugin.SmartCurtainsPlatformPlugin(deviceUri, device.DeviceID, device.DeviceName, device.DeviceKey));
+                            DevicesPlugins.AddNewDevicePlugin(new SmartCurtainsPlatformPlugin.SmartCurtainsPlatformPlugin(deviceUri, activeUser.UserID, device.DeviceID, device.DeviceName, device.DeviceKey));
                             break;
 
                         default:

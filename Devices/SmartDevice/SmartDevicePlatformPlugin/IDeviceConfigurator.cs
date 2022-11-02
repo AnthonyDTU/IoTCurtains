@@ -8,11 +8,11 @@ namespace SmartDevicePlatformPlugin
 {
     public interface IDeviceConfigurator
     {
-        public void SetConfiguraion(NodeConfiguration nodeConfiguration);
-
         public NodeConfiguration BuildNewConfiguration();
 
         public ContentView GetConfigurationView();
+
+        public ContentView GetConfigurationView(NodeConfiguration nodeConfiguration);
     
     }
 }

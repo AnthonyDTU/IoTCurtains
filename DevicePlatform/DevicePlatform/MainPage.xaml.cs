@@ -10,6 +10,7 @@ namespace DevicePlatform;
 
 public partial class MainPage : ContentPage
 {
+    //Uri uriBase = new Uri("https://smartplatformbackendapi.azurewebsites.net");
     Uri uriBase = new Uri("https://localhost:7173/");
 	Uri deviceUri;
     int timeoutMs = 5000;
@@ -19,9 +20,6 @@ public partial class MainPage : ContentPage
 
 	string storedUser = null;
 	string storedPassword = "test";
-
-
-
 
 	public MainPage()
 	{

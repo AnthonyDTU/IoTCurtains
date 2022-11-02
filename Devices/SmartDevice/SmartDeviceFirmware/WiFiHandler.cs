@@ -14,8 +14,8 @@ namespace SmartDeviceFirmware
 
         private NetworkInterface network;
 
-        private readonly string SSID;
-        private readonly string password;
+        private string SSID;
+        private string password;
         private readonly int networkInterfaceIndex;
         private readonly int isConnectedLEDIndicatorPinNumber;
         private readonly GpioController gpioController;
@@ -28,10 +28,10 @@ namespace SmartDeviceFirmware
         /// <param name="password"></param>
         /// <param name="networkInterfaceIndex"></param>
         /// <param name="isConnectedLEDIndicatorPinNumber"></param>
-        public WiFiHandler(string SSID, string password, int networkInterfaceIndex = 0, int isConnectedLEDIndicatorPinNumber = 0, GpioController gpioController = null)
+        public WiFiHandler(NodeConfiguration nodeConfiguration,  int networkInterfaceIndex = 0, int isConnectedLEDIndicatorPinNumber = 0, GpioController gpioController = null)
         {
-            this.SSID = SSID;
-            this.password = password;
+            SSID = nodeConfiguration.WiFiSSID;
+            password = nodeConfiguration.WiFiPassword;
             this.networkInterfaceIndex = networkInterfaceIndex;
             this.isConnectedLEDIndicatorPinNumber = isConnectedLEDIndicatorPinNumber;
             this.gpioController = gpioController;
@@ -40,7 +40,7 @@ namespace SmartDeviceFirmware
             if (network.IPv4Address != null &&
                 network.IPv4Address != string.Empty)
             {
-                ConnectToWiFi();
+                TryConnectToWiFi();
             }
             else
             {
@@ -49,34 +49,55 @@ namespace SmartDeviceFirmware
         }
 
         /// <summary>
-        /// Handles connection to WiFi
+        /// Updates the SSID and password, and tries to connected to the new WiFi
         /// </summary>
-        private void ConnectToWiFi()
+        /// <param name="SSID"></param>
+        /// <param name="password"></param>
+        internal void SetAndConnectNewWifi(string SSID, string password)
         {
-            if (WifiNetworkHelper.ConnectDhcp(SSID,
-                                              password,
-                                              WifiReconnectionKind.Automatic,
-                                              requiresDateTime: true,
-                                              wifiAdapterId: networkInterfaceIndex,
-                                              token: new CancellationTokenSource(10000).Token))
+            this.SSID = SSID;
+            this.password = password;
+            TryConnectToWiFi();
+        }
+
+        /// <summary>
+        /// Tries to connect to a WiFi network
+        /// </summary>
+        private void TryConnectToWiFi()
+        {
+            try
             {
-                isConnected = true;
-
-                Console.WriteLine("Connected To Wifi!");
-                Console.WriteLine($"Network IP: {network.IPv4Address}");
-
-                if (isConnectedLEDIndicatorPinNumber != 0 &&
-                    gpioController != null) 
+                if (WifiNetworkHelper.ConnectDhcp(SSID,
+                                                  password,
+                                                  WifiReconnectionKind.Automatic,
+                                                  requiresDateTime: true,
+                                                  wifiAdapterId: networkInterfaceIndex,
+                                                  token: new CancellationTokenSource(10000).Token))
                 {
-                    wifiConnectedLedIndicator = gpioController.OpenPin(isConnectedLEDIndicatorPinNumber, PinMode.Output);
-                    wifiConnectedLedIndicator.Write(PinValue.High);
+                    isConnected = true;
+
+                    Console.WriteLine("Connected To Wifi!");
+                    Console.WriteLine($"Network IP: {network.IPv4Address}");
+
+                    if (isConnectedLEDIndicatorPinNumber != 0 &&
+                        gpioController != null)
+                    {
+                        wifiConnectedLedIndicator = gpioController.OpenPin(isConnectedLEDIndicatorPinNumber, PinMode.Output);
+                        wifiConnectedLedIndicator.Write(PinValue.High);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Could Not Connect To Wifi!");
+                    Console.WriteLine($"Error: {WifiNetworkHelper.Status}");
                 }
             }
-            else
+            catch (Exception ex)
             {
-                Console.WriteLine("Could Not Connect To Wifi!");
-                Console.WriteLine($"Error: {WifiNetworkHelper.Status}");
+                Console.WriteLine("Error wile connecting to WiFi:");
+                Console.WriteLine(ex.Message);
             }
+            
         }
 
     }
