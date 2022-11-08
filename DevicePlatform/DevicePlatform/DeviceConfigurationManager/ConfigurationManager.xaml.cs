@@ -1,12 +1,9 @@
 namespace DevicePlatform.DeviceConfigurationManager;
 
 using DevicePlatform.Data;
-using Microsoft.Maui.Controls.PlatformConfiguration;
 using SmartDevicePlatformPlugin;
-using System.Diagnostics;
 using System.IO.Ports;
 using System.Text.Json;
-using System.Timers;
 
 #pragma warning disable CA1416 // Validate platform compatibility
 public partial class ConfigurationManager : ContentPage
@@ -42,11 +39,10 @@ public partial class ConfigurationManager : ContentPage
 	/// </summary>
 	/// <param name="backendAPI"></param>
 	/// <param name="devices"></param>
-	public ConfigurationManager(Uri deviceUri, DevicePluginCollection devices)
+	public ConfigurationManager(DevicePluginCollection devices)
 	{
 		InitializeComponent();
 
-		this.deviceUri = deviceUri;
 		this.devices = devices;
 		newDevice = true;
 
@@ -192,7 +188,7 @@ public partial class ConfigurationManager : ContentPage
         {
             case "Smart Curtains":
                 if (newDevice)
-                    workingDevicePlugin = new SmartCurtainsPlatformPlugin.SmartCurtainsPlatformPlugin(ActiveUser.User.UserID, deviceUri);
+                    workingDevicePlugin = new SmartCurtainsPlatformPlugin.SmartCurtainsPlatformPlugin(ActiveUser.User.UserID, ActiveUser.hubConnection);
                 else
                     workingDevicePlugin = ActiveUser.DevicesPlugins.GetDevicePlugin(deviceID);
                 break;

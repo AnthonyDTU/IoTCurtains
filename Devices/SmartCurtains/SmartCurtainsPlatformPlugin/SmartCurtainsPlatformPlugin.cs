@@ -7,6 +7,8 @@ using System.Net;
 
 using SmartDevicePlatformPlugin;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.SignalR;
+using Microsoft.AspNetCore.SignalR.Client;
 
 namespace SmartCurtainsPlatformPlugin
 {
@@ -18,12 +20,17 @@ namespace SmartCurtainsPlatformPlugin
         private DeviceDescriptor deviceDescriptor;
         public DeviceDescriptor DeviceDescriptor => deviceDescriptor;
 
-        APIHandler APIHandler;        
+        private SignalRController signalRController;
+        public SignalRController SignalRController => signalRController;
+
+        //APIHandler APIHandler;        
         DeviceData currentDeviceState;
 
+        private HubConnection hubConnection;
 
-        public SmartCurtainsPlatformPlugin(Guid userID, Uri backendDeviceUri)
+        public SmartCurtainsPlatformPlugin(Guid userID, HubConnection hubConnection)
         {
+            this.hubConnection = hubConnection;
             deviceDescriptor = new DeviceDescriptor()
             {
                 DeviceID = Guid.NewGuid(),
@@ -31,16 +38,15 @@ namespace SmartCurtainsPlatformPlugin
                 DeviceName = "",
                 DeviceModel = "",
                 DeviceKey = "",
-                backendUri = backendDeviceUri
             };
 
-
             configurator = new SmartCurtainsConfigurator(deviceDescriptor);
-            APIHandler = new APIHandler(backendDeviceUri);
+            signalRController = new SignalRController(deviceDescriptor, hubConnection, DataRevicedFromDevice);
         }
 
-        public SmartCurtainsPlatformPlugin(Uri backendDeviceUri, Guid userID, Guid deviceID, string deviceName, string deviceKey)
+        public SmartCurtainsPlatformPlugin(HubConnection hubConnection, Guid userID, Guid deviceID, string deviceName, string deviceKey)
         {
+            this.hubConnection = hubConnection;
             deviceDescriptor = new DeviceDescriptor()
             {
                 DeviceID = deviceID,
@@ -48,11 +54,15 @@ namespace SmartCurtainsPlatformPlugin
                 DeviceName = deviceName,
                 DeviceModel = "",
                 DeviceKey = deviceKey,
-                backendUri = backendDeviceUri
             };
 
-            APIHandler = new APIHandler(backendDeviceUri);
+            signalRController = new SignalRController(deviceDescriptor, hubConnection, DataRevicedFromDevice);
             GetCurrentState();
+        }
+
+        public void DataRevicedFromDevice(string data)
+        {
+
         }
 
 
@@ -65,7 +75,7 @@ namespace SmartCurtainsPlatformPlugin
         public async Task<ContentView> GetPluginUI()
         {
             SmartCurtainsUI smartCurtainsUI = new SmartCurtainsUI(deviceDescriptor.DeviceName);
-            currentDeviceState = await APIHandler.GetCurrentDeviceState(deviceDescriptor);
+            currentDeviceState = new DeviceData();
 
             if (currentDeviceState != null)
                 smartCurtainsUI.ConfigureUI(currentDeviceState);
@@ -75,7 +85,7 @@ namespace SmartCurtainsPlatformPlugin
 
         private async void GetCurrentState()
         {
-            currentDeviceState = await APIHandler.GetCurrentDeviceState(deviceDescriptor);
+            //currentDeviceState = await APIHandler.GetCurrentDeviceState(deviceDescriptor);
         }
     }
 }

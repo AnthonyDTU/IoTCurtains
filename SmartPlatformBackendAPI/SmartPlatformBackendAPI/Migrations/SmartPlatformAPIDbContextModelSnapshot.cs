@@ -43,10 +43,6 @@ namespace SmartPlatformBackendAPI.Migrations
                     b.Property<Guid>("UserID")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("backendUri")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("DeviceID");
 
                     b.HasIndex("UserID");

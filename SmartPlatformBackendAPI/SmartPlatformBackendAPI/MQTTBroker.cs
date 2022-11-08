@@ -28,7 +28,8 @@ namespace SmartPlatformBackendAPI
                     {
                         //webBuilder.UseUrls("smartplatformbackendapi.azurewebsites.net:1883");
 
-
+                        //webBuilder.UseUrls("smartplatformbackendapi.azurewebsites.net");
+                        //webBuilder.UseSockets();
                         //webBuilder.UseKestrel(
                         //    o =>
                         //    {
@@ -79,6 +80,7 @@ namespace SmartPlatformBackendAPI
             public void Configure(IApplicationBuilder app, IWebHostEnvironment environment, MqttController mqttController)
             {
                 app.UseRouting();
+                
 
                 app.UseEndpoints(
                     endpoints =>

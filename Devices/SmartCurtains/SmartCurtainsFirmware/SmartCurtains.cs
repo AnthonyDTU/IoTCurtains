@@ -5,6 +5,7 @@ using Iot.Device.Button;
 
 using SmartDeviceFirmware;
 using System.Threading;
+using System.Net.WebSockets;
 
 namespace SmartCurtainsFirmware
 {
@@ -43,6 +44,10 @@ namespace SmartCurtainsFirmware
         /// </summary>
         public SmartCurtains() : base("Smart Curtains")
         {
+            nodeConfiguration.WiFiSSID = "TP-LINK_0AC4EC";
+            nodeConfiguration.WiFiPassword = "eqh76rxg";
+            nodeConfiguration.DeviceID = new Guid("c7646498-2119-4915-a176-4bacfe5e44c1");
+
             gpioController = new GpioController(PinNumberingScheme.Board);
 
             serialCommunicator = new SerialCommunicator(nodeConfiguration, 
@@ -55,6 +60,12 @@ namespace SmartCurtainsFirmware
                                           wifiInterfaceIndex, 
                                           wifiConnectedLedPinNumber, 
                                           gpioController);
+
+
+            //WebSocketTest test = new WebSocketTest("ws://smartplatformbackendapi.azurewebsites.net/device");
+            
+
+            signalRController = new SignalRController(nodeConfiguration);
 
             motorController = new MotorController(gpioController,
                                                   motorControllerIn1PinNumber,
@@ -72,6 +83,11 @@ namespace SmartCurtainsFirmware
             rollUpButton.Press += RollUpButton_Press;
             stopMotorButton.Press += StopMotorButton_Press;
             calibrateButton.Press += CalibrateButton_Press;
+        }
+
+        private void WebSocketConnected(object sender, EventArgs e)
+        {
+            Console.WriteLine("WebSocket Connected Successfully");
         }
 
         /// <summary>

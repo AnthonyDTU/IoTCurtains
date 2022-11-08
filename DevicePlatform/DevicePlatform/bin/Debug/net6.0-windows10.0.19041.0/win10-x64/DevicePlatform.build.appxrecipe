@@ -436,17 +436,8 @@
     <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\microsoft.netcore.app.runtime.win-x64\6.0.10\runtimes\win-x64\lib\net6.0\System.Text.Encoding.dll">
       <PackagePath>System.Text.Encoding.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\microsoft.netcore.app.runtime.win-x64\6.0.10\runtimes\win-x64\lib\net6.0\System.Text.Encodings.Web.dll">
-      <PackagePath>System.Text.Encodings.Web.dll</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\microsoft.netcore.app.runtime.win-x64\6.0.10\runtimes\win-x64\lib\net6.0\System.Text.Json.dll">
-      <PackagePath>System.Text.Json.dll</PackagePath>
-    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\microsoft.netcore.app.runtime.win-x64\6.0.10\runtimes\win-x64\lib\net6.0\System.Text.RegularExpressions.dll">
       <PackagePath>System.Text.RegularExpressions.dll</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\microsoft.netcore.app.runtime.win-x64\6.0.10\runtimes\win-x64\lib\net6.0\System.Threading.Channels.dll">
-      <PackagePath>System.Threading.Channels.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\microsoft.netcore.app.runtime.win-x64\6.0.10\runtimes\win-x64\lib\net6.0\System.Threading.Overlapped.dll">
       <PackagePath>System.Threading.Overlapped.dll</PackagePath>
@@ -724,28 +715,52 @@
     <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\microsoft.windows.sdk.net.ref\10.0.19041.27\lib\net6.0\WinRT.Runtime.dll">
       <PackagePath>WinRT.Runtime.dll</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\microsoft.aspnetcore.connections.abstractions\7.0.0\lib\netstandard2.1\Microsoft.AspNetCore.Connections.Abstractions.dll">
+      <PackagePath>Microsoft.AspNetCore.Connections.Abstractions.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\microsoft.aspnetcore.http.connections.client\7.0.0\lib\netstandard2.1\Microsoft.AspNetCore.Http.Connections.Client.dll">
+      <PackagePath>Microsoft.AspNetCore.Http.Connections.Client.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\microsoft.aspnetcore.http.connections.common\7.0.0\lib\netstandard2.0\Microsoft.AspNetCore.Http.Connections.Common.dll">
+      <PackagePath>Microsoft.AspNetCore.Http.Connections.Common.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\microsoft.aspnetcore.signalr.client\7.0.0\lib\netstandard2.0\Microsoft.AspNetCore.SignalR.Client.dll">
+      <PackagePath>Microsoft.AspNetCore.SignalR.Client.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\microsoft.aspnetcore.signalr.client.core\7.0.0\lib\netstandard2.1\Microsoft.AspNetCore.SignalR.Client.Core.dll">
+      <PackagePath>Microsoft.AspNetCore.SignalR.Client.Core.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\microsoft.aspnetcore.signalr.common\7.0.0\lib\netstandard2.0\Microsoft.AspNetCore.SignalR.Common.dll">
+      <PackagePath>Microsoft.AspNetCore.SignalR.Common.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\microsoft.aspnetcore.signalr.protocols.json\7.0.0\lib\netstandard2.0\Microsoft.AspNetCore.SignalR.Protocols.Json.dll">
+      <PackagePath>Microsoft.AspNetCore.SignalR.Protocols.Json.dll</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\microsoft.extensions.configuration\6.0.1\lib\netstandard2.0\Microsoft.Extensions.Configuration.dll">
       <PackagePath>Microsoft.Extensions.Configuration.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\microsoft.extensions.configuration.abstractions\6.0.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.Abstractions.dll">
       <PackagePath>Microsoft.Extensions.Configuration.Abstractions.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\microsoft.extensions.dependencyinjection\6.0.0\lib\net6.0\Microsoft.Extensions.DependencyInjection.dll">
+    <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\microsoft.extensions.dependencyinjection\7.0.0\lib\net6.0\Microsoft.Extensions.DependencyInjection.dll">
       <PackagePath>Microsoft.Extensions.DependencyInjection.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\microsoft.extensions.dependencyinjection.abstractions\6.0.0\lib\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll">
+    <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\microsoft.extensions.dependencyinjection.abstractions\7.0.0\lib\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll">
       <PackagePath>Microsoft.Extensions.DependencyInjection.Abstractions.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\microsoft.extensions.logging\6.0.0\lib\netstandard2.1\Microsoft.Extensions.Logging.dll">
+    <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\microsoft.extensions.features\7.0.0\lib\netstandard2.0\Microsoft.Extensions.Features.dll">
+      <PackagePath>Microsoft.Extensions.Features.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\microsoft.extensions.logging\7.0.0\lib\net6.0\Microsoft.Extensions.Logging.dll">
       <PackagePath>Microsoft.Extensions.Logging.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\microsoft.extensions.logging.abstractions\6.0.1\lib\net6.0\Microsoft.Extensions.Logging.Abstractions.dll">
+    <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\microsoft.extensions.logging.abstractions\7.0.0\lib\net6.0\Microsoft.Extensions.Logging.Abstractions.dll">
       <PackagePath>Microsoft.Extensions.Logging.Abstractions.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\microsoft.extensions.options\6.0.0\lib\netstandard2.1\Microsoft.Extensions.Options.dll">
+    <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\microsoft.extensions.options\7.0.0\lib\net6.0\Microsoft.Extensions.Options.dll">
       <PackagePath>Microsoft.Extensions.Options.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\microsoft.extensions.primitives\6.0.0\lib\net6.0\Microsoft.Extensions.Primitives.dll">
+    <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\microsoft.extensions.primitives\7.0.0\lib\net6.0\Microsoft.Extensions.Primitives.dll">
       <PackagePath>Microsoft.Extensions.Primitives.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\microsoft.graphics.win2d\1.0.3.1\lib\net5.0-windows10.0.18362.0\Microsoft.Graphics.Canvas.Interop.dll">
@@ -790,8 +805,20 @@
     <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\microsoft.windowsappsdk\1.1.3\lib\net5.0-windows10.0.18362.0\Microsoft.WindowsAppRuntime.Bootstrap.Net.dll">
       <PackagePath>Microsoft.WindowsAppRuntime.Bootstrap.Net.dll</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\system.io.pipelines\7.0.0\lib\net6.0\System.IO.Pipelines.dll">
+      <PackagePath>System.IO.Pipelines.dll</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\system.io.ports\7.0.0-rc.2.22472.3\runtimes\win\lib\net6.0\System.IO.Ports.dll">
       <PackagePath>System.IO.Ports.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\system.text.encodings.web\7.0.0\lib\net6.0\System.Text.Encodings.Web.dll">
+      <PackagePath>System.Text.Encodings.Web.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\system.text.json\7.0.0\lib\net6.0\System.Text.Json.dll">
+      <PackagePath>System.Text.Json.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\system.threading.channels\7.0.0\lib\net6.0\System.Threading.Channels.dll">
+      <PackagePath>System.Threading.Channels.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\microsoft.graphics.win2d\1.0.3.1\runtimes\win10-x64\native\Microsoft.Graphics.Canvas.dll">
       <PackagePath>Microsoft.Graphics.Canvas.dll</PackagePath>

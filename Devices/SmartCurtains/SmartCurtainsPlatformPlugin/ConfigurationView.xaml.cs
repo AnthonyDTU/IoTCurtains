@@ -19,7 +19,6 @@ public partial class ConfigurationView : ContentView
         DeviceIDLabel.Text = deviceDescriptor.DeviceID.ToString();
         UserIDLabel.Text = deviceDescriptor.UserID.ToString();
 		DeviceKeyLabel.Text = deviceDescriptor.DeviceKey.ToString();
-        BackedURILabel.Text = deviceDescriptor.backendUri.ToString();
     }
 
 
@@ -28,7 +27,6 @@ public partial class ConfigurationView : ContentView
         DeviceIDLabel.Text = deviceDescriptor.DeviceID.ToString();
         UserIDLabel.Text = deviceDescriptor.UserID.ToString();
         DeviceKeyLabel.Text = deviceDescriptor.DeviceKey.ToString();
-        BackedURILabel.Text = deviceDescriptor.backendUri.ToString();
 
         DeviceNameEntry.Text = nodeConfiguration.DeviceName;
 		WiFiSSIDEntry.Text = nodeConfiguration.WiFiSSID;
@@ -45,7 +43,6 @@ public partial class ConfigurationView : ContentView
 			DeviceName = DeviceNameEntry.Text,
 			WiFiSSID = WiFiSSIDEntry.Text,
 			WiFiPassword = WiFiPasswordEntry.Text,
-			backendConnectionUri = new Uri(BackedURILabel.Text),
 		};
 	}
 }

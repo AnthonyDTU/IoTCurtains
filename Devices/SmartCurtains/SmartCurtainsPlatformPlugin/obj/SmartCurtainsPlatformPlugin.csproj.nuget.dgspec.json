@@ -66,6 +66,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.AspNetCore.SignalR.Client": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
             "Microsoft.Maui.Dependencies": {
               "suppressParent": "All",
               "target": "Package",
@@ -109,6 +113,10 @@
         "net6.0-android31.0": {
           "targetAlias": "net6.0-android",
           "dependencies": {
+            "Microsoft.AspNetCore.SignalR.Client": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
             "Microsoft.Maui.Dependencies": {
               "suppressParent": "All",
               "target": "Package",
@@ -155,6 +163,10 @@
         "net6.0-ios16.0": {
           "targetAlias": "net6.0-ios",
           "dependencies": {
+            "Microsoft.AspNetCore.SignalR.Client": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
             "Microsoft.Maui.Dependencies": {
               "suppressParent": "All",
               "target": "Package",
@@ -206,6 +218,10 @@
         "net6.0-maccatalyst15.4": {
           "targetAlias": "net6.0-maccatalyst",
           "dependencies": {
+            "Microsoft.AspNetCore.SignalR.Client": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
             "Microsoft.Maui.Dependencies": {
               "suppressParent": "All",
               "target": "Package",
@@ -258,6 +274,10 @@
         "net6.0-windows10.0.19041": {
           "targetAlias": "net6.0-windows10.0.19041.0",
           "dependencies": {
+            "Microsoft.AspNetCore.SignalR.Client": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
             "Microsoft.Maui.Dependencies": {
               "suppressParent": "All",
               "target": "Package",

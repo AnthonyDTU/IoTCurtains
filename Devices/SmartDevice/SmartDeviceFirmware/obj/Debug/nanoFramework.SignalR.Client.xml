@@ -1,0 +1,270 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>nanoFramework.SignalR.Client</name>
+    </assembly>
+    <members>
+        <member name="T:nanoFramework.SignalR.Client.AsyncResult">
+            <summary>
+            An asynchronous object that represents the invocation of <see cref="M:nanoFramework.SignalR.Client.HubConnection.InvokeCoreAsync(System.String,System.Type,System.Object[],System.Int32)"/> on the server.
+            </summary>
+            <remarks>
+            Just like an Async <see cref="P:nanoFramework.SignalR.Client.AsyncResult.Completed"/> indicates if the response from server is received.
+            Calling <see cref="P:nanoFramework.SignalR.Client.AsyncResult.Value"/> before the server response will await the response from the server synchronously. 
+            </remarks>
+        </member>
+        <member name="P:nanoFramework.SignalR.Client.AsyncResult.Value">
+            <summary>
+            The result from the asynchronous invocation of <see cref="M:nanoFramework.SignalR.Client.HubConnection.InvokeCoreAsync(System.String,System.Type,System.Object[],System.Int32)"/> on the server.
+            </summary>
+            <remarks>
+            Calling Value before the server call is <see cref="P:nanoFramework.SignalR.Client.AsyncResult.Completed"/> will await the response of the server synchronously. 
+            </remarks>
+        </member>
+        <member name="P:nanoFramework.SignalR.Client.AsyncResult.Completed">
+            <summary>
+            Indicates if the invocation of <see cref="M:nanoFramework.SignalR.Client.HubConnection.InvokeCoreAsync(System.String,System.Type,System.Object[],System.Int32)"/> on the server us completed.
+            </summary>
+        </member>
+        <member name="P:nanoFramework.SignalR.Client.AsyncResult.Error">
+            <summary>
+            Indicates if the invocation of <see cref="M:nanoFramework.SignalR.Client.HubConnection.InvokeCoreAsync(System.String,System.Type,System.Object[],System.Int32)"/> returned any errors.
+            </summary>
+            <remarks>
+            <see cref="P:nanoFramework.SignalR.Client.AsyncResult.ErrorMessage"/> contains the error details
+            </remarks>
+        </member>
+        <member name="P:nanoFramework.SignalR.Client.AsyncResult.ErrorMessage">
+            <summary>
+            Contains the error message returned by the invocation of <see cref="M:nanoFramework.SignalR.Client.HubConnection.InvokeCoreAsync(System.String,System.Type,System.Object[],System.Int32)"/>.
+            </summary>
+            <remarks>
+            This is null if no errors occurred.
+            </remarks>
+        </member>
+        <member name="P:nanoFramework.SignalR.Client.AsyncResult.ReturnType">
+            <summary>
+            The return Type of the invocation of <see cref="M:nanoFramework.SignalR.Client.HubConnection.InvokeCoreAsync(System.String,System.Type,System.Object[],System.Int32)"/>.
+            </summary>
+        </member>
+        <member name="T:nanoFramework.SignalR.Client.HubConnection">
+            <summary>
+            A connection used to invoke hub methods on a SignalR Server. And for server to invoke methods on the client. 
+            This client does not support Streams.
+            </summary>
+            <remarks>
+            A <see cref="T:nanoFramework.SignalR.Client.HubConnection"/> should be created using <see cref="T:nanoFramework.SignalR.Client.HubConnection"/>.
+            Before hub methods can be invoked the connection must be started using <see cref="M:nanoFramework.SignalR.Client.HubConnection.Start"/>.
+            Clean up a connection using <see cref="M:nanoFramework.SignalR.Client.HubConnection.Stop(System.String)"/>.
+            </remarks>
+        </member>
+        <member name="P:nanoFramework.SignalR.Client.HubConnection.State">
+            <summary>
+            Indicates the state of the <see cref="T:nanoFramework.SignalR.Client.HubConnection"/> to the server.
+            </summary>
+        </member>
+        <member name="P:nanoFramework.SignalR.Client.HubConnection.ServerTimeout">
+            <summary>
+            Gets or sets the server timeout interval for the connection. 
+            </summary>
+            <remarks>
+            The client times out if it hasn't heard from the server for `this` long.
+            </remarks>
+        </member>
+        <member name="P:nanoFramework.SignalR.Client.HubConnection.KeepAliveInterval">
+            <summary>
+            Gets or sets the interval at which the client sends ping messages.
+            </summary>
+            <remarks>
+            Sending any message resets the timer to the start of the interval.
+            </remarks>
+        </member>
+        <member name="P:nanoFramework.SignalR.Client.HubConnection.HandshakeTimeout">
+            <summary>
+            Gets or sets the timeout for the initial handshake.
+            </summary>
+        </member>
+        <member name="E:nanoFramework.SignalR.Client.HubConnection.Closed">
+            <summary>
+            Occurs when the connection is closed. The connection could be closed due to an error or due to either the server or client intentionally closing the connection without error.
+            </summary>
+            <remarks>
+            If this event was triggered from a connection error, the System.Exception that occurred will be passed in as the sole argument to this handler. If this event was triggered intentionally by either the client or server, then the argument will be null.
+            </remarks>
+        </member>
+        <member name="E:nanoFramework.SignalR.Client.HubConnection.Reconnected">
+            <summary>
+             Occurs when the Microsoft.AspNetCore.SignalR.Client.HubConnection successfully reconnects after losing its underlying connection.
+            </summary>
+            <remarks>
+            The System.String parameter will be the Microsoft.AspNetCore.SignalR.Client.HubConnection's new ConnectionId or null if negotiation was skipped.
+            </remarks>
+        </member>
+        <member name="E:nanoFramework.SignalR.Client.HubConnection.Reconnecting">
+            <summary>
+             Occurs when the Microsoft.AspNetCore.SignalR.Client.HubConnection starts reconnecting after losing its underlying connection.
+            </summary>
+            <remarks>
+            The System.Exception that occurred will be passed in as the sole argument to this handler.
+            </remarks>
+        </member>
+        <member name="T:nanoFramework.SignalR.Client.HubConnection.SignalrEvent">
+            <summary>
+            The handler to be used for all connection status change.
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="message">The event message arguments <see cref="T:nanoFramework.SignalR.Client.SignalrEventMessageArgs"/>.</param>
+        </member>
+        <member name="T:nanoFramework.SignalR.Client.HubConnection.OnInvokeHandler">
+            <summary>
+            The handler to be used for when client methods are invoked by the server.
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="args">The arguments.</param>
+        </member>
+        <member name="P:nanoFramework.SignalR.Client.HubConnection.Uri">
+            <summary>
+            The location of the Signalr Hub Server.
+            </summary>
+            <remarks>
+            Can be set upon initialization of the <see cref="T:nanoFramework.SignalR.Client.HubConnection"/>.
+            </remarks>
+        </member>
+        <member name="P:nanoFramework.SignalR.Client.HubConnection.ReconnectEnabled">
+            <summary>
+            Indicates if reconnection to server is enabled.
+            </summary>
+            <remarks>
+            Client will only reconnect if this is indicated by the server close message. 
+            This can be enabled by setting <see cref="P:nanoFramework.SignalR.Client.HubConnectionOptions.Reconnect"/> to true.
+            This reconnect function is experimental and perhaps better handled elsewhere. 
+            </remarks>
+        </member>
+        <member name="P:nanoFramework.SignalR.Client.HubConnection.CustomHeaders">
+            <summary>
+            Custome headers.
+            </summary>
+        </member>
+        <member name="M:nanoFramework.SignalR.Client.HubConnection.#ctor(System.String,System.Net.WebSockets.ClientWebSocketHeaders,nanoFramework.SignalR.Client.HubConnectionOptions)">
+            <summary>
+            Initializes a new instance of the <see cref="T:nanoFramework.SignalR.Client.HubConnection"/> class.
+            </summary>
+            <param name="uri">Fully Qualified Domain Name of the SignalR Hub server.</param>
+            <param name="headers">Optional <see cref="T:System.Net.WebSockets.ClientWebSocketHeaders"/> for setting custom headers.</param>
+            <param name="options">Optional <see cref="T:nanoFramework.SignalR.Client.HubConnectionOptions"/> where extra options can be defined.</param>
+        </member>
+        <member name="M:nanoFramework.SignalR.Client.HubConnection.Stop(System.String)">
+            <summary>
+            Stops a connection to the server.
+            </summary>
+            <param name="errorMessage">Optional error message to will be send to the server</param>
+        </member>
+        <member name="M:nanoFramework.SignalR.Client.HubConnection.Start">
+            <summary>
+            Starts a connection to the server.
+            </summary>
+        </member>
+        <member name="M:nanoFramework.SignalR.Client.HubConnection.SendCore(System.String,System.Object[])">
+            <summary>
+            Invokes a hub method on the server using the specified method name and arguments.
+            Does not wait for a response from the receiver.
+            </summary>
+            <param name="methodName">The name of the server method to invoke.</param>
+            <param name="args">The arguments used to invoke the server method.</param>
+            <remarks>
+            This is a fire and forget implementation
+            </remarks>
+        </member>
+        <member name="M:nanoFramework.SignalR.Client.HubConnection.InvokeCore(System.String,System.Type,System.Object[],System.Int32)">
+            <summary>
+            Invokes a hub method on the server using the specified method name, return type and arguments.
+            </summary>
+            <param name="methodName">The name of the server method to invoke.</param>
+            <param name="returnType">The return type of the server method.</param>
+            <param name="args">The arguments used to invoke the server method.</param>
+            <param name="timeout">The time in milliseconds the server return should be awaited, The default value 0 uses the <see cref="P:nanoFramework.SignalR.Client.HubConnection.ServerTimeout" /></param>
+            <returns>
+            A <see cref="T:System.Object"/> response from the server.
+            </returns>
+            <remarks>
+            This is synchronous call that will block your thread, use <see cref="M:nanoFramework.SignalR.Client.HubConnection.InvokeCoreAsync(System.String,System.Type,System.Object[],System.Int32)"/> for a nonblocking asynchronous call. 
+            </remarks>
+        </member>
+        <member name="M:nanoFramework.SignalR.Client.HubConnection.InvokeCoreAsync(System.String,System.Type,System.Object[],System.Int32)">
+            <summary>
+            Invokes a hub method on the server using the specified method name, return type and arguments.
+            </summary>
+            <param name="methodName">The name of the server method to invoke.</param>
+            <param name="returnType">The return type of the server method.</param>
+            <param name="args">The arguments used to invoke the server method.</param>
+            <param name="timeout">The time in milliseconds the server return should be awaited, The default value 0 uses the <see cref="P:nanoFramework.SignalR.Client.HubConnection.ServerTimeout" /></param>
+            <returns>
+            A <see cref="T:nanoFramework.SignalR.Client.AsyncResult"/> that represents the asynchronous invoke.
+            </returns>
+            <remarks>
+            This is an asynchronous call
+            </remarks>
+        </member>
+        <member name="M:nanoFramework.SignalR.Client.HubConnection.On(System.String,System.Type[],nanoFramework.SignalR.Client.HubConnection.OnInvokeHandler)">
+            <summary>
+            Registers a handler that will be invoked when the hub method with the specified method name is invoked.
+            </summary>
+            <param name="methodName">The name of the hub method to define.</param>
+            <param name="parameterTypes">The parameters types expected by the hub method.</param>
+            <param name="handler">The handler that will be raised when the hub method is invoked.</param>
+            <returns>A subscription on a hub method.</returns>
+            <remarks>
+            This is a low level method for registering a handler.
+            </remarks>
+        </member>
+        <member name="T:nanoFramework.SignalR.Client.HubConnectionState">
+            <summary>
+            Describes the current state of the <see cref="T:nanoFramework.SignalR.Client.HubConnection"/> to the server.
+            </summary>
+        </member>
+        <member name="F:nanoFramework.SignalR.Client.HubConnectionState.Disconnected">
+            <summary>
+            The hub connection is disconnected.
+            </summary>
+        </member>
+        <member name="F:nanoFramework.SignalR.Client.HubConnectionState.Connected">
+            <summary>
+            The hub connection is connected.
+            </summary>
+        </member>
+        <member name="F:nanoFramework.SignalR.Client.HubConnectionState.Connecting">
+            <summary>
+            The hub connection is connecting.
+            </summary>
+        </member>
+        <member name="F:nanoFramework.SignalR.Client.HubConnectionState.Reconnecting">
+            <summary>
+            The hub connection is reconnecting.
+            </summary>
+        </member>
+        <member name="T:nanoFramework.SignalR.Client.HubConnectionOptions">
+            <summary>
+            Options to use with a <see cref="T:nanoFramework.SignalR.Client.HubConnection"/> object.
+            </summary>
+        </member>
+        <member name="P:nanoFramework.SignalR.Client.HubConnectionOptions.Reconnect">
+            <summary>
+            Set to true to enable automatic reconnect to the server.
+            </summary>
+            <remarks>
+            Client will only reconnect if this is indicated by the server close message. 
+            This reconnect function is experimental and perhaps better handled elsewhere. 
+            </remarks>
+        </member>
+        <member name="T:nanoFramework.SignalR.Client.SignalrEventMessageArgs">
+            <summary>
+            The event arguments that are used when <see cref="T:nanoFramework.SignalR.Client.HubConnection.SignalrEvent"/> is called
+            </summary>
+        </member>
+        <member name="P:nanoFramework.SignalR.Client.SignalrEventMessageArgs.Message">
+            <summary>
+            The optional message from the server for when a connection change occurs. 
+            </summary>
+        </member>
+    </members>
+</doc>

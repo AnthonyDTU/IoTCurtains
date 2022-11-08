@@ -19,6 +19,7 @@ namespace SmartDeviceFirmware
         protected GpioController gpioController;
         protected SerialCommunicator serialCommunicator;
         protected WiFiHandler wifiHandler;
+        protected SignalRController signalRController;
 
         protected Device(string deviceModel)
         {

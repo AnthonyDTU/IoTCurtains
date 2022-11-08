@@ -112,3 +112,15 @@ C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\obj\De
 C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\obj\Debug\nanoFramework.Runtime.Native.dll
 C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\obj\Debug\System.Diagnostics.Stopwatch.xml
 C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\obj\Debug\nanoFramework.Runtime.Native.xml
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\bin\Debug\nanoFramework.SignalR.Client.pe
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\bin\Debug\System.Net.WebSockets.pe
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\bin\Debug\nanoFramework.SignalR.Client.pdbx
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\bin\Debug\System.Net.WebSockets.pdbx
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\bin\Debug\nanoFramework.SignalR.Client.dll
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\bin\Debug\System.Net.WebSockets.dll
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\bin\Debug\nanoFramework.SignalR.Client.xml
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\bin\Debug\System.Net.WebSockets.xml
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\obj\Debug\nanoFramework.SignalR.Client.dll
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\obj\Debug\System.Net.WebSockets.dll
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\obj\Debug\nanoFramework.SignalR.Client.xml
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\obj\Debug\System.Net.WebSockets.xml

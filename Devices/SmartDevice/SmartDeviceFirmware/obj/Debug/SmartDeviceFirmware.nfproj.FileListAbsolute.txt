@@ -99,3 +99,15 @@ C:\DTU\Projects\SmartPlatform\Devices\SmartDevice\SmartDeviceFirmware\obj\Debug\
 C:\DTU\Projects\SmartPlatform\Devices\SmartDevice\SmartDeviceFirmware\obj\Debug\System.Diagnostics.Stopwatch.dll
 C:\DTU\Projects\SmartPlatform\Devices\SmartDevice\SmartDeviceFirmware\obj\Debug\nanoFramework.Runtime.Native.xml
 C:\DTU\Projects\SmartPlatform\Devices\SmartDevice\SmartDeviceFirmware\obj\Debug\System.Diagnostics.Stopwatch.xml
+C:\DTU\Projects\SmartPlatform\Devices\SmartDevice\SmartDeviceFirmware\bin\Debug\nanoFramework.SignalR.Client.pe
+C:\DTU\Projects\SmartPlatform\Devices\SmartDevice\SmartDeviceFirmware\bin\Debug\System.Net.WebSockets.pe
+C:\DTU\Projects\SmartPlatform\Devices\SmartDevice\SmartDeviceFirmware\bin\Debug\nanoFramework.SignalR.Client.pdbx
+C:\DTU\Projects\SmartPlatform\Devices\SmartDevice\SmartDeviceFirmware\bin\Debug\System.Net.WebSockets.pdbx
+C:\DTU\Projects\SmartPlatform\Devices\SmartDevice\SmartDeviceFirmware\bin\Debug\nanoFramework.SignalR.Client.dll
+C:\DTU\Projects\SmartPlatform\Devices\SmartDevice\SmartDeviceFirmware\bin\Debug\System.Net.WebSockets.dll
+C:\DTU\Projects\SmartPlatform\Devices\SmartDevice\SmartDeviceFirmware\bin\Debug\nanoFramework.SignalR.Client.xml
+C:\DTU\Projects\SmartPlatform\Devices\SmartDevice\SmartDeviceFirmware\bin\Debug\System.Net.WebSockets.xml
+C:\DTU\Projects\SmartPlatform\Devices\SmartDevice\SmartDeviceFirmware\obj\Debug\nanoFramework.SignalR.Client.dll
+C:\DTU\Projects\SmartPlatform\Devices\SmartDevice\SmartDeviceFirmware\obj\Debug\System.Net.WebSockets.dll
+C:\DTU\Projects\SmartPlatform\Devices\SmartDevice\SmartDeviceFirmware\obj\Debug\nanoFramework.SignalR.Client.xml
+C:\DTU\Projects\SmartPlatform\Devices\SmartDevice\SmartDeviceFirmware\obj\Debug\System.Net.WebSockets.xml

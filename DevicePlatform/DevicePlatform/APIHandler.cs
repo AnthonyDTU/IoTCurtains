@@ -1,5 +1,6 @@
 ﻿using DevicePlatform.Data;
 using DevicePlatform.Models;
+using Microsoft.AspNetCore.SignalR.Client;
 using SmartDevicePlatformPlugin;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ namespace DevicePlatform
     {
         Uri uriBase = new Uri("https://localhost:7173/");
         HttpClient backendAPI;
+        string hubUri = "http://smartplatformbackendapi.azurewebsites.net/device";
 
         public APIHandler()
         {
@@ -26,6 +28,11 @@ namespace DevicePlatform
             backendAPI = new HttpClient();
             backendAPI.BaseAddress = uriBase;
         }
+
+        //public async HubConnection connectToSignalRHub()
+        //{
+        //    HubConnection
+        //}
 
         /// <summary>
         /// 
@@ -41,7 +48,7 @@ namespace DevicePlatform
                 if (result.StatusCode == HttpStatusCode.OK)
                 {
                     User user = await result.Content.ReadFromJsonAsync<User>();
-                    ActiveUser.ConfigureActiveUser(user);
+                    await ActiveUser.ConfigureActiveUser(user);
                 }
                 else if (result.StatusCode == HttpStatusCode.NotFound)
                 {

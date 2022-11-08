@@ -34,14 +34,8 @@
 
             <HorizontalStackLayout
                 Spacing="10">
-                    <Label Text="Device Key:" FontAttributes="Bold"/>
-                    <Label x:Name="DeviceKeyLabel"/>
-            </HorizontalStackLayout>
-
-            <HorizontalStackLayout
-                Spacing="10">
-                    <Label Text="Backend URI:" FontAttributes="Bold"/>
-                    <Label x:Name="BackedURILabel"/>
+                <Label Text="Device Key:" FontAttributes="Bold"/>
+                <Label x:Name="DeviceKeyLabel"/>
             </HorizontalStackLayout>
 
         </VerticalStackLayout>

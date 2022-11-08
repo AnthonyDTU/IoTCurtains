@@ -698,3 +698,12 @@ C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-win
 C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\ProjectArchitectures.txt
 C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\SmartCurtainsPlatformPlugin.dll
 C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\SmartCurtainsPlatformPlugin.pdb
+C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\Microsoft.AspNetCore.Connections.Abstractions.dll
+C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\Microsoft.AspNetCore.Http.Connections.Client.dll
+C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\Microsoft.AspNetCore.Http.Connections.Common.dll
+C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\Microsoft.AspNetCore.SignalR.Client.dll
+C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\Microsoft.AspNetCore.SignalR.Client.Core.dll
+C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\Microsoft.AspNetCore.SignalR.Common.dll
+C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\Microsoft.AspNetCore.SignalR.Protocols.Json.dll
+C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\Microsoft.Extensions.Features.dll
+C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\System.IO.Pipelines.dll

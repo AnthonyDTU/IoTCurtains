@@ -22,6 +22,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SmartCurtains.cs" />
+    <Compile Include="WebSocketHelpers.cs" />
+    <Compile Include="WebSocketsState.cs" />
+    <Compile Include="WebSocketTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Iot.Device.Button">
@@ -41,6 +44,9 @@
     </Reference>
     <Reference Include="nanoFramework.Runtime.Native">
       <HintPath>..\packages\nanoFramework.Runtime.Native.1.5.4\lib\nanoFramework.Runtime.Native.dll</HintPath>
+    </Reference>
+    <Reference Include="nanoFramework.SignalR.Client">
+      <HintPath>..\packages\nanoFramework.SignalR.Client.1.1.36\lib\nanoFramework.SignalR.Client.dll</HintPath>
     </Reference>
     <Reference Include="nanoFramework.System.Collections">
       <HintPath>..\packages\nanoFramework.System.Collections.1.4.0\lib\nanoFramework.System.Collections.dll</HintPath>
@@ -71,6 +77,9 @@
     </Reference>
     <Reference Include="System.Net.Http">
       <HintPath>..\packages\nanoFramework.System.Net.Http.1.5.54\lib\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.WebSockets">
+      <HintPath>..\packages\nanoFramework.System.Net.WebSockets.Client.1.1.39\lib\System.Net.WebSockets.dll</HintPath>
     </Reference>
     <Reference Include="System.Threading">
       <HintPath>..\packages\nanoFramework.System.Threading.1.1.8\lib\System.Threading.dll</HintPath>

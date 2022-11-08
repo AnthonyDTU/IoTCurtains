@@ -1,13 +1,5 @@
 ﻿using DevicePlatform.Models;
-using SmartCurtainsPlatformPlugin;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Net;
-using Microsoft.Extensions.DependencyInjection;
-using System.Runtime.Intrinsics.Arm;
+using Microsoft.AspNetCore.SignalR.Client;
 
 namespace DevicePlatform.Data
 {
@@ -16,15 +8,46 @@ namespace DevicePlatform.Data
         public static bool LoggedIn { get; set; } = false;
         public static User User { get; set; }
         public static DevicePluginCollection DevicesPlugins { get; set; }
+        public static HubConnection hubConnection { get; private set; }
 
-        
-        public static void ConfigureActiveUser(User activeUser)
+        private static string hubUrl = "http://smartplatformbackendapi.azurewebsites.net/device";
+
+
+        public static async Task<bool> ConfigureActiveUser(User activeUser)
         {
             User = activeUser;
             DevicesPlugins = new DevicePluginCollection();
             LoggedIn = true;
 
-            if (User.DeviceDescriptors != null &&
+            if (hubConnection == null)
+            {
+                hubConnection = new HubConnectionBuilder()
+                                      .WithUrl(hubUrl)
+                                      .WithAutomaticReconnect()
+                                      .Build();
+
+                //hubConnection.On<Guid, string>("UpdateFromDevice", (deviceID, data) =>
+                //{
+                //    Console.WriteLine($"Device: {deviceID} sent {data}");
+                //});
+            }
+
+            if (hubConnection.State != HubConnectionState.Connected)
+            {
+                try
+                {
+                    await hubConnection.StartAsync();
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+                
+                await hubConnection.SendAsync("RegisterUserDevice", User.UserID);
+            }
+
+            if (hubConnection.State == HubConnectionState.Connected &&
+                User.DeviceDescriptors != null &&
                 User.DeviceDescriptors.Count != 0)
             {
                 foreach (var device in User.DeviceDescriptors)
@@ -32,7 +55,7 @@ namespace DevicePlatform.Data
                     switch (device.DeviceModel)
                     {
                         case "Smart Curtains":
-                            DevicesPlugins.AddNewDevicePlugin(new SmartCurtainsPlatformPlugin.SmartCurtainsPlatformPlugin(device.backendUri, 
+                            DevicesPlugins.AddNewDevicePlugin(new SmartCurtainsPlatformPlugin.SmartCurtainsPlatformPlugin(hubConnection, 
                                                                                                                           device.UserID, 
                                                                                                                           device.DeviceID, 
                                                                                                                           device.DeviceName, 
@@ -45,6 +68,7 @@ namespace DevicePlatform.Data
                 }
             }
 
+            return true;
         }
 
         public static void UpdateActiveUser(User newActiveUser)

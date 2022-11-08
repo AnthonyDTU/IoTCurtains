@@ -11,7 +11,6 @@ namespace SmartDeviceFirmware
         public Guid UserID { get; set; }                // Platform configurable
         public string WiFiSSID { get; set; }            // User configurable
         public string WiFiPassword { get; set; }        // User configurable
-        public Uri backendConnectionUri { get; set; }   // Platform configurable
         public string DeviceKey { get; set; }           // Platform configurable
 
 

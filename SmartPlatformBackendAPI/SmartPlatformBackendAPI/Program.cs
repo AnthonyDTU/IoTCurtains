@@ -8,11 +8,95 @@ using MQTTnet.AspNetCore;
 using MQTTnet.Server;
 using SmartPlatformBackendAPI;
 using SmartPlatformBackendAPI.Data;
+using SmartPlatformBackendAPI.Hubs;
+using Microsoft.AspNetCore.ResponseCompression;
+
 
 public class Program
 {
     public static void Main(string[] args)
     {
+        //var mqttFactory = new MqttFactory();
+
+        //// Due to security reasons the "default" endpoint (which is unencrypted) is not enabled by default!
+        //var mqttServerOptions = mqttFactory.CreateServerOptionsBuilder().WithDefaultEndpoint().WithDefaultEndpointPort(3000).Build();
+        //var server = mqttFactory.CreateMqttServer(mqttServerOptions);
+        //server.StartAsync();
+
+        //MQTTBroker.Start_Server_With_WebSockets_Support();
+
+        var builder = WebApplication.CreateBuilder(args);
+
+        //var mqttServerOptions = new MqttServerOptionsBuilder().WithDefaultEndpoint();
+        //builder.Services.AddHostedMqttServer(options => options.WithDefaultEndpoint().WithDefaultEndpointPort(80));
+        //builder.Services.AddMqttWebSocketServerAdapter();
+        //builder.Services.AddMqttConnectionHandler();
+        //builder.Services.AddConnections();
+
+
+        // Add services to the container.
+
+
+        builder.Services.AddControllers();
+        // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+        builder.Services.AddEndpointsApiExplorer();
+        builder.Services.AddSwaggerGen();
+
+        // Local SQL
+        builder.Services.AddDbContext<SmartPlatformAPIDbContext>(options => options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=SmartPlatform;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"));
+
+
+
+        // //Azure SQL Database
+        //builder.Services.AddDbContext<SmartPlatformAPIDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+        builder.Services.AddResponseCompression(options =>
+        {
+            options.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(new[] { "applictaion/octet-stream" });
+        });
+
+        builder.Services.AddSignalR();
+
+        //.AddJsonProtocol(options =>
+        // {
+        //     //options.PayloadSerializerSettings.Converters.Add(JsonConver);
+        //     //the next settings are important in order to serialize and deserialize date times as is and not convert time zones
+        //     options.PayloadSerializerSettings.Converters.Add(new IsoDateTimeConverter());
+        //     options.PayloadSerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Unspecified;
+        //     options.PayloadSerializerSettings.DateParseHandling = DateParseHandling.DateTimeOffset;
+        // });
+
+
+        var app = builder.Build();
+
+        // Configure the HTTP request pipeline.
+        if (app.Environment.IsDevelopment())
+        {
+            app.UseSwagger();
+            app.UseSwaggerUI();
+        }
+
+
+        //app.UseWebSockets();
+        //app.UseHttpsRedirection();
+        app.UseAuthorization();
+        app.MapControllers();
+        app.MapHub<DeviceHub>("/device");
+
+
+        app.Run();
+
+
+
+
+
+
+
+
+
+
+
+
         //MqttController mqttController = new MqttController();
 
 
@@ -85,44 +169,84 @@ public class Program
 
 
 
-        //var mqttFactory = new MqttFactory();
+        ////var mqttFactory = new MqttFactory();
 
-        //// Due to security reasons the "default" endpoint (which is unencrypted) is not enabled by default!
-        //var mqttServerOptions = mqttFactory.CreateServerOptionsBuilder().WithDefaultEndpoint().WithDefaultEndpointPort(3000).Build();
-        //var server = mqttFactory.CreateMqttServer(mqttServerOptions);
-        //server.StartAsync();
+        ////// Due to security reasons the "default" endpoint (which is unencrypted) is not enabled by default!
+        ////var mqttServerOptions = mqttFactory.CreateServerOptionsBuilder().WithDefaultEndpoint().WithDefaultEndpointPort(3000).Build();
+        ////var server = mqttFactory.CreateMqttServer(mqttServerOptions);
+        ////server.StartAsync();
 
-        //MQTTBroker.Start_Server_With_WebSockets_Support();
+        ////MQTTBroker.Start_Server_With_WebSockets_Support();
 
-        var builder = WebApplication.CreateBuilder(args);
+        //var builder = WebApplication.CreateBuilder(args);
 
-        // Add services to the container.
+        ////var mqttServerOptions = new MqttServerOptionsBuilder().WithDefaultEndpoint();
+        ////builder.Services.AddHostedMqttServer(options => options.WithDefaultEndpoint().WithDefaultEndpointPort(80));
+        ////builder.Services.AddMqttWebSocketServerAdapter();
+        ////builder.Services.AddMqttConnectionHandler();
+        ////builder.Services.AddConnections();
 
-        builder.Services.AddControllers();
-        // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-        builder.Services.AddEndpointsApiExplorer();
-        builder.Services.AddSwaggerGen();
 
-        // Local SQL
-        builder.Services.AddDbContext<SmartPlatformAPIDbContext>(options => options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=SmartPlatform;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"));
+        //// Add services to the container.
 
-        // Azure SQL Database
-        //builder.Services.AddDbContext<SmartPlatformAPIDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+        //builder.Services.AddHostedMqttServer(
+        //            optionsBuilder =>
+        //            {
+        //                optionsBuilder.WithoutDefaultEndpoint();
+        //            });
 
-        var app = builder.Build();
+        //builder.Services.AddMqttWebSocketServerAdapter();
+        //builder.Services.AddMqttConnectionHandler();
+        //builder.Services.AddConnections();
 
-        // Configure the HTTP request pipeline.
-        if (app.Environment.IsDevelopment())
-        {
-            app.UseSwagger();
-            app.UseSwaggerUI();
-        }
+        //builder.Services.AddSingleton<MqttController>();
 
-        app.UseWebSockets();
-        app.UseHttpsRedirection();
-        app.UseAuthorization();
-        app.MapControllers();
-        app.Run();
+
+        //builder.Services.AddControllers();
+        //// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+        //builder.Services.AddEndpointsApiExplorer();
+        //builder.Services.AddSwaggerGen();
+
+        //// Local SQL
+        //builder.Services.AddDbContext<SmartPlatformAPIDbContext>(options => options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=SmartPlatform;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"));
+
+        //// Azure SQL Database
+        ////builder.Services.AddDbContext<SmartPlatformAPIDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+        //var app = builder.Build();
+
+        //// Configure the HTTP request pipeline.
+        //if (app.Environment.IsDevelopment())
+        //{
+        //    app.UseSwagger();
+        //    app.UseSwaggerUI();
+        //}
+
+        ////app.UseMqttEndpoint();
+        ////app.UseMqttServer(config => config.StartAsync());
+
+        //MqttController mqttController = new MqttController();
+
+        //app.UseMqttServer(
+        //    server =>
+        //    {
+        //        /*
+        //        * Attach event handlers etc. if required.
+        //        */
+
+        //        server.ValidatingConnectionAsync += mqttController.ValidateConnection;
+        //        server.ClientConnectedAsync += mqttController.OnClientConnected;
+        //        server.InterceptingPublishAsync += mqttController.InterceptionPublishAsync;
+        //    });
+
+        //app.UseWebSockets();
+        //app.UseHttpsRedirection();
+        //app.UseAuthorization();
+        //app.MapControllers();
+
+
+
+        //app.Run();
     }
 
     //public static Task Start_Server_With_WebSockets_Support()

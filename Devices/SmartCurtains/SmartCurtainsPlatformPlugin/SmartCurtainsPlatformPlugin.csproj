@@ -18,6 +18,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="7.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Reference Include="SmartDevicePlatformPlugin">
 	    <HintPath>..\..\SmartDevice\SmartDevicePlatformPlugin\bin\Debug\net6.0\SmartDevicePlatformPlugin.dll</HintPath>
 	  </Reference>

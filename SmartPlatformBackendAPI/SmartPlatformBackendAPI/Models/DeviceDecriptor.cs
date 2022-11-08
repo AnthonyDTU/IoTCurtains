@@ -20,8 +20,5 @@ namespace SmartPlatformBackendAPI.Models
         
         [Required]
         public string DeviceKey { get; set; } = null!;
-
-        [Required]
-        public Uri backendUri { get; set; }
     }
 }
