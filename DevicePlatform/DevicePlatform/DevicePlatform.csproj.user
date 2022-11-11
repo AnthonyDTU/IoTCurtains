@@ -6,6 +6,9 @@
     <ActiveDebugProfile>Windows Machine</ActiveDebugProfile>
   </PropertyGroup>
   <ItemGroup>
+    <MauiXaml Update="DesignTestPage.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
     <MauiXaml Update="LoginManager\CreateNewUserPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>

@@ -15,8 +15,8 @@ build_metadata.AdditionalFiles.ManifestResourceName = SmartCurtainsPlatformPlugi
 build_metadata.AdditionalFiles.TargetPath = ConfigurationView.xaml
 build_metadata.AdditionalFiles.RelativePath = ConfigurationView.xaml
 
-[C:/DTU/Projects/SmartPlatform/Devices/SmartCurtains/SmartCurtainsPlatformPlugin/SmartCurtainsUI.xaml]
+[C:/DTU/Projects/SmartPlatform/Devices/SmartCurtains/SmartCurtainsPlatformPlugin/SmartCurtainsContentPageUI.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
-build_metadata.AdditionalFiles.ManifestResourceName = SmartCurtainsPlatformPlugin.SmartCurtainsUI.xaml
-build_metadata.AdditionalFiles.TargetPath = SmartCurtainsUI.xaml
-build_metadata.AdditionalFiles.RelativePath = SmartCurtainsUI.xaml
+build_metadata.AdditionalFiles.ManifestResourceName = SmartCurtainsPlatformPlugin.SmartCurtainsContentPageUI.xaml
+build_metadata.AdditionalFiles.TargetPath = SmartCurtainsContentPageUI.xaml
+build_metadata.AdditionalFiles.RelativePath = SmartCurtainsContentPageUI.xaml

@@ -12,9 +12,9 @@ namespace SmartDevicePlatformPlugin
 
         public IDeviceConfigurator DeviceConfigurator { get; }
 
-        public SignalRController SignalRController { get; }
+        protected SignalRController SignalRController { get; }
 
-        public Task<ContentView> GetPluginUI();
+        public ContentPage GetPluginContentPageUI();
 
 
     }

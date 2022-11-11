@@ -9,6 +9,7 @@ using SmartDevicePlatformPlugin;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.AspNetCore.SignalR.Client;
+using System.Text.Json;
 
 namespace SmartCurtainsPlatformPlugin
 {
@@ -23,8 +24,8 @@ namespace SmartCurtainsPlatformPlugin
         private SignalRController signalRController;
         public SignalRController SignalRController => signalRController;
 
-        //APIHandler APIHandler;        
-        DeviceData currentDeviceState;
+        DeviceData deviceData = new DeviceData();
+        SmartCurtainsContentPageUI deviceContentPage;
 
         private HubConnection hubConnection;
 
@@ -42,6 +43,15 @@ namespace SmartCurtainsPlatformPlugin
 
             configurator = new SmartCurtainsConfigurator(deviceDescriptor);
             signalRController = new SignalRController(deviceDescriptor, hubConnection, DataRevicedFromDevice);
+            deviceContentPage = new SmartCurtainsContentPageUI();
+            deviceContentPage.Disappearing += DeviceContentPage_Disappearing;
+        }
+
+        private void DeviceContentPage_Disappearing(object sender, EventArgs e)
+        {
+            string jsonData = JsonSerializer.Serialize<DeviceData>(deviceContentPage.GetDeviceData());
+            signalRController.TransmitDataToDevice(jsonData);
+            Console.WriteLine(jsonData);
         }
 
         public SmartCurtainsPlatformPlugin(HubConnection hubConnection, Guid userID, Guid deviceID, string deviceName, string deviceKey)
@@ -57,12 +67,16 @@ namespace SmartCurtainsPlatformPlugin
             };
 
             signalRController = new SignalRController(deviceDescriptor, hubConnection, DataRevicedFromDevice);
+            deviceContentPage = new SmartCurtainsContentPageUI();
             GetCurrentState();
         }
 
-        public void DataRevicedFromDevice(string data)
-        {
 
+        public void DataRevicedFromDevice(string jsonData)
+        {
+            Console.WriteLine(jsonData);
+            deviceData = JsonSerializer.Deserialize<DeviceData>(jsonData);
+            deviceContentPage.ConfigureData(deviceData);
         }
 
 
@@ -71,21 +85,16 @@ namespace SmartCurtainsPlatformPlugin
             this.deviceDescriptor = deviceDescriptor;
         }
 
-
-        public async Task<ContentView> GetPluginUI()
+        public ContentPage GetPluginContentPageUI()
         {
-            SmartCurtainsUI smartCurtainsUI = new SmartCurtainsUI(deviceDescriptor.DeviceName);
-            currentDeviceState = new DeviceData();
-
-            if (currentDeviceState != null)
-                smartCurtainsUI.ConfigureUI(currentDeviceState);
-
-            return smartCurtainsUI;
+            deviceContentPage.Title = deviceDescriptor.DeviceName;
+            deviceContentPage.ConfigureData(deviceData);
+            return deviceContentPage;
         }
 
-        private async void GetCurrentState()
+        private void GetCurrentState()
         {
-            //currentDeviceState = await APIHandler.GetCurrentDeviceState(deviceDescriptor);
+            signalRController.RequestDeviceData();
         }
     }
 }

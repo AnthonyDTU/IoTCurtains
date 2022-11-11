@@ -33,7 +33,7 @@ public partial class MainPage : ContentPage
 
         if (!LoadLocalData())
 		{
-			PresentLoginScreen();
+			PresentLoginScreen().Wait();
 		}
 		else
 		{
@@ -51,7 +51,7 @@ public partial class MainPage : ContentPage
     }
 
 
-	private async void RenderUI()
+	private void RenderUI()
 	{
         MainContentView.Children.Clear();
 
@@ -61,7 +61,19 @@ public partial class MainPage : ContentPage
             {
                 foreach (var plugin in ActiveUser.DevicesPlugins.Plugins)
                 {
-                    MainContentView.Children.Add(await plugin.Value.GetPluginUI());
+                    Button pluginButton = new Button()
+                    {
+                        WidthRequest = 250,
+                        HeightRequest = 100,
+                        CornerRadius = 10,
+                        BorderWidth = 3,
+                        BorderColor = Colors.MediumPurple,
+                        Text = plugin.Value.DeviceDescriptor.DeviceName,
+                        FontSize = 18,
+                    };
+
+                    pluginButton.Clicked += PluginButton_Clicked;
+                    MainContentView.Children.Add(pluginButton);
                 }
             }
             else
@@ -123,32 +135,22 @@ public partial class MainPage : ContentPage
             MainContentView.Children.Add(new Label() { Text = "To see and create devices", HorizontalOptions = LayoutOptions.Center });
         }      
     }
+
+    private async void PluginButton_Clicked(object sender, EventArgs e)
+    {
+        foreach (var plugin in ActiveUser.DevicesPlugins.Plugins)
+        {
+            if (((Button)sender).Text == plugin.Value.DeviceDescriptor.DeviceName)
+            {
+                await Navigation.PushAsync(plugin.Value.GetPluginContentPageUI());
+            }
+        }
+    }
+
     private async void TestButton_Clicked(object sender, EventArgs e)
     {
-        if (hubConnection == null)
-        {
-            hubConnection = new HubConnectionBuilder()
-                                  .WithUrl("http://smartplatformbackendapi.azurewebsites.net/device")
-                                  .WithAutomaticReconnect()
-                                  .Build();
 
-            hubConnection.On<Guid, string>("UpdateFromDevice", (deviceID, data) =>
-                {
-                    Console.WriteLine($"Device: {deviceID} sent {data}");
-                }
-            );
-        }
-
-        if (hubConnection.State != HubConnectionState.Connected)
-        {
-            await hubConnection.StartAsync();
-            Console.WriteLine("Connected To Hub!");
-        }
-
-        Guid deviceID = new Guid("c7646498-2119-4915-a176-4bacfe5e44c1");
-        string data = "This is just a test";
-
-        hubConnection.SendAsync("SendDataToDevice", deviceID, data);
+        await Navigation.PushAsync(new DesignTestPage());
 
 
 

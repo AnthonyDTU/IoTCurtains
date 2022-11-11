@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DevicePlatform.DesignTestPage"
+             Title="DesignTestPage">
+    <VerticalStackLayout 
+        HorizontalOptions="Center"
+        Margin="50"
+        Spacing="30"
+        WidthRequest="350">
+
+
+
+        <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
+            <HorizontalStackLayout Spacing="30">
+
+                <Label
+                    Text="Current State:"
+                    FontSize="18"
+                    FontAttributes="Bold"/>
+
+                <Label
+                    x:Name="CurrentLevelEntry"
+                    FontSize="18"
+                    Text="0%"/>
+
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+
+
+
+        <VerticalStackLayout Spacing="10"
+                             HorizontalOptions="Center">
+
+            <Label
+                Text="Roll Up Time"
+                FontSize="14"
+                FontAttributes="Bold"
+                HorizontalOptions="Start"/>
+
+            <TimePicker x:Name="RollUpTimeEntry"/>
+            <HorizontalStackLayout 
+            Spacing="10">
+
+                <CheckBox 
+                x:Name="FollowSunriseCheckbox"/>
+
+                <Label Text="Follow Sunrise"
+                       FontSize="14"
+                       FontAttributes="Bold"
+                       Padding="5"/>
+
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+
+
+
+        <VerticalStackLayout Spacing="10"
+                             HorizontalOptions="Center">
+            <Label
+            Text="Roll Down Time"
+            FontSize="14"
+            FontAttributes="Bold"/>
+
+
+            <TimePicker x:Name="RollDownTimeEntry"/>
+            <HorizontalStackLayout 
+                Spacing="10">
+
+                <CheckBox 
+                    x:Name="FollowSunsetCheckbox"/>
+
+                <Label Text="Follow Sunset"
+                       FontSize="14"
+                       FontAttributes="Bold"
+                       Padding="5"/>
+
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+
+
+        <VerticalStackLayout Spacing="10">
+
+            <HorizontalStackLayout
+            Spacing="20"
+            HorizontalOptions="Center">
+
+                <Button 
+                x:Name="RollUpButton"
+                Text="Roll Up"
+                Clicked="RollUpButton_Clicked"/>
+
+                <Button 
+                x:Name="RollDown"
+                Text="Roll Down"
+                Clicked="RollDown_Clicked"/>
+
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+
+        
+
+    </VerticalStackLayout>
+</ContentPage>

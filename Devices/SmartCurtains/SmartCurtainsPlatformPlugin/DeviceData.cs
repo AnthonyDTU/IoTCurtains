@@ -9,8 +9,8 @@ namespace SmartCurtainsPlatformPlugin
     public class DeviceData
     {
         public int CurrentLevel { get; set; }
-        public TimeOnly RollUpTime { get; set; }
-        public TimeOnly RollDownTime { get; set; }
+        public DateTime RollUpTime { get; set; }
+        public DateTime RollDownTime { get; set; }
         public bool FollowSunset { get; set; }
         public bool FollowSunrise { get; set; }
     }

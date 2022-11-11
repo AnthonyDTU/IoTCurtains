@@ -1,27 +1,66 @@
-﻿namespace SmartPlatformBackendAPI.Hubs
+﻿using DocumentFormat.OpenXml.Office2010.ExcelAc;
+using System.Collections.Generic;
+
+namespace SmartPlatformBackendAPI.Hubs
 {
     public class ConnectionMapping<T>
     {
-        private readonly Dictionary<T, HashSet<string>> _connections =
-            new Dictionary<T, HashSet<string>>();
+        //private readonly Dictionary<T, HashSet<string>> _connections =
+        //    new Dictionary<T, HashSet<string>>();
 
-        public int Count
+        private readonly Dictionary<T, string> deviceConnections = new Dictionary<T, string>();
+        private readonly Dictionary<T, List<string>> userConnections = new Dictionary<T, List<string>>();
+
+        public int deviceConnectionCount
         {
             get
             {
-                return _connections.Count;
+                return deviceConnections.Count;
             }
         }
 
-        public void Add(T key, string connectionId)
+        public int userConnectionsCount
         {
-            lock (_connections)
+            get
             {
-                HashSet<string> connections;
-                if (!_connections.TryGetValue(key, out connections))
+                return userConnections.Count;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="connectionId"></param>
+        public void AddDeviceConnection(T key, string connectionId)
+        {
+            lock (deviceConnections)
+            {
+                if (!deviceConnections.ContainsKey(key))
                 {
-                    connections = new HashSet<string>();
-                    _connections.Add(key, connections);
+                    deviceConnections.Add(key, connectionId);
+                }
+                else
+                {
+                    deviceConnections[key] = connectionId;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Adds a user to the connected users
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="connectionId"></param>
+        public void AddUserConnection(T key, string connectionId)
+        {
+            lock (userConnections)
+            {
+                List<string>? connections;
+                if (!userConnections.TryGetValue(key, out connections))
+                {
+                    connections = new List<string>();
+                    userConnections.Add(key, connections);
                 }
 
                 lock (connections)
@@ -31,10 +70,25 @@
             }
         }
 
-        public IEnumerable<string> GetConnections(T key)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public string GetDeviceConnection(T key)
         {
-            HashSet<string> connections;
-            if (_connections.TryGetValue(key, out connections))
+            return deviceConnections[key];
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public IEnumerable<string> GetUserConnections(T key)
+        {
+            List<string>? connections;
+            if (userConnections.TryGetValue(key, out connections))
             {
                 return connections;
             }
@@ -42,12 +96,33 @@
             return Enumerable.Empty<string>();
         }
 
-        public void Remove(T key, string connectionId)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="connectionId"></param>
+        public void RemoveDevieConnection(T key, string connectionId)
         {
-            lock (_connections)
+            lock (deviceConnections)
             {
-                HashSet<string> connections;
-                if (!_connections.TryGetValue(key, out connections))
+                if (deviceConnections.ContainsKey(key))
+                {
+                    deviceConnections.Remove(key);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="connectionId"></param>
+        public void RemoveUserConnection(T key, string connectionId)
+        {
+            lock (userConnections)
+            {
+                List<string>? connections;
+                if (!userConnections.TryGetValue(key, out connections))
                 {
                     return;
                 }
@@ -58,10 +133,40 @@
 
                     if (connections.Count == 0)
                     {
-                        _connections.Remove(key);
+                        userConnections.Remove(key);
                     }
                 }
             }
+        }
+
+        public Task RemoveConnection(string connectionID)
+        {
+            lock (deviceConnections)
+            {
+                foreach (var connection in deviceConnections)
+                {
+                    if (connection.Value == connectionID)
+                    {
+                        deviceConnections.Remove(connection.Key);
+                        return Task.CompletedTask;
+                    }
+                }
+            }
+
+            lock (userConnections)
+            {
+                foreach (var connections in userConnections)
+                {
+                    T key = connections.Key;
+                    if (userConnections.TryGetValue(key, out List<string>? users))
+                    {
+                        users.Remove(connectionID);
+                        return Task.CompletedTask;
+                    }
+                }
+            }
+
+            return Task.CompletedTask;
         }
     }
 }

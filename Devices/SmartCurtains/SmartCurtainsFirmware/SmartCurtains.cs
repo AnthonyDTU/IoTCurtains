@@ -60,11 +60,7 @@ namespace SmartCurtainsFirmware
                                           wifiInterfaceIndex, 
                                           wifiConnectedLedPinNumber, 
                                           gpioController);
-
-
-            //WebSocketTest test = new WebSocketTest("ws://smartplatformbackendapi.azurewebsites.net/device");
             
-
             signalRController = new SignalRController(nodeConfiguration);
 
             motorController = new MotorController(gpioController,

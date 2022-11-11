@@ -5,7 +5,7 @@
     <MauiXaml Update="ConfigurationView.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
-    <MauiXaml Update="SmartCurtainsUI.xaml">
+    <MauiXaml Update="SmartCurtainsContentPageUI.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
   </ItemGroup>

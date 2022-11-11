@@ -21,15 +21,25 @@ namespace SmartDevicePlatformPlugin
             hubConnection.Reconnected += HubConnection_Reconnected;
 
             // Assign callback to SmartDevice implementation
-            hubConnection.On<string>("UpdateFromDevice", signalRDeviceDataReceivedCallback);
+            hubConnection.On<string>("TransmitDeviceData", signalRDeviceDataReceivedCallback);
 
-            // Register the device in the SignalR server
-            hubConnection.SendAsync("RegisterDevice", deviceDescriptor.DeviceID);
+            // Register the user in the SignalR server
+            hubConnection.SendAsync("RegisterUser", deviceDescriptor.UserID);
         }
 
         private Task HubConnection_Reconnected(string arg)
         {
-            return hubConnection.SendAsync("RegisterDevice", deviceDescriptor.DeviceID);
+            return hubConnection.SendAsync("RegisterUser", deviceDescriptor.UserID);
+        }
+
+        public void RequestDeviceData()
+        {
+            hubConnection.SendAsync("RequestDataFromDevice", deviceDescriptor.DeviceID);
+        }
+
+        public void TransmitDataToDevice(string jsonData)
+        {
+            hubConnection.SendAsync("TransmitDataToDevice", deviceDescriptor.DeviceID, jsonData);
         }
     }
 }

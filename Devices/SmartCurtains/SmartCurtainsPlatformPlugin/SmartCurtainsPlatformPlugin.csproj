@@ -31,7 +31,7 @@
 	  <MauiXaml Update="ConfigurationView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="SmartCurtainsUI.xaml">
+	  <MauiXaml Update="SmartCurtainsContentPageUI.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

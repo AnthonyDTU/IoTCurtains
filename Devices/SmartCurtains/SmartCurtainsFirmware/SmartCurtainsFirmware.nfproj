@@ -18,13 +18,11 @@
   </PropertyGroup>
   <Import Project="$(NanoFrameworkProjectSystemPath)NFProjectSystem.props" Condition="Exists('$(NanoFrameworkProjectSystemPath)NFProjectSystem.props')" />
   <ItemGroup>
+    <Compile Include="DeviceData.cs" />
     <Compile Include="MotorController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SmartCurtains.cs" />
-    <Compile Include="WebSocketHelpers.cs" />
-    <Compile Include="WebSocketsState.cs" />
-    <Compile Include="WebSocketTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Iot.Device.Button">

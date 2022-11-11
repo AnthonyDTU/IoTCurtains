@@ -43,7 +43,7 @@ namespace DevicePlatform.Data
                     return false;
                 }
                 
-                await hubConnection.SendAsync("RegisterUserDevice", User.UserID);
+                await hubConnection.SendAsync("RegisterUser", User.UserID);
             }
 
             if (hubConnection.State == HubConnectionState.Connected &&

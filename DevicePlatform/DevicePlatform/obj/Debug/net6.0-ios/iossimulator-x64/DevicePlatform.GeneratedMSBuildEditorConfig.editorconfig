@@ -21,6 +21,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = DevicePlatform.AppShell.xa
 build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
 build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
 
+[C:/DTU/Projects/SmartPlatform/DevicePlatform/DevicePlatform/DesignTestPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = DevicePlatform.DesignTestPage.xaml
+build_metadata.AdditionalFiles.TargetPath = DesignTestPage.xaml
+build_metadata.AdditionalFiles.RelativePath = DesignTestPage.xaml
+
 [C:/DTU/Projects/SmartPlatform/DevicePlatform/DevicePlatform/DeviceConfigurationManager/ConfigurationManager.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = DevicePlatform.DeviceConfigurationManager.ConfigurationManager.xaml
