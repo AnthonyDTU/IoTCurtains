@@ -4,5 +4,65 @@
         <name>SmartCurtainsPlatformPlugin</name>
     </assembly>
     <members>
+        <member name="M:SmartCurtainsPlatformPlugin.SmartCurtainsContentPageUI.RollUpButton_Clicked(System.Object,System.EventArgs)">
+            <summary>
+            Send Roll Up command to device
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:SmartCurtainsPlatformPlugin.SmartCurtainsContentPageUI.RollDown_Clicked(System.Object,System.EventArgs)">
+            <summary>
+            Sends Roll Down command to device
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:SmartCurtainsPlatformPlugin.SmartCurtainsContentPageUI.ConfigureData(SmartCurtainsPlatformPlugin.DeviceData)">
+            <summary>
+            
+            </summary>
+            <param name="deviceData"></param>
+        </member>
+        <member name="M:SmartCurtainsPlatformPlugin.SmartCurtainsContentPageUI.GetDeviceData">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SmartCurtainsPlatformPlugin.SmartCurtainsContentPageUI.DataAcknowledgedByDevice">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SmartCurtainsPlatformPlugin.SmartCurtainsContentPageUI.SendDataToDeviceButton_Clicked(System.Object,System.EventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:SmartCurtainsPlatformPlugin.SmartCurtainsPlatformPlugin.GetPluginContentPageUI">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SmartCurtainsPlatformPlugin.SmartCurtainsPlatformPlugin.DataReceivedFromDevice(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="jsonData"></param>
+        </member>
+        <member name="M:SmartCurtainsPlatformPlugin.SmartCurtainsPlatformPlugin.DeviceAcknowledgeReceived(System.String)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SmartCurtainsPlatformPlugin.SmartCurtainsPlatformPlugin.GetCurrentDeviceState">
+            <summary>
+            
+            </summary>
+        </member>
     </members>
 </doc>

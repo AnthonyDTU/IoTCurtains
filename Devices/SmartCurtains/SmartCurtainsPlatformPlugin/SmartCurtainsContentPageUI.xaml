@@ -97,6 +97,17 @@
 
         </VerticalStackLayout>
 
+        <Button x:Name="SendDataToDeviceButton"
+                Text="Send To Device"
+                WidthRequest="250"
+                Clicked="SendDataToDeviceButton_Clicked"/>
+
+        <Label x:Name="StatusLabel"
+               Text=""
+               FontAttributes="Italic"
+               HorizontalOptions="Center"
+               WidthRequest="300"/>
+
 
     </VerticalStackLayout>
 </ContentPage>

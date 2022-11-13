@@ -7,6 +7,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.AspNetCore.SignalR.Client;
+using DevicePlatform.BackendControllers;
 
 namespace DevicePlatform;
 
@@ -18,7 +19,7 @@ public partial class MainPage : ContentPage
     int timeoutMs = 5000;
 
 
-    APIHandler apiHandler;
+    APIController apiController;
 
     HubConnection hubConnection = null;
 
@@ -34,23 +35,31 @@ public partial class MainPage : ContentPage
         if (!LoadLocalData())
 		{
 			PresentLoginScreen().Wait();
+            //if (ActiveUser.LoggedIn == true)
+            //{
+            //}
 		}
 		else
 		{
-            apiHandler.Login(storedUser, storedPassword).Wait();
+            apiController.Login(storedUser, storedPassword).Wait();
 		}		
 
         RenderUI();
 
 	}
 
-
+    /// <summary>
+    /// 
+    /// </summary>
     private void InitBackendConnection()
     {
-        apiHandler = new APIHandler();
+        apiController = new APIController();
     }
 
 
+    /// <summary>
+    /// 
+    /// </summary>
 	private void RenderUI()
 	{
         MainContentView.Children.Clear();
@@ -136,6 +145,11 @@ public partial class MainPage : ContentPage
         }      
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private async void PluginButton_Clicked(object sender, EventArgs e)
     {
         foreach (var plugin in ActiveUser.DevicesPlugins.Plugins)
@@ -147,14 +161,14 @@ public partial class MainPage : ContentPage
         }
     }
 
+    /// <summary>
+    /// Used for testing 
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private async void TestButton_Clicked(object sender, EventArgs e)
     {
-
-        await Navigation.PushAsync(new DesignTestPage());
-
-
-
-
+        await Navigation.PushAsync(new DesignTestPage());    
     }
 
     /// <summary>
@@ -175,7 +189,7 @@ public partial class MainPage : ContentPage
     /// <returns></returns>
 	private async Task<bool> PresentLoginScreen()
 	{
-		await Navigation.PushAsync(new LoginPage(apiHandler));
+		await Navigation.PushAsync(new LoginPage(apiController));
 		return true;
 	}
 
@@ -197,7 +211,7 @@ public partial class MainPage : ContentPage
     /// <param name="e"></param>
     private async void GoToLoginButtonPage_Clicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new LoginPage(apiHandler));
+        await Navigation.PushAsync(new LoginPage(apiController));
     }
 
 

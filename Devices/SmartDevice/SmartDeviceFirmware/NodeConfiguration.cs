@@ -1,5 +1,7 @@
 ﻿using nanoFramework.Json;
 using System;
+using System.Collections;
+using System.Diagnostics;
 
 namespace SmartDeviceFirmware
 {
@@ -28,16 +30,21 @@ namespace SmartDeviceFirmware
 
         public bool SetNewConfiguration(string config)
         {
-            //var newConfig = (NodeConfiguration)JsonConvert.DeserializeObject(config, typeof(NodeConfiguration));
-            //DeviceName = newConfig.DeviceName;
-            //DeviceID = newConfig.DeviceID;
-            //UserID = newConfig.UserID;
-            //WiFiSSID = newConfig.WiFiSSID;
-            //WiFiPassword = newConfig.WiFiPassword;
-            //backendConnectionUri = newConfig.backendConnectionUri;
-            //DeviceKey = newConfig.DeviceKey;
+            Debug.WriteLine($"Received: {config}");
+
+            config = config.Trim('{', '}');
+            var fields = config.Split(',');
+
+            DeviceName = fields[1].Split(':')[1].Trim('"');
+            DeviceID = new Guid(fields[2].Split(':')[1].Trim('"'));
+            UserID = new Guid(fields[3].Split(':')[1].Trim('"'));
+            WiFiSSID = fields[4].Split(':')[1].Trim('"');
+            WiFiPassword = fields[5].Split(':')[1].Trim('"');
+            DeviceKey = fields[6].Split(':')[1].Trim('"');
+
            
             // Try reconnect to WIFI
+            // Connect and configure hub    
 
             return true;
         }

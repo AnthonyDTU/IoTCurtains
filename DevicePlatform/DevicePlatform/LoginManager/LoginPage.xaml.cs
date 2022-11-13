@@ -1,3 +1,4 @@
+using DevicePlatform.BackendControllers;
 using DevicePlatform.Data;
 using DevicePlatform.Models;
 using System.Net;
@@ -6,9 +7,9 @@ namespace DevicePlatform;
 
 public partial class LoginPage : ContentPage
 {
-	APIHandler apiHandler;
+	APIController apiHandler;
 
-	public LoginPage(APIHandler apiHandler)
+	public LoginPage(APIController apiHandler)
 	{
 		InitializeComponent();
 		this.apiHandler = apiHandler;

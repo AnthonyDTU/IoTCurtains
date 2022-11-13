@@ -24,6 +24,13 @@ namespace SmartDeviceFirmware
         private const string deviceConfiguredCommand = "deviceConfigured!";
         private const string resetNodeCommand = "resetNode";
 
+        private const string setDeviceNameCommand = "deviceName:";
+        private const string setDeviceIDCommand = "deviceID:";
+        private const string setUserIDCommand = "userID:";
+        private const string setWiFiSSIDCommand = "WiFiSSID:";
+        private const string setWiFiPasswordCommand = "WiFiPassword:";
+        private const string setDeviceKeyCommand = "deviceKey:";
+
 
         public delegate void DataRecivedHandler(string data);
         public DataRecivedHandler dataRecivedCallbackHandler;
@@ -65,7 +72,7 @@ namespace SmartDeviceFirmware
         private void SerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             string recievedData = serialPort.ReadLine();
-            Console.WriteLine($"Recived String: {recievedData}");
+            Debug.WriteLine($"Recived String: {recievedData}");
 
             // If config is requested, transmit it to the requester
             if (recievedData == getConfigCommand)
@@ -87,7 +94,7 @@ namespace SmartDeviceFirmware
             if (recievedData.StartsWith(newConfigHeader))
             {
                 recievedData = recievedData.Substring(newConfigHeader.Length);
-                Console.WriteLine($"Trimmed Config: {recievedData}");
+                Debug.WriteLine($"Trimmed Config: {recievedData}");
                 if (nodeConfiguration.SetNewConfiguration(recievedData))
                 {
                     serialPort.WriteLine(deviceConfiguredCommand);

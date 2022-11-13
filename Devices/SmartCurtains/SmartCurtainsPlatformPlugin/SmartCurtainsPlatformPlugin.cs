@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.AspNetCore.SignalR.Client;
 using System.Text.Json;
+using System.Diagnostics;
 
 namespace SmartCurtainsPlatformPlugin
 {
@@ -26,73 +27,93 @@ namespace SmartCurtainsPlatformPlugin
 
         DeviceData deviceData = new DeviceData();
         SmartCurtainsContentPageUI deviceContentPage;
-
-        private HubConnection hubConnection;
-
+        
         public SmartCurtainsPlatformPlugin(Guid userID, HubConnection hubConnection)
         {
-            this.hubConnection = hubConnection;
             deviceDescriptor = new DeviceDescriptor()
             {
                 DeviceID = Guid.NewGuid(),
                 UserID = userID,
                 DeviceName = "",
-                DeviceModel = "",
+                DeviceModel = "Smart Curtains",
                 DeviceKey = "",
             };
 
-            configurator = new SmartCurtainsConfigurator(deviceDescriptor);
-            signalRController = new SignalRController(deviceDescriptor, hubConnection, DataRevicedFromDevice);
-            deviceContentPage = new SmartCurtainsContentPageUI();
-            deviceContentPage.Disappearing += DeviceContentPage_Disappearing;
+            InitPlugin(hubConnection);
         }
 
-        private void DeviceContentPage_Disappearing(object sender, EventArgs e)
-        {
-            string jsonData = JsonSerializer.Serialize<DeviceData>(deviceContentPage.GetDeviceData());
-            signalRController.TransmitDataToDevice(jsonData);
-            Console.WriteLine(jsonData);
-        }
-
+        
         public SmartCurtainsPlatformPlugin(HubConnection hubConnection, Guid userID, Guid deviceID, string deviceName, string deviceKey)
         {
-            this.hubConnection = hubConnection;
             deviceDescriptor = new DeviceDescriptor()
             {
                 DeviceID = deviceID,
                 UserID = userID,
                 DeviceName = deviceName,
-                DeviceModel = "",
+                DeviceModel = "Smart Curtains",
                 DeviceKey = deviceKey,
             };
 
-            signalRController = new SignalRController(deviceDescriptor, hubConnection, DataRevicedFromDevice);
-            deviceContentPage = new SmartCurtainsContentPageUI();
-            GetCurrentState();
+            InitPlugin(hubConnection);
+            GetCurrentDeviceState();
         }
 
-
-        public void DataRevicedFromDevice(string jsonData)
+        private void InitPlugin(HubConnection hubConnection)
         {
-            Console.WriteLine(jsonData);
-            deviceData = JsonSerializer.Deserialize<DeviceData>(jsonData);
-            deviceContentPage.ConfigureData(deviceData);
+            configurator = new SmartCurtainsConfigurator(deviceDescriptor);
+            signalRController = new SignalRController(deviceDescriptor, hubConnection, DataReceivedFromDevice, DeviceAcknowledgeReceived);
+            deviceContentPage = new SmartCurtainsContentPageUI(signalRController);
         }
 
-
-        public SmartCurtainsPlatformPlugin(DeviceDescriptor deviceDescriptor)
-        {
-            this.deviceDescriptor = deviceDescriptor;
-        }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public ContentPage GetPluginContentPageUI()
         {
+            GetCurrentDeviceState();
             deviceContentPage.Title = deviceDescriptor.DeviceName;
             deviceContentPage.ConfigureData(deviceData);
             return deviceContentPage;
         }
 
-        private void GetCurrentState()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        //public void SendDataToDevice(object sender, EventArgs e)
+        //{
+        //    string jsonData = JsonSerializer.Serialize<DeviceData>(deviceContentPage.GetDeviceData());
+        //    signalRController.TransmitDataToDevice(jsonData);
+        //    Console.WriteLine(jsonData);
+        //}
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="jsonData"></param>
+        public void DataReceivedFromDevice(string jsonData)
+        {
+            Debug.WriteLine($"Received {jsonData} from device");
+            deviceData = JsonSerializer.Deserialize<DeviceData>(jsonData);
+            deviceContentPage.ConfigureData(deviceData);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void DeviceAcknowledgeReceived(string message)
+        {
+            Debug.WriteLine(message);
+
+            deviceContentPage.DataAcknowledgedByDevice();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void GetCurrentDeviceState()
         {
             signalRController.RequestDeviceData();
         }

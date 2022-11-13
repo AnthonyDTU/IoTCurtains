@@ -4,5 +4,22 @@
         <name>SmartDevicePlatformPlugin</name>
     </assembly>
     <members>
+        <member name="M:SmartDevicePlatformPlugin.SignalRController.RequestDeviceData">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SmartDevicePlatformPlugin.SignalRController.TransmitDataToDevice(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="jsonData"></param>
+        </member>
+        <member name="M:SmartDevicePlatformPlugin.SignalRController.SendCommandToDevice(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="command"></param>
+        </member>
     </members>
 </doc>

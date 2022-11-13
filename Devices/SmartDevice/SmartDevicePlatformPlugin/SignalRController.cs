@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,33 +14,51 @@ namespace SmartDevicePlatformPlugin
         private DeviceDescriptor deviceDescriptor;
         private HubConnection hubConnection;
 
-        public SignalRController(DeviceDescriptor deviceDescriptor, HubConnection hubConnection, Action<string> signalRDeviceDataReceivedCallback)
+        public SignalRController(DeviceDescriptor deviceDescriptor, HubConnection hubConnection, Action<string> signalRDeviceDataReceivedCallback, Action<string> signalRDeviceAcknowledgeCallback)
         {
             this.deviceDescriptor = deviceDescriptor;
             this.hubConnection = hubConnection;
 
-            hubConnection.Reconnected += HubConnection_Reconnected;
-
             // Assign callback to SmartDevice implementation
-            hubConnection.On<string>("TransmitDeviceData", signalRDeviceDataReceivedCallback);
 
-            // Register the user in the SignalR server
-            hubConnection.SendAsync("RegisterUser", deviceDescriptor.UserID);
+
+            //hubConnection.On("PassDeviceAcknowledgeToUsers", new[] { typeof(string) }, AckHandler, state);
+            hubConnection.On("TransmitDeviceData", signalRDeviceDataReceivedCallback);
+            hubConnection.On("PassDeviceAcknowledgeToUsers", signalRDeviceAcknowledgeCallback);
+
+            //hubConnection.On("TestFunction", )
+
         }
 
-        private Task HubConnection_Reconnected(string arg)
-        {
-            return hubConnection.SendAsync("RegisterUser", deviceDescriptor.UserID);
-        }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
         public void RequestDeviceData()
         {
             hubConnection.SendAsync("RequestDataFromDevice", deviceDescriptor.DeviceID);
+            Debug.WriteLine("Requested Device Data");
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="jsonData"></param>
         public void TransmitDataToDevice(string jsonData)
         {
-            hubConnection.SendAsync("TransmitDataToDevice", deviceDescriptor.DeviceID, jsonData);
+            hubConnection.SendAsync("TransmitDataToDevice", deviceDescriptor.UserID, deviceDescriptor.DeviceID, jsonData);
+            Debug.WriteLine($"Trasmitted: {jsonData} to device");
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="command"></param>
+        public void SendCommandToDevice(string command)
+        {
+            hubConnection.SendAsync("TransmitCommandToDevice", deviceDescriptor.DeviceID, command);
+            Debug.WriteLine($"Transmitted command: {command} to device");
         }
     }
 }

@@ -1,14 +1,15 @@
 using DevicePlatform.Data;
 using System.Xml;
 using System.Net;
+using DevicePlatform.BackendControllers;
 
 namespace DevicePlatform;
 
 public partial class CreateNewUserPage : ContentPage
 {
-	APIHandler apiHandler;
+	APIController apiHandler;
 
-	public CreateNewUserPage(APIHandler apiHandler)
+	public CreateNewUserPage(APIController apiHandler)
 	{
 		InitializeComponent();
 		this.apiHandler = apiHandler;

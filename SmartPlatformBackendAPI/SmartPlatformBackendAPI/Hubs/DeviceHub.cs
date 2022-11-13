@@ -13,12 +13,39 @@ namespace SmartPlatformBackendAPI.Hubs
         /// </summary>
         /// <param name="deviceID"></param>
         /// <param name="jsonData"></param>
-        public void TransmitDataToDevice(Guid deviceID, string jsonData)
+        public void TransmitDataToDevice(Guid userID, Guid deviceID, string jsonData)
         {
             var connectionID = connections.GetDeviceConnection(deviceID);
             Clients.Client(connectionID).SendAsync("SetDeviceData", jsonData);
+
+            foreach (var connection in connections.GetUserConnections(userID))
+            {
+                Clients.Client(connection).SendAsync("SyncPlatformState", jsonData);
+            }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="deviceID"></param>
+        /// <param name="command"></param>
+        public void TransmitCommandToDevice(Guid deviceID, string command)
+        {
+            var connectionID = connections.GetDeviceConnection(deviceID);
+            Clients.Client(connectionID).SendAsync("TransmitDeviceCommand", command);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userID"></param>
+        public void DeviceAcknowledge(Guid userID)
+        {
+            foreach (var connection in connections.GetUserConnections(userID))
+            {
+                Clients.Client(connection).SendAsync("PassDeviceAcknowledgeToUsers", "Data recieved");
+            }
+        }
 
         /// <summary>
         /// 
@@ -43,7 +70,6 @@ namespace SmartPlatformBackendAPI.Hubs
             }
         }
 
-
         /// <summary>
         /// Registers a device
         /// </summary>
@@ -66,6 +92,11 @@ namespace SmartPlatformBackendAPI.Hubs
             return userID;
         }
 
+
+        public void DeviceTestTrasmit(string message)
+        {
+            Clients.All.SendAsync("TestTrasmit", me);
+        }
 
         /// <summary>
         /// Deregisters a device

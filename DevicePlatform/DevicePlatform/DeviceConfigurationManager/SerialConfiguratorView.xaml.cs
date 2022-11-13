@@ -24,12 +24,22 @@ public partial class SerialConfiguratorView : ContentView
 
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void OpenDeviceButton_Clicked(object sender, EventArgs e)
     {
         if (connectButtonPressed != null)
             connectButtonPressed(COMPortPicker.SelectedItem as string);        
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void UpdatePorts_Clicked(object sender, EventArgs e)
     {
         string selectedPort = (string)COMPortPicker.SelectedItem;

@@ -10,15 +10,15 @@ using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DevicePlatform
+namespace DevicePlatform.BackendControllers
 {
-    public class APIHandler
+    public class APIController
     {
         Uri uriBase = new Uri("https://localhost:7173/");
-        HttpClient backendAPI;
-        string hubUri = "http://smartplatformbackendapi.azurewebsites.net/device";
 
-        public APIHandler()
+        HttpClient backendAPI;
+
+        public APIController()
         {
             InitBackendConnection();
         }
@@ -28,11 +28,6 @@ namespace DevicePlatform
             backendAPI = new HttpClient();
             backendAPI.BaseAddress = uriBase;
         }
-
-        //public async HubConnection connectToSignalRHub()
-        //{
-        //    HubConnection
-        //}
 
         /// <summary>
         /// 
@@ -44,7 +39,7 @@ namespace DevicePlatform
         {
             try
             {
-                var result = await backendAPI.GetAsync(($"api/Users/loginAttempt?username={username}&pass={password}").Replace(" ", "%20"));
+                var result = await backendAPI.GetAsync($"api/Users/loginAttempt?username={username}&pass={password}".Replace(" ", "%20"));
                 if (result.StatusCode == HttpStatusCode.OK)
                 {
                     User user = await result.Content.ReadFromJsonAsync<User>();
@@ -85,11 +80,11 @@ namespace DevicePlatform
             try
             {
 
-                var result = await backendAPI.PutAsJsonAsync<NewUser>("api/Users", newUser);
+                var result = await backendAPI.PutAsJsonAsync("api/Users", newUser);
                 if (result.StatusCode == HttpStatusCode.OK)
                 {
                     User user = await result.Content.ReadFromJsonAsync<User>();
-                    ActiveUser.ConfigureActiveUser(user);
+                    await ActiveUser.ConfigureActiveUser(user);
                 }
                 else if (result.StatusCode == HttpStatusCode.Conflict)
                 {
@@ -107,7 +102,10 @@ namespace DevicePlatform
             }
         }
 
-        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public async Task<HttpStatusCode> UpdateUser()
         {
             if (ActiveUser.LoggedIn == false)
@@ -117,14 +115,14 @@ namespace DevicePlatform
 
             try
             {
-                var result = await backendAPI.PostAsJsonAsync<User>("api/Users", ActiveUser.User);
+                var result = await backendAPI.PostAsJsonAsync("api/Users", ActiveUser.User);
                 if (result.StatusCode == HttpStatusCode.OK)
                 {
-                
+
                 }
                 else if (result.StatusCode == HttpStatusCode.NotFound)
                 {
-                
+
                 }
                 return result.StatusCode;
 
@@ -135,6 +133,10 @@ namespace DevicePlatform
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public async Task<HttpStatusCode> AddNewDevice()
         {
             DeviceDescriptor deviceDescriptor = new DeviceDescriptor()
@@ -153,7 +155,7 @@ namespace DevicePlatform
 
             try
             {
-                var result = await backendAPI.PostAsJsonAsync<DeviceDescriptor>(uri, deviceDescriptor);
+                var result = await backendAPI.PostAsJsonAsync(uri, deviceDescriptor);
                 if (result.StatusCode == HttpStatusCode.OK)
                 {
                     User user = await result.Content.ReadFromJsonAsync<User>();
@@ -167,5 +169,18 @@ namespace DevicePlatform
                 return HttpStatusCode.BadRequest;
             }
         }
+
+        public async Task<HttpStatusCode> DeleteUser()
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<HttpStatusCode> DeleteDevice()
+        {
+            throw new NotImplementedException();
+        }
+
+
+
     }
 }

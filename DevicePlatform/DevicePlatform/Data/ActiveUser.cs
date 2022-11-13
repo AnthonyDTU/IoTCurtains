@@ -1,5 +1,7 @@
 ﻿using DevicePlatform.Models;
 using Microsoft.AspNetCore.SignalR.Client;
+using SmartDevicePlatformPlugin;
+using System.Diagnostics;
 
 namespace DevicePlatform.Data
 {
@@ -10,15 +12,11 @@ namespace DevicePlatform.Data
         public static DevicePluginCollection DevicesPlugins { get; set; }
         public static HubConnection hubConnection { get; private set; }
 
-        private static string hubUrl = "http://smartplatformbackendapi.azurewebsites.net/device";
+        private static string hubUrl = "ws://smartplatformbackendapi.azurewebsites.net/device";
 
-
-        public static async Task<bool> ConfigureActiveUser(User activeUser)
+        public static async Task<bool> ConfigrueSignalRHub()
         {
-            User = activeUser;
-            DevicesPlugins = new DevicePluginCollection();
-            LoggedIn = true;
-
+            // If the hub has not yet been created
             if (hubConnection == null)
             {
                 hubConnection = new HubConnectionBuilder()
@@ -26,24 +24,41 @@ namespace DevicePlatform.Data
                                       .WithAutomaticReconnect()
                                       .Build();
 
-                //hubConnection.On<Guid, string>("UpdateFromDevice", (deviceID, data) =>
-                //{
-                //    Console.WriteLine($"Device: {deviceID} sent {data}");
-                //});
+                hubConnection.Reconnected += HubConnection_Reconnected;
             }
 
+            // If the hub is not connected
             if (hubConnection.State != HubConnectionState.Connected)
             {
                 try
-                {
+                {                    
+                    // Connect to the hub
                     await hubConnection.StartAsync();
+                    Debug.WriteLine("Connected To Hub");
+
+                    // Register the user with the SignalR server
+                    await hubConnection.SendAsync("RegisterUser", User.UserID);
+                    Debug.WriteLine("User Registered");
                 }
                 catch (Exception ex)
                 {
                     return false;
                 }
-                
-                await hubConnection.SendAsync("RegisterUser", User.UserID);
+            }
+
+            return true;
+        }
+
+
+        public static async Task<bool> ConfigureActiveUser(User activeUser)
+        {
+            User = activeUser;
+            DevicesPlugins = new DevicePluginCollection();
+            LoggedIn = true;            
+
+            if (await ConfigrueSignalRHub() == false)
+            {
+                return false;
             }
 
             if (hubConnection.State == HubConnectionState.Connected &&
@@ -69,6 +84,12 @@ namespace DevicePlatform.Data
             }
 
             return true;
+        }
+
+        private static Task HubConnection_Reconnected(string arg)
+        {
+            // Re-register the user with the SignalR server
+            return hubConnection.SendAsync("RegisterUser", User.UserID);
         }
 
         public static void UpdateActiveUser(User newActiveUser)

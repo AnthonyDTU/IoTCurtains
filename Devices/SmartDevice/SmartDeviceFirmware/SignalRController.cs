@@ -12,7 +12,10 @@ namespace SmartDeviceFirmware
         NodeConfiguration nodeConfiguration;
         string hubUrl = "ws://smartplatformbackendapi.azurewebsites.net/device";
 
-        public SignalRController(NodeConfiguration nodeConfiguration)
+        public SignalRController(NodeConfiguration nodeConfiguration, 
+                                 HubConnection.OnInvokeHandler SetDeviceDataHandler, 
+                                 HubConnection.OnInvokeHandler DeviceDataRequestedHandler,
+                                 HubConnection.OnInvokeHandler DeviceCommandHandler)
         {
             this.nodeConfiguration = nodeConfiguration;
             HubConnectionOptions options = new HubConnectionOptions()
@@ -28,79 +31,52 @@ namespace SmartDeviceFirmware
             hubConnection.Reconnected += HubConnection_Reconnected;
 
             // Message handlers
-            hubConnection.On("SetDeviceData", new[] { typeof(string) }, Handle_SetDeviceData);
-            hubConnection.On("RequestDeviceData", new[] { typeof(string) } , Handle_RequestDeviceData);
+            hubConnection.On("SetDeviceData", new[] { typeof(string) }, SetDeviceDataHandler);
+            hubConnection.On("RequestDeviceData", new[] { typeof(string) } , DeviceDataRequestedHandler);
+            hubConnection.On("TransmitDeviceCommand", new[] { typeof(string) }, DeviceCommandHandler);
 
             try
             {
                 hubConnection.Start();
                 if (hubConnection.State == HubConnectionState.Connected)
                 {
-                    Console.WriteLine("Connected To Hub!");
+                    Debug.WriteLine("Connected To Hub!");
                     hubConnection.SendCore("RegisterDevice", new object[] { nodeConfiguration.DeviceID });
-                    Console.WriteLine("Device Registered With HUB");
+                    Debug.WriteLine("Device Registered With HUB");
                 }
                 else if (hubConnection.State == HubConnectionState.Disconnected)
                 {
-                    Console.WriteLine("Not connected To HUB");
+                    Debug.WriteLine("Not connected To HUB");
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Could Not Connect To Hub {ex.Message}");
+                Debug.WriteLine($"Could Not Connect To Hub {ex.Message}");
             }
         }
 
         /// <summary>
-        /// 
+        /// Tells the user that the device is trying to reconnect to the hub
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="message"></param>
         private void HubConnection_Reconnecting(object sender, SignalrEventMessageArgs message)
         {
-            Console.WriteLine("Disconnected from hub, trying to reconnect");
+            Debug.WriteLine("Disconnected from hub, trying to reconnect");
         }
 
         /// <summary>
-        /// 
+        /// When the device has reconnected to the Hub, it must also reregister. 
+        /// That is handled in the override method
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="message"></param>
         private void HubConnection_Reconnected(object sender, SignalrEventMessageArgs message)
         {
             hubConnection.SendCore("RegisterDevice", new object[] { nodeConfiguration.DeviceID });
-            Console.WriteLine("Reconnected to hub!");
+            Debug.WriteLine("Reconnected to hub!");
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="args"></param>
-        private void Handle_SetDeviceData(object sender, object[] args)
-        {
-            Console.WriteLine("Data Received");
-            foreach (var item in args)
-            {
-                Console.Write("Recived: " + item.ToString());
-            }
-            
-            // set device data
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="args"></param>
-        private void Handle_RequestDeviceData(object sender, object[] args)
-        {
-
-            Console.WriteLine("Data Requested");
-            Console.WriteLine(args[0].ToString());
-
-            // call transmit Device Data, with jsonData of current and REQUESTED device data
-        }
 
         /// <summary>
         /// Transmits data to the SignalR server
@@ -109,8 +85,20 @@ namespace SmartDeviceFirmware
         /// <returns></returns>
         public void TransmitDeviceData(string jsonData)
         {
-            object[] arguments = new object[] { nodeConfiguration.DeviceID, jsonData };
+            object[] arguments = new object[] { nodeConfiguration.UserID, jsonData };
             hubConnection.SendCore("TransmitDataFromDevice", arguments);
+            Debug.WriteLine($"Transmitted {jsonData} to User Platform");
+        }
+
+        /// <summary>
+        /// Trasmits an acknowledge, that the device has properly recived data
+        /// </summary>
+        public void TransmitDeviceAcknowledge()
+        {
+            object[] arguments = new object[] { nodeConfiguration.UserID };
+            //object[] arguments = new object[] { "Test Message" };
+            hubConnection.SendCore("DeviceAcknowledge", arguments);
+            Debug.WriteLine($"Ack Sent To User Platform, with ID {nodeConfiguration.UserID}");
         }
     }
 }

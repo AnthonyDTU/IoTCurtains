@@ -2,6 +2,7 @@ namespace DevicePlatform.DeviceConfigurationManager;
 
 using DevicePlatform.Data;
 using SmartDevicePlatformPlugin;
+using System.Diagnostics;
 using System.IO.Ports;
 using System.Text.Json;
 
@@ -194,7 +195,8 @@ public partial class ConfigurationManager : ContentPage
                 break;
 
             default:
-                break;
+				Debug.WriteLine("Unknown device");
+				break;
         }
     }
 
@@ -227,6 +229,15 @@ public partial class ConfigurationManager : ContentPage
 	private void SendConfigurationToDeviceButton_Clicked(object sender, EventArgs e)
 	{
 		serialPort.WriteLine(getDeviceReadyForConfigCommand);
+	}
+
+	/// <summary>
+	/// Deconstructor 
+	/// Closes the serial-port
+	/// </summary>
+	~ConfigurationManager()
+	{
+		serialPort.Close();
 	}
 
 }

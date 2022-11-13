@@ -6,6 +6,9 @@ using Iot.Device.Button;
 using SmartDeviceFirmware;
 using System.Threading;
 using System.Net.WebSockets;
+using nanoFramework.Json;
+using System.Collections;
+using System.Diagnostics;
 
 namespace SmartCurtainsFirmware
 {
@@ -39,6 +42,9 @@ namespace SmartCurtainsFirmware
         GpioButton calibrateButton;
         GpioButton stopMotorButton;
 
+        DeviceData requestedDeviceState;
+        DeviceData acutalDeviceState;
+
         /// <summary>
         /// 
         /// </summary>
@@ -47,6 +53,10 @@ namespace SmartCurtainsFirmware
             nodeConfiguration.WiFiSSID = "TP-LINK_0AC4EC";
             nodeConfiguration.WiFiPassword = "eqh76rxg";
             nodeConfiguration.DeviceID = new Guid("c7646498-2119-4915-a176-4bacfe5e44c1");
+            nodeConfiguration.UserID = new Guid("c7646498-2119-4915-a176-4bacfe5e84c1");
+
+            requestedDeviceState = new DeviceData();
+            acutalDeviceState = new DeviceData();
 
             gpioController = new GpioController(PinNumberingScheme.Board);
 
@@ -61,7 +71,10 @@ namespace SmartCurtainsFirmware
                                           wifiConnectedLedPinNumber, 
                                           gpioController);
             
-            signalRController = new SignalRController(nodeConfiguration);
+            signalRController = new SignalRController(nodeConfiguration, 
+                                                      Handle_SetDeviceData, 
+                                                      Handle_RequestDeviceData, 
+                                                      Handle_DeviceCommand);
 
             motorController = new MotorController(gpioController,
                                                   motorControllerIn1PinNumber,
@@ -81,10 +94,89 @@ namespace SmartCurtainsFirmware
             calibrateButton.Press += CalibrateButton_Press;
         }
 
-        private void WebSocketConnected(object sender, EventArgs e)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        internal void Handle_RequestDeviceData(object sender, object[] args)
         {
-            Console.WriteLine("WebSocket Connected Successfully");
+            Debug.WriteLine("Data Requested");
+
+            string jsonData = JsonConvert.SerializeObject(requestedDeviceState);
+            signalRController.TransmitDeviceData(jsonData);
+
+            // call transmit Device Data, with jsonData of current and REQUESTED device data
         }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        internal void Handle_SetDeviceData(object sender, object[] args)
+        {
+            Debug.WriteLine("Data Received");
+            string jsonData = args[0].ToString();
+            Debug.WriteLine(jsonData);
+
+            requestedDeviceState = (DeviceData)JsonConvert.DeserializeObject(jsonData, typeof(DeviceData));
+
+            signalRController.TransmitDeviceAcknowledge();
+
+            // set device data
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        internal void Handle_DeviceCommand(object sender, object[] args)
+        {
+            Console.WriteLine("Command Isued");
+            Console.WriteLine(args[0].ToString());
+            string command = args[0].ToString();
+
+            // Acknowledge command
+            // Perform command
+
+            switch (command)
+            {
+                case "RollUp":
+                    Console.WriteLine($"Command Received: {command}");
+                    motorController.SetPoint = motorController.MinSetpoint;
+                    break;
+
+                case "RollDown":
+                    Console.WriteLine($"Command Received: {command}");
+                    motorController.SetPoint = motorController.MaxSetpoint;
+                    break;
+
+                default:
+                    Console.WriteLine($"Unknown Command Received: {command}");
+                    break;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         /// <summary>
         /// 
