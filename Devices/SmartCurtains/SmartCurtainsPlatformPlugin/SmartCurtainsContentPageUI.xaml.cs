@@ -7,16 +7,21 @@ namespace SmartCurtainsPlatformPlugin;
 
 public partial class SmartCurtainsContentPageUI : ContentPage
 {
-    public delegate void SendDataToDeviceHandler(string data);
-    public SendDataToDeviceHandler sendDataToDeviceHandler;
+    public delegate void ConfigureDevice(DeviceData data);
+    public ConfigureDevice configureDevice;
 
 	private SignalRController signalRController;
 
-    public SmartCurtainsContentPageUI(SignalRController signalRController)
+	public delegate bool DeleteDeviceCallBack();
+	public DeleteDeviceCallBack deleteDeviceCallBack;
+
+    public SmartCurtainsContentPageUI(SignalRController signalRController, ConfigureDevice configureDevice, DeleteDeviceCallBack deleteDeviceCallBack)
 	{
 		InitializeComponent();	
 		this.signalRController = signalRController;
-    }
+		this.configureDevice = configureDevice;
+		this.deleteDeviceCallBack = deleteDeviceCallBack;
+	}
 
 	/// <summary>
 	/// Send Roll Up command to device
@@ -81,6 +86,8 @@ public partial class SmartCurtainsContentPageUI : ContentPage
 	/// </summary>
 	public void DataAcknowledgedByDevice()
 	{
+        configureDevice.Invoke(GetDeviceData());
+
         Dispatcher.Dispatch(() =>
         {
             StatusLabel.Text = "Device Configured!";
@@ -99,4 +106,12 @@ public partial class SmartCurtainsContentPageUI : ContentPage
         string jsonData = JsonSerializer.Serialize<DeviceData>(GetDeviceData());
         signalRController.TransmitDataToDevice(jsonData);
     }
+
+	private void DeleteDeviceButton_Clicked(object sender, EventArgs e)
+	{
+		if (deleteDeviceCallBack.Invoke())
+		{
+			StatusLabel.Text = "Device Deleted";
+		}		
+	}
 }

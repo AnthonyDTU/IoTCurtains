@@ -13,5 +13,14 @@ namespace SmartDevicePlatformPlugin
         public string DeviceName { get; set; }
         public string DeviceModel { get; set; }
         public string DeviceKey { get; set; }
+
+        public void SetDeviceDescritptor(DeviceDescriptor deviceDescriptor)
+        {
+            DeviceID = deviceDescriptor.DeviceID;
+            UserID = deviceDescriptor.UserID;
+            DeviceName = deviceDescriptor.DeviceName;
+            DeviceModel = deviceDescriptor.DeviceModel;
+            DeviceKey = deviceDescriptor.DeviceKey;
+        }
     }
 }

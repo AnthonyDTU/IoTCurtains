@@ -7,19 +7,21 @@ namespace DevicePlatform;
 
 public partial class LoginPage : ContentPage
 {
-	APIController apiHandler;
-
-	public LoginPage(APIController apiHandler)
+	public LoginPage()
 	{
 		InitializeComponent();
-		this.apiHandler = apiHandler;
 	}
 
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="sender"></param>
+	/// <param name="e"></param>
 	private async void LoginButton_Clicked(object sender, EventArgs e)
 	{
 		try
 		{
-			HttpStatusCode status = await apiHandler.Login(usernameEntry.Text, passwordEntry.Text);
+			HttpStatusCode status = await ActiveUser.apiController.Login(usernameEntry.Text, passwordEntry.Text);
 
 			if (status == HttpStatusCode.OK)
 			{
@@ -45,8 +47,13 @@ public partial class LoginPage : ContentPage
 		}
 	}
 
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="sender"></param>
+	/// <param name="e"></param>
 	private async void GoToCreateNewUserButton_Clicked(object sender, EventArgs e)
 	{
-		await Navigation.PushAsync(new CreateNewUserPage(apiHandler));
+		await Navigation.PushAsync(new CreateNewUserPage());
 	}
 }

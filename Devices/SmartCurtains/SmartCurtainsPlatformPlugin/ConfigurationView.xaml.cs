@@ -14,6 +14,9 @@ public partial class ConfigurationView : ContentView
 		this.deviceDescriptor = deviceDescriptor;
 	}
 
+	/// <summary>
+	/// 
+	/// </summary>
     public void PopulateControls()
     {
         DeviceIDLabel.Text = deviceDescriptor.DeviceID.ToString();
@@ -21,7 +24,10 @@ public partial class ConfigurationView : ContentView
 		DeviceKeyLabel.Text = deviceDescriptor.DeviceKey.ToString();
     }
 
-
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="nodeConfiguration"></param>
     public void PopulateControls(NodeConfiguration nodeConfiguration)
 	{
         DeviceIDLabel.Text = deviceDescriptor.DeviceID.ToString();
@@ -33,6 +39,10 @@ public partial class ConfigurationView : ContentView
 		WiFiPasswordEntry.Text = nodeConfiguration.WiFiPassword;
 	}
 
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	public NodeConfiguration GetNodeConfigurationFromControls()
 	{
         return new NodeConfiguration()
@@ -43,6 +53,23 @@ public partial class ConfigurationView : ContentView
 			DeviceName = DeviceNameEntry.Text,
 			WiFiSSID = WiFiSSIDEntry.Text,
 			WiFiPassword = WiFiPasswordEntry.Text,
+			DeviceKey = DeviceKeyLabel.Text,
+		};
+	}
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
+	public DeviceDescriptor GetDeviceDescriptorFromControls()
+	{
+		return new DeviceDescriptor()
+		{
+            DeviceID = Guid.Parse(DeviceIDLabel.Text),
+			UserID = Guid.Parse(UserIDLabel.Text),
+			DeviceModel = modelLabel.Text,
+			DeviceName = DeviceNameEntry.Text,
+			DeviceKey = DeviceKeyLabel.Text,
 		};
 	}
 }

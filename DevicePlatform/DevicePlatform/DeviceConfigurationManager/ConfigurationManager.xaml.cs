@@ -1,5 +1,6 @@
 namespace DevicePlatform.DeviceConfigurationManager;
 
+using DevicePlatform.BackendControllers;
 using DevicePlatform.Data;
 using SmartDevicePlatformPlugin;
 using System.Diagnostics;
@@ -17,7 +18,6 @@ public partial class ConfigurationManager : ContentPage
 
 	private string deviceConfiguredCommand = "deviceConfigured!";
 
-
     private int baudRate = 115200;
 	private int dataBits = 8;
     private Parity parity = Parity.None;
@@ -29,11 +29,9 @@ public partial class ConfigurationManager : ContentPage
 	private Guid deviceID;
 	private bool newDevice;
 
-	Uri deviceUri;
-
     SerialConfiguratorView serialConfiguratorView;
-
     IPlatformPlugin workingDevicePlugin;
+
 
 	/// <summary>
 	/// Creates a new device and starts the configuration process
@@ -44,16 +42,19 @@ public partial class ConfigurationManager : ContentPage
 	{
 		InitializeComponent();
 
+
 		this.devices = devices;
 		newDevice = true;
 
 		serialConfiguratorView = new SerialConfiguratorView(SetupSerialConnection);
-		//Button setupSerialConnectionButton = new Button() { Text = "Setup Serial Connection", WidthRequest = 300 };
-		//setupSerialConnectionButton.Clicked += SetupSerialConnectionButton_Clicked;
 		ConfigurationView.Children.Add(serialConfiguratorView);
-		//ConfigurationView.Children.Add(setupSerialConnectionButton);
 	}
 
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="sender"></param>
+	/// <param name="e"></param>
 	private void SetupSerialConnectionButton_Clicked(object sender, EventArgs e)
 	{
 		serialConfiguratorView.GetSelectedComport();
@@ -87,11 +88,10 @@ public partial class ConfigurationManager : ContentPage
 	/// <param name="backendAPI"></param>
 	/// <param name="devices"></param>
 	/// <param name="deviceID"></param>
-	public ConfigurationManager(Uri deviceUri, DevicePluginCollection devices, Guid deviceID)
+	public ConfigurationManager(DevicePluginCollection devices, Guid deviceID)
     {
         InitializeComponent();
 
-        this.deviceUri = deviceUri;
         this.devices = devices;
         this.deviceID = deviceID;
 		newDevice = false;
@@ -137,10 +137,11 @@ public partial class ConfigurationManager : ContentPage
 	/// </summary>
 	/// <param name="sender"></param>
 	/// <param name="e"></param>
-	private void SerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
+	private async void SerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
 	{
 		string receivedData = serialPort.ReadLine();
 
+		// If the device reports its model
 		if (receivedData.StartsWith(setDeviceModelCommand))
 		{
 			receivedData = receivedData.Replace(setDeviceModelCommand, string.Empty);
@@ -151,6 +152,7 @@ public partial class ConfigurationManager : ContentPage
 			return;
 		}
 
+		// If the device says it is ready for configuration
         if (receivedData.Equals(setDeviceReadyForConfigCommand))
         {
 			string jsonData = "newConfig:" + JsonSerializer.Serialize<NodeConfiguration>(workingDevicePlugin.DeviceConfigurator.BuildNewConfiguration());
@@ -158,11 +160,14 @@ public partial class ConfigurationManager : ContentPage
             return;
         }
 
+		// If device acknowledges that it has been configured
 		if (receivedData.Equals(deviceConfiguredCommand))
 		{
 			if (newDevice)
 			{
-				ActiveUser.DevicesPlugins.AddNewDevicePlugin(workingDevicePlugin);
+				workingDevicePlugin.DeviceDescriptor.SetDeviceDescritptor(workingDevicePlugin.DeviceConfigurator.GetDeviceDescriptor());
+				//ActiveUser.DevicesPlugins.AddNewDevicePlugin(workingDevicePlugin);
+                await ActiveUser.apiController.AddNewDevice(workingDevicePlugin.DeviceDescriptor);
                 Navigation.PopAsync();
             }
 			else
@@ -189,7 +194,9 @@ public partial class ConfigurationManager : ContentPage
         {
             case "Smart Curtains":
                 if (newDevice)
-                    workingDevicePlugin = new SmartCurtainsPlatformPlugin.SmartCurtainsPlatformPlugin(ActiveUser.User.UserID, ActiveUser.hubConnection);
+                    workingDevicePlugin = new SmartCurtainsPlatformPlugin.SmartCurtainsPlatformPlugin(ActiveUser.User.UserID, 
+																									  ActiveUser.hubConnection, 
+																									  ActiveUser.RemoveDevicePlugin);
                 else
                     workingDevicePlugin = ActiveUser.DevicesPlugins.GetDevicePlugin(deviceID);
                 break;
@@ -237,7 +244,12 @@ public partial class ConfigurationManager : ContentPage
 	/// </summary>
 	~ConfigurationManager()
 	{
-		serialPort.Close();
+		if (serialPort != null &&
+			serialPort.IsOpen)
+		{
+			serialPort.Close();
+			serialPort.Dispose();
+		}
 	}
 
 }

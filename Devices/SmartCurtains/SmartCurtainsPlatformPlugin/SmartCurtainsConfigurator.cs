@@ -18,8 +18,10 @@ namespace SmartCurtainsPlatformPlugin
             this.deviceDescriptor = deviceDescriptor;
         }
 
-
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public ContentView GetConfigurationView()
         {
             configurationView = new ConfigurationView(deviceDescriptor);
@@ -27,6 +29,11 @@ namespace SmartCurtainsPlatformPlugin
             return configurationView;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="nodeConfiguration"></param>
+        /// <returns></returns>
         public ContentView GetConfigurationView(NodeConfiguration nodeConfiguration)
         {
             configurationView = new ConfigurationView(deviceDescriptor);
@@ -34,9 +41,21 @@ namespace SmartCurtainsPlatformPlugin
             return configurationView;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public NodeConfiguration BuildNewConfiguration()
         {
             return configurationView.GetNodeConfigurationFromControls();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public DeviceDescriptor GetDeviceDescriptor()
+        {
+            return configurationView.GetDeviceDescriptorFromControls();
         }
     }
 }

@@ -23,19 +23,28 @@ namespace DevicePlatform.Data
         /// Adds a new platform plugin
         /// </summary>
         /// <param name="newPlugin"></param>
-        public void AddNewDevicePlugin(IPlatformPlugin newPlugin)
+        internal void AddNewDevicePlugin(IPlatformPlugin newPlugin)
         {
             plugins.Add(newPlugin.DeviceDescriptor.DeviceID, newPlugin);
+            
         }
 
         /// <summary>
         /// Updates a platform plugin
         /// </summary>
         /// <param name="updatedPlugin"></param>
-        public void UpdateDevicePlugin(IPlatformPlugin updatedPlugin)
+        internal void UpdateDevicePlugin(IPlatformPlugin updatedPlugin)
         {
             plugins.Remove(updatedPlugin.DeviceDescriptor.DeviceID);
             plugins.Add(updatedPlugin.DeviceDescriptor.DeviceID, updatedPlugin);
+        }
+
+        /// <summary>
+        /// Removes a platform plugin from the plugin collection
+        /// </summary>
+        internal void DeleteDevicePlugin(Guid deviceID)
+        {
+            plugins.Remove(deviceID);
         }
 
         /// <summary>

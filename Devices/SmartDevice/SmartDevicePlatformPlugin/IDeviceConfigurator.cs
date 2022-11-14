@@ -13,6 +13,9 @@ namespace SmartDevicePlatformPlugin
         public ContentView GetConfigurationView();
 
         public ContentView GetConfigurationView(NodeConfiguration nodeConfiguration);
-    
+
+        public DeviceDescriptor GetDeviceDescriptor();
+
+
     }
 }

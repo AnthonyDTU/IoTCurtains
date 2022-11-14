@@ -4,6 +4,53 @@
         <name>SmartCurtainsPlatformPlugin</name>
     </assembly>
     <members>
+        <member name="M:SmartCurtainsPlatformPlugin.ConfigurationView.PopulateControls">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SmartCurtainsPlatformPlugin.ConfigurationView.PopulateControls(SmartDevicePlatformPlugin.NodeConfiguration)">
+            <summary>
+            
+            </summary>
+            <param name="nodeConfiguration"></param>
+        </member>
+        <member name="M:SmartCurtainsPlatformPlugin.ConfigurationView.GetNodeConfigurationFromControls">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SmartCurtainsPlatformPlugin.ConfigurationView.GetDeviceDescriptorFromControls">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SmartCurtainsPlatformPlugin.SmartCurtainsConfigurator.GetConfigurationView">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SmartCurtainsPlatformPlugin.SmartCurtainsConfigurator.GetConfigurationView(SmartDevicePlatformPlugin.NodeConfiguration)">
+            <summary>
+            
+            </summary>
+            <param name="nodeConfiguration"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SmartCurtainsPlatformPlugin.SmartCurtainsConfigurator.BuildNewConfiguration">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SmartCurtainsPlatformPlugin.SmartCurtainsConfigurator.GetDeviceDescriptor">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:SmartCurtainsPlatformPlugin.SmartCurtainsContentPageUI.RollUpButton_Clicked(System.Object,System.EventArgs)">
             <summary>
             Send Roll Up command to device
@@ -42,6 +89,18 @@
             <param name="sender"></param>
             <param name="e"></param>
         </member>
+        <member name="M:SmartCurtainsPlatformPlugin.SmartCurtainsPlatformPlugin.InitPlugin(Microsoft.AspNetCore.SignalR.Client.HubConnection)">
+            <summary>
+            
+            </summary>
+            <param name="hubConnection"></param>
+        </member>
+        <member name="M:SmartCurtainsPlatformPlugin.SmartCurtainsPlatformPlugin.SetDeviceData(SmartCurtainsPlatformPlugin.DeviceData)">
+            <summary>
+            
+            </summary>
+            <param name="deviceData"></param>
+        </member>
         <member name="M:SmartCurtainsPlatformPlugin.SmartCurtainsPlatformPlugin.GetPluginContentPageUI">
             <summary>
             
@@ -60,6 +119,11 @@
             </summary>
         </member>
         <member name="M:SmartCurtainsPlatformPlugin.SmartCurtainsPlatformPlugin.GetCurrentDeviceState">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SmartCurtainsPlatformPlugin.SmartCurtainsPlatformPlugin.DeleteDevice">
             <summary>
             
             </summary>

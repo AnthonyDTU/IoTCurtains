@@ -58,9 +58,10 @@ namespace SmartPlatformBackendAPI.Controllers
 
             if (userToUpdate != null)
             {
+                userToUpdate.DeviceDescriptors.Add(newDevice);
                 dbContext.DeviceDecriptors.Add(newDevice);
                 dbContext.SaveChanges();
-                return Ok();
+                return Ok(userToUpdate);
             }
             else
                 return NotFound();
@@ -71,9 +72,6 @@ namespace SmartPlatformBackendAPI.Controllers
         public IActionResult CreateNewUser([FromBody] AddNewUserModel newUser)
         {
             newUser.UserName = newUser.UserName.Trim();
-            newUser.UserName = newUser.UserName.ToLower();
-
-            
 
             if (dbContext.Users.Count() != 0 && dbContext.Users.Single(u => u.UserName == newUser.UserName) != null)
             {

@@ -100,5 +100,13 @@ namespace SmartDeviceFirmware
             hubConnection.SendCore("DeviceAcknowledge", arguments);
             Debug.WriteLine($"Ack Sent To User Platform, with ID {nodeConfiguration.UserID}");
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void DeregisterDevice()
+        {
+            
+        }
     }
 }

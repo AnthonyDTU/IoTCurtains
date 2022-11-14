@@ -7,12 +7,9 @@ namespace DevicePlatform;
 
 public partial class CreateNewUserPage : ContentPage
 {
-	APIController apiHandler;
-
-	public CreateNewUserPage(APIController apiHandler)
+	public CreateNewUserPage()
 	{
 		InitializeComponent();
-		this.apiHandler = apiHandler;
 	}
 
 	private async void CreateNewUser_Clicked(object sender, EventArgs e)
@@ -26,7 +23,7 @@ public partial class CreateNewUserPage : ContentPage
 				return;
 			}
 
-            HttpStatusCode status = await apiHandler.CreateNewUser(usernameEntry.Text, passwordEntry.Text);
+            HttpStatusCode status = await ActiveUser.apiController.CreateNewUser(usernameEntry.Text, passwordEntry.Text);
             if (status == HttpStatusCode.OK)
             {
 				Navigation.PopAsync();

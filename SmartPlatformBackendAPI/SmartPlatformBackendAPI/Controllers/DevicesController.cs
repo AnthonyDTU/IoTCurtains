@@ -73,53 +73,32 @@ namespace SmartPlatformBackendAPI.Controllers
         [HttpPut]
         public IActionResult Put([FromRoute] Guid userID, [FromBody] DeviceDecriptor newDevice)
         {
-            //var users = dbContext.Users.Include(d => d.Devices).AsNoTracking().ToList();
-            //User oldUser = dbContext.Users.Find(userID);
-
-            User? user = dbContext.Users.Include(d => d.DeviceDescriptors).SingleOrDefault(u => u.UserID == userID);
+            User? user = dbContext.Users.Include(d => d.DeviceDescriptors).Single(u => u.UserID == newDevice.UserID);
 
             if (user != null)
             {
                 user.DeviceDescriptors.Add(newDevice);
                 dbContext.SaveChanges();
-                return Ok();
+                return Ok(user);
             }
-
-
-            //foreach (User user in users)
-            //{
-            //    if (user.UserID == userID)
-            //    {
-            //        user.Devices.Add(newDevice);
-            //        dbContext.Users.Remove(oldUser);
-            //        dbContext.Users.Add(user);
-            //        dbContext.SaveChanges();
-            //        return Ok(user);
-            //    }
-            //}
-
-            return NotFound();
-            //User? user = dbContext.Users.Find(userID);
-            //if (user == null || user.Devices == null)
-            //    return NotFound();
-
-            //user.Devices.Add(newDevice);
-            //return Ok();
+            else
+                return NotFound();
         }
 
         // DELETE api/{userID}/Devices/{deviceID}"
         [HttpDelete("{deviceID}")]
         public IActionResult Delete([FromRoute] Guid userID, Guid deviceID)
         {
-            User? user = dbContext.Users.Find(userID);
+            User? user = dbContext.Users.Include(d => d.DeviceDescriptors).Single(u => u.UserID == userID);
             if (user == null || user.DeviceDescriptors == null)
-                return NotFound();
+                return Unauthorized();
 
             foreach (DeviceDecriptor device in user.DeviceDescriptors)
             {
                 if (device.DeviceID == deviceID)
                 {
                     user.DeviceDescriptors.Remove(device);
+                    dbContext.SaveChanges();
                     return Ok();
                 }
             }

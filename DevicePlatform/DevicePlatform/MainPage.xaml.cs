@@ -13,24 +13,13 @@ namespace DevicePlatform;
 
 public partial class MainPage : ContentPage
 {
-    //Uri uriBase = new Uri("https://smartplatformbackendapi.azurewebsites.net");
-    Uri uriBase = new Uri("https://localhost:7173/");
-
-    int timeoutMs = 5000;
-
-
-    APIController apiController;
-
-    HubConnection hubConnection = null;
-
-
     string storedUser = null;
 	string storedPassword = "test";
 
 	public MainPage()
 	{
 		InitializeComponent();
-        InitBackendConnection();
+        ActiveUser.InitializeUser();
 
         if (!LoadLocalData())
 		{
@@ -41,20 +30,12 @@ public partial class MainPage : ContentPage
 		}
 		else
 		{
-            apiController.Login(storedUser, storedPassword).Wait();
+            ActiveUser.apiController.Login(storedUser, storedPassword).Wait();
 		}		
 
         RenderUI();
 
 	}
-
-    /// <summary>
-    /// 
-    /// </summary>
-    private void InitBackendConnection()
-    {
-        apiController = new APIController();
-    }
 
 
     /// <summary>
@@ -110,7 +91,7 @@ public partial class MainPage : ContentPage
 
 
                 };
-                addNewDeviceButton.Clicked += AddNewDeviceButton_Clicked;
+                addNewDeviceButton.Clicked += ConfigureNewDeviceButton_Clicked;
                 MainContentView.Children.Add(addNewDeviceButton);
             }
 
@@ -189,7 +170,7 @@ public partial class MainPage : ContentPage
     /// <returns></returns>
 	private async Task<bool> PresentLoginScreen()
 	{
-		await Navigation.PushAsync(new LoginPage(apiController));
+		await Navigation.PushAsync(new LoginPage());
 		return true;
 	}
 
@@ -198,7 +179,7 @@ public partial class MainPage : ContentPage
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-	private async void AddNewDeviceButton_Clicked(object sender, EventArgs e)
+	private async void ConfigureNewDeviceButton_Clicked(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new DeviceConfigurationManager.ConfigurationManager(ActiveUser.DevicesPlugins));
     }
@@ -211,7 +192,7 @@ public partial class MainPage : ContentPage
     /// <param name="e"></param>
     private async void GoToLoginButtonPage_Clicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new LoginPage(apiController));
+        await PresentLoginScreen();
     }
 
 

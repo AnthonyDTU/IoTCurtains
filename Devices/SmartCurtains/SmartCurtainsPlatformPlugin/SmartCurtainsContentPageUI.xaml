@@ -102,6 +102,11 @@
                 WidthRequest="250"
                 Clicked="SendDataToDeviceButton_Clicked"/>
 
+        <Button x:Name="DeleteDeviceButton"
+                Text="Delete Device"
+                WidthRequest="250"
+                Clicked="DeleteDeviceButton_Clicked"/>
+
         <Label x:Name="StatusLabel"
                Text=""
                FontAttributes="Italic"

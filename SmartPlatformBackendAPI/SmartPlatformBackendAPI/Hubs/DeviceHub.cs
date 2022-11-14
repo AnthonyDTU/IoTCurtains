@@ -93,11 +93,6 @@ namespace SmartPlatformBackendAPI.Hubs
         }
 
 
-        public void DeviceTestTrasmit(string message)
-        {
-            Clients.All.SendAsync("TestTrasmit", me);
-        }
-
         /// <summary>
         /// Deregisters a device
         /// </summary>
