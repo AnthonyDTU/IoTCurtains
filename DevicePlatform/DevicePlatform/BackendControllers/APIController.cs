@@ -43,9 +43,15 @@ namespace DevicePlatform.BackendControllers
         /// <returns></returns>
         public async Task<HttpStatusCode> Login(string username, string password)
         {
+            UserCredentials userCredentials = new UserCredentials(username, password);
+
             try
             {
-                var result = await backendAPI.GetAsync($"api/Users/loginAttempt?username={username}&pass={password}".Replace(" ", "%20"));
+                // old login:
+                //var result = await backendAPI.GetAsync($"api/Users/loginAttempt?username={username}&pass={password}".Replace(" ", "%20"));
+
+                // new login:
+                var result = await backendAPI.PostAsJsonAsync("api/Users/login", userCredentials);
                 if (result.StatusCode == HttpStatusCode.OK)
                 {
                     User user = await result.Content.ReadFromJsonAsync<User>();
@@ -164,14 +170,35 @@ namespace DevicePlatform.BackendControllers
             }
         }
 
-        public async Task<HttpStatusCode> DeleteUser()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userID"></param>
+        /// <returns></returns>
+        public async Task<HttpStatusCode> DeleteUser(Guid userID)
         {
-            throw new NotImplementedException();
+            string uri = $"api/Users/{userID}";
+
+            try
+            {
+                var result = await backendAPI.DeleteAsync(uri);
+                return result.StatusCode;
+            }
+            catch (Exception)
+            {
+                return HttpStatusCode.BadRequest;
+            }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userID"></param>
+        /// <param name="deviceID"></param>
+        /// <returns></returns>
         public async Task<HttpStatusCode> DeleteDevice(Guid userID, Guid deviceID)
         {
-            string uri = $"api/{userID}/Devices/{deviceID}";
+            string uri = $"api/Users/{userID}/{deviceID}";
 
             try
             {
@@ -189,8 +216,5 @@ namespace DevicePlatform.BackendControllers
                 return HttpStatusCode.BadRequest;
             }
         }
-
-
-
     }
 }

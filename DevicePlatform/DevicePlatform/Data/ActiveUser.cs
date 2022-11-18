@@ -3,6 +3,7 @@ using DevicePlatform.Models;
 using Microsoft.AspNetCore.SignalR.Client;
 using SmartDevicePlatformPlugin;
 using System.Diagnostics;
+using System.Net;
 
 namespace DevicePlatform.Data
 {
@@ -105,8 +106,12 @@ namespace DevicePlatform.Data
         /// <param name="plugin"></param>
         public static bool RemoveDevicePlugin(Guid deviceID)
         {
-            apiController.DeleteDevice(User.UserID, deviceID);
-            DevicesPlugins.DeleteDevicePlugin(deviceID);
+            var status = apiController.DeleteDevice(User.UserID, deviceID).WaitAsync(TimeSpan.FromSeconds(10));
+            //if (result.Result == HttpStatusCode.OK)
+            //{
+            //    DevicesPlugins.DeleteDevicePlugin(deviceID);
+            //    return true;
+            //}
             return true;
         }
 

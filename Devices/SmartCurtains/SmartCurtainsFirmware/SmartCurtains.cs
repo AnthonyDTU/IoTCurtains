@@ -226,7 +226,7 @@ namespace SmartCurtainsFirmware
         /// <exception cref="NotImplementedException"></exception>
         private void SerialDataRecived(string recivedData)
         {
-            throw new NotImplementedException();
+            Console.WriteLine(recivedData);
         }
     }
 }

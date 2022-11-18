@@ -37,6 +37,7 @@ namespace SmartPlatformBackendAPI.Controllers
             return Ok(user);
         }
 
+        // Old login
         // GET api/<UsersController>/loginAttempt?username={first%20last}&pass={password}
         [HttpGet("loginAttempt")]
         public IActionResult GetFromUserNameAndPassword(string username, string pass)
@@ -50,21 +51,42 @@ namespace SmartPlatformBackendAPI.Controllers
             return NotFound();
         }
 
+        // New login
+        [HttpPost("login")]
+        public IActionResult PostLogin(UserCredentials userCredentials)
+        {
+            User? user = dbContext.Users.Include(d => d.DeviceDescriptors).AsNoTracking().SingleOrDefault(u => u.UserName == userCredentials.UserName && u.Password == userCredentials.Password);
+            if (user != null)
+            {
+                return Ok(user);
+            }
+
+            return NotFound();
+        }
+
+        // Updated with credential checking
         // POST api/<UsersController>
-        [HttpPost]
+        [HttpPost] 
         public IActionResult AddDeviceToUser([FromBody] DeviceDecriptor newDevice)
         {
-            User? userToUpdate = dbContext.Users.Include(d => d.DeviceDescriptors).Single(u => u.UserID == newDevice.UserID);
-
-            if (userToUpdate != null)
+            try
             {
-                userToUpdate.DeviceDescriptors.Add(newDevice);
-                dbContext.DeviceDecriptors.Add(newDevice);
-                dbContext.SaveChanges();
-                return Ok(userToUpdate);
+                User? user = dbContext.Users.Include(d => d.DeviceDescriptors).Single(u => u.UserID == newDevice.UserID);
+
+                if (user != null)
+                {
+                    user.DeviceDescriptors.Add(newDevice);
+                    dbContext.DeviceDecriptors.Add(newDevice);
+                    dbContext.SaveChanges();
+                    return Ok(user);
+                }
+                else
+                    return NotFound();
             }
-            else
-                return NotFound();
+            catch (Exception)
+            {
+                return Unauthorized();
+            }
         }
 
         // PUT api/<UsersController>
@@ -93,11 +115,48 @@ namespace SmartPlatformBackendAPI.Controllers
 
         // DELETE api/<UsersController>/5
         [HttpDelete("{userID}")]
-        public void Delete(Guid userID)
+        public IActionResult Delete([FromRoute] Guid userID, [FromBody] UserCredentials userCredentials)
         {
-            User user = dbContext.Users.Find(userID);
-            dbContext.Users.Remove(user);
-            dbContext.SaveChanges();
+            try
+            {
+                User user = dbContext.Users.Single(u => u.UserID == userID && u.UserName == userCredentials.UserName && u.Password == userCredentials.Password);
+                dbContext.Users.Remove(user);
+                dbContext.SaveChanges();
+                return Ok();
+            }
+            catch (Exception)
+            {
+                return Unauthorized();
+            }            
+        }
+
+        // DELETE api/{userID}/Devices/{deviceID}"
+        [HttpDelete("{userID}/{deviceID}")]
+        public IActionResult Delete([FromRoute] Guid userID, [FromRoute] Guid deviceID)
+        {
+            try
+            {
+                User? user = dbContext.Users.Include(d => d.DeviceDescriptors).Single(u => u.UserID == userID);
+
+                if (user != null || user.DeviceDescriptors != null)
+                {
+                    foreach (DeviceDecriptor device in user.DeviceDescriptors)
+                    {
+                        if (device.DeviceID == deviceID)
+                        {
+                            user.DeviceDescriptors.Remove(device);
+                            dbContext.SaveChanges();
+                            return Ok(user);
+                        }
+                    }
+                }
+              
+                return NotFound();
+            }
+            catch (Exception)
+            {
+                return Unauthorized();
+            }            
         }
     }
 }
