@@ -26,31 +26,6 @@ namespace SmartPlatformBackendAPI.Controllers
             return Ok(dbContext.Users.Include(d => d.DeviceDescriptors).ToList());
         }
 
-        // GET api/<UsersController>/5
-        [HttpGet("{userID}")]
-        public IActionResult Get(Guid userID)
-        {
-            User? user = dbContext.Users.Find(userID);
-            if (user == null)
-                return NotFound();
-
-            return Ok(user);
-        }
-
-        // Old login
-        // GET api/<UsersController>/loginAttempt?username={first%20last}&pass={password}
-        [HttpGet("loginAttempt")]
-        public IActionResult GetFromUserNameAndPassword(string username, string pass)
-        {
-            User? user = dbContext.Users.Include(d => d.DeviceDescriptors).AsNoTracking().SingleOrDefault(u => u.UserName == username && u.Password == pass);
-            if (user != null)
-            {
-                return Ok(user);
-            }
-
-            return NotFound();
-        }
-
         // New login
         [HttpPost("login")]
         public IActionResult PostLogin(UserCredentials userCredentials)

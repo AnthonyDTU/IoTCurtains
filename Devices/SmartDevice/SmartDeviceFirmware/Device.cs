@@ -10,15 +10,15 @@ namespace SmartDeviceFirmware
     /// * GPIO controller
     /// * Serial communication
     /// * WiFi
-    /// * -- API Controller
-    /// * -- 
+    /// * SignalR Controller
+    /// * -- More to come --
     /// </summary>
     public class Device
     {
         protected readonly NodeConfiguration nodeConfiguration;
         protected GpioController gpioController;
-        protected SerialCommunicator serialCommunicator;
-        protected WiFiHandler wifiHandler;
+        protected SerialComController serialComController;
+        protected WiFiController wifiController;
         protected SignalRController signalRController;
 
         protected Device(string deviceModel)

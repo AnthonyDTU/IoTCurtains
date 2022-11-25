@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Diagnostics;
+using Windows.Storage;
 
 namespace SmartDeviceFirmware
 {
@@ -16,6 +17,21 @@ namespace SmartDeviceFirmware
         public string DeviceKey { get; set; }           // Platform configurable
 
 
+        public bool createConfigFile()
+        {
+            try
+            {
+                
+
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error getting path: " + ex.Message);
+            }
+
+            return true;
+        }
+
         public NodeConfiguration(string DeviceModel)
         {
             this.DeviceModel = DeviceModel;
@@ -25,6 +41,9 @@ namespace SmartDeviceFirmware
 
         public bool SetNewConfiguration(NodeConfiguration newNodeConfiguration)
         {
+            
+
+
             return true;
         }
 

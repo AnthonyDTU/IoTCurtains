@@ -124,3 +124,15 @@ C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\obj\De
 C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\obj\Debug\System.Net.WebSockets.dll
 C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\obj\Debug\nanoFramework.SignalR.Client.xml
 C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\obj\Debug\System.Net.WebSockets.xml
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\bin\Debug\Windows.Storage.pe
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\bin\Debug\Windows.Storage.Streams.pe
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\bin\Debug\Windows.Storage.pdbx
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\bin\Debug\Windows.Storage.Streams.pdbx
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\bin\Debug\Windows.Storage.dll
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\bin\Debug\Windows.Storage.Streams.dll
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\bin\Debug\Windows.Storage.xml
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\bin\Debug\Windows.Storage.Streams.xml
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\obj\Debug\Windows.Storage.dll
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\obj\Debug\Windows.Storage.Streams.dll
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\obj\Debug\Windows.Storage.xml
+C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\obj\Debug\Windows.Storage.Streams.xml

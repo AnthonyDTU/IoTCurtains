@@ -13,27 +13,19 @@ namespace SmartDevicePlatformPlugin
     {
         private DeviceDescriptor deviceDescriptor;
         private HubConnection hubConnection;
-
+                
         public SignalRController(DeviceDescriptor deviceDescriptor, HubConnection hubConnection, Action<string> signalRDeviceDataReceivedCallback, Action<string> signalRDeviceAcknowledgeCallback)
         {
             this.deviceDescriptor = deviceDescriptor;
             this.hubConnection = hubConnection;
 
             // Assign callback to SmartDevice implementation
-
-
-            //hubConnection.On("PassDeviceAcknowledgeToUsers", new[] { typeof(string) }, AckHandler, state);
             hubConnection.On("TransmitDeviceData", signalRDeviceDataReceivedCallback);
             hubConnection.On("PassDeviceAcknowledgeToUsers", signalRDeviceAcknowledgeCallback);
-
-            //hubConnection.On("TestFunction", )
-
         }
 
-
-
         /// <summary>
-        /// 
+        /// Request data from SmartDevice
         /// </summary>
         public void RequestDeviceData()
         {
@@ -42,7 +34,7 @@ namespace SmartDevicePlatformPlugin
         }
 
         /// <summary>
-        /// 
+        /// Transmit data to SmartDevice
         /// </summary>
         /// <param name="jsonData"></param>
         public void TransmitDataToDevice(string jsonData)
@@ -52,7 +44,7 @@ namespace SmartDevicePlatformPlugin
         }
 
         /// <summary>
-        /// 
+        /// Transmits Command to SmartDevice
         /// </summary>
         /// <param name="command"></param>
         public void SendCommandToDevice(string command)

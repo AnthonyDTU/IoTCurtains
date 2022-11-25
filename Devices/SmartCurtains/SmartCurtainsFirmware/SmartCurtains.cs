@@ -9,6 +9,7 @@ using System.Net.WebSockets;
 using nanoFramework.Json;
 using System.Collections;
 using System.Diagnostics;
+using Windows.Storage;
 
 namespace SmartCurtainsFirmware
 {
@@ -55,21 +56,23 @@ namespace SmartCurtainsFirmware
             nodeConfiguration.DeviceID = new Guid("c7646498-2119-4915-a176-4bacfe5e44c1");
             nodeConfiguration.UserID = new Guid("c7646498-2119-4915-a176-4bacfe5e84c1");
 
+            storageTest();
+
             requestedDeviceState = new DeviceData();
             acutalDeviceState = new DeviceData();
 
             gpioController = new GpioController(PinNumberingScheme.Board);
 
-            serialCommunicator = new SerialCommunicator(nodeConfiguration, 
-                                                        COMPort, 
-                                                        RxUART2PinNumber, 
-                                                        TxUART2PinNumber, 
-                                                        SerialDataRecived);
+            serialComController = new SerialComController(nodeConfiguration, 
+                                                          COMPort, 
+                                                          RxUART2PinNumber, 
+                                                          TxUART2PinNumber, 
+                                                          SerialDataRecived);
 
-            wifiHandler = new WiFiHandler(nodeConfiguration, 
-                                          wifiInterfaceIndex, 
-                                          wifiConnectedLedPinNumber, 
-                                          gpioController);
+            wifiController = new WiFiController(nodeConfiguration, 
+                                                wifiInterfaceIndex, 
+                                                wifiConnectedLedPinNumber, 
+                                                gpioController);
             
             signalRController = new SignalRController(nodeConfiguration, 
                                                       Handle_SetDeviceData, 
@@ -92,6 +95,25 @@ namespace SmartCurtainsFirmware
             rollUpButton.Press += RollUpButton_Press;
             stopMotorButton.Press += StopMotorButton_Press;
             calibrateButton.Press += CalibrateButton_Press;
+        }
+
+
+        private void storageTest()
+        {
+            try
+            {
+
+                StorageFolder internalDevices = KnownFolders.InternalDevices;
+                Debug.WriteLine($"Internal Path: {internalDevices.Path}");
+
+                internalDevices.CreateFolder("\\TestFolder");
+                StorageFolder newFolder = internalDevices.GetFolder("TestFolder");
+                Debug.WriteLine($"Internal Path: {newFolder.Path}");
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
         }
 
         /// <summary>
@@ -160,22 +182,6 @@ namespace SmartCurtainsFirmware
                     break;
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         /// <summary>

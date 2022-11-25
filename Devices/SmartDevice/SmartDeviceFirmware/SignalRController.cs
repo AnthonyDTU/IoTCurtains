@@ -21,7 +21,6 @@ namespace SmartDeviceFirmware
             HubConnectionOptions options = new HubConnectionOptions()
             {
                 Reconnect = true,
-                //KeepAliveInterval = TimeSpan.FromSeconds(10),
             };
 
             hubConnection = new HubConnection(hubUrl, options: options);
@@ -76,8 +75,7 @@ namespace SmartDeviceFirmware
             hubConnection.SendCore("RegisterDevice", new object[] { nodeConfiguration.DeviceID });
             Debug.WriteLine("Reconnected to hub!");
         }
-
-
+        
         /// <summary>
         /// Transmits data to the SignalR server
         /// Method called from device implementation
@@ -85,9 +83,16 @@ namespace SmartDeviceFirmware
         /// <returns></returns>
         public void TransmitDeviceData(string jsonData)
         {
-            object[] arguments = new object[] { nodeConfiguration.UserID, jsonData };
-            hubConnection.SendCore("TransmitDataFromDevice", arguments);
-            Debug.WriteLine($"Transmitted {jsonData} to User Platform");
+            if (hubConnection.State == HubConnectionState.Connected)
+            {
+                object[] arguments = new object[] { nodeConfiguration.UserID, jsonData };
+                hubConnection.SendCore("TransmitDataFromDevice", arguments);
+                Debug.WriteLine($"Transmitted {jsonData} to User Platform");
+            }
+            else
+            {
+                Debug.WriteLine("Tried to transmit device data, to unconnected hub");
+            }
         }
 
         /// <summary>
@@ -95,10 +100,18 @@ namespace SmartDeviceFirmware
         /// </summary>
         public void TransmitDeviceAcknowledge()
         {
-            object[] arguments = new object[] { nodeConfiguration.UserID };
-            //object[] arguments = new object[] { "Test Message" };
-            hubConnection.SendCore("DeviceAcknowledge", arguments);
-            Debug.WriteLine($"Ack Sent To User Platform, with ID {nodeConfiguration.UserID}");
+            if (hubConnection.State == HubConnectionState.Connected)
+            {
+                object[] arguments = new object[] { nodeConfiguration.UserID };
+                //object[] arguments = new object[] { "Test Message" };
+                hubConnection.SendCore("DeviceAcknowledge", arguments);
+                Debug.WriteLine($"Ack Sent To User Platform, with ID {nodeConfiguration.UserID}");
+            }
+            else
+            {
+                Debug.WriteLine("Tried to transmit device acknowledge, to unconnected hub");
+            }
+
         }
 
         /// <summary>

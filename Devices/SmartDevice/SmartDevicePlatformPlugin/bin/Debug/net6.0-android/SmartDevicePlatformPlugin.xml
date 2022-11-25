@@ -4,20 +4,66 @@
         <name>SmartDevicePlatformPlugin</name>
     </assembly>
     <members>
+        <member name="M:SmartDevicePlatformPlugin.IDeviceConfigurator.BuildNewConfiguration">
+            <summary>
+            Builds the device configuration, which can be sent to the device.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SmartDevicePlatformPlugin.IDeviceConfigurator.GetConfigurationView">
+            <summary>
+            Gets the UI used for the user to input data for the device configuration.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SmartDevicePlatformPlugin.IDeviceConfigurator.GetConfigurationView(SmartDevicePlatformPlugin.NodeConfiguration)">
+            <summary>
+            Gets the UI used for the user to input data for the device configuration, based on an existing configuration.
+            </summary>
+            <param name="nodeConfiguration"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SmartDevicePlatformPlugin.IDeviceConfigurator.GetDeviceDescriptor">
+            <summary>
+            Gets the device descriptor, based on the entered configuration.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:SmartDevicePlatformPlugin.IPlatformPlugin.DeviceDescriptor">
+            <summary>
+            The device descriptor of the device
+            </summary>
+        </member>
+        <member name="P:SmartDevicePlatformPlugin.IPlatformPlugin.DeviceConfigurator">
+            <summary>
+            The device configuratior
+            </summary>
+        </member>
+        <member name="P:SmartDevicePlatformPlugin.IPlatformPlugin.SignalRController">
+            <summary>
+            The device's SignalR Controller 
+            </summary>
+        </member>
+        <member name="M:SmartDevicePlatformPlugin.IPlatformPlugin.GetPluginContentPageUI">
+            <summary>
+            Gets the control UI for the device
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:SmartDevicePlatformPlugin.SignalRController.RequestDeviceData">
             <summary>
-            
+            Request data from SmartDevice
             </summary>
         </member>
         <member name="M:SmartDevicePlatformPlugin.SignalRController.TransmitDataToDevice(System.String)">
             <summary>
-            
+            Transmit data to SmartDevice
             </summary>
             <param name="jsonData"></param>
         </member>
         <member name="M:SmartDevicePlatformPlugin.SignalRController.SendCommandToDevice(System.String)">
             <summary>
-            
+            Transmits Command to SmartDevice
             </summary>
             <param name="command"></param>
         </member>
