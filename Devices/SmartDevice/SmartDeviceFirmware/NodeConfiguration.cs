@@ -17,8 +17,8 @@ namespace SmartDeviceFirmware
         public string WiFiPassword { get; private set; }        // User configurable
         public string DeviceKey { get; private set; }           // Platform configurable
 
-        private readonly WiFiController wifiController;
-        private readonly SignalRController signalRController;      
+        private WiFiController wifiController;
+        private SignalRController signalRController;      
 
         public NodeConfiguration(WiFiController wifiController, SignalRController signalRController, string DeviceModel)
         {
@@ -73,7 +73,8 @@ namespace SmartDeviceFirmware
 
             // Deregistre old guid in hub, and register new guid in hub
 
-            if (signalRController != null && signalRController.IsConnected)
+            if (wifiController != null && wifiController.IsConnected && 
+                signalRController != null && signalRController.IsConnected)
             {
                 signalRController.DeregisterDeviceWithHub(oldDeviceID);
                 signalRController.RegisterDevicewithHub(DeviceID);

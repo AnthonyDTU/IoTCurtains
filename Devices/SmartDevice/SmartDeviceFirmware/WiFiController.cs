@@ -16,9 +16,7 @@ namespace SmartDeviceFirmware
         private NetworkInterface network;
         private readonly NodeConfiguration nodeConfiguration;
         private readonly SignalRController signalRController;
-
-        private string SSID;
-        private string password;
+        
         private readonly int networkInterfaceIndex;
         private readonly int isConnectedLEDIndicatorPinNumber;
         private readonly GpioController gpioController;
@@ -42,7 +40,8 @@ namespace SmartDeviceFirmware
             network = NetworkInterface.GetAllNetworkInterfaces()[networkInterfaceIndex];
             if (nodeConfiguration != null &&
                 nodeConfiguration.IsConfigured &&
-                nodeConfiguration.WiFiSSID != null &&
+                nodeConfiguration.WiFiSSID != null && 
+                nodeConfiguration.WiFiSSID != default &&
                 nodeConfiguration.WiFiPassword != null)
             {
                 TryConnectToWiFi();
