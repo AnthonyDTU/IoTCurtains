@@ -23,7 +23,7 @@ namespace SmartDeviceFirmware
 
         protected Device(string deviceModel)
         {
-            nodeConfiguration = new NodeConfiguration(deviceModel);
+            nodeConfiguration = new NodeConfiguration(wifiController, signalRController, deviceModel);
         }
     }
 }

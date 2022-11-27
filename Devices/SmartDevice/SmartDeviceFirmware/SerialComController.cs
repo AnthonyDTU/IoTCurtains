@@ -94,7 +94,6 @@ namespace SmartDeviceFirmware
             if (recievedData.StartsWith(newConfigHeader))
             {
                 recievedData = recievedData.Substring(newConfigHeader.Length);
-                Debug.WriteLine($"Trimmed Config: {recievedData}");
                 if (nodeConfiguration.SetNewConfiguration(recievedData))
                 {
                     serialPort.WriteLine(deviceConfiguredCommand);

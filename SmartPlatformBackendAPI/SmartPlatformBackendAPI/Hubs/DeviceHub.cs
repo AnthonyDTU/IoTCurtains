@@ -82,6 +82,17 @@ namespace SmartPlatformBackendAPI.Hubs
         }
 
         /// <summary>
+        /// Registers a device
+        /// </summary>
+        /// <param name="deviceID"></param>
+        /// <returns></returns>
+        public Guid DeregisterDevice(Guid deviceID)
+        {
+            connections.RemoveDevieConnection(deviceID, Context.ConnectionId);
+            return deviceID;
+        }
+
+        /// <summary>
         /// Registers a user
         /// </summary>
         /// <param name="userID"></param>

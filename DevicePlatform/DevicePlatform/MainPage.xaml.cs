@@ -15,11 +15,12 @@ public partial class MainPage : ContentPage
 {
     string storedUser = null;
 	string storedPassword = "test";
+    
 
 	public MainPage()
 	{
 		InitializeComponent();
-        ActiveUser.InitializeUser();
+        //ActiveUser.InitializeUser();
 
         if (!LoadLocalData())
 		{
@@ -30,7 +31,9 @@ public partial class MainPage : ContentPage
 		}
 		else
 		{
-            ActiveUser.apiController.Login(storedUser, storedPassword).Wait();
+            ActiveUserSingleton.Instance.apiController.Login(storedUser, storedPassword).Wait();
+
+            //ActiveUser.apiController.Login(storedUser, storedPassword).Wait();
 		}		
 
         RenderUI();
@@ -45,11 +48,12 @@ public partial class MainPage : ContentPage
 	{
         MainContentView.Children.Clear();
 
-        if (ActiveUser.LoggedIn)
+        
+        if (ActiveUserSingleton.Instance.LoggedIn)
         {
-            if (ActiveUser.DevicesPlugins.Count != 0)
+            if (ActiveUserSingleton.Instance.DevicesPlugins.Count != 0)
             {
-                foreach (var plugin in ActiveUser.DevicesPlugins.Plugins)
+                foreach (var plugin in ActiveUserSingleton.Instance.DevicesPlugins.Plugins)
                 {
                     Button pluginButton = new Button()
                     {
@@ -133,7 +137,7 @@ public partial class MainPage : ContentPage
     /// <param name="e"></param>
     private async void PluginButton_Clicked(object sender, EventArgs e)
     {
-        foreach (var plugin in ActiveUser.DevicesPlugins.Plugins)
+        foreach (var plugin in ActiveUserSingleton.Instance.DevicesPlugins.Plugins)
         {
             if (((Button)sender).Text == plugin.Value.DeviceDescriptor.DeviceName)
             {
@@ -181,7 +185,7 @@ public partial class MainPage : ContentPage
     /// <param name="e"></param>
 	private async void ConfigureNewDeviceButton_Clicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new DeviceConfigurationManager.ConfigurationManager(ActiveUser.DevicesPlugins));
+        await Navigation.PushAsync(new DeviceConfigurationManager.ConfigurationManager(ActiveUserSingleton.Instance.DevicesPlugins));
     }
 
 

@@ -51,13 +51,6 @@ namespace SmartCurtainsFirmware
         /// </summary>
         public SmartCurtains() : base("Smart Curtains")
         {
-            nodeConfiguration.WiFiSSID = "TP-LINK_0AC4EC";
-            nodeConfiguration.WiFiPassword = "eqh76rxg";
-            nodeConfiguration.DeviceID = new Guid("c7646498-2119-4915-a176-4bacfe5e44c1");
-            nodeConfiguration.UserID = new Guid("c7646498-2119-4915-a176-4bacfe5e84c1");
-
-            storageTest();
-
             requestedDeviceState = new DeviceData();
             acutalDeviceState = new DeviceData();
 
@@ -70,11 +63,13 @@ namespace SmartCurtainsFirmware
                                                           SerialDataRecived);
 
             wifiController = new WiFiController(nodeConfiguration, 
+                                                signalRController,
                                                 wifiInterfaceIndex, 
                                                 wifiConnectedLedPinNumber, 
                                                 gpioController);
             
             signalRController = new SignalRController(nodeConfiguration, 
+                                                      wifiController,
                                                       Handle_SetDeviceData, 
                                                       Handle_RequestDeviceData, 
                                                       Handle_DeviceCommand);
@@ -97,24 +92,6 @@ namespace SmartCurtainsFirmware
             calibrateButton.Press += CalibrateButton_Press;
         }
 
-
-        private void storageTest()
-        {
-            try
-            {
-
-                StorageFolder internalDevices = KnownFolders.InternalDevices;
-                Debug.WriteLine($"Internal Path: {internalDevices.Path}");
-
-                internalDevices.CreateFolder("\\TestFolder");
-                StorageFolder newFolder = internalDevices.GetFolder("TestFolder");
-                Debug.WriteLine($"Internal Path: {newFolder.Path}");
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex.Message);
-            }
-        }
 
         /// <summary>
         /// 

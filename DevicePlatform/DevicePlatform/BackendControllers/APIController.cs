@@ -55,7 +55,7 @@ namespace DevicePlatform.BackendControllers
                 if (result.StatusCode == HttpStatusCode.OK)
                 {
                     User user = await result.Content.ReadFromJsonAsync<User>();
-                    await ActiveUser.ConfigureActiveUser(user);
+                    await ActiveUserSingleton.Instance.ConfigureActiveUser(user);
                 }
                 else if (result.StatusCode == HttpStatusCode.NotFound)
                 {
@@ -96,7 +96,7 @@ namespace DevicePlatform.BackendControllers
                 if (result.StatusCode == HttpStatusCode.OK)
                 {
                     User user = await result.Content.ReadFromJsonAsync<User>();
-                    await ActiveUser.ConfigureActiveUser(user);
+                    await ActiveUserSingleton.Instance.ConfigureActiveUser(user);
                 }
                 else if (result.StatusCode == HttpStatusCode.Conflict)
                 {
@@ -120,14 +120,14 @@ namespace DevicePlatform.BackendControllers
         /// <returns></returns>
         public async Task<HttpStatusCode> UpdateUser()
         {
-            if (ActiveUser.LoggedIn == false)
+            if (ActiveUserSingleton.Instance.LoggedIn == false)
             {
                 return HttpStatusCode.PreconditionFailed;
             }
 
             try
             {
-                var result = await backendAPI.PostAsJsonAsync("api/Users", ActiveUser.User);
+                var result = await backendAPI.PostAsJsonAsync("api/Users", ActiveUserSingleton.Instance.User);
                 if (result.StatusCode == HttpStatusCode.OK)
                 {
 
@@ -159,7 +159,7 @@ namespace DevicePlatform.BackendControllers
                 if (result.StatusCode == HttpStatusCode.OK)
                 {
                     User user = await result.Content.ReadFromJsonAsync<User>();
-                    ActiveUser.UpdateActiveUser(user);
+                    ActiveUserSingleton.Instance.UpdateActiveUser(user);
                 }
 
                 return result.StatusCode;
@@ -206,7 +206,7 @@ namespace DevicePlatform.BackendControllers
                 if (result.StatusCode == HttpStatusCode.OK)
                 {
                     User user = await result.Content.ReadFromJsonAsync<User>();
-                    ActiveUser.UpdateActiveUser(user);
+                    ActiveUserSingleton.Instance.UpdateActiveUser(user);
                 }
 
                 return result.StatusCode;

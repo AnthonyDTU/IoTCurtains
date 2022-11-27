@@ -23,7 +23,7 @@ public partial class CreateNewUserPage : ContentPage
 				return;
 			}
 
-            HttpStatusCode status = await ActiveUser.apiController.CreateNewUser(usernameEntry.Text, passwordEntry.Text);
+            HttpStatusCode status = await ActiveUserSingleton.Instance.apiController.CreateNewUser(usernameEntry.Text, passwordEntry.Text);
             if (status == HttpStatusCode.OK)
             {
 				Navigation.PopAsync();

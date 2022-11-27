@@ -48,7 +48,18 @@ public partial class ConfigurationManager : ContentPage
 
 		serialConfiguratorView = new SerialConfiguratorView(SetupSerialConnection);
 		ConfigurationView.Children.Add(serialConfiguratorView);
+		this.NavigatedFrom += ConfigurationManager_NavigatedFrom;
 	}
+
+	private void ConfigurationManager_NavigatedFrom(object sender, NavigatedFromEventArgs e)
+    {
+        if (serialPort != null &&
+            serialPort.IsOpen)
+        {
+            serialPort.Close();
+            serialPort.Dispose();
+        }
+    }
 
 	/// <summary>
 	/// 
@@ -156,6 +167,7 @@ public partial class ConfigurationManager : ContentPage
         if (receivedData.Equals(setDeviceReadyForConfigCommand))
         {
 			string jsonData = "newConfig:" + JsonSerializer.Serialize<NodeConfiguration>(workingDevicePlugin.DeviceConfigurator.BuildNewConfiguration());
+            Debug.WriteLine("Send Configuration To Device: " + jsonData);
             serialPort.WriteLine(jsonData);
             return;
         }
@@ -167,7 +179,8 @@ public partial class ConfigurationManager : ContentPage
 			{
 				workingDevicePlugin.DeviceDescriptor.SetDeviceDescritptor(workingDevicePlugin.DeviceConfigurator.GetDeviceDescriptor());
 				//ActiveUser.DevicesPlugins.AddNewDevicePlugin(workingDevicePlugin);
-                await ActiveUser.apiController.AddNewDevice(workingDevicePlugin.DeviceDescriptor);
+                await ActiveUserSingleton.Instance.apiController.AddNewDevice(workingDevicePlugin.DeviceDescriptor);
+
                 Navigation.PopAsync();
             }
 			else
@@ -194,11 +207,11 @@ public partial class ConfigurationManager : ContentPage
         {
             case "Smart Curtains":
                 if (newDevice)
-                    workingDevicePlugin = new SmartCurtainsPlatformPlugin.SmartCurtainsPlatformPlugin(ActiveUser.User.UserID, 
-																									  ActiveUser.hubConnection, 
-																									  ActiveUser.RemoveDevicePlugin);
+                    workingDevicePlugin = new SmartCurtainsPlatformPlugin.SmartCurtainsPlatformPlugin(ActiveUserSingleton.Instance.User.UserID,
+                                                                                                      ActiveUserSingleton.Instance.hubConnection,
+                                                                                                      ActiveUserSingleton.Instance.RemoveDevicePlugin);
                 else
-                    workingDevicePlugin = ActiveUser.DevicesPlugins.GetDevicePlugin(deviceID);
+                    workingDevicePlugin = ActiveUserSingleton.Instance.DevicesPlugins.GetDevicePlugin(deviceID);
                 break;
 
             default:
@@ -235,7 +248,7 @@ public partial class ConfigurationManager : ContentPage
 	/// <exception cref="NotImplementedException"></exception>
 	private void SendConfigurationToDeviceButton_Clicked(object sender, EventArgs e)
 	{
-		serialPort.WriteLine(getDeviceReadyForConfigCommand);
+        serialPort.WriteLine(getDeviceReadyForConfigCommand);
 	}
 
 	/// <summary>
