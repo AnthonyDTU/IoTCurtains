@@ -37,8 +37,13 @@ public partial class MainPage : ContentPage
 		}		
 
         RenderUI();
-
 	}
+
+    //protected override void On
+    //{
+    //    base.OnDisappearing();
+    //    ActiveUserSingleton.Instance.Close();        
+    //}
 
 
     /// <summary>
@@ -47,7 +52,6 @@ public partial class MainPage : ContentPage
 	private void RenderUI()
 	{
         MainContentView.Children.Clear();
-
         
         if (ActiveUserSingleton.Instance.LoggedIn)
         {

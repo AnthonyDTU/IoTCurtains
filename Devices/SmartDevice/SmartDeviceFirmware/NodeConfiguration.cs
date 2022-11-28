@@ -85,9 +85,15 @@ namespace SmartDeviceFirmware
             return true;
         }
 
-        public static bool ResetNodeToFactory()
+        public static void ResetNodeToFactory()
         {
-            return false;
+            DeviceName = default;
+            DeviceID = Guid.Empty;
+            UserID = Guid.Empty;
+            WiFiSSID = default;
+            WiFiPassword = default;
+            DeviceKey = default;
+            IsConfigured = false;
         }
     }
 }

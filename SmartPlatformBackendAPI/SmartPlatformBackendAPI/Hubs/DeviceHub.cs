@@ -62,11 +62,11 @@ namespace SmartPlatformBackendAPI.Hubs
         /// </summary>
         /// <param name="userID"></param>
         /// <param name="jsonData"></param>
-        public void TransmitDataFromDevice(Guid userID, string jsonData)
+        public void TransmitDataFromDevice(Guid userID, Guid deviceID, string jsonData)
         {
             foreach (var connection in connections.GetUserConnections(userID))
             {
-                Clients.Client(connection).SendAsync("TransmitDeviceData", jsonData);
+                Clients.Client(connection).SendAsync($"TransmitDeviceData{deviceID}", jsonData);
             }
         }
 
@@ -100,6 +100,17 @@ namespace SmartPlatformBackendAPI.Hubs
         public Guid RegisterUser(Guid userID)
         {
             connections.AddUserConnection(userID, Context.ConnectionId);
+            return userID;
+        }
+
+        /// <summary>
+        /// Registers a user
+        /// </summary>
+        /// <param name="userID"></param>
+        /// <returns></returns>
+        public Guid DeregisterUser(Guid userID)
+        {
+            connections.RemoveUserConnection(userID, Context.ConnectionId);
             return userID;
         }
 

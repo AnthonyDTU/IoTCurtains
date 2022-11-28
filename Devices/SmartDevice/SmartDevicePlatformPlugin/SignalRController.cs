@@ -20,7 +20,7 @@ namespace SmartDevicePlatformPlugin
             this.hubConnection = hubConnection;
 
             // Assign callback to SmartDevice implementation
-            hubConnection.On("TransmitDeviceData", signalRDeviceDataReceivedCallback);
+            hubConnection.On($"TransmitDeviceData{deviceDescriptor.DeviceID}", signalRDeviceDataReceivedCallback);
             hubConnection.On("PassDeviceAcknowledgeToUsers", signalRDeviceAcknowledgeCallback);
         }
 

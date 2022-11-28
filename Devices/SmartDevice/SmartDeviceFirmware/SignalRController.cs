@@ -140,7 +140,7 @@ namespace SmartDeviceFirmware
         {
             if (hubConnection.State == HubConnectionState.Connected)
             {
-                object[] arguments = new object[] { NodeConfiguration.UserID, jsonData };
+                object[] arguments = new object[] { NodeConfiguration.UserID, NodeConfiguration.DeviceID, jsonData };
                 hubConnection.SendCore("TransmitDataFromDevice", arguments);
                 Debug.WriteLine($"Transmitted {jsonData} to User Platform");
             }

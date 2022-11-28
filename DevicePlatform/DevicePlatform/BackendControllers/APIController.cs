@@ -159,7 +159,7 @@ namespace DevicePlatform.BackendControllers
                 if (result.StatusCode == HttpStatusCode.OK)
                 {
                     User user = await result.Content.ReadFromJsonAsync<User>();
-                    ActiveUserSingleton.Instance.UpdateActiveUser(user);
+                    //await ActiveUserSingleton.Instance.ConfigureActiveUser(user);
                 }
 
                 return result.StatusCode;

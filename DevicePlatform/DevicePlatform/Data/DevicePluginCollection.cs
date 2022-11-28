@@ -23,9 +23,20 @@ namespace DevicePlatform.Data
         /// Adds a new platform plugin
         /// </summary>
         /// <param name="newPlugin"></param>
-        internal void AddNewDevicePlugin(IPlatformPlugin newPlugin)
+        internal void AddDevicePlugin(IPlatformPlugin newPlugin)
         {
-            plugins.Add(newPlugin.DeviceDescriptor.DeviceID, newPlugin);
+            if (!plugins.ContainsKey(newPlugin.DeviceDescriptor.DeviceID))
+            {
+                //plugins[newPlugin.DeviceDescriptor.DeviceID] = newPlugin;
+                plugins.Add(newPlugin.DeviceDescriptor.DeviceID, newPlugin);
+            }
+            else
+            {
+            }
+
+
+
+            //plugins.Add(newPlugin.DeviceDescriptor.DeviceID, newPlugin);
             
         }
 
@@ -56,5 +67,7 @@ namespace DevicePlatform.Data
         {
             return plugins.GetValueOrDefault(deviceID);
         }
+
+        
     }
 }

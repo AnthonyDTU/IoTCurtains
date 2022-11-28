@@ -155,6 +155,8 @@ namespace SmartCurtainsFirmware
             string command = args[0].ToString();
 
             // Acknowledge command
+            SignalRController.TransmitDeviceAcknowledge();
+
             // Perform command
 
             switch (command)
@@ -167,6 +169,11 @@ namespace SmartCurtainsFirmware
                 case "RollDown":
                     Console.WriteLine($"Command Received: {command}");
                     motorController.SetPoint = motorController.MaxSetpoint;
+                    break;
+
+                case "DeleteDevice":
+                    Console.WriteLine("DeviceDeleted");
+                    NodeConfiguration.ResetNodeToFactory();
                     break;
 
                 default:

@@ -178,8 +178,15 @@ public partial class ConfigurationManager : ContentPage
 			if (newDevice)
 			{
 				workingDevicePlugin.DeviceDescriptor.SetDeviceDescritptor(workingDevicePlugin.DeviceConfigurator.GetDeviceDescriptor());
-				//ActiveUser.DevicesPlugins.AddNewDevicePlugin(workingDevicePlugin);
-                await ActiveUserSingleton.Instance.apiController.AddNewDevice(workingDevicePlugin.DeviceDescriptor);
+                //await ActiveUserSingleton.Instance.apiController.AddNewDevice(workingDevicePlugin.DeviceDescriptor);
+				await ActiveUserSingleton.Instance.AddNewDevicePlugin(workingDevicePlugin);
+
+                if (serialPort != null &&
+					serialPort.IsOpen)
+                {
+                    serialPort.Close();
+                    serialPort.Dispose();
+                }
 
                 Navigation.PopAsync();
             }
