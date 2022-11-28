@@ -1,5 +1,4 @@
 C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\bin\Debug\SmartCurtainsFirmware.exe
-C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\bin\Debug\SmartCurtainsFirmware.bin
 C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\bin\Debug\SmartCurtainsFirmware.pdb
 C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\bin\Debug\SmartCurtainsFirmware.pe
 C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\bin\Debug\SmartCurtainsFirmware.pdbx
@@ -9,8 +8,6 @@ C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\bin\De
 C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\bin\Debug\mscorlib.xml
 C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\obj\Debug\SmartCurtainsFirmware.nfproj.AssemblyReference.cache
 C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\obj\Debug\SmartCurtainsFirmware.nfproj.CoreCompileInputs.cache
-C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\obj\Debug\SmartCurtainsFirmware.pe
-C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\obj\Debug\SmartCurtainsFirmware.pdbx
 C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\obj\Debug\SmartCurtainsFirmware.nfproj.CopyComplete
 C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\obj\Debug\SmartCurtainsFirmware.exe
 C:\DTU\Projects\SmartPlatform\Devices\SmartCurtains\SmartCurtainsFirmware\obj\Debug\SmartCurtainsFirmware.pdb

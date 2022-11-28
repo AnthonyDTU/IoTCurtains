@@ -6,25 +6,29 @@ using Windows.Storage;
 
 namespace SmartDeviceFirmware
 {
-    public class NodeConfiguration
+    public static class NodeConfiguration
     {
-        public bool IsConfigured { get; private set; }
-        public string DeviceModel { get; }                      // Not configurable
-        public string DeviceName { get; private set; }          // User configurable
-        public Guid DeviceID { get; private set; }              // Platform configurable
-        public Guid UserID { get; private set; }                // Platform configurable
-        public string WiFiSSID { get; private set; }            // User configurable
-        public string WiFiPassword { get; private set; }        // User configurable
-        public string DeviceKey { get; private set; }           // Platform configurable
+        public static bool IsConfigured { get; private set; }
+        public static string DeviceModel { get; private set; }                      // Not configurable
+        public static string DeviceName { get; private set; }          // User configurable
+        public static Guid DeviceID { get; private set; }              // Platform configurable
+        public static Guid UserID { get; private set; }                // Platform configurable
+        public static string WiFiSSID { get; private set; }            // User configurable
+        public static string WiFiPassword { get; private set; }        // User configurable
+        public static string DeviceKey { get; private set; }           // Platform configurable
 
-        private WiFiController wifiController;
-        private SignalRController signalRController;      
+        //private static WiFiController wifiController;
+        //private static SignalRController signalRController;      
 
-        public NodeConfiguration(WiFiController wifiController, SignalRController signalRController, string DeviceModel)
+        //public NodeConfiguration(WiFiController wifiController, SignalRController signalRController, string DeviceModel)
+        //{
+            
+
+        //}
+
+        public static void Configure(string deviceModel)
         {
-            this.wifiController = wifiController;
-            this.signalRController = signalRController;
-            this.DeviceModel = DeviceModel;
+            DeviceModel = deviceModel;
 
             // Check if there is a stored config, otherwise create default
 
@@ -35,12 +39,11 @@ namespace SmartDeviceFirmware
             WiFiPassword = default;
             DeviceKey = default;
             IsConfigured = false;
-
         }
         
 
 
-        public bool SetNewConfiguration(string config)
+        public static bool SetNewConfiguration(string config)
         {
             Debug.WriteLine($"Received: {config}");
 
@@ -69,26 +72,22 @@ namespace SmartDeviceFirmware
 
 
             // Try connect to WIFI
-            wifiController.TryConnectToWiFi();
-
+            WiFiController.TryConnectToWiFi();
+            
             // Deregistre old guid in hub, and register new guid in hub
 
-            if (wifiController != null && wifiController.IsConnected && 
-                signalRController != null && signalRController.IsConnected)
+            if (WiFiController.IsConnected && 
+                SignalRController.IsConnected)
             {
-                signalRController.DeregisterDeviceWithHub(oldDeviceID);
-                signalRController.RegisterDevicewithHub(DeviceID);
+                SignalRController.DeregisterDeviceWithHub(oldDeviceID);
+                SignalRController.RegisterDevicewithHub(DeviceID);
             }
             return true;
         }
 
-        public bool ResetNodeToFactory()
+        public static bool ResetNodeToFactory()
         {
             return false;
         }
-
-        
-
-
     }
 }

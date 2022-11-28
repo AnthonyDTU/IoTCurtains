@@ -6,36 +6,36 @@ using nanoFramework.Json;
 
 namespace SmartDeviceFirmware
 {
-    public class SerialComController
+    public static class SerialComController
     {
-        SerialPort serialPort;
-        int baudRate = 115200;
-        Parity parity = Parity.None;
-        int databits = 8;
-        StopBits stopBits = StopBits.One;
+        private static SerialPort serialPort;
+        private static int baudRate = 115200;
+        private static Parity parity = Parity.None;
+        private static int databits = 8;
+        private static StopBits stopBits = StopBits.One;
 
-        private const string getConfigCommand = "deviceConfig?";
-        private const string setConfigCommand = "config";
-        private const string newConfigHeader = "newConfig:";
-
-        private const string getDeviceModelQuery = "deviceModel?";
-        private const string readyForConfigQuery = "readyForConfig?";
-        private const string readyForConfigResponse = "readyForConfig!";
-        private const string deviceConfiguredCommand = "deviceConfigured!";
-        private const string resetNodeCommand = "resetNode";
-
-        private const string setDeviceNameCommand = "deviceName:";
-        private const string setDeviceIDCommand = "deviceID:";
-        private const string setUserIDCommand = "userID:";
-        private const string setWiFiSSIDCommand = "WiFiSSID:";
-        private const string setWiFiPasswordCommand = "WiFiPassword:";
-        private const string setDeviceKeyCommand = "deviceKey:";
+        private static string getConfigCommand = "deviceConfig?";
+        private static string setConfigCommand = "config";
+        private static string newConfigHeader = "newConfig:";
+               
+        private static string getDeviceModelQuery = "deviceModel?";
+        private static string readyForConfigQuery = "readyForConfig?";
+        private static string readyForConfigResponse = "readyForConfig!";
+        private static string deviceConfiguredCommand = "deviceConfigured!";
+        private static string resetNodeCommand = "resetNode";
+               
+        private static string setDeviceNameCommand = "deviceName:";
+        private static string setDeviceIDCommand = "deviceID:";
+        private static string setUserIDCommand = "userID:";
+        private static string setWiFiSSIDCommand = "WiFiSSID:";
+        private static string setWiFiPasswordCommand = "WiFiPassword:";
+        private static string setDeviceKeyCommand = "deviceKey:";
 
 
         public delegate void DataRecivedHandler(string data);
-        public DataRecivedHandler dataRecivedCallbackHandler;
+        public static DataRecivedHandler dataRecivedCallbackHandler;
 
-        private NodeConfiguration nodeConfiguration;
+        //private NodeConfiguration nodeConfiguration;
 
         /// <summary>
         /// Constructer which initilizes the pins and the serial port
@@ -44,18 +44,34 @@ namespace SmartDeviceFirmware
         /// <param name="rxPinNumber"></param>
         /// <param name="txPinNumber"></param>
         /// <param name="dataRecivedHandler">Passes back all data, that is not related to config commands</param>
-        public SerialComController(NodeConfiguration nodeConfiguration, string COMPort, int rxPinNumber, int txPinNumber, DataRecivedHandler dataRecivedCallbackHandler = null)
-        {
-            this.nodeConfiguration = nodeConfiguration;
-            this.dataRecivedCallbackHandler = dataRecivedCallbackHandler;
+        //public SerialComController(NodeConfiguration nodeConfiguration, string COMPort, int rxPinNumber, int txPinNumber, DataRecivedHandler dataRecivedCallbackHandler = null)
+        //{
+        //    this.nodeConfiguration = nodeConfiguration;
+        //    this.dataRecivedCallbackHandler = dataRecivedCallbackHandler;
 
+        //    Configuration.SetPinFunction(rxPinNumber, DeviceFunction.COM2_RX);
+        //    Configuration.SetPinFunction(txPinNumber, DeviceFunction.COM2_TX);
+
+        //    serialPort = new SerialPort(COMPort,
+        //                                baudRate, 
+        //                                parity, 
+        //                                databits, 
+        //                                stopBits);
+
+        //    serialPort.ReadBufferSize = 2048;
+        //    serialPort.DataReceived += SerialPort_DataReceived;
+        //    serialPort.Open();
+        //}
+
+        public static void Configure(string COMPort, int rxPinNumber, int txPinNumber, DataRecivedHandler dataRecivedCallbackHandler = null)
+        {
             Configuration.SetPinFunction(rxPinNumber, DeviceFunction.COM2_RX);
             Configuration.SetPinFunction(txPinNumber, DeviceFunction.COM2_TX);
 
             serialPort = new SerialPort(COMPort,
-                                        baudRate, 
-                                        parity, 
-                                        databits, 
+                                        baudRate,
+                                        parity,
+                                        databits,
                                         stopBits);
 
             serialPort.ReadBufferSize = 2048;
@@ -69,7 +85,7 @@ namespace SmartDeviceFirmware
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void SerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        private static void SerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             string recievedData = serialPort.ReadLine();
             Debug.WriteLine($"Recived String: {recievedData}");
@@ -94,7 +110,7 @@ namespace SmartDeviceFirmware
             if (recievedData.StartsWith(newConfigHeader))
             {
                 recievedData = recievedData.Substring(newConfigHeader.Length);
-                if (nodeConfiguration.SetNewConfiguration(recievedData))
+                if (NodeConfiguration.SetNewConfiguration(recievedData))
                 {
                     serialPort.WriteLine(deviceConfiguredCommand);
                 }
@@ -104,14 +120,14 @@ namespace SmartDeviceFirmware
             // If device model is requested
             if (recievedData == getDeviceModelQuery)
             {
-                serialPort.WriteLine($"deviceModel:{nodeConfiguration.DeviceModel}");
+                serialPort.WriteLine($"deviceModel:{NodeConfiguration.DeviceModel}");
                 return;
             }
 
             // If device reset is commanded, reset device.
             if (recievedData == resetNodeCommand)
             {
-                nodeConfiguration.ResetNodeToFactory();
+                NodeConfiguration.ResetNodeToFactory();
                 return;
             }
 
@@ -130,7 +146,7 @@ namespace SmartDeviceFirmware
         /// </summary>
         /// <param name="message"></param>
         /// <returns></returns>
-        public bool SendMessage(string message)
+        public static bool SendMessage(string message)
         {
             // Safety checks
             if (!serialPort.IsOpen)

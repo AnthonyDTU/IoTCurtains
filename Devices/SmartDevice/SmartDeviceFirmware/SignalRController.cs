@@ -6,38 +6,66 @@ using nanoFramework.SignalR.Client;
 
 namespace SmartDeviceFirmware
 {
-    public class SignalRController
+    public static class SignalRController
     {
-        public bool IsConnected { get; private set; }
-        private readonly HubConnection hubConnection;
-        private readonly NodeConfiguration nodeConfiguration;
-        private readonly WiFiController wifiController;
-        string hubUrl = "ws://smartplatformbackendapi.azurewebsites.net/device";
+        public static bool IsConnected { get; private set; }
+        private static HubConnection hubConnection;
+        private static string hubUrl = "ws://smartplatformbackendapi.azurewebsites.net/device";
 
-        public SignalRController(NodeConfiguration nodeConfiguration, 
-                                 WiFiController wifiController,
-                                 HubConnection.OnInvokeHandler SetDeviceDataHandler, 
-                                 HubConnection.OnInvokeHandler DeviceDataRequestedHandler,
-                                 HubConnection.OnInvokeHandler DeviceCommandHandler)
+        //public SignalRController(NodeConfiguration nodeConfiguration, 
+        //                         WiFiController wifiController,
+        //                         HubConnection.OnInvokeHandler SetDeviceDataHandler, 
+        //                         HubConnection.OnInvokeHandler DeviceDataRequestedHandler,
+        //                         HubConnection.OnInvokeHandler DeviceCommandHandler)
+        //{
+        //    this.nodeConfiguration = nodeConfiguration;
+        //    this.wifiController = wifiController;
+        //    HubConnectionOptions options = new HubConnectionOptions()
+        //    {
+        //        Reconnect = true,
+        //    };
+
+        //    hubConnection = new HubConnection(hubUrl, options: options);
+            
+        //    // Event handlers
+        //    hubConnection.Reconnecting += HubConnection_Reconnecting;
+        //    hubConnection.Reconnected += HubConnection_Reconnected;
+
+        //    // Message handlers
+        //    hubConnection.On("SetDeviceData", new[] { typeof(string) }, SetDeviceDataHandler);
+        //    hubConnection.On("RequestDeviceData", new[] { typeof(string) } , DeviceDataRequestedHandler);
+        //    hubConnection.On("TransmitDeviceCommand", new[] { typeof(string) }, DeviceCommandHandler);
+            
+        //    try
+        //    {
+        //        ConnectToSignalRHub();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Debug.WriteLine($"Could Not Connect To Hub {ex.Message}");
+        //    }
+        //}
+        
+        public static void Configure(HubConnection.OnInvokeHandler SetDeviceDataHandler, 
+                                     HubConnection.OnInvokeHandler DeviceDataRequestedHandler,
+                                     HubConnection.OnInvokeHandler DeviceCommandHandler)            
         {
-            this.nodeConfiguration = nodeConfiguration;
-            this.wifiController = wifiController;
             HubConnectionOptions options = new HubConnectionOptions()
             {
                 Reconnect = true,
             };
 
             hubConnection = new HubConnection(hubUrl, options: options);
-            
+
             // Event handlers
             hubConnection.Reconnecting += HubConnection_Reconnecting;
             hubConnection.Reconnected += HubConnection_Reconnected;
 
             // Message handlers
             hubConnection.On("SetDeviceData", new[] { typeof(string) }, SetDeviceDataHandler);
-            hubConnection.On("RequestDeviceData", new[] { typeof(string) } , DeviceDataRequestedHandler);
+            hubConnection.On("RequestDeviceData", new[] { typeof(string) }, DeviceDataRequestedHandler);
             hubConnection.On("TransmitDeviceCommand", new[] { typeof(string) }, DeviceCommandHandler);
-            
+
             try
             {
                 ConnectToSignalRHub();
@@ -47,13 +75,14 @@ namespace SmartDeviceFirmware
                 Debug.WriteLine($"Could Not Connect To Hub {ex.Message}");
             }
         }
-        
+
+
         /// <summary>
         /// 
         /// </summary>
-        private void ConnectToSignalRHub()
+        public static void ConnectToSignalRHub()
         {
-            if (!wifiController.IsConnected)
+            if (!WiFiController.IsConnected)
             {
                 Debug.WriteLine("WiFi not connected, cannot connect to SignalR");
                 return;
@@ -66,11 +95,10 @@ namespace SmartDeviceFirmware
                 IsConnected = true;
 
 
-                if (nodeConfiguration != null &&
-                    nodeConfiguration.IsConfigured &&
-                    !nodeConfiguration.DeviceID.Equals(Guid.Empty))
+                if (NodeConfiguration.IsConfigured &&
+                    !NodeConfiguration.DeviceID.Equals(Guid.Empty))
                 {
-                    RegisterDevicewithHub(nodeConfiguration.DeviceID);
+                    RegisterDevicewithHub(NodeConfiguration.DeviceID);
                 }
             }
             else if (hubConnection.State == HubConnectionState.Disconnected)
@@ -84,7 +112,7 @@ namespace SmartDeviceFirmware
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="message"></param>
-        private void HubConnection_Reconnecting(object sender, SignalrEventMessageArgs message)
+        private static void HubConnection_Reconnecting(object sender, SignalrEventMessageArgs message)
         {
             IsConnected = false;
             Debug.WriteLine("Disconnected from hub, trying to reconnect");
@@ -96,23 +124,23 @@ namespace SmartDeviceFirmware
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="message"></param>
-        private void HubConnection_Reconnected(object sender, SignalrEventMessageArgs message)
+        private static void HubConnection_Reconnected(object sender, SignalrEventMessageArgs message)
         {
             IsConnected = false;
-            hubConnection.SendCore("RegisterDevice", new object[] { nodeConfiguration.DeviceID });
+            hubConnection.SendCore("RegisterDevice", new object[] { NodeConfiguration.DeviceID });
             Debug.WriteLine("Reconnected to hub!");
         }
-        
+
         /// <summary>
         /// Transmits data to the SignalR server
         /// Method called from device implementation
         /// </summary>
         /// <returns></returns>
-        public void TransmitDeviceData(string jsonData)
+        public static void TransmitDeviceData(string jsonData)
         {
             if (hubConnection.State == HubConnectionState.Connected)
             {
-                object[] arguments = new object[] { nodeConfiguration.UserID, jsonData };
+                object[] arguments = new object[] { NodeConfiguration.UserID, jsonData };
                 hubConnection.SendCore("TransmitDataFromDevice", arguments);
                 Debug.WriteLine($"Transmitted {jsonData} to User Platform");
             }
@@ -125,14 +153,14 @@ namespace SmartDeviceFirmware
         /// <summary>
         /// Trasmits an acknowledge, that the device has properly recived data
         /// </summary>
-        public void TransmitDeviceAcknowledge()
+        public static void TransmitDeviceAcknowledge()
         {
             if (hubConnection.State == HubConnectionState.Connected)
             {
-                object[] arguments = new object[] { nodeConfiguration.UserID };
+                object[] arguments = new object[] { NodeConfiguration.UserID };
                 //object[] arguments = new object[] { "Test Message" };
                 hubConnection.SendCore("DeviceAcknowledge", arguments);
-                Debug.WriteLine($"Ack Sent To User Platform, with ID {nodeConfiguration.UserID}");
+                Debug.WriteLine($"Ack Sent To User Platform, with ID {NodeConfiguration.UserID}");
             }
             else
             {
@@ -144,7 +172,7 @@ namespace SmartDeviceFirmware
         /// <summary>
         /// 
         /// </summary>
-        internal void RegisterDevicewithHub(Guid deviceID)
+        internal static void RegisterDevicewithHub(Guid deviceID)
         {
             if (hubConnection.State == HubConnectionState.Connected)
             {
@@ -161,7 +189,7 @@ namespace SmartDeviceFirmware
         /// <summary>
         /// 
         /// </summary>
-        internal void DeregisterDeviceWithHub(Guid deviceID)
+        internal static void DeregisterDeviceWithHub(Guid deviceID)
         {
             if (deviceID.Equals(Guid.Empty))
             {

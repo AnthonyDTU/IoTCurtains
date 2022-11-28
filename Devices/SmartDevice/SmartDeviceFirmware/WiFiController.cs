@@ -8,19 +8,18 @@ using System.Threading;
 
 namespace SmartDeviceFirmware
 {
-    public class WiFiController
+    public static class WiFiController
     {
-        private bool isConnected = false;
-        public bool IsConnected { get { return isConnected; } }
+        public static bool IsConnected { get; private set; }
 
-        private NetworkInterface network;
-        private readonly NodeConfiguration nodeConfiguration;
-        private readonly SignalRController signalRController;
+        private static NetworkInterface network;
+        //private readonly NodeConfiguration nodeConfiguration;
+        //private readonly SignalRController signalRController;
         
-        private readonly int networkInterfaceIndex;
-        private readonly int isConnectedLEDIndicatorPinNumber;
-        private readonly GpioController gpioController;
-        private GpioPin wifiConnectedLedIndicator;
+        private static int networkInterfaceIndex;
+        private static int isConnectedLEDIndicatorPinNumber;
+        private static GpioController gpioController;
+        private static GpioPin wifiConnectedLedIndicator;
 
         /// <summary>
         /// 
@@ -29,20 +28,42 @@ namespace SmartDeviceFirmware
         /// <param name="password"></param>
         /// <param name="networkInterfaceIndex"></param>
         /// <param name="isConnectedLEDIndicatorPinNumber"></param>
-        public WiFiController(NodeConfiguration nodeConfiguration, SignalRController signalRController, int networkInterfaceIndex = 0, int isConnectedLEDIndicatorPinNumber = 0, GpioController gpioController = null)
-        {
-            this.nodeConfiguration = nodeConfiguration;
-            this.signalRController = signalRController;
-            this.networkInterfaceIndex = networkInterfaceIndex;
-            this.isConnectedLEDIndicatorPinNumber = isConnectedLEDIndicatorPinNumber;
-            this.gpioController = gpioController;
+        //public WiFiController(NodeConfiguration nodeConfiguration, SignalRController signalRController, int networkInterfaceIndex = 0, int isConnectedLEDIndicatorPinNumber = 0, GpioController gpioController = null)
+        //{
+        //    this.nodeConfiguration = nodeConfiguration;
+        //    this.signalRController = signalRController;
+        //    this.networkInterfaceIndex = networkInterfaceIndex;
+        //    this.isConnectedLEDIndicatorPinNumber = isConnectedLEDIndicatorPinNumber;
+        //    this.gpioController = gpioController;
            
+        //    network = NetworkInterface.GetAllNetworkInterfaces()[networkInterfaceIndex];
+        //    if (nodeConfiguration != null &&
+        //        nodeConfiguration.IsConfigured &&
+        //        nodeConfiguration.WiFiSSID != null && 
+        //        nodeConfiguration.WiFiSSID != default &&
+        //        nodeConfiguration.WiFiPassword != null)
+        //    {
+        //        TryConnectToWiFi();
+        //    }
+
+        //    if (network.IPv4Address != null &&
+        //        network.IPv4Address != string.Empty)
+        //    {
+        //        isConnected = true;
+        //    }
+        //}
+
+        public static void Configure(int networkInterfaceIndex = 0, int isConnectedLEDIndicatorPinNumber = 0, GpioController gpioController = null)
+        {
+            WiFiController.networkInterfaceIndex = networkInterfaceIndex;
+            WiFiController.isConnectedLEDIndicatorPinNumber = isConnectedLEDIndicatorPinNumber;
+            WiFiController.gpioController = gpioController;
+
             network = NetworkInterface.GetAllNetworkInterfaces()[networkInterfaceIndex];
-            if (nodeConfiguration != null &&
-                nodeConfiguration.IsConfigured &&
-                nodeConfiguration.WiFiSSID != null && 
-                nodeConfiguration.WiFiSSID != default &&
-                nodeConfiguration.WiFiPassword != null)
+            if (NodeConfiguration.IsConfigured &&
+                NodeConfiguration.WiFiSSID != null &&
+                NodeConfiguration.WiFiSSID != default &&
+                NodeConfiguration.WiFiPassword != null)
             {
                 TryConnectToWiFi();
             }
@@ -50,25 +71,25 @@ namespace SmartDeviceFirmware
             if (network.IPv4Address != null &&
                 network.IPv4Address != string.Empty)
             {
-                isConnected = true;
+                IsConnected = true;
             }
         }
         
         /// <summary>
         /// Tries to connect to a WiFi network
         /// </summary>
-        internal void TryConnectToWiFi()
+        internal static void TryConnectToWiFi()
         {
             try
             {
-                if (WifiNetworkHelper.ConnectDhcp(nodeConfiguration.WiFiSSID,
-                                                  nodeConfiguration.WiFiPassword,
+                if (WifiNetworkHelper.ConnectDhcp(NodeConfiguration.WiFiSSID,
+                                                  NodeConfiguration.WiFiPassword,
                                                   WifiReconnectionKind.Automatic,
                                                   requiresDateTime: true,
                                                   wifiAdapterId: networkInterfaceIndex,
                                                   token: new CancellationTokenSource(10000).Token))
                 {
-                    isConnected = true;
+                    IsConnected = true;
 
                     Debug.WriteLine("Connected To Wifi!");
                     Debug.WriteLine($"Network IP: {network.IPv4Address}");

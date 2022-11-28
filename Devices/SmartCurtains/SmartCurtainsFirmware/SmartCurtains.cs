@@ -56,23 +56,38 @@ namespace SmartCurtainsFirmware
 
             gpioController = new GpioController(PinNumberingScheme.Board);
 
-            serialComController = new SerialComController(nodeConfiguration, 
-                                                          COMPort, 
-                                                          RxUART2PinNumber, 
-                                                          TxUART2PinNumber, 
-                                                          SerialDataRecived);
+            SerialComController.Configure(COMPort,
+                                         RxUART2PinNumber,
+                                         TxUART2PinNumber,
+                                         SerialDataRecived);
 
-            wifiController = new WiFiController(nodeConfiguration, 
-                                                signalRController,
-                                                wifiInterfaceIndex, 
-                                                wifiConnectedLedPinNumber, 
-                                                gpioController);
+            //serialComController = new SerialComController(nodeConfiguration, 
+            //                                              COMPort, 
+            //                                              RxUART2PinNumber, 
+            //                                              TxUART2PinNumber, 
+            //                                              SerialDataRecived);
+
+
+            WiFiController.Configure(wifiInterfaceIndex,
+                                     wifiConnectedLedPinNumber,
+                                     gpioController);
+
+            //wifiController = new WiFiController(nodeConfiguration, 
+            //                                    signalRController,
+            //                                    wifiInterfaceIndex, 
+            //                                    wifiConnectedLedPinNumber, 
+            //                                    gpioController);
             
-            signalRController = new SignalRController(nodeConfiguration, 
-                                                      wifiController,
-                                                      Handle_SetDeviceData, 
-                                                      Handle_RequestDeviceData, 
-                                                      Handle_DeviceCommand);
+
+            SignalRController.Configure(Handle_SetDeviceData,
+                                        Handle_RequestDeviceData,
+                                        Handle_DeviceCommand);
+
+            //signalRController = new SignalRController(nodeConfiguration, 
+            //                                          wifiController,
+            //                                          Handle_SetDeviceData, 
+            //                                          Handle_RequestDeviceData, 
+            //                                          Handle_DeviceCommand);
 
             motorController = new MotorController(gpioController,
                                                   motorControllerIn1PinNumber,
@@ -103,7 +118,7 @@ namespace SmartCurtainsFirmware
             Debug.WriteLine("Data Requested");
 
             string jsonData = JsonConvert.SerializeObject(requestedDeviceState);
-            signalRController.TransmitDeviceData(jsonData);
+            SignalRController.TransmitDeviceData(jsonData);
 
             // call transmit Device Data, with jsonData of current and REQUESTED device data
         }
@@ -123,7 +138,7 @@ namespace SmartCurtainsFirmware
 
             requestedDeviceState = (DeviceData)JsonConvert.DeserializeObject(jsonData, typeof(DeviceData));
 
-            signalRController.TransmitDeviceAcknowledge();
+            SignalRController.TransmitDeviceAcknowledge();
 
             // set device data
         }

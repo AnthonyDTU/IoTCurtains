@@ -15,15 +15,16 @@ namespace SmartDeviceFirmware
     /// </summary>
     public class Device
     {
-        protected readonly NodeConfiguration nodeConfiguration;
-        protected GpioController gpioController;
-        protected SerialComController serialComController;
-        protected WiFiController wifiController;
-        protected SignalRController signalRController;
+        //protected static NodeConfiguration nodeConfiguration;
+        protected static GpioController gpioController;
+        //protected SerialComController serialComController;
+        //protected WiFiController wifiController;
+        //protected SignalRController signalRController;
 
         protected Device(string deviceModel)
         {
-            nodeConfiguration = new NodeConfiguration(wifiController, signalRController, deviceModel);
+            NodeConfiguration.Configure(deviceModel);
+            //nodeConfiguration = new NodeConfiguration(wifiController, signalRController, deviceModel);
         }
     }
 }
