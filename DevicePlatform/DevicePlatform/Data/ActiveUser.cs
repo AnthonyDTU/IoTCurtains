@@ -8,7 +8,7 @@ using System.Net;
 namespace DevicePlatform.Data
 {
 
-    public sealed class ActiveUserSingleton
+    public sealed class ActiveUser
     {
         public bool LoggedIn { get; private set; } = false;
         public User User { get; private set; }
@@ -19,10 +19,10 @@ namespace DevicePlatform.Data
 
         private const string hubUrl = "ws://smartplatformbackendapi.azurewebsites.net/device";
 
-        private static readonly Lazy<ActiveUserSingleton> lazy = new Lazy<ActiveUserSingleton>(() => new ActiveUserSingleton());
+        private static readonly Lazy<ActiveUser> lazy = new Lazy<ActiveUser>(() => new ActiveUser());
 
-        public static ActiveUserSingleton Instance { get { return lazy.Value; } }
-        private ActiveUserSingleton()
+        public static ActiveUser Instance { get { return lazy.Value; } }
+        private ActiveUser()
         {
             DevicesPlugins = new DevicePluginCollection();
             InitializeSignalRHub();

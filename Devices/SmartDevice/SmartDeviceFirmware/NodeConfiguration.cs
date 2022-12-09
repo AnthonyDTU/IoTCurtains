@@ -66,14 +66,19 @@ namespace SmartDeviceFirmware
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("Error inpacking config: " + ex.Message);
+                Debug.WriteLine("Error unpacking config: " + ex.Message);
                 return false;
             }
 
 
             // Try connect to WIFI
             WiFiController.TryConnectToWiFi();
-            
+
+            if (!SignalRController.IsConnected)
+            {
+                SignalRController.ConnectToSignalRHub();
+            }
+
             // Deregistre old guid in hub, and register new guid in hub
 
             if (WiFiController.IsConnected && 

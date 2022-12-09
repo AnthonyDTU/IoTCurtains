@@ -13,18 +13,13 @@ namespace SmartDeviceFirmware
     /// * SignalR Controller
     /// * -- More to come --
     /// </summary>
-    public class Device
+    public abstract class Device
     {
-        //protected static NodeConfiguration nodeConfiguration;
         protected static GpioController gpioController;
-        //protected SerialComController serialComController;
-        //protected WiFiController wifiController;
-        //protected SignalRController signalRController;
 
         protected Device(string deviceModel)
         {
             NodeConfiguration.Configure(deviceModel);
-            //nodeConfiguration = new NodeConfiguration(wifiController, signalRController, deviceModel);
         }
     }
 }

@@ -21,7 +21,7 @@ public partial class LoginPage : ContentPage
 	{
 		try
 		{
-			HttpStatusCode status = await ActiveUserSingleton.Instance.apiController.Login(usernameEntry.Text, passwordEntry.Text);
+			HttpStatusCode status = await ActiveUser.Instance.apiController.Login(usernameEntry.Text, passwordEntry.Text);
 
 			if (status == HttpStatusCode.OK)
 			{

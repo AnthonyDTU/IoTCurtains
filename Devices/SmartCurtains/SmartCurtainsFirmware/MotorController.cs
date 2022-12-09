@@ -32,6 +32,7 @@ namespace SmartCurtainsFirmware
         private GpioPin in2;
         private GpioPin in3;
         private GpioPin in4;
+        private GpioPin activateMoter;
 
         private int currentStep = 0;
         private readonly int numberOfSteps = 4;
@@ -94,25 +95,19 @@ namespace SmartCurtainsFirmware
                                int in1PinNumber,
                                int in2PinNumber,
                                int in3PinNumber,
-                               int in4PinNumber)
+                               int in4PinNumber,
+                               int activateMoterPinNumber)
         {
-            //motor = new Uln2003(in1PinNumber,
-            //                    in2PinNumber,
-            //                    in3PinNumber,
-            //                    in4PinNumber,
-            //                    gpioController);
-
-
-
             in1 = gpioController.OpenPin(in1PinNumber, PinMode.Output);
             in2 = gpioController.OpenPin(in2PinNumber, PinMode.Output);
             in3 = gpioController.OpenPin(in3PinNumber, PinMode.Output);
             in4 = gpioController.OpenPin(in4PinNumber, PinMode.Output);
-
+            activateMoter = gpioController.OpenPin(activateMoterPinNumber, PinMode.Output);
+            
             engineThread = new Thread(new ThreadStart(this.RunMotor));
             engineThread.Priority = ThreadPriority.AboveNormal;
             engineThread.Start();
-        }
+         }
 
 
         /// <summary>
@@ -137,9 +132,16 @@ namespace SmartCurtainsFirmware
         {
             while (true)
             {
+                // If the setpoint is off, activate the motor
+                if (currentLocation != setPoint)
+                {
+                    activateMoter.Write(PinValue.High);
+                }
+
                 // Check for setpoint limits, and adjust:
                 while (currentLocation != setPoint)
                 {
+                    // Count the motor position in one direction or the other
                     if (currentLocation < setPoint)
                     {
                         currentLocation++;
@@ -151,13 +153,16 @@ namespace SmartCurtainsFirmware
                         currentStep = (currentStep == 0) ? numberOfSteps - 1 : currentStep - 1;
                     }
 
+                    // Turn the moter to the next step
                     in1.Write(stepSequence0[currentStep]);
                     in2.Write(stepSequence1[currentStep]);
                     in3.Write(stepSequence2[currentStep]);
                     in4.Write(stepSequence3[currentStep]);
                     Thread.Sleep(2);
                 }
-
+                
+                // Deactivate the motor and wait for a new setpoint
+                activateMoter.Write(PinValue.Low);
                 newSetpontSignal.WaitOne();
             }
         }

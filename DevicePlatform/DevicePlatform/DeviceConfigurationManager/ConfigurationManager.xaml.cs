@@ -179,7 +179,7 @@ public partial class ConfigurationManager : ContentPage
 			{
 				workingDevicePlugin.DeviceDescriptor.SetDeviceDescritptor(workingDevicePlugin.DeviceConfigurator.GetDeviceDescriptor());
                 //await ActiveUserSingleton.Instance.apiController.AddNewDevice(workingDevicePlugin.DeviceDescriptor);
-				await ActiveUserSingleton.Instance.AddNewDevicePlugin(workingDevicePlugin);
+				await ActiveUser.Instance.AddNewDevicePlugin(workingDevicePlugin);
 
                 if (serialPort != null &&
 					serialPort.IsOpen)
@@ -214,11 +214,11 @@ public partial class ConfigurationManager : ContentPage
         {
             case "Smart Curtains":
                 if (newDevice)
-                    workingDevicePlugin = new SmartCurtainsPlatformPlugin.SmartCurtainsPlatformPlugin(ActiveUserSingleton.Instance.User.UserID,
-                                                                                                      ActiveUserSingleton.Instance.hubConnection,
-                                                                                                      ActiveUserSingleton.Instance.RemoveDevicePlugin);
+                    workingDevicePlugin = new SmartCurtainsPlatformPlugin.SmartCurtainsPlatformPlugin(ActiveUser.Instance.User.UserID,
+                                                                                                      ActiveUser.Instance.hubConnection,
+                                                                                                      ActiveUser.Instance.RemoveDevicePlugin);
                 else
-                    workingDevicePlugin = ActiveUserSingleton.Instance.DevicesPlugins.GetDevicePlugin(deviceID);
+                    workingDevicePlugin = ActiveUser.Instance.DevicesPlugins.GetDevicePlugin(deviceID);
                 break;
 
             default:

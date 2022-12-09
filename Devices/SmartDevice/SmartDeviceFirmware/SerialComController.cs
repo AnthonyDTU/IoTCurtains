@@ -15,54 +15,16 @@ namespace SmartDeviceFirmware
         private static StopBits stopBits = StopBits.One;
 
         private static string getConfigCommand = "deviceConfig?";
-        private static string setConfigCommand = "config";
         private static string newConfigHeader = "newConfig:";
                
         private static string getDeviceModelQuery = "deviceModel?";
         private static string readyForConfigQuery = "readyForConfig?";
         private static string readyForConfigResponse = "readyForConfig!";
         private static string deviceConfiguredCommand = "deviceConfigured!";
-        private static string resetNodeCommand = "resetNode";
-               
-        private static string setDeviceNameCommand = "deviceName:";
-        private static string setDeviceIDCommand = "deviceID:";
-        private static string setUserIDCommand = "userID:";
-        private static string setWiFiSSIDCommand = "WiFiSSID:";
-        private static string setWiFiPasswordCommand = "WiFiPassword:";
-        private static string setDeviceKeyCommand = "deviceKey:";
-
+        private static string resetNodeCommand = "resetNode";               
 
         public delegate void DataRecivedHandler(string data);
         public static DataRecivedHandler dataRecivedCallbackHandler;
-
-        //private NodeConfiguration nodeConfiguration;
-
-        /// <summary>
-        /// Constructer which initilizes the pins and the serial port
-        /// </summary>
-        /// <param name="COMPort"></param>
-        /// <param name="rxPinNumber"></param>
-        /// <param name="txPinNumber"></param>
-        /// <param name="dataRecivedHandler">Passes back all data, that is not related to config commands</param>
-        //public SerialComController(NodeConfiguration nodeConfiguration, string COMPort, int rxPinNumber, int txPinNumber, DataRecivedHandler dataRecivedCallbackHandler = null)
-        //{
-        //    this.nodeConfiguration = nodeConfiguration;
-        //    this.dataRecivedCallbackHandler = dataRecivedCallbackHandler;
-
-        //    Configuration.SetPinFunction(rxPinNumber, DeviceFunction.COM2_RX);
-        //    Configuration.SetPinFunction(txPinNumber, DeviceFunction.COM2_TX);
-
-        //    serialPort = new SerialPort(COMPort,
-        //                                baudRate, 
-        //                                parity, 
-        //                                databits, 
-        //                                stopBits);
-
-        //    serialPort.ReadBufferSize = 2048;
-        //    serialPort.DataReceived += SerialPort_DataReceived;
-        //    serialPort.Open();
-        //}
-
         public static void Configure(string COMPort, int rxPinNumber, int txPinNumber, DataRecivedHandler dataRecivedCallbackHandler = null)
         {
             Configuration.SetPinFunction(rxPinNumber, DeviceFunction.COM2_RX);

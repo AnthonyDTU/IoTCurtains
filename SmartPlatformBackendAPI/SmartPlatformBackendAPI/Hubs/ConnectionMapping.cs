@@ -65,7 +65,10 @@ namespace SmartPlatformBackendAPI.Hubs
 
                 lock (connections)
                 {
-                    connections.Add(connectionId);
+                    if (!connections.Contains(connectionId))
+                    {
+                        connections.Add(connectionId);
+                    }
                 }
             }
         }

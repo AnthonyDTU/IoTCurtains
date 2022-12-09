@@ -73,16 +73,16 @@ namespace SmartCurtainsPlatformPlugin
         /// <param name="hubConnection"></param>
         private void InitPlugin(HubConnection hubConnection)
         {
-            configurator = new SmartCurtainsConfigurator(deviceDescriptor);
+                configurator = new SmartCurtainsConfigurator(deviceDescriptor);
             
-            signalRController = new SignalRController(deviceDescriptor, 
-                                                      hubConnection, 
-                                                      DataReceivedFromDevice, 
-                                                      DeviceAcknowledgeReceived);
-            
-            deviceContentPage = new SmartCurtainsContentPageUI(signalRController, 
-                                                               SetDeviceData, 
-                                                               DeleteDevice);
+                signalRController = new SignalRController(deviceDescriptor,
+                                                          hubConnection,
+                                                          DataReceivedFromDevice,
+                                                          DeviceAcknowledgeReceived);
+
+                deviceContentPage = new SmartCurtainsContentPageUI(signalRController,
+                                                                   SetDeviceData,
+                                                                   DeleteDevice);
         }
 
         /// <summary>

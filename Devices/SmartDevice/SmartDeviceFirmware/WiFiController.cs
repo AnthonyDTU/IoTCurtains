@@ -10,7 +10,7 @@ namespace SmartDeviceFirmware
 {
     public static class WiFiController
     {
-        public static bool IsConnected { get; private set; }
+        public static bool IsConnected { get; private set; } = false;
 
         private static NetworkInterface network;
         //private readonly NodeConfiguration nodeConfiguration;
@@ -58,20 +58,24 @@ namespace SmartDeviceFirmware
             WiFiController.networkInterfaceIndex = networkInterfaceIndex;
             WiFiController.isConnectedLEDIndicatorPinNumber = isConnectedLEDIndicatorPinNumber;
             WiFiController.gpioController = gpioController;
+            wifiConnectedLedIndicator = gpioController.OpenPin(isConnectedLEDIndicatorPinNumber, PinMode.Output);
 
             network = NetworkInterface.GetAllNetworkInterfaces()[networkInterfaceIndex];
+
+            if (network.IPv4Address != null &&
+                network.IPv4Address != string.Empty)
+            {
+                Debug.WriteLine("Already To Wifi!");
+                ConfigureConnectedToWiFi();
+                return;
+            }
+
             if (NodeConfiguration.IsConfigured &&
                 NodeConfiguration.WiFiSSID != null &&
                 NodeConfiguration.WiFiSSID != default &&
                 NodeConfiguration.WiFiPassword != null)
             {
                 TryConnectToWiFi();
-            }
-
-            if (network.IPv4Address != null &&
-                network.IPv4Address != string.Empty)
-            {
-                IsConnected = true;
             }
         }
         
@@ -89,17 +93,9 @@ namespace SmartDeviceFirmware
                                                   wifiAdapterId: networkInterfaceIndex,
                                                   token: new CancellationTokenSource(10000).Token))
                 {
-                    IsConnected = true;
 
                     Debug.WriteLine("Connected To Wifi!");
-                    Debug.WriteLine($"Network IP: {network.IPv4Address}");
-
-                    if (isConnectedLEDIndicatorPinNumber != 0 &&
-                        gpioController != null)
-                    {
-                        wifiConnectedLedIndicator = gpioController.OpenPin(isConnectedLEDIndicatorPinNumber, PinMode.Output);
-                        wifiConnectedLedIndicator.Write(PinValue.High);
-                    }
+                    ConfigureConnectedToWiFi();
                 }
                 else
                 {
@@ -112,6 +108,18 @@ namespace SmartDeviceFirmware
                 Debug.WriteLine("Error wile connecting to WiFi:");
                 Debug.WriteLine(ex.Message);
             }            
+        }
+
+        private static void ConfigureConnectedToWiFi()
+        {
+            IsConnected = true;
+            Debug.WriteLine($"Network IP: {network.IPv4Address}");
+
+            if (isConnectedLEDIndicatorPinNumber != 0 &&
+                gpioController != null)
+            {
+                wifiConnectedLedIndicator.Write(PinValue.High);
+            }
         }
     }
 }

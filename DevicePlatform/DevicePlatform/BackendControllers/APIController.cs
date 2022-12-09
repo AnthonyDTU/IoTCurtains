@@ -55,7 +55,7 @@ namespace DevicePlatform.BackendControllers
                 if (result.StatusCode == HttpStatusCode.OK)
                 {
                     User user = await result.Content.ReadFromJsonAsync<User>();
-                    await ActiveUserSingleton.Instance.ConfigureActiveUser(user);
+                    await ActiveUser.Instance.ConfigureActiveUser(user);
                 }
                 else if (result.StatusCode == HttpStatusCode.NotFound)
                 {
@@ -96,7 +96,7 @@ namespace DevicePlatform.BackendControllers
                 if (result.StatusCode == HttpStatusCode.OK)
                 {
                     User user = await result.Content.ReadFromJsonAsync<User>();
-                    await ActiveUserSingleton.Instance.ConfigureActiveUser(user);
+                    await ActiveUser.Instance.ConfigureActiveUser(user);
                 }
                 else if (result.StatusCode == HttpStatusCode.Conflict)
                 {
@@ -120,14 +120,14 @@ namespace DevicePlatform.BackendControllers
         /// <returns></returns>
         public async Task<HttpStatusCode> UpdateUser()
         {
-            if (ActiveUserSingleton.Instance.LoggedIn == false)
+            if (ActiveUser.Instance.LoggedIn == false)
             {
                 return HttpStatusCode.PreconditionFailed;
             }
 
             try
             {
-                var result = await backendAPI.PostAsJsonAsync("api/Users", ActiveUserSingleton.Instance.User);
+                var result = await backendAPI.PostAsJsonAsync("api/Users", ActiveUser.Instance.User);
                 if (result.StatusCode == HttpStatusCode.OK)
                 {
 
@@ -206,7 +206,7 @@ namespace DevicePlatform.BackendControllers
                 if (result.StatusCode == HttpStatusCode.OK)
                 {
                     User user = await result.Content.ReadFromJsonAsync<User>();
-                    ActiveUserSingleton.Instance.UpdateActiveUser(user);
+                    ActiveUser.Instance.UpdateActiveUser(user);
                 }
 
                 return result.StatusCode;

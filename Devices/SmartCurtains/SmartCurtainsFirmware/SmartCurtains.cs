@@ -10,6 +10,7 @@ using nanoFramework.Json;
 using System.Collections;
 using System.Diagnostics;
 using Windows.Storage;
+using nanoFramework.Runtime.Native;
 
 namespace SmartCurtainsFirmware
 {
@@ -24,6 +25,7 @@ namespace SmartCurtainsFirmware
         const int motorControllerIn2PinNumber = 12;
         const int motorControllerIn3PinNumber = 14;
         const int motorControllerIn4PinNumber = 27;
+        const int activateMotorPinNumber = 18;
         const int rollDownButtonPin = 32;
         const int rollUpButtonPin = 33;
         const int CalibrateButtonPin = 25;
@@ -61,50 +63,30 @@ namespace SmartCurtainsFirmware
                                          TxUART2PinNumber,
                                          SerialDataRecived);
 
-            //serialComController = new SerialComController(nodeConfiguration, 
-            //                                              COMPort, 
-            //                                              RxUART2PinNumber, 
-            //                                              TxUART2PinNumber, 
-            //                                              SerialDataRecived);
-
-
             WiFiController.Configure(wifiInterfaceIndex,
                                      wifiConnectedLedPinNumber,
                                      gpioController);
-
-            //wifiController = new WiFiController(nodeConfiguration, 
-            //                                    signalRController,
-            //                                    wifiInterfaceIndex, 
-            //                                    wifiConnectedLedPinNumber, 
-            //                                    gpioController);
-            
 
             SignalRController.Configure(Handle_SetDeviceData,
                                         Handle_RequestDeviceData,
                                         Handle_DeviceCommand);
 
-            //signalRController = new SignalRController(nodeConfiguration, 
-            //                                          wifiController,
-            //                                          Handle_SetDeviceData, 
-            //                                          Handle_RequestDeviceData, 
-            //                                          Handle_DeviceCommand);
-
             motorController = new MotorController(gpioController,
                                                   motorControllerIn1PinNumber,
                                                   motorControllerIn2PinNumber,
                                                   motorControllerIn3PinNumber,
-                                                  motorControllerIn4PinNumber);
-
+                                                  motorControllerIn4PinNumber,
+                                                  activateMotorPinNumber);
 
             rollDownButton = new GpioButton(rollDownButtonPin, gpioController, false);
             rollUpButton = new GpioButton(rollUpButtonPin, gpioController, false);
             stopMotorButton = new GpioButton(StopAllActionButtonPin, gpioController, false);
             calibrateButton = new GpioButton(CalibrateButtonPin, gpioController, false);
 
-            rollDownButton.Press += RollDownButton_Press;
-            rollUpButton.Press += RollUpButton_Press;
-            stopMotorButton.Press += StopMotorButton_Press;
-            calibrateButton.Press += CalibrateButton_Press;
+            rollDownButton.ButtonDown += RollDownButton_Press;
+            rollUpButton.ButtonDown += RollUpButton_Press;
+            stopMotorButton.ButtonDown += StopMotorButton_Press;
+            calibrateButton.ButtonDown += CalibrateButton_Press;
         }
 
 
@@ -161,17 +143,17 @@ namespace SmartCurtainsFirmware
 
             switch (command)
             {
-                case "RollUp":
+                case "\"RollUp\"":
                     Console.WriteLine($"Command Received: {command}");
                     motorController.SetPoint = motorController.MinSetpoint;
                     break;
 
-                case "RollDown":
+                case "\"RollDown\"":
                     Console.WriteLine($"Command Received: {command}");
                     motorController.SetPoint = motorController.MaxSetpoint;
                     break;
 
-                case "DeleteDevice":
+                case "\"DeleteDevice\"":
                     Console.WriteLine("DeviceDeleted");
                     NodeConfiguration.ResetNodeToFactory();
                     break;
@@ -191,7 +173,8 @@ namespace SmartCurtainsFirmware
         /// <exception cref="NotImplementedException"></exception>
         private void CalibrateButton_Press(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            Debug.WriteLine("Calibrate Button Pressed");
+            // Calibrate motor
         }
 
         /// <summary>
@@ -201,6 +184,7 @@ namespace SmartCurtainsFirmware
         /// <param name="e"></param>
         private void StopMotorButton_Press(object sender, EventArgs e)
         {
+            Debug.WriteLine("Stop Button Pressed");
             motorController.SetPoint = motorController.CurrentLocation;
         }
 
@@ -211,6 +195,7 @@ namespace SmartCurtainsFirmware
         /// <param name="e"></param>
         private void RollUpButton_Press(object sender, EventArgs e)
         {
+            Debug.WriteLine("Roll Up Button Pressed");
             motorController.SetPoint = motorController.MinSetpoint;
         }
 
@@ -221,6 +206,7 @@ namespace SmartCurtainsFirmware
         /// <param name="e"></param>
         private void RollDownButton_Press(object sender, EventArgs e)
         {
+            Debug.WriteLine("Roll Down Button Pressed");
             motorController.SetPoint = motorController.MaxSetpoint;
         }
 

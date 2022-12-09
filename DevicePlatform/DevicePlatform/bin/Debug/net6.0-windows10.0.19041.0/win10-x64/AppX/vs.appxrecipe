@@ -29,7 +29,7 @@
     <AppXManifest Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-11-28T22:52:19.573</Modified>
+      <Modified>2022-11-29T16:13:22.367</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
@@ -43,11 +43,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\DevicePlatform.dll">
       <PackagePath>DevicePlatform.dll</PackagePath>
-      <Modified>2022-11-28T22:52:17.726</Modified>
+      <Modified>2022-11-29T16:13:19.334</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\apphost.exe">
       <PackagePath>DevicePlatform.exe</PackagePath>
-      <Modified>2022-11-28T22:52:17.737</Modified>
+      <Modified>2022-11-29T16:13:19.373</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\anton\.nuget\packages\microsoft.netcore.app.runtime.win-x64\6.0.10\runtimes\win-x64\lib\net6.0\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -1111,7 +1111,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\DevicePlatform.deps.json">
       <PackagePath>DevicePlatform.deps.json</PackagePath>
-      <Modified>2022-11-28T22:52:19.392</Modified>
+      <Modified>2022-11-29T16:13:21.761</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files\dotnet\packs\Microsoft.Maui.Controls.Ref.win\6.0.541\ref\net6.0-windows10.0.19041\Microsoft.Maui.Controls.Compatibility.pri">
       <PackagePath>Microsoft.Maui.Controls.Compatibility.pri</PackagePath>

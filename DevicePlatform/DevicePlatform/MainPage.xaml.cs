@@ -31,7 +31,7 @@ public partial class MainPage : ContentPage
 		}
 		else
 		{
-            ActiveUserSingleton.Instance.apiController.Login(storedUser, storedPassword).Wait();
+            ActiveUser.Instance.apiController.Login(storedUser, storedPassword).Wait();
 
             //ActiveUser.apiController.Login(storedUser, storedPassword).Wait();
 		}		
@@ -53,11 +53,11 @@ public partial class MainPage : ContentPage
 	{
         MainContentView.Children.Clear();
         
-        if (ActiveUserSingleton.Instance.LoggedIn)
+        if (ActiveUser.Instance.LoggedIn)
         {
-            if (ActiveUserSingleton.Instance.DevicesPlugins.Count != 0)
+            if (ActiveUser.Instance.DevicesPlugins.Count != 0)
             {
-                foreach (var plugin in ActiveUserSingleton.Instance.DevicesPlugins.Plugins)
+                foreach (var plugin in ActiveUser.Instance.DevicesPlugins.Plugins)
                 {
                     Button pluginButton = new Button()
                     {
@@ -103,19 +103,19 @@ public partial class MainPage : ContentPage
                 MainContentView.Children.Add(addNewDeviceButton);
             }
 
-            Button testButton = new Button()
-            {
-                WidthRequest = 250,
-                HeightRequest = 100,
-                CornerRadius = 10,
-                BackgroundColor = Colors.Cyan,
-                Text = "Test button",
-                TextColor = Colors.Black,
-                FontSize = 15,
-            };
+            //Button testButton = new Button()
+            //{
+            //    WidthRequest = 250,
+            //    HeightRequest = 100,
+            //    CornerRadius = 10,
+            //    BackgroundColor = Colors.Cyan,
+            //    Text = "Test button",
+            //    TextColor = Colors.Black,
+            //    FontSize = 15,
+            //};
 
-            testButton.Clicked += TestButton_Clicked;
-            MainContentView.Children.Add(testButton);
+            //testButton.Clicked += TestButton_Clicked;
+            //MainContentView.Children.Add(testButton);
 
         }
         else
@@ -141,7 +141,7 @@ public partial class MainPage : ContentPage
     /// <param name="e"></param>
     private async void PluginButton_Clicked(object sender, EventArgs e)
     {
-        foreach (var plugin in ActiveUserSingleton.Instance.DevicesPlugins.Plugins)
+        foreach (var plugin in ActiveUser.Instance.DevicesPlugins.Plugins)
         {
             if (((Button)sender).Text == plugin.Value.DeviceDescriptor.DeviceName)
             {
@@ -189,7 +189,7 @@ public partial class MainPage : ContentPage
     /// <param name="e"></param>
 	private async void ConfigureNewDeviceButton_Clicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new DeviceConfigurationManager.ConfigurationManager(ActiveUserSingleton.Instance.DevicesPlugins));
+        await Navigation.PushAsync(new DeviceConfigurationManager.ConfigurationManager(ActiveUser.Instance.DevicesPlugins));
     }
 
 
