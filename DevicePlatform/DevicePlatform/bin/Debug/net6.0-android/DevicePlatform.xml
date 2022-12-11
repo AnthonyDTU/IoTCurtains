@@ -4,7 +4,17 @@
         <name>DevicePlatform</name>
     </assembly>
     <members>
-        <member name="M:DevicePlatform.APIHandler.Login(System.String,System.String)">
+        <member name="M:DevicePlatform.BackendControllers.APIController.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DevicePlatform.BackendControllers.APIController.InitBackendConnection">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DevicePlatform.BackendControllers.APIController.Login(System.String,System.String)">
             <summary>
             
             </summary>
@@ -12,7 +22,7 @@
             <param name="password"></param>
             <returns></returns>
         </member>
-        <member name="M:DevicePlatform.APIHandler.CreateNewUser(System.String,System.String)">
+        <member name="M:DevicePlatform.BackendControllers.APIController.CreateNewUser(System.String,System.String)">
             <summary>
             
             </summary>
@@ -20,7 +30,58 @@
             <param name="password"></param>
             <returns></returns>
         </member>
-        <member name="M:DevicePlatform.Data.DevicePluginCollection.AddNewDevicePlugin(SmartDevicePlatformPlugin.IPlatformPlugin)">
+        <member name="M:DevicePlatform.BackendControllers.APIController.UpdateUser">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DevicePlatform.BackendControllers.APIController.AddNewDevice(SmartDevicePlatformPlugin.DeviceDescriptor)">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DevicePlatform.BackendControllers.APIController.DeleteUser(System.Guid)">
+            <summary>
+            
+            </summary>
+            <param name="userID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DevicePlatform.BackendControllers.APIController.DeleteDevice(System.Guid,System.Guid)">
+            <summary>
+            
+            </summary>
+            <param name="userID"></param>
+            <param name="deviceID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DevicePlatform.Data.ActiveUser.InitializeSignalRHub">
+            <summary>
+            Builds the connection to the SignalR hub.
+            </summary>
+        </member>
+        <member name="M:DevicePlatform.Data.ActiveUser.ConnectSignalRHub">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DevicePlatform.Data.ActiveUser.RemoveDevicePlugin(System.Guid)">
+            <summary>
+            
+            </summary>
+            <param name="plugin"></param>
+        </member>
+        <member name="M:DevicePlatform.Data.ActiveUser.ConfigureActiveUser(DevicePlatform.Models.User)">
+            <summary>
+            
+            </summary>
+            <param name="activeUser"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DevicePlatform.Data.DevicePluginCollection.AddDevicePlugin(SmartDevicePlatformPlugin.IPlatformPlugin)">
             <summary>
             Adds a new platform plugin
             </summary>
@@ -32,6 +93,11 @@
             </summary>
             <param name="updatedPlugin"></param>
         </member>
+        <member name="M:DevicePlatform.Data.DevicePluginCollection.DeleteDevicePlugin(System.Guid)">
+            <summary>
+            Removes a platform plugin from the plugin collection
+            </summary>
+        </member>
         <member name="M:DevicePlatform.Data.DevicePluginCollection.GetDevicePlugin(System.Guid)">
             <summary>
             Gets a platform plugin
@@ -39,14 +105,21 @@
             <param name="deviceID"></param>
             <returns></returns>
         </member>
-        <member name="M:DevicePlatform.DeviceConfigurationManager.ConfigurationManager.#ctor(System.Uri,DevicePlatform.Data.DevicePluginCollection)">
+        <member name="M:DevicePlatform.DeviceConfigurationManager.ConfigurationManager.#ctor">
             <summary>
             Creates a new device and starts the configuration process
             </summary>
             <param name="backendAPI"></param>
             <param name="devices"></param>
         </member>
-        <member name="M:DevicePlatform.DeviceConfigurationManager.ConfigurationManager.#ctor(System.Uri,DevicePlatform.Data.DevicePluginCollection,System.Guid)">
+        <member name="M:DevicePlatform.DeviceConfigurationManager.ConfigurationManager.SetupSerialConnectionButton_Clicked(System.Object,System.EventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:DevicePlatform.DeviceConfigurationManager.ConfigurationManager.#ctor(System.Guid)">
             <summary>
             Starts the configuration process of an existing device
             </summary>
@@ -89,6 +162,92 @@
             <param name="sender"></param>
             <param name="e"></param>
             <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:DevicePlatform.DeviceConfigurationManager.ConfigurationManager.Finalize">
+            <summary>
+            Deconstructor 
+            Closes the serial-port
+            </summary>
+        </member>
+        <member name="M:DevicePlatform.DeviceConfigurationManager.SerialConfiguratorView.OpenDeviceButton_Clicked(System.Object,System.EventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:DevicePlatform.DeviceConfigurationManager.SerialConfiguratorView.UpdatePorts_Clicked(System.Object,System.EventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:DevicePlatform.LoginPage.LoginButton_Clicked(System.Object,System.EventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:DevicePlatform.LoginPage.GoToCreateNewUserButton_Clicked(System.Object,System.EventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:DevicePlatform.MainPage.RenderUI">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DevicePlatform.MainPage.PluginButton_Clicked(System.Object,System.EventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:DevicePlatform.MainPage.TestButton_Clicked(System.Object,System.EventArgs)">
+            <summary>
+            Used for testing 
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:DevicePlatform.MainPage.LoadLocalData">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DevicePlatform.MainPage.PresentLoginScreen">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DevicePlatform.MainPage.ConfigureNewDeviceButton_Clicked(System.Object,System.EventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:DevicePlatform.MainPage.GoToLoginButtonPage_Clicked(System.Object,System.EventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:DevicePlatform.MainPage.ContentPage_Appearing(System.Object,System.EventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
         </member>
     </members>
 </doc>

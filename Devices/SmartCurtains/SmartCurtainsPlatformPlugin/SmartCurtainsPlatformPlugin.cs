@@ -20,24 +20,22 @@ namespace SmartCurtainsPlatformPlugin
         private SmartCurtainsConfigurator configurator;
         public IDeviceConfigurator DeviceConfigurator => configurator;
 
-        private DeviceDescriptor deviceDescriptor;
-        public DeviceDescriptor DeviceDescriptor => deviceDescriptor;
+        public DeviceDescriptor DeviceDescriptor { get; private set; }
 
-        private SignalRController signalRController;
-        public SignalRController SignalRController => signalRController;
+        public SignalRController SignalRController { get; private set; }
 
-        DeviceData deviceData = new DeviceData();
-        SmartCurtainsContentPageUI deviceContentPage;
+        private DeviceData deviceData = new DeviceData();
+        private SmartCurtainsContentPageUI deviceContentPage;
 
 
         public delegate bool DeleteDeviceCallBack(Guid deviceID);
-        public DeleteDeviceCallBack deleteDeviceCallBack;
+        private DeleteDeviceCallBack deleteDeviceCallBack;
 
         public SmartCurtainsPlatformPlugin(Guid userID, HubConnection hubConnection, DeleteDeviceCallBack deleteDeviceCallBack)
         {
             this.deleteDeviceCallBack = deleteDeviceCallBack;
 
-            deviceDescriptor = new DeviceDescriptor()
+            DeviceDescriptor = new DeviceDescriptor()
             {
                 DeviceID = Guid.NewGuid(),
                 UserID = userID,
@@ -54,7 +52,7 @@ namespace SmartCurtainsPlatformPlugin
         {
             this.deleteDeviceCallBack = deleteDeviceCallBack;
 
-            deviceDescriptor = new DeviceDescriptor()
+            DeviceDescriptor = new DeviceDescriptor()
             {
                 DeviceID = deviceID,
                 UserID = userID,
@@ -73,14 +71,14 @@ namespace SmartCurtainsPlatformPlugin
         /// <param name="hubConnection"></param>
         private void InitPlugin(HubConnection hubConnection)
         {
-                configurator = new SmartCurtainsConfigurator(deviceDescriptor);
+                configurator = new SmartCurtainsConfigurator(DeviceDescriptor);
             
-                signalRController = new SignalRController(deviceDescriptor,
+                SignalRController = new SignalRController(DeviceDescriptor,
                                                           hubConnection,
                                                           DataReceivedFromDevice,
                                                           DeviceAcknowledgeReceived);
 
-                deviceContentPage = new SmartCurtainsContentPageUI(signalRController,
+                deviceContentPage = new SmartCurtainsContentPageUI(SignalRController,
                                                                    SetDeviceData,
                                                                    DeleteDevice);
         }
@@ -101,7 +99,7 @@ namespace SmartCurtainsPlatformPlugin
         public ContentPage GetPluginContentPageUI()
         {
             GetCurrentDeviceState();
-            deviceContentPage.Title = deviceDescriptor.DeviceName;
+            deviceContentPage.Title = DeviceDescriptor.DeviceName;
             deviceContentPage.ConfigureData(deviceData);
             return deviceContentPage;
         }
@@ -132,7 +130,7 @@ namespace SmartCurtainsPlatformPlugin
         /// </summary>
         private void GetCurrentDeviceState()
         {
-            signalRController.RequestDeviceData();
+            SignalRController.RequestDeviceData();
         }
 
         /// <summary>
@@ -140,8 +138,8 @@ namespace SmartCurtainsPlatformPlugin
         /// </summary>
         private bool DeleteDevice()
         {
-            signalRController.SendCommandToDevice("DeleteDevice");
-            return deleteDeviceCallBack.Invoke(deviceDescriptor.DeviceID);
+            SignalRController.SendCommandToDevice("DeleteDevice");
+            return deleteDeviceCallBack.Invoke(DeviceDescriptor.DeviceID);
         }
     }
 }

@@ -38,15 +38,15 @@ namespace SmartCurtainsFirmware
 
         // Device specific objects
         // 
-        MotorController motorController;
+        private MotorController motorController;
 
-        GpioButton rollDownButton;
-        GpioButton rollUpButton;
-        GpioButton calibrateButton;
-        GpioButton stopMotorButton;
+        private GpioButton rollDownButton;
+        private GpioButton rollUpButton;
+        private GpioButton calibrateButton;
+        private GpioButton stopMotorButton;
 
-        DeviceData requestedDeviceState;
-        DeviceData acutalDeviceState;
+        private DeviceData requestedDeviceState;
+        private DeviceData actualDeviceState;
 
         /// <summary>
         /// 
@@ -54,14 +54,14 @@ namespace SmartCurtainsFirmware
         public SmartCurtains() : base("Smart Curtains")
         {
             requestedDeviceState = new DeviceData();
-            acutalDeviceState = new DeviceData();
+            actualDeviceState = new DeviceData();
 
             gpioController = new GpioController(PinNumberingScheme.Board);
 
             SerialComController.Configure(COMPort,
                                          RxUART2PinNumber,
                                          TxUART2PinNumber,
-                                         SerialDataRecived);
+                                         SerialDataReceived);
 
             WiFiController.Configure(wifiInterfaceIndex,
                                      wifiConnectedLedPinNumber,
@@ -72,6 +72,8 @@ namespace SmartCurtainsFirmware
                                         Handle_DeviceCommand);
 
             motorController = new MotorController(gpioController,
+                                                  actualDeviceState,
+                                                  Handle_ReportData,
                                                   motorControllerIn1PinNumber,
                                                   motorControllerIn2PinNumber,
                                                   motorControllerIn3PinNumber,
@@ -99,7 +101,7 @@ namespace SmartCurtainsFirmware
         {
             Debug.WriteLine("Data Requested");
 
-            string jsonData = JsonConvert.SerializeObject(requestedDeviceState);
+            string jsonData = JsonConvert.SerializeObject(actualDeviceState);
             SignalRController.TransmitDeviceData(jsonData);
 
             // call transmit Device Data, with jsonData of current and REQUESTED device data
@@ -119,6 +121,11 @@ namespace SmartCurtainsFirmware
             Debug.WriteLine(jsonData);
 
             requestedDeviceState = (DeviceData)JsonConvert.DeserializeObject(jsonData, typeof(DeviceData));
+
+            actualDeviceState.RollDownTime = requestedDeviceState.RollDownTime;
+            actualDeviceState.RollUpTime = requestedDeviceState.RollUpTime;
+            actualDeviceState.FollowSunset = requestedDeviceState.FollowSunset;
+            actualDeviceState.FollowSunrise = requestedDeviceState.FollowSunrise;
 
             SignalRController.TransmitDeviceAcknowledge();
 
@@ -162,6 +169,12 @@ namespace SmartCurtainsFirmware
                     Console.WriteLine($"Unknown Command Received: {command}");
                     break;
             }
+        }
+
+        internal void Handle_ReportData()
+        {
+            string jsonData = JsonConvert.SerializeObject(actualDeviceState);
+            SignalRController.TransmitDeviceData(jsonData);
         }
 
 
@@ -215,7 +228,7 @@ namespace SmartCurtainsFirmware
         /// </summary>
         /// <param name="recivedData"></param>
         /// <exception cref="NotImplementedException"></exception>
-        private void SerialDataRecived(string recivedData)
+        private void SerialDataReceived(string recivedData)
         {
             Console.WriteLine(recivedData);
         }

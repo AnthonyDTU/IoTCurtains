@@ -10,22 +10,7 @@ namespace SmartPlatformBackendAPI.Hubs
 
         private readonly Dictionary<T, string> deviceConnections = new Dictionary<T, string>();
         private readonly Dictionary<T, List<string>> userConnections = new Dictionary<T, List<string>>();
-
-        public int deviceConnectionCount
-        {
-            get
-            {
-                return deviceConnections.Count;
-            }
-        }
-
-        public int userConnectionsCount
-        {
-            get
-            {
-                return userConnections.Count;
-            }
-        }
+        
 
         /// <summary>
         /// 

@@ -11,28 +11,13 @@ namespace SmartCurtainsFirmware
         static int[] stepSequence2 = { 0, 0, 1, 1 };
         static int[] stepSequence3 = { 1, 0, 0, 1 };
 
-        //static int[] stepSequence0 = { 0, 0, 0, 0, 0, 1, 1, 1 };
-        //static int[] stepSequence1 = { 0, 0, 0, 1, 1, 1, 0, 0 };
-        //static int[] stepSequence2 = { 0, 1, 1, 1, 0, 0, 0, 0 };
-        //static int[] stepSequence3 = { 1, 1, 0, 0, 0, 0, 0, 1 };
-
-        //private readonly int[] stepSequence0 = { 0, 0, 1, 1 };
-        //private readonly int[] stepSequence1 = { 1, 0, 0, 1 };
-        //private readonly int[] stepSequence2 = { 1, 1, 0, 0 };
-        //private readonly int[] stepSequence3 = { 0, 1, 1, 0 };
-
-        //private readonly int[] stepSequence0 = { 1, 0, 0, 0 };
-        //private readonly int[] stepSequence1 = { 0, 1, 0, 0 };
-        //private readonly int[] stepSequence2 = { 0, 0, 1, 0 };
-        //private readonly int[] stepSequence3 = { 0, 0, 0, 1 };
-
-        private AutoResetEvent newSetpontSignal = new AutoResetEvent(false);
+        private AutoResetEvent newSetpointSignal = new AutoResetEvent(false);
 
         private GpioPin in1;
         private GpioPin in2;
         private GpioPin in3;
         private GpioPin in4;
-        private GpioPin activateMoter;
+        private GpioPin activateMotor;
 
         private int currentStep = 0;
         private readonly int numberOfSteps = 4;
@@ -46,7 +31,7 @@ namespace SmartCurtainsFirmware
         private bool calibrated = false;
 
         private Thread engineThread;
-
+        private DeviceData deviceData;
 
 
         public bool Calibrated
@@ -60,7 +45,7 @@ namespace SmartCurtainsFirmware
         }
         public int CurrentLocationPercentage
         {
-            get { return (int)((float)(currentLocation / maxLocation) * 100); }
+            get { return (int)((float)((float)currentLocation / (float)maxLocation) * 100); }
         }
         public int SetPoint
         {
@@ -68,7 +53,7 @@ namespace SmartCurtainsFirmware
             set
             {
                 setPoint = CheckSetpointLimits(value);
-                newSetpontSignal.Set();
+                newSetpointSignal.Set();
             }
         }
         public int MinSetpoint
@@ -82,6 +67,8 @@ namespace SmartCurtainsFirmware
             set { maxLocation = value; }
         }
 
+        public delegate void TransmitDataHandler();
+        private TransmitDataHandler transmitDataHandler;
 
         /// <summary>
         /// 
@@ -92,17 +79,22 @@ namespace SmartCurtainsFirmware
         /// <param name="in3PinNumber"></param>
         /// <param name="in4PinNumber"></param>
         public MotorController(GpioController gpioController,
+                               DeviceData deviceData,
+                               TransmitDataHandler transmitDataHandler,
                                int in1PinNumber,
                                int in2PinNumber,
                                int in3PinNumber,
                                int in4PinNumber,
                                int activateMoterPinNumber)
         {
+            this.deviceData = deviceData;
+            this.transmitDataHandler = transmitDataHandler;
+
             in1 = gpioController.OpenPin(in1PinNumber, PinMode.Output);
             in2 = gpioController.OpenPin(in2PinNumber, PinMode.Output);
             in3 = gpioController.OpenPin(in3PinNumber, PinMode.Output);
             in4 = gpioController.OpenPin(in4PinNumber, PinMode.Output);
-            activateMoter = gpioController.OpenPin(activateMoterPinNumber, PinMode.Output);
+            activateMotor = gpioController.OpenPin(activateMoterPinNumber, PinMode.Output);
             
             engineThread = new Thread(new ThreadStart(this.RunMotor));
             engineThread.Priority = ThreadPriority.AboveNormal;
@@ -128,14 +120,16 @@ namespace SmartCurtainsFirmware
         /// Its responsibility is to move the motor, until its current location is equal to the setpoint.
         /// It does this, whenever the class is signalled there is a new setpoint. 
         /// </summary>
-        public void RunMotor()
+        private void RunMotor()
         {
+            int lastPostitionPercentage = CurrentLocationPercentage;
+
             while (true)
             {
                 // If the setpoint is off, activate the motor
                 if (currentLocation != setPoint)
                 {
-                    activateMoter.Write(PinValue.High);
+                    activateMotor.Write(PinValue.High);
                 }
 
                 // Check for setpoint limits, and adjust:
@@ -158,12 +152,24 @@ namespace SmartCurtainsFirmware
                     in2.Write(stepSequence1[currentStep]);
                     in3.Write(stepSequence2[currentStep]);
                     in4.Write(stepSequence3[currentStep]);
+
+                    if (lastPostitionPercentage != CurrentLocationPercentage)
+                    {
+                        lastPostitionPercentage = CurrentLocationPercentage;
+                        deviceData.CurrentLevel = CurrentLocationPercentage;
+                        
+                        if (transmitDataHandler != null)
+                        {
+                            transmitDataHandler();
+                        }
+                    }
+
                     Thread.Sleep(2);
                 }
                 
                 // Deactivate the motor and wait for a new setpoint
-                activateMoter.Write(PinValue.Low);
-                newSetpontSignal.WaitOne();
+                activateMotor.Write(PinValue.Low);
+                newSetpointSignal.WaitOne();
             }
         }
     }

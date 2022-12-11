@@ -12,47 +12,19 @@ namespace SmartDeviceFirmware
     {
         public static bool IsConnected { get; private set; } = false;
 
-        private static NetworkInterface network;
-        //private readonly NodeConfiguration nodeConfiguration;
-        //private readonly SignalRController signalRController;
-        
+        private static NetworkInterface network;        
         private static int networkInterfaceIndex;
         private static int isConnectedLEDIndicatorPinNumber;
         private static GpioController gpioController;
         private static GpioPin wifiConnectedLedIndicator;
 
         /// <summary>
-        /// 
+        /// Configures the WiFiController with the specified values from an implementing device.
+        /// If a the node configuration has been set or loaded, the WiFiController will attempt to connect to the WiFi network.
         /// </summary>
-        /// <param name="SSID"></param>
-        /// <param name="password"></param>
         /// <param name="networkInterfaceIndex"></param>
         /// <param name="isConnectedLEDIndicatorPinNumber"></param>
-        //public WiFiController(NodeConfiguration nodeConfiguration, SignalRController signalRController, int networkInterfaceIndex = 0, int isConnectedLEDIndicatorPinNumber = 0, GpioController gpioController = null)
-        //{
-        //    this.nodeConfiguration = nodeConfiguration;
-        //    this.signalRController = signalRController;
-        //    this.networkInterfaceIndex = networkInterfaceIndex;
-        //    this.isConnectedLEDIndicatorPinNumber = isConnectedLEDIndicatorPinNumber;
-        //    this.gpioController = gpioController;
-           
-        //    network = NetworkInterface.GetAllNetworkInterfaces()[networkInterfaceIndex];
-        //    if (nodeConfiguration != null &&
-        //        nodeConfiguration.IsConfigured &&
-        //        nodeConfiguration.WiFiSSID != null && 
-        //        nodeConfiguration.WiFiSSID != default &&
-        //        nodeConfiguration.WiFiPassword != null)
-        //    {
-        //        TryConnectToWiFi();
-        //    }
-
-        //    if (network.IPv4Address != null &&
-        //        network.IPv4Address != string.Empty)
-        //    {
-        //        isConnected = true;
-        //    }
-        //}
-
+        /// <param name="gpioController"></param>
         public static void Configure(int networkInterfaceIndex = 0, int isConnectedLEDIndicatorPinNumber = 0, GpioController gpioController = null)
         {
             WiFiController.networkInterfaceIndex = networkInterfaceIndex;
@@ -71,9 +43,8 @@ namespace SmartDeviceFirmware
             }
 
             if (NodeConfiguration.IsConfigured &&
-                NodeConfiguration.WiFiSSID != null &&
                 NodeConfiguration.WiFiSSID != default &&
-                NodeConfiguration.WiFiPassword != null)
+                NodeConfiguration.WiFiPassword != default)
             {
                 TryConnectToWiFi();
             }
@@ -110,6 +81,9 @@ namespace SmartDeviceFirmware
             }            
         }
 
+        /// <summary>
+        /// Sets state properties and LED indicators when connected to WiFi
+        /// </summary>
         private static void ConfigureConnectedToWiFi()
         {
             IsConnected = true;

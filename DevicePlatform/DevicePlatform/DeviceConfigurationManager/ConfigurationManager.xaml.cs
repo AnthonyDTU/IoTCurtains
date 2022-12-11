@@ -25,12 +25,11 @@ public partial class ConfigurationManager : ContentPage
 
     private SerialPort serialPort;
 	private string deviceModel;
-	private DevicePluginCollection devices;
 	private Guid deviceID;
 	private bool newDevice;
 
-    SerialConfiguratorView serialConfiguratorView;
-    IPlatformPlugin workingDevicePlugin;
+    private SerialConfiguratorView serialConfiguratorView;
+    private IPlatformPlugin workingDevicePlugin;
 
 
 	/// <summary>
@@ -38,12 +37,10 @@ public partial class ConfigurationManager : ContentPage
 	/// </summary>
 	/// <param name="backendAPI"></param>
 	/// <param name="devices"></param>
-	public ConfigurationManager(DevicePluginCollection devices)
+	public ConfigurationManager()
 	{
 		InitializeComponent();
 
-
-		this.devices = devices;
 		newDevice = true;
 
 		serialConfiguratorView = new SerialConfiguratorView(SetupSerialConnection);
@@ -51,7 +48,29 @@ public partial class ConfigurationManager : ContentPage
 		this.NavigatedFrom += ConfigurationManager_NavigatedFrom;
 	}
 
-	private void ConfigurationManager_NavigatedFrom(object sender, NavigatedFromEventArgs e)
+    /// <summary>
+    /// Starts the configuration process of an existing device
+    /// </summary>
+    /// <param name="backendAPI"></param>
+    /// <param name="devices"></param>
+    /// <param name="deviceID"></param>
+    public ConfigurationManager(Guid deviceID)
+    {
+        InitializeComponent();
+
+        this.deviceID = deviceID;
+        newDevice = false;
+
+        SerialConfiguratorView serialConfiguratorView = new SerialConfiguratorView(SetupSerialConnection);
+        ConfigurationView.Children.Add(serialConfiguratorView);
+    }
+
+    /// <summary>
+	/// 
+	/// </summary>
+	/// <param name="sender"></param>
+	/// <param name="e"></param>
+    private void ConfigurationManager_NavigatedFrom(object sender, NavigatedFromEventArgs e)
     {
         if (serialPort != null &&
             serialPort.IsOpen)
@@ -93,23 +112,7 @@ public partial class ConfigurationManager : ContentPage
     }
 
 
-	/// <summary>
-	/// Starts the configuration process of an existing device
-	/// </summary>
-	/// <param name="backendAPI"></param>
-	/// <param name="devices"></param>
-	/// <param name="deviceID"></param>
-	public ConfigurationManager(DevicePluginCollection devices, Guid deviceID)
-    {
-        InitializeComponent();
-
-        this.devices = devices;
-        this.deviceID = deviceID;
-		newDevice = false;
-
-        SerialConfiguratorView serialConfiguratorView = new SerialConfiguratorView(SetupSerialConnection);
-        ConfigurationView.Children.Add(serialConfiguratorView);
-    }
+	
 
 	/// <summary>
 	/// Opens the serial port an queries the device for its model
@@ -218,7 +221,7 @@ public partial class ConfigurationManager : ContentPage
                                                                                                       ActiveUser.Instance.hubConnection,
                                                                                                       ActiveUser.Instance.RemoveDevicePlugin);
                 else
-                    workingDevicePlugin = ActiveUser.Instance.DevicesPlugins.GetDevicePlugin(deviceID);
+                    workingDevicePlugin = ActiveUser.Instance.DevicePlugins.GetDevicePlugin(deviceID);
                 break;
 
             default:
@@ -257,20 +260,5 @@ public partial class ConfigurationManager : ContentPage
 	{
         serialPort.WriteLine(getDeviceReadyForConfigCommand);
 	}
-
-	/// <summary>
-	/// Deconstructor 
-	/// Closes the serial-port
-	/// </summary>
-	~ConfigurationManager()
-	{
-		if (serialPort != null &&
-			serialPort.IsOpen)
-		{
-			serialPort.Close();
-			serialPort.Dispose();
-		}
-	}
-
 }
 #pragma warning restore CA1416 // Validate platform compatibility

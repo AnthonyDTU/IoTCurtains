@@ -89,6 +89,13 @@
             <param name="sender"></param>
             <param name="e"></param>
         </member>
+        <member name="M:SmartCurtainsPlatformPlugin.SmartCurtainsContentPageUI.DeleteDeviceButton_Clicked(System.Object,System.EventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
         <member name="M:SmartCurtainsPlatformPlugin.SmartCurtainsPlatformPlugin.InitPlugin(Microsoft.AspNetCore.SignalR.Client.HubConnection)">
             <summary>
             

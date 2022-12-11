@@ -2022,3 +2022,12 @@ C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-and
 C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-android\lp\152\jl\files.cache
 C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-android\lp\153\jl\files.cache
 C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-android\lp\155\jl\files.cache
+C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-android\android\assets\Microsoft.AspNetCore.Connections.Abstractions.dll
+C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-android\android\assets\Microsoft.AspNetCore.Http.Connections.Client.dll
+C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-android\android\assets\Microsoft.AspNetCore.Http.Connections.Common.dll
+C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-android\android\assets\Microsoft.AspNetCore.SignalR.Client.Core.dll
+C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-android\android\assets\Microsoft.AspNetCore.SignalR.Client.dll
+C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-android\android\assets\Microsoft.AspNetCore.SignalR.Common.dll
+C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-android\android\assets\Microsoft.AspNetCore.SignalR.Protocols.Json.dll
+C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-android\android\assets\Microsoft.Extensions.Features.dll
+C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-android\android\assets\System.IO.Pipelines.dll

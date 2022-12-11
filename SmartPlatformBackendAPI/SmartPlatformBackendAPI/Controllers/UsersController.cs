@@ -28,7 +28,7 @@ namespace SmartPlatformBackendAPI.Controllers
 
         // New login
         [HttpPost("login")]
-        public IActionResult PostLogin(UserCredentials userCredentials)
+        public IActionResult Login(UserCredentials userCredentials)
         {
             User? user = dbContext.Users.Include(d => d.DeviceDescriptors).AsNoTracking().SingleOrDefault(u => u.UserName == userCredentials.UserName && u.Password == userCredentials.Password);
             if (user != null)
@@ -66,7 +66,7 @@ namespace SmartPlatformBackendAPI.Controllers
 
         // PUT api/<UsersController>
         [HttpPut]
-        public IActionResult CreateNewUser([FromBody] AddNewUserModel newUser)
+        public IActionResult CreateNewUser([FromBody] NewUserModel newUser)
         {
             newUser.UserName = newUser.UserName.Trim();
 
@@ -90,7 +90,7 @@ namespace SmartPlatformBackendAPI.Controllers
 
         // DELETE api/<UsersController>/5
         [HttpDelete("{userID}")]
-        public IActionResult Delete([FromRoute] Guid userID, [FromBody] UserCredentials userCredentials)
+        public IActionResult DeleteUser([FromRoute] Guid userID, [FromBody] UserCredentials userCredentials)
         {
             try
             {
@@ -107,7 +107,7 @@ namespace SmartPlatformBackendAPI.Controllers
 
         // DELETE api/{userID}/Devices/{deviceID}"
         [HttpDelete("{userID}/{deviceID}")]
-        public IActionResult Delete([FromRoute] Guid userID, [FromRoute] Guid deviceID)
+        public IActionResult DeleteDevice([FromRoute] Guid userID, [FromRoute] Guid deviceID)
         {
             try
             {

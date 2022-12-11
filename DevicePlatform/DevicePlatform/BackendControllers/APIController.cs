@@ -15,8 +15,8 @@ namespace DevicePlatform.BackendControllers
 {
     public class APIController
     {
-        HttpClient backendAPI;
-        Uri uriBase = new Uri("https://localhost:7173/");
+        private HttpClient backendAPI;
+        private Uri uriBase = new Uri("https://localhost:7173/");
 
         /// <summary>
         /// 

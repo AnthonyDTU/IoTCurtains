@@ -538,3 +538,12 @@ C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-ios
 C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-ios\iossimulator-x64\DevicePlatform.csproj.CopyComplete
 C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-ios\iossimulator-x64\DevicePlatform.genruntimeconfig.cache
 C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\obj\Debug\net6.0-ios\iossimulator-x64\ref\DevicePlatform.dll
+C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\bin\Debug\net6.0-ios\iossimulator-x64\Microsoft.AspNetCore.Connections.Abstractions.dll
+C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\bin\Debug\net6.0-ios\iossimulator-x64\Microsoft.AspNetCore.Http.Connections.Client.dll
+C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\bin\Debug\net6.0-ios\iossimulator-x64\Microsoft.AspNetCore.Http.Connections.Common.dll
+C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\bin\Debug\net6.0-ios\iossimulator-x64\Microsoft.AspNetCore.SignalR.Client.dll
+C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\bin\Debug\net6.0-ios\iossimulator-x64\Microsoft.AspNetCore.SignalR.Client.Core.dll
+C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\bin\Debug\net6.0-ios\iossimulator-x64\Microsoft.AspNetCore.SignalR.Common.dll
+C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\bin\Debug\net6.0-ios\iossimulator-x64\Microsoft.AspNetCore.SignalR.Protocols.Json.dll
+C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\bin\Debug\net6.0-ios\iossimulator-x64\Microsoft.Extensions.Features.dll
+C:\DTU\Projects\SmartPlatform\DevicePlatform\DevicePlatform\bin\Debug\net6.0-ios\iossimulator-x64\System.IO.Pipelines.dll

@@ -55,9 +55,9 @@ public partial class MainPage : ContentPage
         
         if (ActiveUser.Instance.LoggedIn)
         {
-            if (ActiveUser.Instance.DevicesPlugins.Count != 0)
+            if (ActiveUser.Instance.DevicePlugins.Count != 0)
             {
-                foreach (var plugin in ActiveUser.Instance.DevicesPlugins.Plugins)
+                foreach (var plugin in ActiveUser.Instance.DevicePlugins.Plugins)
                 {
                     Button pluginButton = new Button()
                     {
@@ -141,7 +141,7 @@ public partial class MainPage : ContentPage
     /// <param name="e"></param>
     private async void PluginButton_Clicked(object sender, EventArgs e)
     {
-        foreach (var plugin in ActiveUser.Instance.DevicesPlugins.Plugins)
+        foreach (var plugin in ActiveUser.Instance.DevicePlugins.Plugins)
         {
             if (((Button)sender).Text == plugin.Value.DeviceDescriptor.DeviceName)
             {
@@ -189,7 +189,7 @@ public partial class MainPage : ContentPage
     /// <param name="e"></param>
 	private async void ConfigureNewDeviceButton_Clicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new DeviceConfigurationManager.ConfigurationManager(ActiveUser.Instance.DevicesPlugins));
+        await Navigation.PushAsync(new DeviceConfigurationManager.ConfigurationManager());
     }
 
 

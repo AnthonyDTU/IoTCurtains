@@ -12,7 +12,7 @@ namespace DevicePlatform.Data
     {
         public bool LoggedIn { get; private set; } = false;
         public User User { get; private set; }
-        public DevicePluginCollection DevicesPlugins { get; private set; }
+        public DevicePluginCollection DevicePlugins { get; private set; }
         public HubConnection hubConnection { get; private set; }
         public APIController apiController { get; private set; }
 
@@ -24,7 +24,7 @@ namespace DevicePlatform.Data
         public static ActiveUser Instance { get { return lazy.Value; } }
         private ActiveUser()
         {
-            DevicesPlugins = new DevicePluginCollection();
+            DevicePlugins = new DevicePluginCollection();
             InitializeSignalRHub();
             InitializeAPIController();
 
@@ -85,17 +85,9 @@ namespace DevicePlatform.Data
         public async Task AddNewDevicePlugin(IPlatformPlugin plugin)
         {
             await apiController.AddNewDevice(plugin.DeviceDescriptor);
-            DevicesPlugins.AddDevicePlugin(plugin);
+            DevicePlugins.AddDevicePlugin(plugin);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="plugin"></param>
-        public async void AddDevicePlugin(IPlatformPlugin plugin)
-        {
-            DevicesPlugins.AddDevicePlugin(plugin);
-        }
 
         /// <summary>
         /// 
@@ -111,7 +103,7 @@ namespace DevicePlatform.Data
             //}
 
 
-            DevicesPlugins.DeleteDevicePlugin(deviceID);
+            DevicePlugins.DeleteDevicePlugin(deviceID);
             return true;
         }
 
@@ -141,7 +133,7 @@ namespace DevicePlatform.Data
                     switch (device.DeviceModel)
                     {
                         case "Smart Curtains":
-                            DevicesPlugins.AddDevicePlugin(new SmartCurtainsPlatformPlugin.SmartCurtainsPlatformPlugin(hubConnection,
+                            DevicePlugins.AddDevicePlugin(new SmartCurtainsPlatformPlugin.SmartCurtainsPlatformPlugin(hubConnection,
                                                                                                                        device.UserID,
                                                                                                                        device.DeviceID,
                                                                                                                        device.DeviceName,

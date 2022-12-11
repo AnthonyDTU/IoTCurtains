@@ -1205,6 +1205,42 @@ app_system_properties:
 .L.env.buf.291:
 	.zero	70
 	.size	.L.env.buf.291, 70
+	.type	.L.env.buf.292, @object
+.L.env.buf.292:
+	.zero	70
+	.size	.L.env.buf.292, 70
+	.type	.L.env.buf.293, @object
+.L.env.buf.293:
+	.zero	70
+	.size	.L.env.buf.293, 70
+	.type	.L.env.buf.294, @object
+.L.env.buf.294:
+	.zero	70
+	.size	.L.env.buf.294, 70
+	.type	.L.env.buf.295, @object
+.L.env.buf.295:
+	.zero	70
+	.size	.L.env.buf.295, 70
+	.type	.L.env.buf.296, @object
+.L.env.buf.296:
+	.zero	70
+	.size	.L.env.buf.296, 70
+	.type	.L.env.buf.297, @object
+.L.env.buf.297:
+	.zero	70
+	.size	.L.env.buf.297, 70
+	.type	.L.env.buf.298, @object
+.L.env.buf.298:
+	.zero	70
+	.size	.L.env.buf.298, 70
+	.type	.L.env.buf.299, @object
+.L.env.buf.299:
+	.zero	70
+	.size	.L.env.buf.299, 70
+	.type	.L.env.buf.300, @object
+.L.env.buf.300:
+	.zero	70
+	.size	.L.env.buf.300, 70
 	// Bundled assemblies data
 
 	.type	bundled_assemblies, @object
@@ -3841,7 +3877,88 @@ bundled_assemblies:
 	.zero	4
 	.xword	.L.env.buf.291	// name
 
-	.size	bundled_assemblies, 11680
+	.word	0xffffffff	// apk_fd
+	.word	0x0	// data_offset
+	.word	0x0	// data_size
+	.zero	4
+	.xword	0x0	// data
+	.word	0x0	// name_length
+	.zero	4
+	.xword	.L.env.buf.292	// name
+
+	.word	0xffffffff	// apk_fd
+	.word	0x0	// data_offset
+	.word	0x0	// data_size
+	.zero	4
+	.xword	0x0	// data
+	.word	0x0	// name_length
+	.zero	4
+	.xword	.L.env.buf.293	// name
+
+	.word	0xffffffff	// apk_fd
+	.word	0x0	// data_offset
+	.word	0x0	// data_size
+	.zero	4
+	.xword	0x0	// data
+	.word	0x0	// name_length
+	.zero	4
+	.xword	.L.env.buf.294	// name
+
+	.word	0xffffffff	// apk_fd
+	.word	0x0	// data_offset
+	.word	0x0	// data_size
+	.zero	4
+	.xword	0x0	// data
+	.word	0x0	// name_length
+	.zero	4
+	.xword	.L.env.buf.295	// name
+
+	.word	0xffffffff	// apk_fd
+	.word	0x0	// data_offset
+	.word	0x0	// data_size
+	.zero	4
+	.xword	0x0	// data
+	.word	0x0	// name_length
+	.zero	4
+	.xword	.L.env.buf.296	// name
+
+	.word	0xffffffff	// apk_fd
+	.word	0x0	// data_offset
+	.word	0x0	// data_size
+	.zero	4
+	.xword	0x0	// data
+	.word	0x0	// name_length
+	.zero	4
+	.xword	.L.env.buf.297	// name
+
+	.word	0xffffffff	// apk_fd
+	.word	0x0	// data_offset
+	.word	0x0	// data_size
+	.zero	4
+	.xword	0x0	// data
+	.word	0x0	// name_length
+	.zero	4
+	.xword	.L.env.buf.298	// name
+
+	.word	0xffffffff	// apk_fd
+	.word	0x0	// data_offset
+	.word	0x0	// data_size
+	.zero	4
+	.xword	0x0	// data
+	.word	0x0	// name_length
+	.zero	4
+	.xword	.L.env.buf.299	// name
+
+	.word	0xffffffff	// apk_fd
+	.word	0x0	// data_offset
+	.word	0x0	// data_size
+	.zero	4
+	.xword	0x0	// data
+	.word	0x0	// name_length
+	.zero	4
+	.xword	.L.env.buf.300	// name
+
+	.size	bundled_assemblies, 12040
 	// Assembly store individual assembly data
 	.type	assembly_store_bundled_assemblies, @object
 	.global	assembly_store_bundled_assemblies
@@ -4101,7 +4218,7 @@ application_config:
 	.word	0x3	// package_naming_policy
 	.word	0xc	// environment_variable_count
 	.word	0x0	// system_property_count
-	.word	0x124	// number_of_assemblies_in_apk
+	.word	0x12d	// number_of_assemblies_in_apk
 	.word	0x46	// bundled_assembly_name_width
 	.word	0x2	// number_of_assembly_store_files
 	.word	0x24	// number_of_dso_cache_entries
@@ -4154,7 +4271,7 @@ application_config:
 
 	.type	.L.autostr.8, @object
 .L.autostr.8:
-	.asciz	"92d39738-48ec-42c4-9186-6ae45fa2ca94"
+	.asciz	"5ed95e93-91c3-4338-8e8c-259405bcb0bf"
 	.size	.L.autostr.8, 37
 
 	.type	.L.autostr.9, @object

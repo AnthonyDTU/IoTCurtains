@@ -8,12 +8,12 @@ namespace SmartCurtainsPlatformPlugin;
 public partial class SmartCurtainsContentPageUI : ContentPage
 {
     public delegate void ConfigureDevice(DeviceData data);
-    public ConfigureDevice configureDevice;
+    private ConfigureDevice configureDevice;
 
 	private SignalRController signalRController;
 
 	public delegate bool DeleteDeviceCallBack();
-	public DeleteDeviceCallBack deleteDeviceCallBack;
+	private DeleteDeviceCallBack deleteDeviceCallBack;
 
     public SmartCurtainsContentPageUI(SignalRController signalRController, ConfigureDevice configureDevice, DeleteDeviceCallBack deleteDeviceCallBack)
 	{
@@ -107,6 +107,11 @@ public partial class SmartCurtainsContentPageUI : ContentPage
         signalRController.TransmitDataToDevice(jsonData);
     }
 
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="sender"></param>
+	/// <param name="e"></param>
 	private void DeleteDeviceButton_Clicked(object sender, EventArgs e)
 	{
 		if (deleteDeviceCallBack.Invoke())

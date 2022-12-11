@@ -21,14 +21,24 @@ namespace SmartDeviceFirmware
         private static string readyForConfigQuery = "readyForConfig?";
         private static string readyForConfigResponse = "readyForConfig!";
         private static string deviceConfiguredCommand = "deviceConfigured!";
-        private static string resetNodeCommand = "resetNode";               
-
+        private static string resetNodeCommand = "resetNode";
+        
         public delegate void DataRecivedHandler(string data);
-        public static DataRecivedHandler dataRecivedCallbackHandler;
+        public static DataRecivedHandler dataRecivedCallback;
+
+        /// <summary>
+        /// Configures the SerialComController with the values from an implementing device.
+        /// Opens a serial port and starts listening for data.
+        /// </summary>
+        /// <param name="COMPort"></param>
+        /// <param name="rxPinNumber"></param>
+        /// <param name="txPinNumber"></param>
+        /// <param name="dataRecivedCallbackHandler"></param>
         public static void Configure(string COMPort, int rxPinNumber, int txPinNumber, DataRecivedHandler dataRecivedCallbackHandler = null)
         {
             Configuration.SetPinFunction(rxPinNumber, DeviceFunction.COM2_RX);
             Configuration.SetPinFunction(txPinNumber, DeviceFunction.COM2_TX);
+            dataRecivedCallback = dataRecivedCallbackHandler;
 
             serialPort = new SerialPort(COMPort,
                                         baudRate,
@@ -96,9 +106,9 @@ namespace SmartDeviceFirmware
 
             // No match for configuration commands, so
             // pass data back to delegate (if one is set)
-            if (dataRecivedCallbackHandler != null)
+            if (dataRecivedCallback != null)
             {
-                dataRecivedCallbackHandler(recievedData);
+                dataRecivedCallback(recievedData);
                 return;
             }
         }
@@ -120,16 +130,22 @@ namespace SmartDeviceFirmware
             if (message == string.Empty)
                 return false;
 
-            // Transmit data
-            try
+            lock (serialPort)
             {
-                serialPort.WriteLine(message);
-                return true;
+                // Transmit data
+                try
+                {
+                    serialPort.WriteLine(message);
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Error transmitting data on the serial port {ex.Message}");
+                    return false;
+                }
             }
-            catch (Exception)
-            {
-                return false;
-            }
+
+            
         }
     }
 }

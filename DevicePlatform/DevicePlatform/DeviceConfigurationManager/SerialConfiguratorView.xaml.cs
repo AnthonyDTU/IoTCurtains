@@ -5,10 +5,6 @@ using System.IO.Ports;
 #pragma warning disable CA1416 // Validate platform compatibility
 public partial class SerialConfiguratorView : ContentView
 {
-    private string COMPort = "COM1";
-
-    ConfigurationManager parent;
-
     public delegate void ConnectButtonPressed(string COMPort);
     public ConnectButtonPressed connectButtonPressed;
 
@@ -18,10 +14,6 @@ public partial class SerialConfiguratorView : ContentView
         InitializeComponent();
         COMPortPicker.ItemsSource = SerialPort.GetPortNames();
         COMPortPicker.SelectedIndex = 0;
-
-
-        parent = (ConfigurationManager)Parent;
-
     }
 
     /// <summary>

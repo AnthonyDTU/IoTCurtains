@@ -7,8 +7,6 @@ namespace SmartCurtainsFirmware
 {
     public class Program
     {
-        static Thread programThread;
-
         public static void Main()
         {
             SmartCurtains smartCurtains = new SmartCurtains();
