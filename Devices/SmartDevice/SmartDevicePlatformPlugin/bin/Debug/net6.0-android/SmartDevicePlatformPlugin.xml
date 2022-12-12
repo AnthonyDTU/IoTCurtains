@@ -50,6 +50,15 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:SmartDevicePlatformPlugin.SignalRController.#ctor(SmartDevicePlatformPlugin.DeviceDescriptor,Microsoft.AspNetCore.SignalR.Client.HubConnection,System.Action{System.String},System.Action{System.String})">
+            <summary>
+            
+            </summary>
+            <param name="deviceDescriptor"></param>
+            <param name="hubConnection"></param>
+            <param name="signalRDeviceDataReceivedCallback"></param>
+            <param name="signalRDeviceAcknowledgeCallback"></param>
+        </member>
         <member name="M:SmartDevicePlatformPlugin.SignalRController.RequestDeviceData">
             <summary>
             Request data from SmartDevice

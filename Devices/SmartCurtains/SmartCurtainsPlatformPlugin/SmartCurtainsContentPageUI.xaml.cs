@@ -44,7 +44,7 @@ public partial class SmartCurtainsContentPageUI : ContentPage
 	}
 
 	/// <summary>
-	/// 
+	/// Configures the controls in the UI to display the device data
 	/// </summary>
 	/// <param name="deviceData"></param>
 	public void ConfigureData(DeviceData deviceData)
@@ -67,7 +67,7 @@ public partial class SmartCurtainsContentPageUI : ContentPage
 	}
 
 	/// <summary>
-	/// 
+	/// Gets the device data based on the values in the UI controls
 	/// </summary>
 	/// <returns></returns>
 	private DeviceData GetDeviceData()
@@ -82,7 +82,7 @@ public partial class SmartCurtainsContentPageUI : ContentPage
 	}
 
 	/// <summary>
-	/// 
+	/// Handler for when a device sends an acknowledge
 	/// </summary>
 	public void DataAcknowledgedByDevice()
 	{
@@ -95,7 +95,7 @@ public partial class SmartCurtainsContentPageUI : ContentPage
 	}
 
 	/// <summary>
-	/// 
+	/// Handler for sending data to the device, when the user presses the button
 	/// </summary>
 	/// <param name="sender"></param>
 	/// <param name="e"></param>
@@ -108,7 +108,7 @@ public partial class SmartCurtainsContentPageUI : ContentPage
     }
 
 	/// <summary>
-	/// 
+	/// Handler for deleting the device, when the user presses the button
 	/// </summary>
 	/// <param name="sender"></param>
 	/// <param name="e"></param>

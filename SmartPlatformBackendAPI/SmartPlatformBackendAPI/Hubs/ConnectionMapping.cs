@@ -5,15 +5,12 @@ namespace SmartPlatformBackendAPI.Hubs
 {
     public class ConnectionMapping<T>
     {
-        //private readonly Dictionary<T, HashSet<string>> _connections =
-        //    new Dictionary<T, HashSet<string>>();
-
         private readonly Dictionary<T, string> deviceConnections = new Dictionary<T, string>();
         private readonly Dictionary<T, List<string>> userConnections = new Dictionary<T, List<string>>();
         
 
         /// <summary>
-        /// 
+        /// Adds a device to the connected devices
         /// </summary>
         /// <param name="key"></param>
         /// <param name="connectionId"></param>
@@ -59,7 +56,7 @@ namespace SmartPlatformBackendAPI.Hubs
         }
 
         /// <summary>
-        /// 
+        /// Gets a device connection based on DeviceID
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
@@ -69,7 +66,7 @@ namespace SmartPlatformBackendAPI.Hubs
         }
 
         /// <summary>
-        /// 
+        /// Gets a user connection based on UserID
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
@@ -85,7 +82,7 @@ namespace SmartPlatformBackendAPI.Hubs
         }
 
         /// <summary>
-        /// 
+        /// Removes a device connection
         /// </summary>
         /// <param name="key"></param>
         /// <param name="connectionId"></param>
@@ -101,7 +98,7 @@ namespace SmartPlatformBackendAPI.Hubs
         }
 
         /// <summary>
-        /// 
+        /// Removes a user connection
         /// </summary>
         /// <param name="key"></param>
         /// <param name="connectionId"></param>
@@ -127,6 +124,11 @@ namespace SmartPlatformBackendAPI.Hubs
             }
         }
 
+        /// <summary>
+        /// Removes a connection based on connection ID only
+        /// </summary>
+        /// <param name="connectionID"></param>
+        /// <returns></returns>
         public Task RemoveConnection(string connectionID)
         {
             lock (deviceConnections)

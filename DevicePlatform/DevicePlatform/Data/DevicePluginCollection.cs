@@ -32,12 +32,7 @@ namespace DevicePlatform.Data
             }
             else
             {
-            }
-
-
-
-            //plugins.Add(newPlugin.DeviceDescriptor.DeviceID, newPlugin);
-            
+            }            
         }
 
         /// <summary>

@@ -31,6 +31,12 @@ namespace SmartCurtainsPlatformPlugin
         public delegate bool DeleteDeviceCallBack(Guid deviceID);
         private DeleteDeviceCallBack deleteDeviceCallBack;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userID"></param>
+        /// <param name="hubConnection"></param>
+        /// <param name="deleteDeviceCallBack"></param>
         public SmartCurtainsPlatformPlugin(Guid userID, HubConnection hubConnection, DeleteDeviceCallBack deleteDeviceCallBack)
         {
             this.deleteDeviceCallBack = deleteDeviceCallBack;
@@ -47,7 +53,15 @@ namespace SmartCurtainsPlatformPlugin
             InitPlugin(hubConnection);
         }
 
-        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="hubConnection"></param>
+        /// <param name="userID"></param>
+        /// <param name="deviceID"></param>
+        /// <param name="deviceName"></param>
+        /// <param name="deviceKey"></param>
+        /// <param name="deleteDeviceCallBack"></param>
         public SmartCurtainsPlatformPlugin(HubConnection hubConnection, Guid userID, Guid deviceID, string deviceName, string deviceKey, DeleteDeviceCallBack deleteDeviceCallBack)
         {
             this.deleteDeviceCallBack = deleteDeviceCallBack;
@@ -66,7 +80,7 @@ namespace SmartCurtainsPlatformPlugin
         }
 
         /// <summary>
-        /// 
+        /// Initilizes the plugin
         /// </summary>
         /// <param name="hubConnection"></param>
         private void InitPlugin(HubConnection hubConnection)
@@ -84,7 +98,7 @@ namespace SmartCurtainsPlatformPlugin
         }
 
         /// <summary>
-        /// 
+        /// Sets the device data
         /// </summary>
         /// <param name="deviceData"></param>
         private void SetDeviceData(DeviceData deviceData)
@@ -93,7 +107,7 @@ namespace SmartCurtainsPlatformPlugin
         }
 
         /// <summary>
-        /// 
+        /// Gets the Main UI page for the device
         /// </summary>
         /// <returns></returns>
         public ContentPage GetPluginContentPageUI()
@@ -106,7 +120,7 @@ namespace SmartCurtainsPlatformPlugin
 
 
         /// <summary>
-        /// 
+        /// Handler for when data is received from the physical device
         /// </summary>
         /// <param name="jsonData"></param>
         private void DataReceivedFromDevice(string jsonData)
@@ -117,7 +131,7 @@ namespace SmartCurtainsPlatformPlugin
         }
 
         /// <summary>
-        /// 
+        /// Handler for when an acknowldge is reveived by the physical device
         /// </summary>
         private void DeviceAcknowledgeReceived(string message)
         {
@@ -126,7 +140,7 @@ namespace SmartCurtainsPlatformPlugin
         }
 
         /// <summary>
-        /// 
+        /// Requests the curret device data
         /// </summary>
         private void GetCurrentDeviceState()
         {
@@ -134,7 +148,7 @@ namespace SmartCurtainsPlatformPlugin
         }
 
         /// <summary>
-        /// 
+        /// Deletes a device
         /// </summary>
         private bool DeleteDevice()
         {

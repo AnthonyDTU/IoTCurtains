@@ -49,7 +49,9 @@ namespace SmartCurtainsFirmware
         private DeviceData actualDeviceState;
 
         /// <summary>
+        /// Constructor
         /// 
+        /// Initializes the Device class, and configures the utillity helper classes in the SmartDeviceFirmware.dll
         /// </summary>
         public SmartCurtains() : base("Smart Curtains")
         {
@@ -93,7 +95,8 @@ namespace SmartCurtainsFirmware
 
 
         /// <summary>
-        /// 
+        /// Handler for the device data is requested
+        /// Passed to SignalRController as a callback delegate
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
@@ -103,14 +106,13 @@ namespace SmartCurtainsFirmware
 
             string jsonData = JsonConvert.SerializeObject(actualDeviceState);
             SignalRController.TransmitDeviceData(jsonData);
-
-            // call transmit Device Data, with jsonData of current and REQUESTED device data
         }
 
 
 
         /// <summary>
-        /// 
+        /// Handler for when new data is transmitted to the device
+        /// Passed to SignalRController as a callback delegate
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
@@ -128,12 +130,11 @@ namespace SmartCurtainsFirmware
             actualDeviceState.FollowSunrise = requestedDeviceState.FollowSunrise;
 
             SignalRController.TransmitDeviceAcknowledge();
-
-            // set device data
         }
 
         /// <summary>
-        /// 
+        /// Handler for when a command is received from the platform
+        /// Passed to SignalRController as a callback delegate
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
@@ -147,7 +148,6 @@ namespace SmartCurtainsFirmware
             SignalRController.TransmitDeviceAcknowledge();
 
             // Perform command
-
             switch (command)
             {
                 case "\"RollUp\"":
@@ -171,6 +171,10 @@ namespace SmartCurtainsFirmware
             }
         }
 
+        /// <summary>
+        /// Handler for reporting data to the platform
+        /// Passed to MotorController as a callback delegate
+        /// </summary>
         internal void Handle_ReportData()
         {
             string jsonData = JsonConvert.SerializeObject(actualDeviceState);
@@ -179,7 +183,7 @@ namespace SmartCurtainsFirmware
 
 
         /// <summary>
-        /// 
+        /// Handler for when the calibration button is pressed
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -191,7 +195,7 @@ namespace SmartCurtainsFirmware
         }
 
         /// <summary>
-        /// 
+        /// Handler for when the stop button is pressed
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -202,7 +206,7 @@ namespace SmartCurtainsFirmware
         }
 
         /// <summary>
-        /// 
+        /// Handler for when the Roll Up button is pressed
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -213,7 +217,7 @@ namespace SmartCurtainsFirmware
         }
 
         /// <summary>
-        /// 
+        /// Handler for when the Roll Down Button is pressed
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -224,7 +228,8 @@ namespace SmartCurtainsFirmware
         }
 
         /// <summary>
-        /// 
+        /// Handler for when serial data is received. 
+        /// Passed to SerialComController as a callback delegate
         /// </summary>
         /// <param name="recivedData"></param>
         /// <exception cref="NotImplementedException"></exception>

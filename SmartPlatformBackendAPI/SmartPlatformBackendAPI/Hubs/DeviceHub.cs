@@ -9,7 +9,7 @@ namespace SmartPlatformBackendAPI.Hubs
         private readonly static ConnectionMapping<Guid> connections = new ConnectionMapping<Guid>();
 
         /// <summary>
-        /// 
+        /// Used for transmitting data to a device, with the specified DeviceID
         /// </summary>
         /// <param name="deviceID"></param>
         /// <param name="jsonData"></param>
@@ -25,7 +25,7 @@ namespace SmartPlatformBackendAPI.Hubs
         }
 
         /// <summary>
-        /// 
+        /// Used for transmitting a command to a device, with the specified DeviceID
         /// </summary>
         /// <param name="deviceID"></param>
         /// <param name="command"></param>
@@ -36,7 +36,7 @@ namespace SmartPlatformBackendAPI.Hubs
         }
 
         /// <summary>
-        /// 
+        /// Used by the device to acknowledge it has received a message
         /// </summary>
         /// <param name="userID"></param>
         public void DeviceAcknowledge(Guid userID)
@@ -48,7 +48,7 @@ namespace SmartPlatformBackendAPI.Hubs
         }
 
         /// <summary>
-        /// 
+        /// Used by the platform to request data from a specifec device
         /// </summary>
         /// <param name="deviceID"></param>
         public void RequestDataFromDevice(Guid deviceID)
@@ -58,7 +58,7 @@ namespace SmartPlatformBackendAPI.Hubs
         }
 
         /// <summary>
-        /// 
+        /// Used by the device to transmit data to the platform
         /// </summary>
         /// <param name="userID"></param>
         /// <param name="jsonData"></param>
@@ -82,7 +82,7 @@ namespace SmartPlatformBackendAPI.Hubs
         }
 
         /// <summary>
-        /// Registers a device
+        /// Deegisters a device
         /// </summary>
         /// <param name="deviceID"></param>
         /// <returns></returns>
@@ -104,7 +104,7 @@ namespace SmartPlatformBackendAPI.Hubs
         }
 
         /// <summary>
-        /// Registers a user
+        /// Deegisters a user
         /// </summary>
         /// <param name="userID"></param>
         /// <returns></returns>
@@ -116,7 +116,7 @@ namespace SmartPlatformBackendAPI.Hubs
 
 
         /// <summary>
-        /// Deregisters a device
+        /// Deregisters a connection
         /// </summary>
         /// <param name="exception"></param>
         /// <returns></returns>

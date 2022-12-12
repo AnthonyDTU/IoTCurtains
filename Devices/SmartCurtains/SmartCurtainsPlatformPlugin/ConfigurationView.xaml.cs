@@ -15,7 +15,7 @@ public partial class ConfigurationView : ContentView
 	}
 
 	/// <summary>
-	/// 
+	/// Configures the UI controls
 	/// </summary>
     public void PopulateControls()
     {
@@ -25,7 +25,7 @@ public partial class ConfigurationView : ContentView
     }
 
 	/// <summary>
-	/// 
+	/// Configures the UI controls based on an existing configuration
 	/// </summary>
 	/// <param name="nodeConfiguration"></param>
     public void PopulateControls(NodeConfiguration nodeConfiguration)
@@ -40,7 +40,7 @@ public partial class ConfigurationView : ContentView
 	}
 
 	/// <summary>
-	/// 
+	/// Builds a NodeConfiguration based on the values in the controls
 	/// </summary>
 	/// <returns></returns>
 	public NodeConfiguration GetNodeConfigurationFromControls()
@@ -58,7 +58,7 @@ public partial class ConfigurationView : ContentView
 	}
 
 	/// <summary>
-	/// 
+	/// Builds a DeviceDescriptor based on the values in the controls
 	/// </summary>
 	/// <returns></returns>
 	public DeviceDescriptor GetDeviceDescriptorFromControls()

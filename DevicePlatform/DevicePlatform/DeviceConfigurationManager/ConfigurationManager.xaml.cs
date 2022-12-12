@@ -45,7 +45,6 @@ public partial class ConfigurationManager : ContentPage
 
 		serialConfiguratorView = new SerialConfiguratorView(SetupSerialConnection);
 		ConfigurationView.Children.Add(serialConfiguratorView);
-		this.NavigatedFrom += ConfigurationManager_NavigatedFrom;
 	}
 
     /// <summary>
@@ -65,23 +64,9 @@ public partial class ConfigurationManager : ContentPage
         ConfigurationView.Children.Add(serialConfiguratorView);
     }
 
-    /// <summary>
-	/// 
-	/// </summary>
-	/// <param name="sender"></param>
-	/// <param name="e"></param>
-    private void ConfigurationManager_NavigatedFrom(object sender, NavigatedFromEventArgs e)
-    {
-        if (serialPort != null &&
-            serialPort.IsOpen)
-        {
-            serialPort.Close();
-            serialPort.Dispose();
-        }
-    }
 
 	/// <summary>
-	/// 
+	/// Opens a serial connection
 	/// </summary>
 	/// <param name="sender"></param>
 	/// <param name="e"></param>

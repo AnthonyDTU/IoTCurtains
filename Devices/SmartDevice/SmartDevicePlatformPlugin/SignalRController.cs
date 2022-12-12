@@ -14,6 +14,13 @@ namespace SmartDevicePlatformPlugin
         private DeviceDescriptor deviceDescriptor;
         private HubConnection hubConnection;
                 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="deviceDescriptor"></param>
+        /// <param name="hubConnection"></param>
+        /// <param name="signalRDeviceDataReceivedCallback"></param>
+        /// <param name="signalRDeviceAcknowledgeCallback"></param>
         public SignalRController(DeviceDescriptor deviceDescriptor, HubConnection hubConnection, Action<string> signalRDeviceDataReceivedCallback, Action<string> signalRDeviceAcknowledgeCallback)
         {
             this.deviceDescriptor = deviceDescriptor;

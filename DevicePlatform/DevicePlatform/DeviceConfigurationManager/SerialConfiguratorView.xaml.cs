@@ -17,7 +17,7 @@ public partial class SerialConfiguratorView : ContentView
     }
 
     /// <summary>
-    /// 
+    /// Calls back to the configuration controller, to let it know a serial connection should be opened
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
@@ -28,7 +28,7 @@ public partial class SerialConfiguratorView : ContentView
     }
 
     /// <summary>
-    /// 
+    /// Updates the avaliable comports 
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
@@ -39,6 +39,10 @@ public partial class SerialConfiguratorView : ContentView
         COMPortPicker.SelectedItem = selectedPort;
     }
 
+    /// <summary>
+    /// Gets the selected comport from the comport picker control
+    /// </summary>
+    /// <returns></returns>
     public string GetSelectedComport()
     {
         return COMPortPicker.SelectedItem as string;

@@ -27,7 +27,7 @@ namespace DevicePlatform.BackendControllers
         }
 
         /// <summary>
-        /// 
+        /// Initializes the backend connection
         /// </summary>
         private void InitBackendConnection()
         {
@@ -36,7 +36,7 @@ namespace DevicePlatform.BackendControllers
         }
 
         /// <summary>
-        /// 
+        /// Logs a user in, and gets its data from the backend
         /// </summary>
         /// <param name="username"></param>
         /// <param name="password"></param>
@@ -47,10 +47,6 @@ namespace DevicePlatform.BackendControllers
 
             try
             {
-                // old login:
-                //var result = await backendAPI.GetAsync($"api/Users/loginAttempt?username={username}&pass={password}".Replace(" ", "%20"));
-
-                // new login:
                 var result = await backendAPI.PostAsJsonAsync("api/Users/login", userCredentials);
                 if (result.StatusCode == HttpStatusCode.OK)
                 {
@@ -76,7 +72,7 @@ namespace DevicePlatform.BackendControllers
         }
 
         /// <summary>
-        /// 
+        /// Creates a new user in the backend
         /// </summary>
         /// <param name="username"></param>
         /// <param name="password"></param>
@@ -115,7 +111,7 @@ namespace DevicePlatform.BackendControllers
         }
 
         /// <summary>
-        /// 
+        /// Updates a user in the backend
         /// </summary>
         /// <returns></returns>
         public async Task<HttpStatusCode> UpdateUser()
@@ -146,7 +142,7 @@ namespace DevicePlatform.BackendControllers
         }
 
         /// <summary>
-        /// 
+        /// Adds a new device to the user in the backend
         /// </summary>
         /// <returns></returns>
         public async Task<HttpStatusCode> AddNewDevice(DeviceDescriptor deviceDescriptor)
@@ -171,7 +167,7 @@ namespace DevicePlatform.BackendControllers
         }
 
         /// <summary>
-        /// 
+        /// Deletes a user from the backend
         /// </summary>
         /// <param name="userID"></param>
         /// <returns></returns>
@@ -191,7 +187,7 @@ namespace DevicePlatform.BackendControllers
         }
 
         /// <summary>
-        /// 
+        /// Deletes a device from the user in the backend
         /// </summary>
         /// <param name="userID"></param>
         /// <param name="deviceID"></param>

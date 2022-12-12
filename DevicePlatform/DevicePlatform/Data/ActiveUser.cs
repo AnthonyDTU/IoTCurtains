@@ -30,6 +30,9 @@ namespace DevicePlatform.Data
 
         }
 
+        /// <summary>
+        /// Initializes the API controller 
+        /// </summary>
         private void InitializeAPIController()
         {
             apiController = new APIController();
@@ -53,7 +56,7 @@ namespace DevicePlatform.Data
         }
 
         /// <summary>
-        /// 
+        /// Connects to the signal R hub
         /// </summary>
         /// <returns></returns>
         private async Task<bool> ConnectSignalRHub()
@@ -82,6 +85,11 @@ namespace DevicePlatform.Data
         }
 
 
+        /// <summary>
+        /// Adds a new plugin to the active user
+        /// </summary>
+        /// <param name="plugin"></param>
+        /// <returns></returns>
         public async Task AddNewDevicePlugin(IPlatformPlugin plugin)
         {
             await apiController.AddNewDevice(plugin.DeviceDescriptor);
@@ -90,19 +98,12 @@ namespace DevicePlatform.Data
 
 
         /// <summary>
-        /// 
+        /// Deletes a plugin from the active user
         /// </summary>
         /// <param name="plugin"></param>
         public bool RemoveDevicePlugin(Guid deviceID)
         {
             var status = apiController.DeleteDevice(User.UserID, deviceID).WaitAsync(TimeSpan.FromSeconds(10));
-            //if (result.Result == HttpStatusCode.OK)
-            //{
-            //    DevicesPlugins.DeleteDevicePlugin(deviceID);
-            //    return true;
-            //}
-
-
             DevicePlugins.DeleteDevicePlugin(deviceID);
             return true;
         }
@@ -110,7 +111,7 @@ namespace DevicePlatform.Data
 
 
         /// <summary>
-        /// 
+        /// Configures the active user
         /// </summary>
         /// <param name="activeUser"></param>
         /// <returns></returns>
@@ -150,12 +151,21 @@ namespace DevicePlatform.Data
             return true;
         }
 
+        /// <summary>
+        /// Handler for when the hub is reconnected
+        /// </summary>
+        /// <param name="arg"></param>
+        /// <returns></returns>
         private Task HubConnection_Reconnected(string arg)
         {
             // Re-register the user with the SignalR server
             return hubConnection.SendAsync("RegisterUser", User.UserID);
         }
 
+        /// <summary>
+        /// Updates the User
+        /// </summary>
+        /// <param name="newActiveUser"></param>
         public void UpdateActiveUser(User newActiveUser)
         {
             User = newActiveUser;

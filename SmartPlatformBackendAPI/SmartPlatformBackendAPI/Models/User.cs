@@ -17,13 +17,6 @@ namespace SmartPlatformBackendAPI.Models
         [ConcurrencyCheck]
         [Required]
         public ICollection<DeviceDecriptor> DeviceDescriptors { get; set; } = null!;
-
-        //public User(Guid userID, string userName, string password, ICollection<Device> devices)
-        //{
-        //    UserID = userID;
-        //    UserName = userName;
-        //    Password = password;
-        //    Devices = devices;
-        //}
+        
     }
 }

@@ -12,6 +12,11 @@ public partial class CreateNewUserPage : ContentPage
 		InitializeComponent();
 	}
 
+	/// <summary>
+	/// When the button to create a new user is pressed
+	/// </summary>
+	/// <param name="sender"></param>
+	/// <param name="e"></param>
 	private async void CreateNewUser_Clicked(object sender, EventArgs e)
 	{
 		try

@@ -19,7 +19,7 @@ namespace SmartCurtainsPlatformPlugin
         }
 
         /// <summary>
-        /// 
+        /// Gets the configuration view for the device
         /// </summary>
         /// <returns></returns>
         public ContentView GetConfigurationView()
@@ -30,7 +30,7 @@ namespace SmartCurtainsPlatformPlugin
         }
 
         /// <summary>
-        /// 
+        /// Gets the configuration view for the device based on an existing NodeConfiguration
         /// </summary>
         /// <param name="nodeConfiguration"></param>
         /// <returns></returns>
@@ -42,7 +42,7 @@ namespace SmartCurtainsPlatformPlugin
         }
 
         /// <summary>
-        /// 
+        /// Builds a NodeConfiguration based on the configuration view
         /// </summary>
         /// <returns></returns>
         public NodeConfiguration BuildNewConfiguration()
@@ -51,7 +51,7 @@ namespace SmartCurtainsPlatformPlugin
         }
 
         /// <summary>
-        /// 
+        /// Builds a DeviceDescriptor based on the configuration view
         /// </summary>
         public DeviceDescriptor GetDeviceDescriptor()
         {

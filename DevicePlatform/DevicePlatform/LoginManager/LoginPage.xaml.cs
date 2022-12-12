@@ -13,7 +13,7 @@ public partial class LoginPage : ContentPage
 	}
 
 	/// <summary>
-	/// 
+	/// When the login button is pressed
 	/// </summary>
 	/// <param name="sender"></param>
 	/// <param name="e"></param>
@@ -48,7 +48,7 @@ public partial class LoginPage : ContentPage
 	}
 
 	/// <summary>
-	/// 
+	/// Navigates to create new user page
 	/// </summary>
 	/// <param name="sender"></param>
 	/// <param name="e"></param>

@@ -20,34 +20,21 @@ public partial class MainPage : ContentPage
 	public MainPage()
 	{
 		InitializeComponent();
-        //ActiveUser.InitializeUser();
-
+        
         if (!LoadLocalData())
 		{
 			PresentLoginScreen().Wait();
-            //if (ActiveUser.LoggedIn == true)
-            //{
-            //}
 		}
 		else
 		{
             ActiveUser.Instance.apiController.Login(storedUser, storedPassword).Wait();
-
-            //ActiveUser.apiController.Login(storedUser, storedPassword).Wait();
 		}		
 
         RenderUI();
 	}
 
-    //protected override void On
-    //{
-    //    base.OnDisappearing();
-    //    ActiveUserSingleton.Instance.Close();        
-    //}
-
-
     /// <summary>
-    /// 
+    /// Renders the UI
     /// </summary>
 	private void RenderUI()
 	{
@@ -102,21 +89,6 @@ public partial class MainPage : ContentPage
                 addNewDeviceButton.Clicked += ConfigureNewDeviceButton_Clicked;
                 MainContentView.Children.Add(addNewDeviceButton);
             }
-
-            //Button testButton = new Button()
-            //{
-            //    WidthRequest = 250,
-            //    HeightRequest = 100,
-            //    CornerRadius = 10,
-            //    BackgroundColor = Colors.Cyan,
-            //    Text = "Test button",
-            //    TextColor = Colors.Black,
-            //    FontSize = 15,
-            //};
-
-            //testButton.Clicked += TestButton_Clicked;
-            //MainContentView.Children.Add(testButton);
-
         }
         else
         {
@@ -135,7 +107,7 @@ public partial class MainPage : ContentPage
     }
 
     /// <summary>
-    /// 
+    /// When a plugin button is clicked, the corresponding device UI should be presented on a new page
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
@@ -151,17 +123,7 @@ public partial class MainPage : ContentPage
     }
 
     /// <summary>
-    /// Used for testing 
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    private async void TestButton_Clicked(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new DesignTestPage());    
-    }
-
-    /// <summary>
-    /// 
+    /// Not yet implemented
     /// </summary>
     /// <returns></returns>
     private bool LoadLocalData()
@@ -173,7 +135,7 @@ public partial class MainPage : ContentPage
 	}
 
     /// <summary>
-    /// 
+    /// Navigates to the login screetn
     /// </summary>
     /// <returns></returns>
 	private async Task<bool> PresentLoginScreen()
@@ -183,7 +145,7 @@ public partial class MainPage : ContentPage
 	}
 
     /// <summary>
-    /// 
+    /// Navigates to the configurator
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
@@ -194,7 +156,7 @@ public partial class MainPage : ContentPage
 
 
     /// <summary>
-    /// 
+    /// Navigates to the login screen when a button is clicked
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
@@ -205,14 +167,13 @@ public partial class MainPage : ContentPage
 
 
     /// <summary>
-    /// 
+    /// Whenever the main page is appering
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void ContentPage_Appearing(object sender, EventArgs e)
     {
         RenderUI();
-
     }
 }
 
